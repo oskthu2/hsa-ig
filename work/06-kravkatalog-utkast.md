@@ -18,7 +18,20 @@
 | HSACAT-LOC-002 | Location SHALL peka ut ansvarig organisation | `Location.managingOrganization` 1..1 | hsa_fhir_ig_agentisk_plan.md (Platsansvar i kravtypstabell) | LDAP strukturrelation | Källbekräftad |
 | HSACAT-SVC-001 | HealthcareService SHALL peka ut tillhandahållande organisation | `HealthcareService.providedBy` 1..1 | hsa_fhir_ig_agentisk_plan.md FHIRPath invariant; REST API-kravtabell | LDAP strukturrelation | Källbekräftad |
 | HSACAT-SVC-002 | Digital HealthcareService SHALL ha telecom eller endpoint | Invariant: `type.coding.where(code = 'digital').exists() implies (telecom.exists() or endpoint.exists())` | hsa_fhir_ig_agentisk_plan.md FHIRPath invariant | Tjänsteträdets digital tjänstmodell | Källbekräftad |
-| HSACAT-TERM-001 | Verksamhetskod på HealthcareService SHALL bindas till ValueSet med system `urn:oid:1.2.752.129.2.2.1.3` | Required binding på `HealthcareService.type`; system = `urn:oid:1.2.752.129.2.2.1.3` | HSA OID-förteckning i SRC-001; Terminologitjänsten (SRC-007) för faktiska kodvärden | `businessClassificationCode`, OID `1.2.752.129.2.2.1.3` | Källbekräftad – OID känd; ValueSet-innehåll kräver Terminologitjänsten (SRC-007) |
+| HSACAT-TERM-001 | Verksamhetskod på HealthcareService SHALL bindas till ValueSet med system `urn:oid:1.2.752.129.2.2.1.3`; ValueSet SHALL jämföras mot eHMs Nationella vårdtjänster v.1.0.0 (SRC-014) | Required binding på `HealthcareService.type`; system = `urn:oid:1.2.752.129.2.2.1.3`; harmoniseringsmatris mot SRC-014 | HSA OID-förteckning (SRC-008); eHMs IG HSAServiceTypeValueSet (SRC-013); Nationella vårdtjänster v.1.0.0 (SRC-014, blockerad); ADR-009 | `businessClassificationCode`, OID `1.2.752.129.2.2.1.3` | Källbekräftad – OID känd; väntar på SRC-014 för harmonisering |
+
+| HSACAT-LOC-003 | Fysisk Location som är synlig för allmänheten (hsaDestinationIndicator = 03) SHALL ha geografiska koordinater | `Location.position` 1..1 when synlig för 03; lat/long SWEREF99 | EK (obligatoriskt för 1177) + KIV; HSA-schema 5.3 (`hsaSweref99Latitude`, `hsaSweref99Longitude`) | `hsaSweref99Latitude`, `hsaSweref99Longitude` | Källbekräftad |
+| HSACAT-LOC-004 | Fysisk Location SHALL ha lokalitet (ort/stad) | `Location.address.city` 1..1 vid `mode = 'instance'` | EK (Lokalitet obligatorisk för 1177); HSA-schema 5.3 (`l` = localityName) | `l` (localityName) | Källbekräftad |
+| HSACAT-SVC-003 | HealthcareService för vårdenhet SHALL ha vård- och omsorgsform (`careType`) | `HealthcareService.type` slice `care-type`; system = `urn:oid:1.2.752.129.2.2.1.13` | KIV (Vårdform obligatorisk för 1177); HSA-schema 5.3 (`careType`, OID 1.2.752.129.2.2.1.13) | `careType` | Källbekräftad |
+| HSACAT-ORG-009 | Organization eller HealthcareService synlig för allmänheten SHALL ha hsaDestinationIndicator = 03 modellerat och sökbart | Extension `hsaDestinationIndicator` eller `meta.security`; sökbart via SearchParameter | EK + KIV (nationell HSA-regel för 1177); HSA-schema 5.3 (`hsaDestinationIndicator`, OID 1.2.752.29.23.1.11) | `hsaDestinationIndicator` | Källbekräftad |
+| HSACAT-ORG-010 | Organization SHOULD ha ägarform (regi) | `Organization.type` slice `ownership`; system = `urn:oid:1.2.752.129.2.2.1.14` | EK (Ägarform obligatorisk för 1177); HSA-schema 5.3 (`management`) | `management` | Källbekräftad |
+| HSACAT-ORG-011 | Vårdenhet med regional finansiering SHOULD ha finansierande region/kommun | Extension med OID `urn:oid:1.2.752.129.5.1.1` för finansierande org | KIV (obligatorisk i VGR); HSA-schema 5.3 (`financingOrganization`) | `financingOrganization` | Källbekräftad |
+
+| HSACAT-SVC-004 | Externt publicerad HealthcareService SHOULD ha öppettider och telefontider som separata structured time slots | `HealthcareService.availableTime[]` med extension för typ (öppettid/telefontid/drop-in); max 19-tecken etikett för drop-in | Uppsala LoKatt (DocPlusSTYR-35033); HSA-schema 5.3 (`hsaPublicTelephone`, `hsaDropInHours`, `hsaManagingHospital`) | `hsaPublicTelephone`, `hsaDropInHours` | Källbekräftad |
+| HSACAT-SVC-005 | HealthcareService med tillfällig information SHALL ha period med end-datum | Extension `temporaryInfo` med `valueString` + obligatoriskt `period.end`; rensas automatiskt vid passerat datum | Uppsala LoKatt (tillfällig information = obligatoriskt slutdatum) | HSA `hsaCreateObjectHours` / temporärt textfält | Källbekräftad |
+| HSACAT-ORG-004b | Offentlig Organization SHALL ha både direkttelefon och växeltelefon; privata vårdgivare undantas från krav på växeltelefon | `Organization.telecom` slice `direct-phone` 1..1 + slice `switchboard` 1..1 when NOT private | Uppsala LoKatt; EK; KIV | `telephoneNumber` (direkttelefon), `facsimileTelephoneNumber` / växel | Källbekräftad |
+| HSACAT-LOC-005 | Organization SHALL ha postadress och besöksadress som separata adressposter | `Organization.address` slice `postal` (type=postal) + Location.address (type=physical); postnummer utelämnas från besöksadress | Uppsala LoKatt (adressregler); HSA-schema (`postalAddress` vs `hsaPostalAddress`) | `postalAddress`, `hsaPostalAddress` | Källbekräftad |
+| HSACAT-LOC-006 | Location MAY ha inre och yttre vägbeskrivning | `Location.description` eller extension med inner/outer navigation text | Uppsala LoKatt (Geografi-sektionen) | HSA `hsaRoute` (yttre), `description` (inre) | Källbekräftad |
 
 ## Stängda frågor
 
@@ -35,11 +48,12 @@
 |---|---|---|
 | 5 | Exakt kodtabellsinnehåll för verksamhetskoder (HSACAT-TERM-001) | DC Koder-bladet ur tjänsteträdets xlsx eller separat kodverksexport |
 | 6 | Canonical URI för HSA CodeSystem/ValueSet i Terminologitjänsten | Logga in på terminologitjansten.inera.se och hämta canonical URL per kodverk; använd tills vidare `urn:oid:<OID>` |
+| 7 | Exakt innehåll i "Nationella vårdtjänster v.1.0.0" (SRC-014) | Logga in på eHMs samarbetsyta (AFI-utrymme) och ladda ner Excel-filen; krävs för harmoniseringsanalys i HSACAT-TERM-001 |
 
 ## Statusöversikt
 
 | Status | Antal |
 |---|---|
-| Källbekräftad | 12 |
+| Källbekräftad | 23 |
 | Beslutad | 1 |
-| **Totalt** | **13** |
+| **Totalt** | **24** |

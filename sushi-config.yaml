@@ -1,0 +1,49 @@
+id: inera.se.hsa.katalog
+canonical: https://hsa.inera.se/fhir
+name: HsaCatalogIG
+title: "HSA Katalog Implementation Guide"
+description: >
+  FHIR R5 Implementation Guide för HSA-baserad kataloginformation om
+  organisationer, platser, vårdtjänster och ändpunkter inom svensk vård och omsorg.
+status: draft
+version: 0.1.0
+fhirVersion: 5.0.0
+copyrightYear: 2026+
+releaseLabel: ci-build
+jurisdiction: urn:iso:std:iso:3166#SE "Sweden"
+publisher:
+  name: Inera AB / HSA-IG projekt
+  url: https://www.inera.se/
+
+dependencies:
+  hl7.fhir.r5.core: 5.0.0
+
+parameters:
+  show-inherited-invariants: false
+  apply-contact: true
+  apply-jurisdiction: true
+  apply-publisher: true
+  apply-version: true
+
+pages:
+  index.md:
+    title: Introduktion
+  design-principles.md:
+    title: Designprinciper
+  use-cases.md:
+    title: Användningsfall
+  profiles.md:
+    title: Profiler
+  terminology.md:
+    title: Terminologi
+  api.md:
+    title: REST API
+  ehm-alignment.md:
+    title: Harmonisering med eHM
+
+menu:
+  Hem: index.html
+  Profiler: profiles.html
+  Terminologi: terminology.html
+  API: api.html
+  Artefakter: artifacts.html

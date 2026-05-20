@@ -1,0 +1,70 @@
+name: FHIR IG CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  sushi:
+    name: SUSHI – FSH kompilering
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install SUSHI
+        run: npm install -g fsh-sushi
+
+      - name: Run SUSHI
+        run: sushi build . --log-level info
+
+      - name: Upload generated artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fsh-generated
+          path: fsh-generated/
+
+  ig-publisher:
+    name: IG Publisher – publicering
+    needs: sushi
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download SUSHI artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: fsh-generated
+          path: fsh-generated/
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Download IG Publisher
+        run: |
+          mkdir -p input-cache
+          curl -L https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar \
+            -o input-cache/publisher.jar
+
+      - name: Run IG Publisher
+        run: |
+          java -jar input-cache/publisher.jar \
+            -ig ig.ini \
+            -tx https://tx.fhir.org/r5
+
+      - name: Upload IG output
+        uses: actions/upload-artifact@v4
+        with:
+          name: ig-output
+          path: output/
