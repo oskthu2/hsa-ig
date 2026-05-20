@@ -1,6 +1,6 @@
 // ─── HsaCatalogOrganization ───────────────────────────────────────────────────
 // Basprofil för alla organisationer från HSA-katalogen.
-// Täcker: HSACAT-ORG-001, 002, 003, 004, 004b, 005, 006, 008, 009, 010
+// Täcker: HSACAT-ORG-001, 002, 003, 004, 004b, 005, 006, 008, 009, 010, 012, 013
 
 Profile: HsaCatalogOrganization
 Parent: Organization
@@ -42,7 +42,8 @@ Description: """
 
 * identifier contains
     hsa-id 1..1 MS and
-    org-no 0..1 MS
+    org-no 0..1 MS and
+    apk 0..1 MS
 
 * identifier[hsa-id]
   * ^short = "HSA-identitet"
@@ -56,6 +57,15 @@ Description: """
   * ^definition = "Organisationsnummer (obligatoriskt för vårdgivare, se hsacat-provider-orgno)."
   * system 1..1
   * system = "urn:oid:2.5.4.97" (exactly)
+  * value 1..1 MS
+
+// Arbetsplatskod (HSACAT-ORG-012): används av NPÖ GetHealthCareUnitMembers.
+// OID preliminärt 1.2.752.29.4.71 – ska verifieras mot Ineras OID-register (öppen fråga 8).
+* identifier[apk]
+  * ^short = "Arbetsplatskod (NPÖ-relevant)"
+  * ^definition = "Arbetsplatskod som NPÖ använder för att identifiera en vårdenhet i GetHealthCareUnitMembers. OID att bekräfta (HSACAT-ORG-012, öppen fråga 8)."
+  * system 1..1
+  * system = "urn:oid:1.2.752.29.4.71" (exactly)
   * value 1..1 MS
 
 // ── Active: publiceringsstatus (HSACAT-ORG-008) ───────────────────────────────
@@ -98,9 +108,16 @@ Description: """
   * coding.system = "urn:oid:1.2.752.129.2.2.1.14" (exactly)
   * coding from HsaOwnershipTypeVS (required)
 
-// ── Contact: kontaktvägar och adress (HSACAT-ORG-004, 004b) ─────────────────
+// ── Contact: kontaktvägar och adress (HSACAT-ORG-004, 004b, LOC-005, ORG-013) ──
 // I FHIR R5 finns inte telecom/address direkt på Organization; de ligger
 // under contact-backbonen. Varje contact-post kan ha purpose, telecom och address.
+//
+// Adressövergång (ADR-010, HSACAT-ORG-013):
+// HSA 5.2+ introducerade strukturerade adressattribut (hsaPostalAddress,
+// hsaVisitingAddress) som ersätter legacy (postalAddress, streetAddress).
+// Övergångsperiod gäller t.o.m. sept 2026; normativ form är strukturerade
+// komponenter (Address.line / .city / .postalCode). Legacy-data mappas till
+// Address.text under övergångsperioden.
 * contact MS
 * contact ^short = "Kontaktinformation (telefon, adress m.m.)"
 * contact ^definition = """

@@ -29,15 +29,18 @@
 | HSACAT-SVC-004 | Källbekräftad | ✅ | SRC-018 | - | - | `HealthcareService.availability` MS; `availability.availableTime` MS (R5-struktur) | Separata instanser per tidtyp (öppet/telefon/drop-in) |
 | HSACAT-SVC-005 | Källbekräftad | ✅ | SRC-018 | - | - | Extension `HsaTemporaryInfoExtension`; extension[period].valuePeriod.end 1..1; invariant hsacat-temporary-info-end-date | — |
 | HSACAT-TERM-001 | Källbekräftad – OID känd; harmonisering väntar | ⚠️ | SRC-002, SRC-013 | ADR-009 | RSK-004, RSK-005 | `HealthcareService.type[service-type]` från HsaServiceTypeVS; system=`urn:oid:1.2.752.129.2.2.1.3`; Required binding | Hämta SRC-014 (eHM Excel) för harmoniseringsmatris |
+| HSACAT-ORG-012 | Utkast – OID ej bekräftad | ⚠️ | SRC-020 | - | - | `Organization.identifier[apk]` 0..1 MS; system=`urn:oid:1.2.752.29.4.71` (preliminärt) | Bekräfta APK-OID mot Ineras OID-register (öppen fråga 8) |
+| HSACAT-ORG-013 | Beslutad | ✅ doc | SRC-021, SRC-001 | ADR-010 | RSK-002 | Adressövergång dokumenteras som kommentar i profil och informativ IG-sida; normativ form = strukturerade komponenter | Skriv informativ IG-sida om adressövergång |
 
 ## Implementationsstatus
 
 | Status | Antal |
 |---|---|
 | ✅ FSH implementerat | 23 |
-| ⚠️ Delvis (OID-bindning klar, harmonisering återstår) | 1 |
+| ✅ doc Beslutad + dokumenterat i profil | 1 |
+| ⚠️ Delvis (OID/harmonisering återstår) | 2 |
 | ❌ Ej påbörjat | 0 |
-| **Totalt** | **24** |
+| **Totalt** | **26** |
 
 ## Återstående teknisk skuld
 

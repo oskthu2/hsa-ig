@@ -31,8 +31,11 @@
 | HSACAT-SVC-004 | Externt publicerad HealthcareService SHOULD ha öppettider och telefontider som separata structured time slots | `HealthcareService.availableTime[]` med extension för typ (öppettid/telefontid/drop-in); max 19-tecken etikett för drop-in | Uppsala LoKatt (DocPlusSTYR-35033); HSA-schema 5.3 (`hsaPublicTelephone`, `hsaDropInHours`, `hsaManagingHospital`) | `hsaPublicTelephone`, `hsaDropInHours` | Källbekräftad |
 | HSACAT-SVC-005 | HealthcareService med tillfällig information SHALL ha period med end-datum | Extension `temporaryInfo` med `valueString` + obligatoriskt `period.end`; rensas automatiskt vid passerat datum | Uppsala LoKatt (tillfällig information = obligatoriskt slutdatum) | HSA `hsaCreateObjectHours` / temporärt textfält | Källbekräftad |
 | HSACAT-ORG-004b | Offentlig Organization SHALL ha både direkttelefon och växeltelefon; privata vårdgivare undantas från krav på växeltelefon | `Organization.telecom` slice `direct-phone` 1..1 + slice `switchboard` 1..1 when NOT private | Uppsala LoKatt; EK; KIV | `telephoneNumber` (direkttelefon), `facsimileTelephoneNumber` / växel | Källbekräftad |
-| HSACAT-LOC-005 | Organization SHALL ha postadress och besöksadress som separata adressposter | `Organization.address` slice `postal` (type=postal) + Location.address (type=physical); postnummer utelämnas från besöksadress | Uppsala LoKatt (adressregler); HSA-schema (`postalAddress` vs `hsaPostalAddress`) | `postalAddress`, `hsaPostalAddress` | Källbekräftad |
+| HSACAT-LOC-005 | Organization SHALL ha postadress och besöksadress som separata adressposter; strukturerade attribut (hsaPostalAddress, hsaVisitingAddress) är normativ form; legacy-attribut (postalAddress, streetAddress) accepteras under övergångsperioden t.o.m. sept 2026 | `Organization.contact.address` (type=postal) med komponenter; `Location.address` (type=physical) med komponenter; under övergångsperiod: `Address.text` för legacy | Uppsala LoKatt (adressregler); HSA-schema 5.2+ (`hsaPostalAddress`, `hsaVisitingAddress`); NPÖ (SRC-020); ADR-010 | `hsaPostalAddress`, `hsaVisitingAddress`, `postalAddress`, `streetAddress` | Källbekräftad |
 | HSACAT-LOC-006 | Location MAY ha inre och yttre vägbeskrivning | `Location.description` eller extension med inner/outer navigation text | Uppsala LoKatt (Geografi-sektionen) | HSA `hsaRoute` (yttre), `description` (inre) | Källbekräftad |
+
+| HSACAT-ORG-012 | HsaHealthcareUnitOrganization SHOULD ha arbetsplatskod (identifierare krävd av NPÖ GetHealthCareUnitMembers) | `Organization.identifier` slice `apk` 0..1; system = `urn:oid:<APK-OID>` (OID att bekräfta) | NPÖ tillitsdeklaration (SRC-020): GetHealthCareUnitMembers returnerar arbetsplatskod | `hsaHealthCareUnitExternalId` eller separat attribut – OID okänd, se öppen fråga 8 | Utkast – OID saknas |
+| HSACAT-ORG-013 | IG SHOULD dokumentera mappning från legacy adressattribut (postalAddress, streetAddress) till strukturerade (hsaPostalAddress, hsaVisitingAddress) för konsumenter under övergångsperiod t.o.m. sept 2026 | Informativ IG-sida med mappningstabell; normativa profiler pekar på strukturerad form (ADR-010) | HSA-schema 5.2.1 (SRC-021) och 5.3 (SRC-001); ADR-010 | `postalAddress` → `Address.text`; `streetAddress` → `Address.text`; `hsaPostalAddress` → komponent-Address | Beslutad (ADR-010) |
 
 ## Stängda frågor
 
@@ -50,11 +53,13 @@
 | 5 | Exakt kodtabellsinnehåll för verksamhetskoder (HSACAT-TERM-001) | DC Koder-bladet ur tjänsteträdets xlsx eller separat kodverksexport |
 | 6 | Canonical URI för HSA CodeSystem/ValueSet i Terminologitjänsten | Logga in på terminologitjansten.inera.se och hämta canonical URL per kodverk; använd tills vidare `urn:oid:<OID>` |
 | 7 | Exakt innehåll i "Nationella vårdtjänster v.1.0.0" (SRC-014) | Logga in på eHMs samarbetsyta (AFI-utrymme) och ladda ner Excel-filen; krävs för harmoniseringsanalys i HSACAT-TERM-001 |
+| 8 | OID och formell definition för arbetsplatskod (HSACAT-ORG-012) | Bekräfta OID för arbetsplatskod (APK) – troligtvis `1.2.752.29.4.71` men ska verifieras; NPÖ-förvaltningen eller Ineras OID-register |
 
 ## Statusöversikt
 
 | Status | Antal |
 |---|---|
 | Källbekräftad | 23 |
-| Beslutad | 1 |
-| **Totalt** | **24** |
+| Beslutad | 2 |
+| Utkast | 1 |
+| **Totalt** | **26** |
