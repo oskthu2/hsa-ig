@@ -1,15 +1,21 @@
 // ─── Exempelinstans: Plats (Location) ────────────────────────────────────────
 // Visar HsaCatalogLocation med besöksadress, SWEREF99-koordinater och
-// vägbeskrivning. Platsen är publik (destinationIndicator=03) vilket
-// kräver position (koordinater) per hsacat-public-location-position.
+// vägbeskrivning i description (Markdown). Platsen är publik (meta.security 03)
+// vilket kräver position (koordinater) per hsacat-public-location-position.
 
 Instance: LocationExample
 InstanceOf: HsaCatalogLocation
 Usage: #example
 Title: "Exempelmottagningens besöksadress"
-Description: "Exempelplats med SWEREF99-koordinater, vägbeskrivning och besöksadress utan postnummer."
+Description: "Exempelplats med SWEREF99-koordinater, Markdown-vägbeskrivning och besöksadress utan postnummer."
 
 * id = "location-example"
+
+// Publik synlighet via meta.security
+* meta.security[destination-indicator]
+  * system = "urn:oid:1.2.752.29.23.1.11"
+  * code = #03
+  * display = "Internet/allmänheten"
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
@@ -21,6 +27,14 @@ Description: "Exempelplats med SWEREF99-koordinater, vägbeskrivning och besöks
 
 * mode = #instance
 
+// Vägbeskrivning som Markdown med standardiserade rubriker (ADR-012).
+// Klienter bör rendera detta fält som Markdown.
+* description = """## Yttre vägbeskrivning
+Tunnelbana röd linje, station Hälsoplanen (3 min gångväg). Buss 42, hållplats Hälsogatan.
+
+## Inre vägbeskrivning
+Gå in genom huvudentrén, hiss eller trappa till plan 3. Mottagningen till vänster."""
+
 * address
   * type = #physical
   * line[0] = "Hälsogatan 1"
@@ -29,22 +43,8 @@ Description: "Exempelplats med SWEREF99-koordinater, vägbeskrivning och besöks
   // postalCode utelämnas avsiktligt (Uppsala-regel: besöksadress ska ej ha postnummer)
 
 // SWEREF99 TM-koordinater (latitud/longitud i grader)
-// Koordinater för Stockholms innerstad som exempeldata
 * position
   * latitude = 59.334591
   * longitude = 18.063240
 
 * managingOrganization = Reference(VardenhetExample)
-
-* extension[destinationIndicator]
-  * valueCoding
-    * system = "urn:oid:1.2.752.29.23.1.11"
-    * code = #03
-    * display = "Internet/allmänheten"
-
-// Yttre vägbeskrivning (hur man hittar hit med kollektivtrafik)
-* extension[navigation]
-  * extension[outer]
-    * valueString = "Tunnelbana röd linje, station Hälsoplanen (3 min gångväg). Buss 42, hållplats Hälsogatan."
-  * extension[inner]
-    * valueString = "Gå in genom huvudentrén, hiss eller trappa till plan 3. Mottagningen till vänster."

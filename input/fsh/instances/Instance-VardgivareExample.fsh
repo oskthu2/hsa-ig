@@ -1,6 +1,6 @@
 // ─── Exempelinstans: Vårdgivare ───────────────────────────────────────────────
 // Visar HsaHealthcareProviderOrganization med HSA-id, organisationsnummer,
-// destinationIndicator=03 (publik på 1177) och kontaktinformation.
+// meta.security destination-indicator=03 (publik på 1177) och kontaktinformation.
 
 Instance: VardgivareExample
 InstanceOf: HsaHealthcareProviderOrganization
@@ -9,6 +9,12 @@ Title: "Exempelvårdgivare AB"
 Description: "Exempelinstans för en privat vårdgivare publik på 1177 Hitta vård."
 
 * id = "vardgivare-example"
+
+// Publik synlighet via meta.security (destinationIndicator 03 = Internet/allmänheten)
+* meta.security[destination-indicator]
+  * system = "urn:oid:1.2.752.29.23.1.11"
+  * code = #03
+  * display = "Internet/allmänheten"
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
@@ -33,12 +39,6 @@ Description: "Exempelinstans för en privat vårdgivare publik på 1177 Hitta v�
     * display = "Privat"
 
 * name = "Exempelvårdgivare AB"
-
-* extension[destinationIndicator]
-  * valueCoding
-    * system = "urn:oid:1.2.752.29.23.1.11"
-    * code = #03
-    * display = "Internet/allmänheten"
 
 // Direkttelefon (obligatorisk för publik enhet via hsacat-public-org-telecom)
 * contact[0]

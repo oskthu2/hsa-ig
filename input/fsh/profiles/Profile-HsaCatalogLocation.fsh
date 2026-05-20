@@ -13,6 +13,14 @@ Description: """
   Fysiska platser måste ha besöksadress (gatuadress + stad) och
   en referens till ansvarig organisation. Koordinater (SWEREF99) krävs
   för offentlig publicering på 1177 Hitta vård.
+
+  **Synlighet:** Anges via `meta.security[destination-indicator]` med
+  system `urn:oid:1.2.752.29.23.1.11`, kod 03 = Internet/allmänheten.
+
+  **Vägbeskrivning:** Lagras i `description` som Markdown. Konvention:
+  - `## Yttre vägbeskrivning` – kollektivtrafik, parkering, hur man hittar till platsen
+  - `## Inre vägbeskrivning` – entré, plan, hiss, rum etc.
+  Klienter bör rendera description som Markdown.
 """
 * ^url = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"
 * ^version = "0.1.0"
@@ -26,10 +34,21 @@ Description: """
 * obeys hsacat-physical-location-city
 * obeys hsacat-public-location-position
 
-// ── Extensions ────────────────────────────────────────────────────────────────
-* extension contains
-    HsaNavigationExtension named navigation 0..1 MS and
-    HsaDestinationIndicatorExtension named destinationIndicator 0..1 MS
+// ── Synlighet: meta.security (HSACAT-LOC-DESTINATION) ────────────────────────
+* meta.security MS
+* meta.security ^slicing.discriminator.type = #value
+* meta.security ^slicing.discriminator.path = "system"
+* meta.security ^slicing.rules = #open
+* meta.security ^short = "Åtkomstkontroll och publiceringsscope"
+
+* meta.security contains
+    destination-indicator 0..1 MS
+
+* meta.security[destination-indicator]
+  * ^short = "Publik synlighet (hsaDestinationIndicator, OID 1.2.752.29.23.1.11)"
+  * ^definition = "Kod 03 = Internet/allmänheten. Anger att platsen är synlig på t.ex. 1177 Hitta vård."
+  * system = "urn:oid:1.2.752.29.23.1.11" (exactly)
+  * code from HsaDestinationIndicatorVS (required)
 
 // ── Identifier: HSA-id ────────────────────────────────────────────────────────
 * identifier MS
@@ -51,6 +70,15 @@ Description: """
 // ── Name ──────────────────────────────────────────────────────────────────────
 * name MS
 * name ^short = "Platsens namn"
+
+// ── Description (HSACAT-LOC-006) ──────────────────────────────────────────────
+* description MS
+* description ^short = "Vägbeskrivning och beskrivning av platsen (Markdown)"
+* description ^definition = """
+  Fritext-beskrivning med yttre och inre vägbeskrivning. Klienter bör rendera
+  som Markdown. Rekommenderade rubriker: `## Yttre vägbeskrivning` och
+  `## Inre vägbeskrivning`.
+"""
 
 // ── Mode ─────────────────────────────────────────────────────────────────────
 * mode MS

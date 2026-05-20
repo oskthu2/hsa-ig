@@ -2,6 +2,8 @@
 // Basprofil för alla organisationer från HSA-katalogen.
 // Täcker: HSACAT-ORG-001, 002, 003, 004, 004b, 005, 006, 008, 009, 010, 012, 013
 
+Alias: $orgPeriod = http://hl7.org/fhir/StructureDefinition/organization-period
+
 Profile: HsaCatalogOrganization
 Parent: Organization
 Id: hsa-catalog-organization
@@ -12,6 +14,17 @@ Description: """
 
   Alla HSA-organisationer har ett HSA-id, ett namn och information om
   publicerings- och åtkomststatus. Hierarkin representeras via `partOf`.
+
+  **Synlighet (destinationIndicator):** Modelleras som `meta.security[destination-indicator]`
+  med system `urn:oid:1.2.752.29.23.1.11`. Kod 03 = Internet/allmänheten.
+  Klienter som 1177 Hitta vård bör filtrera på detta fält.
+
+  **Tillfällig information:** En enhet med tidsbegränsad status använder
+  `extension[orgPeriod]` (organization-period) med start och obligatoriskt end.
+  Klienter bör rendera en visuell varningsindikator (t.ex. gul informationsruta)
+  när orgPeriod är satt och `active = true`. Varje klient ansvarar för att
+  texten som ska visas hämtas från ett lämpligt fält (t.ex. Organization.contact
+  med purpose = "TEMP" eller IG-sida för klientkonventioner).
 """
 * ^url = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization"
 * ^version = "0.1.0"
@@ -21,17 +34,43 @@ Description: """
 * ^publisher = "Inera AB / HSA-IG projekt"
 * ^jurisdiction = urn:iso:std:iso:3166#SE
 
-// ── Obey invariants ──────────────────────────────────────────────────────────
+// ── Obey invarianter ──────────────────────────────────────────────────────────
 * obeys hsacat-org-hsa-id
 * obeys hsacat-org-hsa-id-format
 * obeys hsacat-provider-orgno
 * obeys hsacat-public-org-telecom
+* obeys hsacat-org-period-end
 
 // ── Extensions ───────────────────────────────────────────────────────────────
 * extension contains
-    HsaDestinationIndicatorExtension named destinationIndicator 0..1 MS and
-    HsaTemporaryInfoExtension named temporaryInfo 0..1 MS and
+    $orgPeriod named orgPeriod 0..1 MS and
     HsaFinancingOrganizationExtension named financingOrganization 0..* MS
+
+* extension[orgPeriod]
+  * ^short = "Organisationens giltighetsperiod (t.ex. tillfällig enhet)"
+  * ^definition = """
+    Sätts när enheten är aktiv under en begränsad period. Period.end är obligatoriskt
+    (invariant hsacat-org-period-end). Klienter ska rendera en visuell varningsindikator
+    när detta fält är satt och `active = true`.
+  """
+  * value[x] only Period
+  * valuePeriod.end 1..1
+
+// ── Synlighet: meta.security (HSACAT-ORG-009) ────────────────────────────────
+* meta.security MS
+* meta.security ^slicing.discriminator.type = #value
+* meta.security ^slicing.discriminator.path = "system"
+* meta.security ^slicing.rules = #open
+* meta.security ^short = "Åtkomstkontroll och publiceringsscope"
+
+* meta.security contains
+    destination-indicator 0..1 MS
+
+* meta.security[destination-indicator]
+  * ^short = "Publik synlighet (hsaDestinationIndicator, OID 1.2.752.29.23.1.11)"
+  * ^definition = "Kod 03 = Internet/allmänheten. Anger att enheten är synlig på t.ex. 1177 Hitta vård."
+  * system = "urn:oid:1.2.752.29.23.1.11" (exactly)
+  * code from HsaDestinationIndicatorVS (required)
 
 // ── Identifier: HSA-id (HSACAT-ORG-001) ─────────────────────────────────────
 * identifier MS
@@ -81,7 +120,7 @@ Description: """
 * name ^short = "Enhetsnamn / organisationsnamn"
 * name ^definition = "Hämtas automatiskt från HSA (ou eller o). Ej manuellt redigerbart via API."
 
-// ── Type: klassificering (HSACAT-ORG-005) ────────────────────────────────────
+// ── Type: klassificering (HSACAT-ORG-005, 009) ───────────────────────────────
 * type MS
 * type ^slicing.discriminator.type = #value
 * type ^slicing.discriminator.path = "coding.system"
@@ -90,7 +129,8 @@ Description: """
 
 * type contains
     hsa-class 0..1 MS and
-    ownership 0..1 MS
+    ownership 0..1 MS and
+    care-level 0..1 MS
 
 * type[hsa-class]
   * ^short = "HSA-objektklassificering (vårdgivare/vårdenhet/org.enhet)"
@@ -107,6 +147,18 @@ Description: """
   * coding.system 1..1
   * coding.system = "urn:oid:1.2.752.129.2.2.1.14" (exactly)
   * coding from HsaOwnershipTypeVS (required)
+
+* type[care-level]
+  * ^short = "Administrativ vårdnivå (HSACAT-ORG-009)"
+  * ^definition = """
+    Kod som anger administrativ specialiseringsnivå i hälso- och sjukvård.
+    Obligatorisk (1..1) för vårdenheter (HsaHealthcareUnitOrganization).
+    System: OID 1.2.752.129.5.1.46.
+  """
+  * coding 1..*
+  * coding.system 1..1
+  * coding.system = "urn:oid:1.2.752.129.5.1.46" (exactly)
+  * coding from urn:oid:1.2.752.129.5.1.46 (required)
 
 // ── Contact: kontaktvägar och adress (HSACAT-ORG-004, 004b, LOC-005, ORG-013) ──
 // I FHIR R5 finns inte telecom/address direkt på Organization; de ligger

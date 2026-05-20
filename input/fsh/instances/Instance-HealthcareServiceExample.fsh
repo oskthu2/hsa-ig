@@ -10,6 +10,12 @@ Description: "Exempel på en HealthcareService med allmänläkarmottagning, öpp
 
 * id = "healthcareservice-example"
 
+// Publik synlighet via meta.security
+* meta.security[destination-indicator]
+  * system = "urn:oid:1.2.752.29.23.1.11"
+  * code = #03
+  * display = "Internet/allmänheten"
+
 * active = true
 
 * providedBy = Reference(VardenhetExample)
@@ -53,9 +59,3 @@ Description: "Exempel på en HealthcareService med allmänläkarmottagning, öpp
     * allDay = false
     * availableStartTime = "08:00:00"
     * availableEndTime = "17:00:00"
-
-* extension[destinationIndicator]
-  * valueCoding
-    * system = "urn:oid:1.2.752.29.23.1.11"
-    * code = #03
-    * display = "Internet/allmänheten"

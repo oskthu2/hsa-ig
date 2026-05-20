@@ -34,7 +34,7 @@ Expression: "mode = 'instance' implies address.where(type = 'physical' or type =
 Invariant: hsacat-public-location-position
 Description: "En fysisk plats som är publik (destination indicator 03) SHOULD ha geografiska koordinater."
 Severity: #warning
-Expression: "extension.where(url = 'https://hsa.inera.se/fhir/StructureDefinition/hsa-destination-indicator').value.ofType(Coding).code = '03' implies position.exists()"
+Expression: "meta.security.where(system = 'urn:oid:1.2.752.29.23.1.11' and code = '03').exists() implies position.exists()"
 
 Invariant: hsacat-digital-service-contact
 Description: "En digital HealthcareService SHALL ha telecom eller endpoint."
@@ -46,12 +46,12 @@ Description: "En HealthcareService SHALL ha providedBy (tillhandahållande organ
 Severity: #error
 Expression: "providedBy.exists()"
 
-Invariant: hsacat-temporary-info-end-date
-Description: "Tillfällig information på en enhet SHALL ha obligatoriskt slutdatum."
+Invariant: hsacat-org-period-end
+Description: "Om organization-period är satt SHALL end-datum anges (tillfällig enhet måste ha klart slutdatum)."
 Severity: #error
-Expression: "extension.where(url = 'https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-info').extension.where(url = 'period').value.ofType(Period).end.exists()"
+Expression: "extension.where(url = 'http://hl7.org/fhir/StructureDefinition/organization-period').exists() implies extension.where(url = 'http://hl7.org/fhir/StructureDefinition/organization-period').value.ofType(Period).end.exists()"
 
 Invariant: hsacat-public-org-telecom
 Description: "En publik organisation (destination indicator 03) SHALL ha direkttelefon."
 Severity: #error
-Expression: "extension.where(url = 'https://hsa.inera.se/fhir/StructureDefinition/hsa-destination-indicator').value.ofType(Coding).code = '03' implies contact.telecom.where(system = 'phone').exists()"
+Expression: "meta.security.where(system = 'urn:oid:1.2.752.29.23.1.11' and code = '03').exists() implies contact.telecom.where(system = 'phone').exists()"
