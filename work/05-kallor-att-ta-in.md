@@ -25,7 +25,7 @@
 | P2 | eHMs Nationell katalog-IG (R4) | ✅ Inläst | SRC-013; GitHub danka74/verksamhet-och-organisation; FHIR R4; jämförelse ADR-008 |
 | P2 | Nationella vårdtjänster v.1.0.0 (Excel) | ❌ Blockerad | SRC-014; kräver inloggning på eHMs samarbetsyta AFI; krävs för HSACAT-TERM-001 |
 | P2 | NPÖ – vilka HSA-fält används | ❌ Ej inhämtat | Kräver kontakt med NPÖ-förvaltning |
-| P2 | EHR-katalogsynk – minsta organisationsunderlag | ❌ Ej inhämtat | Kräver underlag från EHR-förvaltning/integration |
+| P2 | EHR-katalogsynk – minsta organisationsunderlag | ✅ Täckt av regional tillämpning | SRC-016/017/018 täcker EHR-behoven: HSA-id, namn, org.nr, besöksadress, kontaktvägar, hierarki via partOf, verksamhetskod, ägarform. Inga ytterligare EHR-specifika krav förväntas. |
 
 ## P3 – terminologi och harmonisering
 

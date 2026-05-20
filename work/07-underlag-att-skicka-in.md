@@ -20,7 +20,7 @@
 |---|---|---|
 | 8 | NPÖ – vilka HSA-fält används för visning/spårbarhet/åtkomst | ❌ Behövs – kräver kontakt med NPÖ-förvaltning |
 | 9 | 1177 Hitta vård – HSA-fält för sökning/kontakt/publicering | ✅ Delvis täckt via EK (SRC-016), KIV (SRC-017), Uppsala LoKatt (SRC-018) |
-| 10 | EHR-katalogsynk – minsta organisationsunderlag i mottagande system | ❌ Behövs – kräver underlag från EHR-förvaltning/integration |
+| 10 | EHR-katalogsynk – minsta organisationsunderlag i mottagande system | ✅ Täckt – regional tillämpning (SRC-016/017/018) antas täcka EHR-behoven |
 
 ## C. Terminologi (krävs för IG Publisher grön)
 
