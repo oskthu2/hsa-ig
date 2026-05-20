@@ -10,6 +10,8 @@
 
 ## Sprint 1: Källinventering + första kravkatalog
 
+- [x] Operativisera kravhantering enligt docs/kravhantering-och-verifiering.md
+- [~] Upprätta kravspårningstabell (work/10-kravsparning-tabell.md)
 - [~] Inventera HSA Schema + tekniska specifikationer – källor efterfrågade
 - [ ] Inventera HSA policy + tillämpningsanvisningar
 - [ ] Dokumentera implicita regler från vårdtillämpning
