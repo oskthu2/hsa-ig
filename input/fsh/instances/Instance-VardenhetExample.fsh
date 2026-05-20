@@ -8,7 +8,7 @@ Usage: #example
 Title: "Exempelmottagningen"
 Description: "Exempelinstans för en vårdenhet (mottagning) under en vårdgivare."
 
-* id = "vårdenhet-example"
+* id = "vardenhet-example"
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
@@ -33,7 +33,7 @@ Description: "Exempelinstans för en vårdenhet (mottagning) under en vårdgivar
     * display = "Internet/allmänheten"
 
 // Administrativ vårdnivå (obligatorisk för vårdenheter per HSACAT-ORG-009)
-* extension[HsaAdministrativeCareLevelExtension]
+* extension[adminCareLevel]
   * valueCoding
     * system = "urn:oid:1.2.752.129.5.1.46"
     * code = #01

@@ -57,5 +57,6 @@ Description: """
 * partOf 1..1
 * partOf only Reference(HsaHealthcareProviderOrganization)
 
-// Administrativ vårdnivå (SHOULD)
-* extension[HsaAdministrativeCareLevelExtension] MS
+// Administrativ vårdnivå (SHOULD) – deklareras här eftersom basprofilens
+// extension-contains inte inkluderar denna extension.
+* extension contains HsaAdministrativeCareLevelExtension named adminCareLevel 0..1 MS
