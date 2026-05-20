@@ -1,6 +1,7 @@
 # Kravkatalog – v0.2
 
 > Uppdaterad 2026-05-20. Krav markerade **Källbekräftad** har verifierats mot hsa_fhir_ig_agentisk_plan.md och HSA-schema 5.3. Krav med status **Beslutad** härrör direkt från ADR.
+> **R5-not (2026-05-20):** `Organization.telecom`/`.address` existerar inte som toppnivåelement i FHIR R5. Dessa hanteras via `Organization.contact.telecom`/`.address`. Profil och invarianter är uppdaterade. FHIR-uttryck i tabellen nedan speglar det som är implementerat.
 
 ## Kravtabell
 
@@ -9,7 +10,7 @@
 | HSACAT-ORG-001 | Organization som representerar vårdgivare eller vårdenhet i HSA SHALL ha HSA-id | `Organization.identifier` slice `hsa-id` 1..1; system = `urn:oid:1.2.752.29.4.19` | HSA-schema 5.3 (Org + OrgUnit obligatoriska attr); hsa_fhir_ig_agentisk_plan.md FHIRPath invariant | `hsaIdentity` | Källbekräftad |
 | HSACAT-ORG-002 | Organization under annan organisation SHALL ha `partOf` | `Organization.partOf` 1..1 vid underenhet | HSA-schema 5.3 (hierarki i organisationsträdet); hsa_fhir_ig_agentisk_plan.md | LDAP `ou`-struktur | Källbekräftad |
 | HSACAT-ORG-003 | Externt publicerad Organization SHALL ha namn | `Organization.name` 1..1 | HSA-schema 5.3 (Org obligatoriskt: `organizationName`; OrgUnit: `organizationalUnitName`); hsa_fhir_ig_agentisk_plan.md | `o` / `ou` | Källbekräftad |
-| HSACAT-ORG-004 | Externt publicerad Organization SHALL ha minst en kontaktväg | `Organization.telecom` 1..* | HSA-schema 5.3 (Org obligatoriska: `telephoneNumber`, `mail`); hsa_fhir_ig_agentisk_plan.md | `telephoneNumber`, `mail` | Källbekräftad |
+| HSACAT-ORG-004 | Externt publicerad Organization SHALL ha minst en kontaktväg | `Organization.contact.telecom` 1..* (R5: telecom finns under contact-backbone) | HSA-schema 5.3 (Org obligatoriska: `telephoneNumber`, `mail`); hsa_fhir_ig_agentisk_plan.md | `telephoneNumber`, `mail` | Källbekräftad |
 | HSACAT-ORG-005 | Organisationsnoder som används för åtkomstbeslut SHALL klassificeras med typ som identifierar inre (vårdenhet) eller yttre (vårdgivare) spärrnivå | `Organization.type` coding från HSA-klassificeringsValueSet (hsaHealthCareProvider / hsaHealthCareUnit) | ADR-002; Ineras spärrhanteringsmodell (inre spärr = vårdenhetsnivå, yttre spärr = vårdgivarnivå) | `hsaHealthCareProvider` (OID 1.2.752.29.6.10), `hsaHealthCareUnit` (OID 1.2.752.29.6.13) | Källbekräftad |
 | HSACAT-ORG-006 | Organisationsstruktur för inre och yttre spärr SHALL vara traverserbar i träd via `partOf` | `Organization.partOf` rekursiv sökning med `_include=Organization:partof` | ADR-002; hsa_fhir_ig_agentisk_plan.md | LDAP trädhierarki | Källbekräftad |
 | HSACAT-ORG-007 | Organization med typ hsaHealthCareProvider (vårdgivare) SHALL ha organisationsnummer | `Organization.identifier` slice `org-no` 1..1 when type = healthcare-provider; system = `urn:oid:2.5.4.97` | HSA-schema 5.3 (Org obligatoriskt: `orgNo`); hsa_fhir_ig_agentisk_plan.md FHIRPath invariant | `orgNo` | Källbekräftad |
