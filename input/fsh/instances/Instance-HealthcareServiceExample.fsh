@@ -16,8 +16,8 @@ Description: "Exempel på en HealthcareService med allmänläkarmottagning, öpp
 
 * location[0] = Reference(LocationExample)
 
-// Verksamhetskod: Allmänmedicin (1501 i HSA kodverk 1.2.752.129.2.2.1.3)
-* type[service-type]
+// Verksamhetskod på category (Allmänmedicin, kod 1501)
+* category[verksamhetskod]
   * coding[0]
     * system = "urn:oid:1.2.752.129.2.2.1.3"
     * code = #1501
