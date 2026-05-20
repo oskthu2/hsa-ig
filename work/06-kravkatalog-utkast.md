@@ -20,6 +20,13 @@
 | HSACAT-SVC-002 | Digital HealthcareService SHALL ha telecom eller endpoint | Invariant: `type.coding.where(code = 'digital').exists() implies (telecom.exists() or endpoint.exists())` | hsa_fhir_ig_agentisk_plan.md FHIRPath invariant | Tjänsteträdets digital tjänstmodell | Källbekräftad |
 | HSACAT-TERM-001 | Verksamhetskod på HealthcareService SHALL bindas till ValueSet med system `urn:oid:1.2.752.129.2.2.1.3`; ValueSet SHALL jämföras mot eHMs Nationella vårdtjänster v.1.0.0 (SRC-014) | Required binding på `HealthcareService.type`; system = `urn:oid:1.2.752.129.2.2.1.3`; harmoniseringsmatris mot SRC-014 | HSA OID-förteckning (SRC-008); eHMs IG HSAServiceTypeValueSet (SRC-013); Nationella vårdtjänster v.1.0.0 (SRC-014, blockerad); ADR-009 | `businessClassificationCode`, OID `1.2.752.129.2.2.1.3` | Källbekräftad – OID känd; väntar på SRC-014 för harmonisering |
 
+| HSACAT-LOC-003 | Fysisk Location som är synlig för allmänheten (hsaDestinationIndicator = 03) SHALL ha geografiska koordinater | `Location.position` 1..1 when synlig för 03; lat/long SWEREF99 | EK (obligatoriskt för 1177) + KIV; HSA-schema 5.3 (`hsaSweref99Latitude`, `hsaSweref99Longitude`) | `hsaSweref99Latitude`, `hsaSweref99Longitude` | Källbekräftad |
+| HSACAT-LOC-004 | Fysisk Location SHALL ha lokalitet (ort/stad) | `Location.address.city` 1..1 vid `mode = 'instance'` | EK (Lokalitet obligatorisk för 1177); HSA-schema 5.3 (`l` = localityName) | `l` (localityName) | Källbekräftad |
+| HSACAT-SVC-003 | HealthcareService för vårdenhet SHALL ha vård- och omsorgsform (`careType`) | `HealthcareService.type` slice `care-type`; system = `urn:oid:1.2.752.129.2.2.1.13` | KIV (Vårdform obligatorisk för 1177); HSA-schema 5.3 (`careType`, OID 1.2.752.129.2.2.1.13) | `careType` | Källbekräftad |
+| HSACAT-ORG-009 | Organization eller HealthcareService synlig för allmänheten SHALL ha hsaDestinationIndicator = 03 modellerat och sökbart | Extension `hsaDestinationIndicator` eller `meta.security`; sökbart via SearchParameter | EK + KIV (nationell HSA-regel för 1177); HSA-schema 5.3 (`hsaDestinationIndicator`, OID 1.2.752.29.23.1.11) | `hsaDestinationIndicator` | Källbekräftad |
+| HSACAT-ORG-010 | Organization SHOULD ha ägarform (regi) | `Organization.type` slice `ownership`; system = `urn:oid:1.2.752.129.2.2.1.14` | EK (Ägarform obligatorisk för 1177); HSA-schema 5.3 (`management`) | `management` | Källbekräftad |
+| HSACAT-ORG-011 | Vårdenhet med regional finansiering SHOULD ha finansierande region/kommun | Extension med OID `urn:oid:1.2.752.129.5.1.1` för finansierande org | KIV (obligatorisk i VGR); HSA-schema 5.3 (`financingOrganization`) | `financingOrganization` | Källbekräftad |
+
 ## Stängda frågor
 
 | # | Fråga | Svar | Grund |
@@ -41,6 +48,6 @@
 
 | Status | Antal |
 |---|---|
-| Källbekräftad | 12 |
+| Källbekräftad | 18 |
 | Beslutad | 1 |
-| **Totalt** | **13** |
+| **Totalt** | **19** |
