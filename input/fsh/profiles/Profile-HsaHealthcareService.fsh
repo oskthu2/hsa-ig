@@ -25,9 +25,21 @@ Description: """
 * obeys hsacat-service-provider
 * obeys hsacat-digital-service-contact
 
-* extension contains
-    HsaDestinationIndicatorExtension named destinationIndicator 0..1 MS and
-    HsaTemporaryInfoExtension named temporaryInfo 0..1 MS
+// ── Synlighet: meta.security ──────────────────────────────────────────────────
+* meta.security MS
+* meta.security ^slicing.discriminator.type = #value
+* meta.security ^slicing.discriminator.path = "system"
+* meta.security ^slicing.rules = #open
+* meta.security ^short = "Åtkomstkontroll och publiceringsscope"
+
+* meta.security contains
+    destination-indicator 0..1 MS
+
+* meta.security[destination-indicator]
+  * ^short = "Publik synlighet (hsaDestinationIndicator, OID 1.2.752.29.23.1.11)"
+  * ^definition = "Kod 03 = Internet/allmänheten. Anger att tjänsten är synlig på t.ex. 1177 Hitta vård."
+  * system = "urn:oid:1.2.752.29.23.1.11" (exactly)
+  * code from HsaDestinationIndicatorVS (required)
 
 * active 1..1 MS
 

@@ -30,7 +30,7 @@ Description: """
 
 // ─── HsaHealthcareUnitOrganization ───────────────────────────────────────────
 // Profil för vårdenhet (hsaHealthCareUnit). Representerar inre spärrnivå.
-// Krav: HSACAT-ORG-001, 002, 003, 005, 006
+// Krav: HSACAT-ORG-001, 002, 003, 005, 006, 009
 
 Profile: HsaHealthcareUnitOrganization
 Parent: HsaCatalogOrganization
@@ -61,6 +61,6 @@ Description: """
 * partOf 1..1
 * partOf only Reference(HsaHealthcareProviderOrganization)
 
-// Administrativ vårdnivå (SHOULD) – deklareras här eftersom basprofilens
-// extension-contains inte inkluderar denna extension.
-* extension contains HsaAdministrativeCareLevelExtension named adminCareLevel 0..1 MS
+// Administrativ vårdnivå obligatorisk för vårdenheter (HSACAT-ORG-009).
+// Modelleras som type[care-level]-slice (OID 1.2.752.129.5.1.46).
+* type[care-level] 1..1

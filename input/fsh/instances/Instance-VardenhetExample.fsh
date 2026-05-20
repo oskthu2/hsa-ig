@@ -1,6 +1,6 @@
 // ─── Exempelinstans: Vårdenhet ────────────────────────────────────────────────
 // Visar HsaHealthcareUnitOrganization med partOf → VardgivareExample,
-// administrativ vårdnivå och tillfällig information.
+// administrativ vårdnivå (type[care-level]) och tillfällig period (orgPeriod).
 
 Instance: VardenhetExample
 InstanceOf: HsaHealthcareUnitOrganization
@@ -9,6 +9,12 @@ Title: "Exempelmottagningen"
 Description: "Exempelinstans för en vårdenhet (mottagning) under en vårdgivare."
 
 * id = "vardenhet-example"
+
+// Publik synlighet via meta.security
+* meta.security[destination-indicator]
+  * system = "urn:oid:1.2.752.29.23.1.11"
+  * code = #03
+  * display = "Internet/allmänheten"
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
@@ -22,31 +28,24 @@ Description: "Exempelinstans för en vårdenhet (mottagning) under en vårdgivar
     * code = #healthcare-unit
     * display = "Vårdenhet"
 
-* name = "Exempelmottagningen"
-
-* partOf = Reference(VardgivareExample)
-
-* extension[destinationIndicator]
-  * valueCoding
-    * system = "urn:oid:1.2.752.29.23.1.11"
-    * code = #03
-    * display = "Internet/allmänheten"
-
-// Administrativ vårdnivå (obligatorisk för vårdenheter per HSACAT-ORG-009)
-* extension[adminCareLevel]
-  * valueCoding
+// Administrativ vårdnivå (obligatorisk för vårdenheter, HSACAT-ORG-009)
+* type[care-level]
+  * coding[0]
     * system = "urn:oid:1.2.752.129.5.1.46"
     * code = #01
     * display = "Primärvård"
 
-// Tillfällig information med obligatoriskt slutdatum
-* extension[temporaryInfo]
-  * extension[text]
-    * valueString = "Vi har tillfälligt stängt fredagar under sommaren 2026."
-  * extension[period]
-    * valuePeriod
-      * start = "2026-06-01"
-      * end = "2026-08-31"
+* name = "Exempelmottagningen"
+
+* partOf = Reference(VardgivareExample)
+
+// Tillfällig period med obligatoriskt slutdatum (ersätter HsaTemporaryInfoExtension).
+// Klienter bör rendera en visuell varningsindikator (gul ruta) när orgPeriod är satt
+// och active = true.
+* extension[orgPeriod]
+  * valuePeriod
+    * start = "2026-06-01"
+    * end = "2026-08-31"
 
 // Direkttelefon
 * contact[0]
