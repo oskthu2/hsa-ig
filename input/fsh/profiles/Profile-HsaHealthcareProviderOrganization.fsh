@@ -53,7 +53,11 @@ Description: """
 * type[hsa-class].coding.code = #healthcare-unit (exactly)
 * type[hsa-class] 1..1
 
-// partOf är obligatorisk för vårdenhet
+// partOf är obligatorisk för vårdenhet (HSACAT-ORG-002, HSACAT-ORG-006).
+// Mappar till LDAP-attributet hsaResponsibleHealthCareProvider som på
+// vårdenhetsobjektet pekar ut ansvarig vårdgivares HSA-id.
+// Tjänsteplattformens trädklättring (TAK) traverserar denna kedja uppåt
+// (SRC-024/025) – partOf MÅSTE peka direkt på en HsaHealthcareProviderOrganization.
 * partOf 1..1
 * partOf only Reference(HsaHealthcareProviderOrganization)
 

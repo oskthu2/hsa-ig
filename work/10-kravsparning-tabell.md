@@ -10,8 +10,9 @@
 | HSACAT-ORG-003 | Källbekräftad | ✅ | SRC-001, SRC-005 | ADR-003 | - | `Organization.name` 1..1 MS | — |
 | HSACAT-ORG-004 | Källbekräftad | ✅ | SRC-001, SRC-016, SRC-018 | ADR-003 | - | `Organization.contact.telecom` MS; invariant hsacat-public-org-telecom | — |
 | HSACAT-ORG-004b | Källbekräftad | ✅ | SRC-018, SRC-016, SRC-017 | - | - | `Organization.contact.telecom` med HsaTelecomTypeExtension; slice direct-phone + switchboard | Formalisera as separate slices om önskat |
-| HSACAT-ORG-005 | Källbekräftad | ✅ | SRC-001, SRC-005, SRC-009 | ADR-002, ADR-003 | RSK-002 | `Organization.type[hsa-class]` från HsaOrganizationTypeVS (CodeSystem hsa-object-class) | — |
-| HSACAT-ORG-006 | Källbekräftad | ✅ | SRC-001, SRC-005 | ADR-002, ADR-006 | RSK-001 | `Organization.partOf` rekursivt; SearchParameter _include=Organization:partof | SearchParameter behöver definieras |
+| HSACAT-ORG-005 | Källbekräftad – juridisk grund PDL | ✅ | SRC-001, SRC-005, SRC-009, SRC-022, SRC-023 | ADR-002, ADR-003 | RSK-002 | `Organization.type[hsa-class]` från HsaOrganizationTypeVS; PDL 6 kap. 3-4 § | — |
+| HSACAT-ORG-006 | Källbekräftad – SKLTP-algoritm dokumenterad | ✅ | SRC-001, SRC-005, SRC-024, SRC-025 | ADR-002, ADR-006 | RSK-001 | `Organization.partOf` rekursivt; SearchParameter _include=Organization:partof | SearchParameter behöver definieras |
+| HSACAT-ORG-015 | Källbekräftad – terminationsvillkor | ✅ doc | SRC-024, SRC-025 | ADR-002 | - | partOf-kedja acyklisk och terminerar i rotnod (informativ invariant + IG-text) | Skriv informativ IG-sida om trädklättring |
 | HSACAT-ORG-007 | Källbekräftad | ✅ | SRC-001, SRC-005 | ADR-003 | - | `Organization.identifier[org-no]` 1..1 i HsaHealthcareProviderOrganization; system=`urn:oid:2.5.4.97`; invariant hsacat-provider-orgno | — |
 | HSACAT-ORG-008 | Beslutad | ✅ | SRC-005 | ADR-002 | - | `Organization.active` 1..1 MS | `meta.security` för dold/arkiverad ännu ej profilerat |
 | HSACAT-ORG-009 | Källbekräftad | ✅ | SRC-016, SRC-017, SRC-001 | - | - | Extension `HsaDestinationIndicatorExtension` named destinationIndicator 0..1 MS på Org/HealthcareService/Location | SearchParameter för destination-indicator |
@@ -37,10 +38,10 @@
 | Status | Antal |
 |---|---|
 | ✅ FSH implementerat | 23 |
-| ✅ doc Beslutad + dokumenterat i profil | 1 |
+| ✅ doc Beslutad + dokumenterat (profil/work) | 2 |
 | ⚠️ Delvis (OID/harmonisering återstår) | 2 |
 | ❌ Ej påbörjat | 0 |
-| **Totalt** | **26** |
+| **Totalt** | **28** |
 
 ## Återstående teknisk skuld
 

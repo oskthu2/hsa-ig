@@ -11,8 +11,9 @@
 | HSACAT-ORG-002 | Organization under annan organisation SHALL ha `partOf` | `Organization.partOf` 1..1 vid underenhet | HSA-schema 5.3 (hierarki i organisationsträdet); hsa_fhir_ig_agentisk_plan.md | LDAP `ou`-struktur | Källbekräftad |
 | HSACAT-ORG-003 | Externt publicerad Organization SHALL ha namn | `Organization.name` 1..1 | HSA-schema 5.3 (Org obligatoriskt: `organizationName`; OrgUnit: `organizationalUnitName`); hsa_fhir_ig_agentisk_plan.md | `o` / `ou` | Källbekräftad |
 | HSACAT-ORG-004 | Externt publicerad Organization SHALL ha minst en kontaktväg | `Organization.contact.telecom` 1..* (R5: telecom finns under contact-backbone) | HSA-schema 5.3 (Org obligatoriska: `telephoneNumber`, `mail`); hsa_fhir_ig_agentisk_plan.md | `telephoneNumber`, `mail` | Källbekräftad |
-| HSACAT-ORG-005 | Organisationsnoder som används för åtkomstbeslut SHALL klassificeras med typ som identifierar inre (vårdenhet) eller yttre (vårdgivare) spärrnivå | `Organization.type` coding från HSA-klassificeringsValueSet (hsaHealthCareProvider / hsaHealthCareUnit) | ADR-002; Ineras spärrhanteringsmodell (inre spärr = vårdenhetsnivå, yttre spärr = vårdgivarnivå) | `hsaHealthCareProvider` (OID 1.2.752.29.6.10), `hsaHealthCareUnit` (OID 1.2.752.29.6.13) | Källbekräftad |
-| HSACAT-ORG-006 | Organisationsstruktur för inre och yttre spärr SHALL vara traverserbar i träd via `partOf` | `Organization.partOf` rekursiv sökning med `_include=Organization:partof` | ADR-002; hsa_fhir_ig_agentisk_plan.md | LDAP trädhierarki | Källbekräftad |
+| HSACAT-ORG-005 | Organisationsnoder som används för åtkomstbeslut SHALL klassificeras med typ som identifierar inre (vårdenhet, PDL 6 kap. 4 §) eller yttre (vårdgivare, PDL 6 kap. 3 §) spärrnivå | `Organization.type` coding från HsaOrganizationTypeVS; system = `https://hsa.inera.se/fhir/CodeSystem/hsa-object-class`; code = `#healthcare-provider` (yttre) eller `#healthcare-unit` (inre) | PDL SFS 2008:355 (SRC-022); Socialstyrelsen inre spärr (SRC-023); SRC-009; ADR-002 | `hsaHealthCareProvider` (OID 1.2.752.29.6.10), `hsaHealthCareUnit` (OID 1.2.752.29.6.13) | Källbekräftad – juridisk grund PDL |
+| HSACAT-ORG-006 | Organisationsstruktur för inre och yttre spärr SHALL vara traverserbar uppåt via `partOf` (trädklättring); Tjänsteplattformen prövar behörighet längs kedjan tills träffat eller rotnod nås | `Organization.partOf` rekursiv sökning med `_include=Organization:partof`; TAK stödjer explicit, hierarkisk och standardbehörighet (SRC-024) | SKLTP VP SAD (SRC-024); skltp/takdatahandler (SRC-025); ADR-002 | LDAP trädhierarki, logisk adress = HSA-id | Källbekräftad – SKLTP-algoritm dokumenterad |
+| HSACAT-ORG-015 | `partOf`-kedjan SHALL vara acyklisk och terminera i en rotnod utan `partOf`; detta är nödvändigt för att Tjänsteplattformens trädklättring-algoritm ska terminera | Invariant (informativ): `partOf`-kedja utan cykel; rotnod = `Organization` utan `partOf`, motsvarar logisk adress "SE" i TAK | SKLTP VP SAD (SRC-024): "upprepas tills en behörighet hittas eller roten (SE) nås"; skltp/takdatahandler (SRC-025) | LDAP trädhierarki, roten = SE | Källbekräftad – terminationsvillkor dokumenterat |
 | HSACAT-ORG-007 | Organization med typ hsaHealthCareProvider (vårdgivare) SHALL ha organisationsnummer | `Organization.identifier` slice `org-no` 1..1 when type = healthcare-provider; system = `urn:oid:2.5.4.97` | HSA-schema 5.3 (Org obligatoriskt: `orgNo`); hsa_fhir_ig_agentisk_plan.md FHIRPath invariant | `orgNo` | Källbekräftad |
 | HSACAT-ORG-008 | Organization.active SHALL återspegla publiceringsstatus; dolt (hiddenObject) eller arkiverat (hsaArchivedObject) objekt SHALL ha active = false | `Organization.active` 1..1; `meta.security` för dold/arkiverad markering | ADR-002; hsa_fhir_ig_agentisk_plan.md (Status och synlighetssektion) | `hiddenObject`, `hsaArchivedObject` | Beslutad |
 | HSACAT-LOC-001 | Fysisk Location SHALL ha adress | Invariant: `mode = 'instance' implies address.exists()` | HSA-schema 5.3 (Loc: 1 obligatoriskt attr); hsa_fhir_ig_agentisk_plan.md FHIRPath invariant | `postalAddress` / `hsaPostalAddress` | Källbekräftad |
@@ -55,11 +56,23 @@
 | 7 | Exakt innehåll i "Nationella vårdtjänster v.1.0.0" (SRC-014) | Logga in på eHMs samarbetsyta (AFI-utrymme) och ladda ner Excel-filen; krävs för harmoniseringsanalys i HSACAT-TERM-001 |
 | 8 | OID och formell definition för arbetsplatskod (HSACAT-ORG-012) | Bekräfta OID för arbetsplatskod (APK) – troligtvis `1.2.752.29.4.71` men ska verifieras; NPÖ-förvaltningen eller Ineras OID-register |
 
+## Informativa noter om behörighetsmodellen
+
+Från SKLTP VP SAD (SRC-024) och Ineras behörighetsmodell – relevanta för IG-konsumenter:
+
+| Begrepp | Förklaring | FHIR-konsekvens |
+|---|---|---|
+| Explicit behörighet | TAK-grant för ett specifikt HSA-id | `Organization.identifier[hsa-id]` är söknyckeln |
+| Hierarkisk behörighet | TAK-grant för en föräldernod, ärvs nedåt | `partOf`-kedjan måste vara traverserbar (HSACAT-ORG-006/015) |
+| Standardbehörighet | Fallback för alla parter på ett tjänstekontrakt | Ej direkt FHIR-modellerat; dokumenteras informativt |
+| SJF-åtkomstnivåer | `SJF` = annan vårdgivare; `VG` = alla enheter inom vårdgivare; `VE` = egna enheten | Mappar till yttre/inre spärrnivå; inte direkt i katalog-IG v1 |
+| Logisk adress = HSA-id | Tjänsteplattformen adresserar via HSA-id | Stärker HSACAT-ORG-001; HSA-id MÅSTE vara stabilt |
+
 ## Statusöversikt
 
 | Status | Antal |
 |---|---|
-| Källbekräftad | 23 |
+| Källbekräftad | 25 |
 | Beslutad | 2 |
 | Utkast | 1 |
-| **Totalt** | **26** |
+| **Totalt** | **28** |
