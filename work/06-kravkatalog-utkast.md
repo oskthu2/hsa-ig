@@ -27,6 +27,12 @@
 | HSACAT-ORG-010 | Organization SHOULD ha ägarform (regi) | `Organization.type` slice `ownership`; system = `urn:oid:1.2.752.129.2.2.1.14` | EK (Ägarform obligatorisk för 1177); HSA-schema 5.3 (`management`) | `management` | Källbekräftad |
 | HSACAT-ORG-011 | Vårdenhet med regional finansiering SHOULD ha finansierande region/kommun | Extension med OID `urn:oid:1.2.752.129.5.1.1` för finansierande org | KIV (obligatorisk i VGR); HSA-schema 5.3 (`financingOrganization`) | `financingOrganization` | Källbekräftad |
 
+| HSACAT-SVC-004 | Externt publicerad HealthcareService SHOULD ha öppettider och telefontider som separata structured time slots | `HealthcareService.availableTime[]` med extension för typ (öppettid/telefontid/drop-in); max 19-tecken etikett för drop-in | Uppsala LoKatt (DocPlusSTYR-35033); HSA-schema 5.3 (`hsaPublicTelephone`, `hsaDropInHours`, `hsaManagingHospital`) | `hsaPublicTelephone`, `hsaDropInHours` | Källbekräftad |
+| HSACAT-SVC-005 | HealthcareService med tillfällig information SHALL ha period med end-datum | Extension `temporaryInfo` med `valueString` + obligatoriskt `period.end`; rensas automatiskt vid passerat datum | Uppsala LoKatt (tillfällig information = obligatoriskt slutdatum) | HSA `hsaCreateObjectHours` / temporärt textfält | Källbekräftad |
+| HSACAT-ORG-004b | Offentlig Organization SHALL ha både direkttelefon och växeltelefon; privata vårdgivare undantas från krav på växeltelefon | `Organization.telecom` slice `direct-phone` 1..1 + slice `switchboard` 1..1 when NOT private | Uppsala LoKatt; EK; KIV | `telephoneNumber` (direkttelefon), `facsimileTelephoneNumber` / växel | Källbekräftad |
+| HSACAT-LOC-005 | Organization SHALL ha postadress och besöksadress som separata adressposter | `Organization.address` slice `postal` (type=postal) + Location.address (type=physical); postnummer utelämnas från besöksadress | Uppsala LoKatt (adressregler); HSA-schema (`postalAddress` vs `hsaPostalAddress`) | `postalAddress`, `hsaPostalAddress` | Källbekräftad |
+| HSACAT-LOC-006 | Location MAY ha inre och yttre vägbeskrivning | `Location.description` eller extension med inner/outer navigation text | Uppsala LoKatt (Geografi-sektionen) | HSA `hsaRoute` (yttre), `description` (inre) | Källbekräftad |
+
 ## Stängda frågor
 
 | # | Fråga | Svar | Grund |
@@ -48,6 +54,6 @@
 
 | Status | Antal |
 |---|---|
-| Källbekräftad | 18 |
+| Källbekräftad | 23 |
 | Beslutad | 1 |
-| **Totalt** | **19** |
+| **Totalt** | **24** |

@@ -1,7 +1,7 @@
-# Regional tillämpning av HSA – implicita krav v0.1
+# Regional tillämpning av HSA – implicita krav v0.2
 
-> Extraherat 2026-05-20 från regionala adminhandboken och HSA-guidning för 1177.
-> Källa: EK (Region Stockholm), KIV (VGR), Skånekatalogen (Region Skåne), Uppsala HSA-handbok.
+> Uppdaterat 2026-05-20. Tillför Region Uppsala LoKatt-instruktion (DocPlusSTYR-35033, v2, 2025-11-17).
+> Källa: EK (Region Stockholm), KIV (VGR), Uppsala LoKatt.
 > Dessa implicita krav härrör från faktisk tillämpning och är viktiga MustSupport-indikatorer.
 
 ## Regionala HSA-implementation
@@ -87,3 +87,90 @@ Baserat på konsument-markering i HSA-schemat (SRC-001) och regional dokumentati
 | `orgNo` (organisationsnummer) | Nej | Ja | Ja | Ja | **SHALL MustSupport** (vårdgivare) |
 | `ou` / `o` (namn) | Ja | Ja | Ja | Ja | **SHALL MustSupport** |
 | `partOf`-relation | Delvis | Ja | Ja | Ja | **SHALL MustSupport** |
+| öppettider/telefontider | Ja | Nej | Nej | Delvis | **SHOULD MustSupport** (publik) |
+| tillfällig information + slutdatum | Ja | Nej | Nej | Nej | **SHOULD MustSupport** (publik) |
+| inre/yttre vägbeskrivning | Ja | Nej | Nej | Nej | **MAY** |
+
+---
+
+## Region Uppsala LoKatt – nyckelobservationer (DocPlusSTYR-35033 v2, 2025-11-17)
+
+### Dataflöde bekräftat
+
+```
+Heroma (HR-system) ──nattlig sync──► LoKatt (lokal HSA-admin)
+                                             │
+                                             ▼
+                                    HSA nationell katalog
+                                             │
+                              ┌──────────────┼──────────────┐
+                              ▼              ▼              ▼
+                           1177          Intranät        Outlook
+                       (direkt/fördröjt)  (≤1 dygn)    (≤1 dygn)
+```
+
+**Implikation**: HSA är ett aggregerat register, inte en primärkälla. FHIR IG:n måste stödja uppdateringsflöde, versionshantering (`meta.lastUpdated`) och differentiell synkronisering.
+
+### Automatiska vs manuella fält (Enhet)
+
+| Fält | Källa | FHIR-konsekvens |
+|---|---|---|
+| Enhetsnamn (`ou`) | Automatisk | `Organization.name` — server-managed, ej client-writable |
+| HSA-id (`hsaIdentity`) | **Automatisk vid skapande** | Bekräftar: HSA-id är systemgenererat; FHIR `id` ≠ HSA-id |
+| Enhetstyp (`hsaBusinessType`) | Manuell (vid omorganisation) | `Organization.type` — client-writable |
+| Beskrivning (`description`) | Manuell | `Organization.text` eller extension; visas som "Om oss" på 1177 |
+| Öppettider | Manuell | `HealthcareService.availableTime[]` |
+| Telefontider | Manuell | `HealthcareService.availableTime[]` (separat slice/typ) |
+| Drop-in tider | Manuell | `HealthcareService.availableTime[]` (typ = drop-in) |
+| Tillfällig information | Manuell + obligatoriskt slutdatum | Extension med `valueString` + `period.end` |
+| Postadress | Manuell | `Organization.address` (type = postal) |
+| Besöksadress (utan postnr) | Manuell | `Location.address` (type = physical); postalCode utelämnas |
+| Direkttelefon | Manuell | `Organization.telecom` (system=phone, use=work) |
+| Växeltelefon | Manuell (ej privata) | `Organization.telecom` (system=phone, use=work + extension för typ) |
+| Inre/yttre vägbeskrivning | Manuell | `Location.description` (split inner/outer) eller extension |
+
+### Automatiska vs manuella fält (Person – för referens, ej i scope v1)
+
+| Fält | Källa |
+|---|---|
+| Personnummer, HSA-id, samtliga namn | Heroma (nattlig sync) |
+| E-post | Automatisk |
+| Startdatum, slutdatum, chefskod, befattning, närmaste chef | Heroma (automatisk) |
+| Direkttelefon, växeltelefon | Manuell |
+| Titel | Manuell (optional; annars visas befattning) |
+| Besöksadress (om avvikande från enhet) | Manuell; gatuadress + ort, ej postnummer |
+| Vårdmedarbetaruppdrag | Hanteras av vårdsystemsamordnare (ej lokal admin) |
+
+### Strukturerade tidsfält – detaljer
+
+HSA stödjer tre typer av tidsfält per enhet:
+1. **Öppettider** – när enheten är fysiskt öppen
+2. **Telefontider** – när enheten tar telefonsamtal
+3. **Drop-in tider** – tider för besök utan tidsbokning (kan ha etikett, max 19 tecken)
+
+**FHIR-modellering**: `HealthcareService.availableTime` med `extension` för typ-distinktion, eller separata `HealthcareService`-resurser per tjänsteform.
+
+### Adressregler (Uppsala-specifika men nationellt relevanta)
+
+- **Postadress**: `751 85` (Region Uppsalas gemensamma postnummer för offentlig vård) — postadress är funktionell, ej fysisk
+- **Besöksadress**: gatuadress + ort, **aldrig postnummer** → `Location.address.postalCode` = omit/empty for visit addresses
+- Separata `address`-poster i FHIR med `type = postal` resp. `type = physical`
+
+---
+
+## Uppdaterade MustSupport-indikatorer
+
+Tillägg efter Uppsala LoKatt-analys:
+
+| Attribut | MustSupport-förslag | Grund |
+|---|---|---|
+| öppettider (availableTime) | **SHOULD MustSupport** | Uppsala LoKatt + 1177-publicering |
+| telefontider | **SHOULD MustSupport** | Uppsala LoKatt + 1177-publicering |
+| drop-in tider | **MAY** | Uppsala LoKatt; regionalt varierande |
+| tillfällig information + slutdatum | **SHOULD MustSupport** | Uppsala LoKatt; 1177 kontaktkort |
+| postadress (type=postal) | **SHALL MustSupport** | Uppsala LoKatt; separeras från besöksadress |
+| besöksadress utan postnr (type=physical) | **SHALL MustSupport** | Uppsala LoKatt; HSACAT-LOC-001 |
+| direkttelefon (work) | **SHALL MustSupport** (offentlig) | Uppsala LoKatt; HSACAT-ORG-004 |
+| växeltelefon | **SHOULD MustSupport** (offentlig, ej privat) | Uppsala LoKatt; ny distinktion |
+| inre vägbeskrivning | **MAY** | Uppsala LoKatt |
+| yttre vägbeskrivning | **MAY** | Uppsala LoKatt |
