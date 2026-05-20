@@ -40,10 +40,20 @@ pages:
     title: REST API
   ehm-alignment.md:
     title: Harmonisering med eHM
+  client-rendering.md:
+    title: Klientrendering
+  organization-hierarchy.md:
+    title: Organisationshierarki
+  address-transition.md:
+    title: Adressövergång
 
 menu:
   Hem: index.html
   Profiler: profiles.html
   Terminologi: terminology.html
   API: api.html
+  Vägledning:
+    Klientrendering: client-rendering.html
+    Organisationshierarki: organization-hierarchy.html
+    Adressövergång: address-transition.html
   Artefakter: artifacts.html
