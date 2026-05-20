@@ -1,0 +1,5 @@
+fsh-generated/
+output/
+input-cache/publisher.jar
+.DS_Store
+*.swp
