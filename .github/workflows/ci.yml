@@ -5,6 +5,10 @@ on:
     branches: ["**"]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   sushi:
@@ -35,7 +39,7 @@ jobs:
     name: IG Publisher – publicering
     needs: sushi
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
 
@@ -50,6 +54,9 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
       - name: Download IG Publisher
         run: |
@@ -68,3 +75,24 @@ jobs:
         with:
           name: ig-output
           path: output/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: output/
+
+  deploy-pages:
+    name: GitHub Pages – deployment
+    needs: ig-publisher
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

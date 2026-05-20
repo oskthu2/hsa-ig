@@ -31,6 +31,13 @@ Följande struktur är uppsatt för att komma igång:
 4. Dokumentera första beslut i `work/03-beslutslogg.md`.
 5. Påbörja kravspårning med `templates/kravpost.md`.
 
+## Bygga och publicera IG
+
+- Push och pull requests kör SUSHI-kompilering via `.github/workflows/ci.yml`.
+- Push till `main` och manuell körning via `workflow_dispatch` kör även IG Publisher.
+- Den genererade webbversionen i `output/` publiceras till GitHub Pages från samma workflow.
+- För att deployment ska fungera måste repo-inställningen för GitHub Pages vara satt till **GitHub Actions**.
+
 ## Föreslaget första sprintutfall
 
 - Scope beslutat.
