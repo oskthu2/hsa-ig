@@ -14,3 +14,6 @@
 | SRC-010 | HSA-schemaversion 5.4 skjuts upp ett halvår | Styrande omgivning | Inera | 2026 | Inkommen | Påverkar versionsplan; baslinje förblir 5.3 |
 | SRC-011 | EOL för sex tjänstekontraktsversioner maj 2027 | Styrande omgivning | Inera | 2026 | Inkommen | Påverkar integrations- och migreringsplan; IG behöver migrationskapitel |
 | SRC-012 | HL7Sweden basprofiler-r4 (GitHub) | Referens | HL7 Sweden | v1.1.0 | Refererad | https://github.com/HL7Sweden/basprofiler-r4; beroenden och harmonisering |
+| SRC-013 | eHMs Nationell katalog-IG (GitHub/CI-build) | Normativ jmf. | E-hälsomyndigheten | v0.1.0, ci-build | Inläst | GitHub: danka74/verksamhet-och-organisation; canonical: http://electronichealth.se/fhir/katalog; FHIR R4; paket: ehalsomyndigheten.se.katalog; beror på hl7se.fhir.base 1.0.0; innehåller HSAServiceTypeValueSet |
+| SRC-014 | Nationella vårdtjänster v.1.0.0 (Excel, eHM/AFI-samarbetsyta) | Normativ jmf. | E-hälsomyndigheten | v1.0.0 | Blockerad (HTTP 403) | URL: https://samarbetsyta.ehalsomyndigheten.se/.../Nationella+vårdtjänster+v.+1.0.0.xlsx; kräver inloggning; kodverk för nationell vårdtjänsttyp |
+| SRC-015 | Utbudstjänsten (avveckling) | Historisk kontext | Inera | Pausad 2023, avvecklas | Dokumenterad | Inera pausade juni 2023; ansvar till eHM; ersätts av eHMs Nationell katalog |

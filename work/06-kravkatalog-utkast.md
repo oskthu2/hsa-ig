@@ -18,7 +18,7 @@
 | HSACAT-LOC-002 | Location SHALL peka ut ansvarig organisation | `Location.managingOrganization` 1..1 | hsa_fhir_ig_agentisk_plan.md (Platsansvar i kravtypstabell) | LDAP strukturrelation | Källbekräftad |
 | HSACAT-SVC-001 | HealthcareService SHALL peka ut tillhandahållande organisation | `HealthcareService.providedBy` 1..1 | hsa_fhir_ig_agentisk_plan.md FHIRPath invariant; REST API-kravtabell | LDAP strukturrelation | Källbekräftad |
 | HSACAT-SVC-002 | Digital HealthcareService SHALL ha telecom eller endpoint | Invariant: `type.coding.where(code = 'digital').exists() implies (telecom.exists() or endpoint.exists())` | hsa_fhir_ig_agentisk_plan.md FHIRPath invariant | Tjänsteträdets digital tjänstmodell | Källbekräftad |
-| HSACAT-TERM-001 | Verksamhetskod på HealthcareService SHALL bindas till ValueSet med system `urn:oid:1.2.752.129.2.2.1.3` | Required binding på `HealthcareService.type`; system = `urn:oid:1.2.752.129.2.2.1.3` | HSA OID-förteckning i SRC-001; Terminologitjänsten (SRC-007) för faktiska kodvärden | `businessClassificationCode`, OID `1.2.752.129.2.2.1.3` | Källbekräftad – OID känd; ValueSet-innehåll kräver Terminologitjänsten (SRC-007) |
+| HSACAT-TERM-001 | Verksamhetskod på HealthcareService SHALL bindas till ValueSet med system `urn:oid:1.2.752.129.2.2.1.3`; ValueSet SHALL jämföras mot eHMs Nationella vårdtjänster v.1.0.0 (SRC-014) | Required binding på `HealthcareService.type`; system = `urn:oid:1.2.752.129.2.2.1.3`; harmoniseringsmatris mot SRC-014 | HSA OID-förteckning (SRC-008); eHMs IG HSAServiceTypeValueSet (SRC-013); Nationella vårdtjänster v.1.0.0 (SRC-014, blockerad); ADR-009 | `businessClassificationCode`, OID `1.2.752.129.2.2.1.3` | Källbekräftad – OID känd; väntar på SRC-014 för harmonisering |
 
 ## Stängda frågor
 
@@ -35,6 +35,7 @@
 |---|---|---|
 | 5 | Exakt kodtabellsinnehåll för verksamhetskoder (HSACAT-TERM-001) | DC Koder-bladet ur tjänsteträdets xlsx eller separat kodverksexport |
 | 6 | Canonical URI för HSA CodeSystem/ValueSet i Terminologitjänsten | Logga in på terminologitjansten.inera.se och hämta canonical URL per kodverk; använd tills vidare `urn:oid:<OID>` |
+| 7 | Exakt innehåll i "Nationella vårdtjänster v.1.0.0" (SRC-014) | Logga in på eHMs samarbetsyta (AFI-utrymme) och ladda ner Excel-filen; krävs för harmoniseringsanalys i HSACAT-TERM-001 |
 
 ## Statusöversikt
 
