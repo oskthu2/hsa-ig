@@ -2,6 +2,7 @@ id: inera.se.hsa.katalog
 canonical: https://hsa.inera.se/fhir
 name: HsaCatalogIG
 title: "HSA Katalog Implementation Guide"
+template: hl7.fhir.template#current
 description: >
   FHIR R5 Implementation Guide för HSA-baserad kataloginformation om
   organisationer, platser, vårdtjänster och ändpunkter inom svensk vård och omsorg.
