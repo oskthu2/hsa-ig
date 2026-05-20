@@ -60,12 +60,14 @@ Description: """
 * location MS
 * location only Reference(HsaCatalogLocation)
 
-* telecom MS
+// I R5 ersattes telecom av contact (ExtendedContactDetail) och availableTime
+// av availability (Availability-datatypen).
+* contact MS
+* contact ^short = "Kontaktuppgifter för tjänsten"
 
-* availableTime MS
-* availableTime.daysOfWeek MS
-* availableTime.allDay MS
-* availableTime.availableStartTime MS
-* availableTime.availableEndTime MS
+* availability MS
+* availability ^short = "Tillgänglighet / öppettider"
+* availability.availableTime MS
+* availability.availableTime ^short = "Öppettider per veckodag"
 
 * endpoint MS

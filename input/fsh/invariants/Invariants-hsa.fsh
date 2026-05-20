@@ -39,7 +39,7 @@ Expression: "extension.where(url = 'https://hsa.inera.se/fhir/StructureDefinitio
 Invariant: hsacat-digital-service-contact
 Description: "En digital HealthcareService SHALL ha telecom eller endpoint."
 Severity: #error
-Expression: "type.coding.where(code = 'digital').exists() implies (telecom.exists() or endpoint.exists())"
+Expression: "type.coding.where(code = 'digital').exists() implies (contact.telecom.exists() or endpoint.exists())"
 
 Invariant: hsacat-service-provider
 Description: "En HealthcareService SHALL ha providedBy (tillhandahållande organisation)."
@@ -54,4 +54,4 @@ Expression: "extension.where(url = 'https://hsa.inera.se/fhir/StructureDefinitio
 Invariant: hsacat-public-org-telecom
 Description: "En publik organisation (destination indicator 03) SHALL ha direkttelefon."
 Severity: #error
-Expression: "extension.where(url = 'https://hsa.inera.se/fhir/StructureDefinition/hsa-destination-indicator').value.ofType(Coding).code = '03' implies telecom.where(system = 'phone').exists()"
+Expression: "extension.where(url = 'https://hsa.inera.se/fhir/StructureDefinition/hsa-destination-indicator').value.ofType(Coding).code = '03' implies contact.telecom.where(system = 'phone').exists()"

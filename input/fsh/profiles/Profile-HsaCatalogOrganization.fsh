@@ -98,67 +98,22 @@ Description: """
   * coding.system = "urn:oid:1.2.752.129.2.2.1.14" (exactly)
   * coding from HsaOwnershipTypeVS (required)
 
-// ── Telecom: kontaktvägar (HSACAT-ORG-004, 004b) ────────────────────────────
-* telecom MS
-* telecom ^slicing.discriminator[0].type = #value
-* telecom ^slicing.discriminator[=].path = "system"
-* telecom ^slicing.discriminator[+].type = #value
-* telecom ^slicing.discriminator[=].path = "extension('https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type').value.ofType(Coding).code"
-* telecom ^slicing.rules = #open
-* telecom ^short = "Kontaktvägar (telefon, e-post m.m.)"
-
-* telecom contains
-    direct-phone 0..1 MS and
-    switchboard   0..1 MS and
-    email         0..1 MS and
-    directory-contact 0..1 MS
-
-* telecom[direct-phone]
-  * ^short = "Direkttelefon (obligatorisk för publik enhet)"
-  * system = #phone (exactly)
-  * value 1..1
-  * extension[HsaTelecomTypeExtension].valueCoding = HsaTelecomType#direct-phone
-
-* telecom[switchboard]
-  * ^short = "Växeltelefon (obligatorisk för offentlig enhet, ej privata)"
-  * system = #phone (exactly)
-  * value 1..1
-  * extension[HsaTelecomTypeExtension].valueCoding = HsaTelecomType#switchboard
-
-* telecom[email]
-  * ^short = "E-postadress"
-  * system = #email (exactly)
-  * value 1..1
-
-* telecom[directory-contact]
-  * ^short = "Innehållsansvarigs e-post (hsaDirectoryContact)"
-  * system = #email (exactly)
-  * value 1..1
-  * extension[HsaTelecomTypeExtension].valueCoding = HsaTelecomType#directory-contact
-
-// ── Address (HSACAT-LOC-005) ─────────────────────────────────────────────────
-* address MS
-* address ^slicing.discriminator.type = #value
-* address ^slicing.discriminator.path = "type"
-* address ^slicing.rules = #open
-
-* address contains
-    postal 0..1 MS and
-    physical 0..1 MS
-
-* address[postal]
-  * ^short = "Postadress"
-  * type = #postal (exactly)
-  * line 0..*
-  * postalCode 0..1
-  * city 0..1
-
-* address[physical]
-  * ^short = "Besöksadress (utan postnummer)"
-  * type = #physical (exactly)
-  * line 1..*
-  * city 1..1
-  * postalCode 0..0   // Besöksadress ska aldrig ha postnummer (Uppsala-regel)
+// ── Contact: kontaktvägar och adress (HSACAT-ORG-004, 004b) ─────────────────
+// I FHIR R5 finns inte telecom/address direkt på Organization; de ligger
+// under contact-backbonen. Varje contact-post kan ha purpose, telecom och address.
+* contact MS
+* contact ^short = "Kontaktinformation (telefon, adress m.m.)"
+* contact ^definition = """
+  Kontaktuppgifter för organisationen. Använd extension HsaTelecomTypeExtension
+  på contact.telecom för att klassificera kontaktvägstypen
+  (direkttelefon, växel, e-post, innehållsansvarig m.fl.).
+"""
+* contact.telecom MS
+* contact.telecom ^short = "Kontaktvägar"
+* contact.telecom.extension contains HsaTelecomTypeExtension named telecomType 0..1 MS
+* contact.address MS
+* contact.address ^short = "Postadress eller besöksadress"
+* contact.address.type MS
 
 // ── PartOf: hierarki (HSACAT-ORG-002, 006) ───────────────────────────────────
 * partOf MS
