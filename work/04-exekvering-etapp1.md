@@ -3,8 +3,8 @@
 ## Statusöversikt (2026-05-20)
 
 - **Mål:** Starta faktisk kravinsamling och låsa kritiska vägval.
-- **Status:** Pågående med beslutade vägval (scope, FHIR-version, användningsfall, krav-ID).
-- **Blockerare:** Primära HSA-källor saknas i repo.
+- **Status:** Pågående – ADR-007 tillagd, 12 av 13 krav källbekräftade, 4 av 4 ursprungliga öppna frågor stängda.
+- **Blockerare:** ~~Primära HSA-källor saknas i repo~~ – upplöst; hsa_fhir_ig_agentisk_plan.md + HSA-schema 5.3 xlsx räcker för källbekräftning. Kvarstående: kodtabellsunderlag (HSACAT-TERM-001).
 
 ## Genomfört nu
 

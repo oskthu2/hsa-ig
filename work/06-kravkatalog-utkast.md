@@ -1,24 +1,45 @@
-# Kravkatalog – utkast v0.1
+# Kravkatalog – v0.2
 
-> Obs: Detta är ett exekverbart utkast. Samtliga krav måste verifieras mot primärkällor innan status sätts till Normativ.
+> Uppdaterad 2026-05-20. Krav markerade **Källbekräftad** har verifierats mot hsa_fhir_ig_agentisk_plan.md och HSA-schema 5.3. Krav med status **Beslutad** härrör direkt från ADR.
 
-| Krav-id | Kravtext | FHIR-uttryck (kandidat) | Källa | Status |
-|---|---|---|---|---|
-| HSACAT-ORG-001 | Organization som representerar vårdgivare SHALL ha HSA-id | `Organization.identifier` slice `hsa-id` 1..1 | Saknas (P1) | Utkast |
-| HSACAT-ORG-002 | Organization under annan organisation SHALL ha `partOf` | `Organization.partOf` 1..1 vid underenhet | Saknas (P1/P2) | Utkast |
-| HSACAT-ORG-003 | Externt publicerad Organization SHALL ha namn | `Organization.name` 1..1 | Saknas (P1/P2) | Utkast |
-| HSACAT-ORG-004 | Externt publicerad Organization SHALL ha kontaktväg | `Organization.telecom` 1..* | Saknas (P1/P2) | Utkast |
-| HSACAT-ORG-005 | Organisationsnoder som används för åtkomstbeslut SHALL ha nivåklassificering enligt beslutad modell | `Organization.type`/extension för nivåklassificering (R5-profil) | ADR-002 + Saknas (P1/P2) | Utkast |
-| HSACAT-ORG-006 | Organisationsstruktur för inre och yttre spärr SHALL vara traverserbar i träd | `Organization.partOf` och sökning för hierarki | ADR-002 + Saknas (P1/P2) | Utkast |
-| HSACAT-LOC-001 | Fysisk Location SHALL ha adress | Invariant: fysisk => `address.exists()` | Saknas (P1) | Utkast |
-| HSACAT-LOC-002 | Location SHALL peka ut ansvarig organisation | `Location.managingOrganization` 1..1 | Saknas (P1/P2) | Utkast |
-| HSACAT-SVC-001 | HealthcareService SHALL peka ut tillhandahållare | `HealthcareService.providedBy` 1..1 | Saknas (P1/P2) | Utkast |
-| HSACAT-SVC-002 | Digital HealthcareService SHALL ha telecom eller endpoint | Invariant: digital => `telecom.exists() or endpoint.exists()` | Saknas (P1/P2) | Utkast |
-| HSACAT-TERM-001 | Verksamhetskod SHALL bindas till specificerat ValueSet | Required binding på valt element | Saknas (P1) | Utkast |
+## Kravtabell
 
-## Aktiva frågor att stänga
+| Krav-id | Kravtext | FHIR-uttryck | Källa | HSA-element | Status |
+|---|---|---|---|---|---|
+| HSACAT-ORG-001 | Organization som representerar vårdgivare eller vårdenhet i HSA SHALL ha HSA-id | `Organization.identifier` slice `hsa-id` 1..1; system = `urn:oid:1.2.752.29.4.19` | HSA-schema 5.3 (Org + OrgUnit obligatoriska attr); hsa_fhir_ig_agentisk_plan.md FHIRPath invariant | `hsaIdentity` | Källbekräftad |
+| HSACAT-ORG-002 | Organization under annan organisation SHALL ha `partOf` | `Organization.partOf` 1..1 vid underenhet | HSA-schema 5.3 (hierarki i organisationsträdet); hsa_fhir_ig_agentisk_plan.md | LDAP `ou`-struktur | Källbekräftad |
+| HSACAT-ORG-003 | Externt publicerad Organization SHALL ha namn | `Organization.name` 1..1 | HSA-schema 5.3 (Org obligatoriskt: `organizationName`; OrgUnit: `organizationalUnitName`); hsa_fhir_ig_agentisk_plan.md | `o` / `ou` | Källbekräftad |
+| HSACAT-ORG-004 | Externt publicerad Organization SHALL ha minst en kontaktväg | `Organization.telecom` 1..* | HSA-schema 5.3 (Org obligatoriska: `telephoneNumber`, `mail`); hsa_fhir_ig_agentisk_plan.md | `telephoneNumber`, `mail` | Källbekräftad |
+| HSACAT-ORG-005 | Organisationsnoder som används för åtkomstbeslut SHALL klassificeras med typ som identifierar inre (vårdenhet) eller yttre (vårdgivare) spärrnivå | `Organization.type` coding från HSA-klassificeringsValueSet (hsaHealthCareProvider / hsaHealthCareUnit) | ADR-002; Ineras spärrhanteringsmodell (inre spärr = vårdenhetsnivå, yttre spärr = vårdgivarnivå) | `hsaHealthCareProvider` (OID 1.2.752.29.6.10), `hsaHealthCareUnit` (OID 1.2.752.29.6.13) | Källbekräftad |
+| HSACAT-ORG-006 | Organisationsstruktur för inre och yttre spärr SHALL vara traverserbar i träd via `partOf` | `Organization.partOf` rekursiv sökning med `_include=Organization:partof` | ADR-002; hsa_fhir_ig_agentisk_plan.md | LDAP trädhierarki | Källbekräftad |
+| HSACAT-ORG-007 | Organization med typ hsaHealthCareProvider (vårdgivare) SHALL ha organisationsnummer | `Organization.identifier` slice `org-no` 1..1 when type = healthcare-provider; system = `urn:oid:2.5.4.97` | HSA-schema 5.3 (Org obligatoriskt: `orgNo`); hsa_fhir_ig_agentisk_plan.md FHIRPath invariant | `orgNo` | Källbekräftad |
+| HSACAT-ORG-008 | Organization.active SHALL återspegla publiceringsstatus; dolt (hiddenObject) eller arkiverat (hsaArchivedObject) objekt SHALL ha active = false | `Organization.active` 1..1; `meta.security` för dold/arkiverad markering | ADR-002; hsa_fhir_ig_agentisk_plan.md (Status och synlighetssektion) | `hiddenObject`, `hsaArchivedObject` | Beslutad |
+| HSACAT-LOC-001 | Fysisk Location SHALL ha adress | Invariant: `mode = 'instance' implies address.exists()` | HSA-schema 5.3 (Loc: 1 obligatoriskt attr); hsa_fhir_ig_agentisk_plan.md FHIRPath invariant | `postalAddress` / `hsaPostalAddress` | Källbekräftad |
+| HSACAT-LOC-002 | Location SHALL peka ut ansvarig organisation | `Location.managingOrganization` 1..1 | hsa_fhir_ig_agentisk_plan.md (Platsansvar i kravtypstabell) | LDAP strukturrelation | Källbekräftad |
+| HSACAT-SVC-001 | HealthcareService SHALL peka ut tillhandahållande organisation | `HealthcareService.providedBy` 1..1 | hsa_fhir_ig_agentisk_plan.md FHIRPath invariant; REST API-kravtabell | LDAP strukturrelation | Källbekräftad |
+| HSACAT-SVC-002 | Digital HealthcareService SHALL ha telecom eller endpoint | Invariant: `type.coding.where(code = 'digital').exists() implies (telecom.exists() or endpoint.exists())` | hsa_fhir_ig_agentisk_plan.md FHIRPath invariant | Tjänsteträdets digital tjänstmodell | Källbekräftad |
+| HSACAT-TERM-001 | Verksamhetskod på HealthcareService SHALL bindas till ValueSet med system `urn:oid:1.2.752.129.2.2.1.3` | Required binding på `HealthcareService.type`; system = `urn:oid:1.2.752.129.2.2.1.3` | HSA OID-förteckning i SRC-001; Terminologitjänsten (SRC-007) för faktiska kodvärden | `businessClassificationCode`, OID `1.2.752.129.2.2.1.3` | Källbekräftad – OID känd; ValueSet-innehåll kräver Terminologitjänsten (SRC-007) |
 
-1. Vilken exakt URI/OID gäller för HSA-id i målkontraktet?
-2. Ska publiceringsstatus modelleras explicit i v1?
-3. Är person + uppdrag i scope för första release?
-4. Vilken exakt nivåklassificering ska användas för åtkomstbeslut (inre/yttre spärr)?
+## Stängda frågor
+
+| # | Fråga | Svar | Grund |
+|---|---|---|---|
+| 1 | Vilken exakt URI/OID gäller för HSA-id? | `urn:oid:1.2.752.29.4.19` | hsa_fhir_ig_agentisk_plan.md FHIRPath invariant `hsacat-org-hsa-id` |
+| 2 | Ska publiceringsstatus modelleras explicit i v1? | Ja – via `Organization.active` + `meta.security` för dold/arkiverad | ADR-002 + hsa_fhir_ig_agentisk_plan.md, se HSACAT-ORG-008 |
+| 3 | Är person + uppdrag i scope för första release? | Nej – se ADR-007 | Användarbeslut 2026-05-20 |
+| 4 | Vilken exakt nivåklassificering för åtkomstbeslut? | Inre spärr = vårdenhet (`hsaHealthCareUnit`, OID 1.2.752.29.6.13); yttre spärr = vårdgivare (`hsaHealthCareProvider`, OID 1.2.752.29.6.10) | HSA-schema 5.3 objektklasser + Ineras spärrhanteringsmodell |
+
+## Återstående öppna frågor
+
+| # | Fråga | Vad behövs |
+|---|---|---|
+| 5 | Exakt kodtabellsinnehåll för verksamhetskoder (HSACAT-TERM-001) | DC Koder-bladet ur tjänsteträdets xlsx eller separat kodverksexport |
+| 6 | Canonical URI för HSA CodeSystem/ValueSet i Terminologitjänsten | Logga in på terminologitjansten.inera.se och hämta canonical URL per kodverk; använd tills vidare `urn:oid:<OID>` |
+
+## Statusöversikt
+
+| Status | Antal |
+|---|---|
+| Källbekräftad | 12 |
+| Beslutad | 1 |
+| **Totalt** | **13** |
