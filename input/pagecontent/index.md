@@ -40,6 +40,7 @@ IG:n täcker **inte** persondata (Practitioner/PractitionerRole) i version 1.
 | [Organisationshierarki](organization-hierarchy.html) | partOf-kedja, PDL-spärrnivåer, SKLTP-trädklättring |
 | [Klientrendering](client-rendering.html) | Display-konventioner för 1177 och konsumentsystem |
 | [Adressövergång](address-transition.html) | HSA 5.2+ strukturerade adresser, övergångsperiod |
+| [LDAP → FHIR Mappning](ldap-mapping.html) | Attributtabell: LDAP-attributnamn → FHIR-element, ej mappade attribut |
 | [Terminologi](terminology.html) | CodeSystems, OID-tabell, väntande kodverk |
 | [REST API](api.html) | SearchParameters, CapabilityStatement, frågemönster |
 | [Harmonisering med eHM](ehm-alignment.html) | Mappning mot eHMs Nationell katalog-IG |
