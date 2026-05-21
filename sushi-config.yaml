@@ -46,6 +46,8 @@ pages:
     title: Organisationshierarki
   address-transition.md:
     title: Adressövergång
+  ldap-mapping.md:
+    title: LDAP → FHIR Mappning
 
 menu:
   Hem: index.html
@@ -56,4 +58,5 @@ menu:
     Klientrendering: client-rendering.html
     Organisationshierarki: organization-hierarchy.html
     Adressövergång: address-transition.html
+    LDAP-mappning: ldap-mapping.html
   Artefakter: artifacts.html
