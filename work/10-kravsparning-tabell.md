@@ -31,17 +31,20 @@
 | HSACAT-SVC-005 | Källbekräftad | ✅ | SRC-018 | ADR-012 | - | `organization-period` HL7-standardextension på Organization (http://hl7.org/fhir/StructureDefinition/organization-period); Period.end 1..1; invariant hsacat-org-period-end. HsaTemporaryInfoExtension borttagen (ADR-012). | — |
 | HSACAT-TERM-001 | Källbekräftad – OID känd; harmonisering väntar | ⚠️ | SRC-002, SRC-013 | ADR-009 | RSK-004, RSK-005 | `HealthcareService.type[service-type]` från HsaServiceTypeVS; system=`urn:oid:1.2.752.129.2.2.1.3`; Required binding | Hämta SRC-014 (eHM Excel) för harmoniseringsmatris |
 | HSACAT-ORG-012 | Utkast – OID ej bekräftad | ⚠️ | SRC-020 | - | - | `Organization.identifier[apk]` 0..1 MS; system=`urn:oid:1.2.752.29.4.71` (preliminärt) | Bekräfta APK-OID mot Ineras OID-register (öppen fråga 8) |
-| HSACAT-ORG-013 | Beslutad | ✅ doc | SRC-021, SRC-001 | ADR-010 | RSK-002 | Adressövergång dokumenteras som kommentar i profil och informativ IG-sida; normativ form = strukturerade komponenter | Skriv informativ IG-sida om adressövergång |
+| HSACAT-ORG-013 | Beslutad | ✅ doc | SRC-021, SRC-001 | ADR-010 | RSK-002 | Adressövergång dokumenteras som kommentar i profil och informativ IG-sida; normativ form = strukturerade komponenter | — |
+| HSACAT-ORG-014 | Källbekräftad | ✅ | SRC-026 | - | - | `Organization.identifier[gln]` 0..1 MS; system=`urn:oid:1.3.88`; LDAP: hsaGlnCode | — |
+| HSACAT-ORG-015 | Källbekräftad | ✅ | SRC-026, SRC-001 | - | - | `Organization.type[business-type]` 0..1 MS; system=`urn:oid:1.2.752.129.2.2.1.12`; HsaBusinessTypeVS | Bekräfta kodvärden |
+| HSACAT-ORG-016 | Källbekräftad | ✅ | SRC-026 | - | - | `extension[temporaryNotice]` (HsaTemporaryNoticeExtension, hsaVpwInformation2); `extension[patientInfo]` (HsaPatientInfoExtension, hsaVpwInformation4); 1177-URL i `contact.telecom` (hsaVpwWebpage) | — |
 
 ## Implementationsstatus
 
 | Status | Antal |
 |---|---|
-| ✅ FSH implementerat | 23 |
+| ✅ FSH implementerat | 27 |
 | ✅ doc Beslutad + dokumenterat (profil/work) | 2 |
 | ⚠️ Delvis (OID/harmonisering återstår) | 2 |
 | ❌ Ej påbörjat | 0 |
-| **Totalt** | **28** |
+| **Totalt** | **31** |
 
 ## Återstående teknisk skuld
 

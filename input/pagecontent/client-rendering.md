@@ -138,6 +138,23 @@ Separata `HealthcareService`-instanser (eller separata `availability`-element) a
 
 ---
 
+## 1177-specifika textfält
+
+HSA exponerar flera textfält som enbart riktar sig mot 1177-presentationslagret (`hsaVpw`-attributen). Alla lagras som fritext och bör renderas som Markdown av klienter.
+
+| FHIR-element | LDAP-attribut | 1177-visning | Krav |
+|---|---|---|---|
+| `extension[temporaryNotice]` (Organization/HealthcareService) | `hsaVpwInformation2` | Gul informationsruta med ⚠-symbol | MAY; kombineras med `extension[orgPeriod]` |
+| `extension[patientInfo]` (Organization/HealthcareService) | `hsaVpwInformation4` | Informationsruta riktad till patient | MAY |
+| `HealthcareService.comment` | `hsaVpwInformation1` | "Mer om oss"-sektion | MAY |
+| `Organization.contact.telecom` (system=#url) | `hsaVpwWebpage` | Länk till 1177-kontaktkort | MAY |
+
+**Renderingsregler för gul ruta:** Visa `extension[temporaryNotice]` som gul informationsruta med varningsikon (⚠) när **båda** villkoren uppfylls: `extension[orgPeriod]` är satt OCH `active = true`. Visa slutdatum från `orgPeriod.valuePeriod.end`. Dölj rutan automatiskt efter slutdatum.
+
+**URL till 1177-kontaktkort** bör visas som klickbar länk och kan användas för djuplänkning från externa system till enhetens 1177-sida.
+
+---
+
 ## 1177 Hitta vård: publiceringschecklista
 
 En resurs som ska synas på 1177 Hitta vård ska uppfylla samtliga punkter nedan. Klienter bör validera dessa fält innan publicering och varna användaren om något saknas.

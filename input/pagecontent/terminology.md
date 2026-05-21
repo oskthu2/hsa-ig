@@ -17,6 +17,8 @@ Denna sida dokumenterar de CodeSystems, ValueSets och namnrymder som HSA-IG anv�
 | `1.2.752.129.2.2.1.14` | Ägarform (management) | `Organization.type[ownership].coding.system` | Bekräftad |
 | `1.2.752.129.5.1.1` | Finansierande organisation | `extension[financingOrganization].valueCoding.system` | Bekräftad |
 | `1.2.752.129.5.1.46` | Administrativ vårdnivå | `Organization.type[care-level].coding.system` | Bekräftad |
+| `1.2.752.129.2.2.1.12` | Enhetstyp (hsaBusinessType) | `Organization.type[business-type].coding.system` | Bekräftad |
+| `1.3.88` | GLN (Global Location Number, GS1) | `Organization.identifier[gln].system` | Bekräftad |
 | `1.2.752.29.6.10` | hsaHealthCareProvider | Typ-OID för vårdgivare (bakgrundsinformation) | Bekräftad |
 | `1.2.752.29.6.13` | hsaHealthCareUnit | Typ-OID för vårdenhet (bakgrundsinformation) | Bekräftad |
 
@@ -41,6 +43,7 @@ Denna sida dokumenterar de CodeSystems, ValueSets och namnrymder som HSA-IG anv�
 | HsaCareTypeVS | required | `HealthcareService.type[care-type]` |
 | HsaServiceTypeVS | required | `HealthcareService.category[verksamhetskod]` |
 | HsaTelecomTypeVS | extensible | `extension[telecomType]` på ContactPoint |
+| HsaBusinessTypeVS | required | `Organization.type[business-type]` |
 
 ---
 
