@@ -44,7 +44,21 @@ Description: """
 // ── Extensions ───────────────────────────────────────────────────────────────
 * extension contains
     $orgPeriod named orgPeriod 0..1 MS and
+    HsaTemporaryNoticeExtension named temporaryNotice 0..1 MS and
+    HsaPatientInfoExtension named patientInfo 0..1 MS and
     HsaFinancingOrganizationExtension named financingOrganization 0..* MS
+
+* extension[temporaryNotice]
+  * ^short = "Tillfällig information (hsaVpwInformation2)"
+  * ^definition = """
+    Fri text som visas som gul informationsruta på 1177. Ska kombineras med
+    extension[orgPeriod] (organization-period) som anger giltighetstid.
+    Klienter bör rendera visuell varningsindikator när detta fält är satt.
+  """
+
+* extension[patientInfo]
+  * ^short = "Information till patient (hsaVpwInformation4)"
+  * ^definition = "Informationstext riktad direkt till patient. Visas på 1177-sidan. Klienter bör rendera som Markdown."
 
 * extension[orgPeriod]
   * ^short = "Organisationens giltighetsperiod (t.ex. tillfällig enhet)"
@@ -82,7 +96,8 @@ Description: """
 * identifier contains
     hsa-id 1..1 MS and
     org-no 0..1 MS and
-    apk 0..1 MS
+    apk 0..1 MS and
+    gln 0..1 MS
 
 * identifier[hsa-id]
   * ^short = "HSA-identitet"
@@ -98,13 +113,22 @@ Description: """
   * system = "urn:oid:2.5.4.97" (exactly)
   * value 1..1 MS
 
-// Arbetsplatskod (HSACAT-ORG-012): används av NPÖ GetHealthCareUnitMembers.
+// Arbetsplatskod (HSACAT-ORG-012): LDAP-attribut unitPrescriptionCode.
 // OID preliminärt 1.2.752.29.4.71 – ska verifieras mot Ineras OID-register (öppen fråga 8).
 * identifier[apk]
-  * ^short = "Arbetsplatskod (NPÖ-relevant)"
-  * ^definition = "Arbetsplatskod som NPÖ använder för att identifiera en vårdenhet i GetHealthCareUnitMembers. OID att bekräfta (HSACAT-ORG-012, öppen fråga 8)."
+  * ^short = "Arbetsplatskod (unitPrescriptionCode, NPÖ-relevant)"
+  * ^definition = "Arbetsplatskod som NPÖ använder för att identifiera en vårdenhet i GetHealthCareUnitMembers. LDAP: unitPrescriptionCode. OID att bekräfta (HSACAT-ORG-012, öppen fråga 8)."
   * system 1..1
   * system = "urn:oid:1.2.752.29.4.71" (exactly)
+  * value 1..1 MS
+
+// GLN-kod (HSACAT-ORG-014): Global Location Number. LDAP-attribut hsaGlnCode.
+// Bevaras i testdata (SRC-026). Förekommer på Organisation och Enhet.
+* identifier[gln]
+  * ^short = "GLN-kod (hsaGlnCode)"
+  * ^definition = "Global Location Number (GS1). Används för att identifiera organisationer och platser i logistik- och vårdinformationssystem. LDAP: hsaGlnCode."
+  * system 1..1
+  * system = "urn:oid:1.3.88" (exactly)
   * value 1..1 MS
 
 // ── Active: publiceringsstatus (HSACAT-ORG-008) ───────────────────────────────
@@ -130,7 +154,8 @@ Description: """
 * type contains
     hsa-class 0..1 MS and
     ownership 0..1 MS and
-    care-level 0..1 MS
+    care-level 0..1 MS and
+    business-type 0..1 MS
 
 * type[hsa-class]
   * ^short = "HSA-objektklassificering (vårdgivare/vårdenhet/org.enhet)"
@@ -153,12 +178,23 @@ Description: """
   * ^definition = """
     Kod som anger administrativ specialiseringsnivå i hälso- och sjukvård.
     Obligatorisk (1..1) för vårdenheter (HsaHealthcareUnitOrganization).
-    System: OID 1.2.752.129.5.1.46.
+    LDAP: careLevel. System: OID 1.2.752.129.5.1.46.
   """
   * coding 1..*
   * coding.system 1..1
   * coding.system = "urn:oid:1.2.752.129.5.1.46" (exactly)
   * coding from urn:oid:1.2.752.129.5.1.46 (required)
+
+* type[business-type]
+  * ^short = "Enhetstyp (hsaBusinessType, HSACAT-ORG-015)"
+  * ^definition = """
+    Anger typ av enhet eller organisation (t.ex. sjukhus, vårdcentral, apotek).
+    LDAP: hsaBusinessType. System: OID 1.2.752.129.2.2.1.12.
+  """
+  * coding 1..*
+  * coding.system 1..1
+  * coding.system = "urn:oid:1.2.752.129.2.2.1.12" (exactly)
+  * coding from HsaBusinessTypeVS (required)
 
 // ── Contact: kontaktvägar och adress (HSACAT-ORG-004, 004b, LOC-005, ORG-013) ──
 // I FHIR R5 finns inte telecom/address direkt på Organization; de ligger
@@ -179,6 +215,13 @@ Description: """
 """
 * contact.telecom MS
 * contact.telecom ^short = "Kontaktvägar"
+* contact.telecom ^definition = """
+  Kontaktvägar inklusive telefon, e-post och URL. LDAP-attribut inkluderar:
+  telephoneNumber (direkttelefon), hsaSwitchboardNumber (växel),
+  mobile (mobil), facsimileTelephoneNumber (fax), mail (e-post),
+  hsaDirectoryContact (innehållsansvarig), labeledURI (webbadress),
+  hsaVpwWebpage (länk till 1177-kontaktkort, system=#url).
+"""
 * contact.telecom.extension contains HsaTelecomTypeExtension named telecomType 0..1 MS
 * contact.address MS
 * contact.address ^short = "Postadress eller besöksadress"

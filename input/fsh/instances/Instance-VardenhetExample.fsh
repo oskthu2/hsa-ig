@@ -39,13 +39,15 @@ Description: "Exempelinstans för en vårdenhet (mottagning) under en vårdgivar
 
 * partOf = Reference(VardgivareExample)
 
-// Tillfällig period med obligatoriskt slutdatum (ersätter HsaTemporaryInfoExtension).
-// Klienter bör rendera en visuell varningsindikator (gul ruta) när orgPeriod är satt
-// och active = true.
+// Tillfällig information: period (obligatoriskt slutdatum) + notistext.
+// Klienter bör rendera gul informationsruta när orgPeriod + temporaryNotice är satt och active = true.
 * extension[orgPeriod]
   * valuePeriod
     * start = "2026-06-01"
     * end = "2026-08-31"
+
+* extension[temporaryNotice]
+  * valueString = "Vi har tillfälligt stängt fredagar under sommaren 2026."
 
 // Direkttelefon
 * contact[0]

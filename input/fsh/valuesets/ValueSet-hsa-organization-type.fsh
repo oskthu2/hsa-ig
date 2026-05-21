@@ -20,8 +20,24 @@ Description: """
 * include codes from system HsaObjectClass
     where concept is-a #organizational-unit
 
-// Enhetstyp (hsaBusinessType OID 1.2.752.129.2.2.1.12) – inkluderas när ValueSet publiceras
-// * include codes from system urn:oid:1.2.752.129.2.2.1.12
+// Enhetstyp (hsaBusinessType OID 1.2.752.129.2.2.1.12)
+* include codes from system urn:oid:1.2.752.129.2.2.1.12
+
+
+ValueSet: HsaBusinessTypeVS
+Id: hsa-business-type
+Title: "HSA Enhetstyp (hsaBusinessType)"
+Description: """
+  Enhetstyp för organisation eller enhet i HSA.
+  System: HSA enhetstyp-kodverk (OID 1.2.752.129.2.2.1.12).
+  Typiska värden: sjukhus, vårdcentral, apotek m.fl.
+"""
+* ^url = "https://hsa.inera.se/fhir/ValueSet/hsa-business-type"
+* ^status = #active
+* ^experimental = false
+* ^date = "2026-05-21"
+* ^jurisdiction = urn:iso:std:iso:3166#SE
+* include codes from system urn:oid:1.2.752.129.2.2.1.12
 
 
 ValueSet: HsaOwnershipTypeVS

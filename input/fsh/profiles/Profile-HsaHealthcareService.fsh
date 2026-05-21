@@ -41,6 +41,16 @@ Description: """
   * system = "urn:oid:1.2.752.29.23.1.11" (exactly)
   * code from HsaDestinationIndicatorVS (required)
 
+// ── 1177-specifika textfält ───────────────────────────────────────────────────
+* extension contains
+    HsaTemporaryNoticeExtension named temporaryNotice 0..1 MS and
+    HsaPatientInfoExtension named patientInfo 0..1 MS
+
+* extension[temporaryNotice]
+  * ^short = "Tillfällig information (hsaVpwInformation2)"
+* extension[patientInfo]
+  * ^short = "Information till patient (hsaVpwInformation4)"
+
 * active 1..1 MS
 
 * providedBy 1..1 MS
