@@ -10,6 +10,9 @@ on:
 permissions:
   contents: read
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   sushi:
     name: SUSHI – FSH kompilering
@@ -64,7 +67,7 @@ jobs:
           java-version: "17"
 
       - name: Install Jekyll
-        run: gem install jekyll bundler
+        run: sudo gem install jekyll bundler
 
       - name: Download IG Publisher
         run: |
@@ -74,8 +77,9 @@ jobs:
 
       - name: Run IG Publisher
         run: |
-          java -jar input-cache/publisher.jar \
+          java -Xmx4g -jar input-cache/publisher.jar \
             -ig ig.ini \
+            -no-sushi \
             -tx https://tx.fhir.org/r5
 
       - name: Upload IG output
