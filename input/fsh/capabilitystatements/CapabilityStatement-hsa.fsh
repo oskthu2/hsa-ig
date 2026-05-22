@@ -6,7 +6,7 @@
 // Fyra klientkonformansdeklarationer (beskriver vad klienten förväntar sig av servern):
 //   3. hsa-client-1177-hitta-vard  – 1177 Hitta vård (geo-sökning, publik filtrering)
 //   4. hsa-client-npo              – Nationell Patientöversikt (arbetsplatskod, hierarki)
-//   5. hsa-client-skltp            – SKLTP / Säkerhetstjänster (trädklättring)
+//   5. hsa-client-hierarchy-traversal – Hierarkitraversering (SKLTP/Säkerhetstjänster, v1-scope)
 //   6. hsa-client-ehr-sync         – EHR-katalogsynk (batchhämtning, inkrementell synk)
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -594,30 +594,42 @@ Description: """
 
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// 5. Klientkonformans: SKLTP / Säkerhetstjänster (trädklättring)
+// 5. Klientkonformans: Hierarkitraversering (partOf-trädklättring)
+//    Täcker behov från SKLTP, Säkerhetstjänster och andra system som använder
+//    Organization.partOf för åtkomstkontroll eller hierarkisökning.
+//    OBS: Full SKLTP TAK Endpoint-profilering är planerad för v2.
 // ═══════════════════════════════════════════════════════════════════════════════
 
-Instance: CapabilityStatement-hsa-client-skltp
+Instance: CapabilityStatement-hsa-client-hierarchy-traversal
 InstanceOf: CapabilityStatement
 Usage: #definition
-Title: "HSA Klient – SKLTP / Säkerhetstjänster"
+Title: "HSA Klient – Hierarkitraversering"
 Description: """
-  Klientkonformansdeklaration för Tjänsteplattformen (SKLTP) och Säkerhetstjänster.
-  Dessa system traverserar partOf-kedjan för åtkomstkontroll: givet en vårdenhet
-  bestäms ansvarig vårdgivare genom att följa partOf uppåt (trädklättring).
-  Nyckelkrav: _include:iterate, sökning på hsa-id och type[hsa-class].
+  Klientkonformansdeklaration för system som traverserar Organization.partOf-kedjan
+  för åtkomstkontroll eller hierarkisökning (HSACAT-ORG-006, HSACAT-ORG-015).
+
+  Primära konsumenter i v1:
+  - Tjänsteplattformen (SKLTP): bestämmer ansvarig vårdgivare via trädklättring
+  - Säkerhetstjänster: prövning av SJF-behörighet längs partOf-kedjan
+
+  OBS: Full SKLTP TAK-integration (Endpoint-resurs, logisk adressering) är planerad
+  för v2 och täcks inte av denna IG. Denna deklaration gäller enbart
+  Organization.partOf-traversering som stöds i v1.
+
+  Nyckelkrav (HSACAT-ORG-006): servern SHALL stödja _include:iterate=Organization:partof
+  så att hela hierarkin kan hämtas i ett anrop.
 """
 
-* id = "hsa-client-skltp"
-* url = "https://hsa.inera.se/fhir/CapabilityStatement/hsa-client-skltp"
+* id = "hsa-client-hierarchy-traversal"
+* url = "https://hsa.inera.se/fhir/CapabilityStatement/hsa-client-hierarchy-traversal"
 * version = "0.1.0"
-* name = "HsaClientSkltp"
-* title = "HSA Klient – SKLTP / Säkerhetstjänster"
+* name = "HsaClientHierarchyTraversal"
+* title = "HSA Klient – Hierarkitraversering"
 * status = #draft
 * experimental = false
 * date = "2026-05-21"
 * publisher = "Inera AB / HSA-IG projekt"
-* description = "Klientkonformans för SKLTP/säkerhetstjänster: hierarkisk trädklättring via partOf för åtkomstkontroll."
+* description = "Klientkonformans för hierarkitraversering via Organization.partOf (HSACAT-ORG-006/015). Täcker SKLTP-trädklättring i v1; full Endpoint-profilering planeras till v2."
 * kind = #requirements
 * fhirVersion = #5.0.0
 * format[+] = #json
@@ -625,20 +637,24 @@ Description: """
 * rest[+]
   * mode = #client
   * documentation = """
-    SKLTP/säkerhetstjänster använder följande frågemönster:
-    1. Hämta enhet och fullständig kedja uppåt:
-       GET /Organization?_id=[id]&_include=Organization:partof&_include:iterate=Organization:partof
-    2. Hämta alla enheter under en vårdgivare:
-       GET /Organization?partof=Organization/[vg-id]&_revinclude=Organization:partof
-    3. Söka enhet via HSA-id:
+    System som traverserar partOf-kedjan för åtkomstkontroll använder:
+    1. Hämta enhet och fullständig kedja uppåt (SKLTP explicit/hierarkisk behörighet):
+       GET /Organization?_id=[id]
+         &_include=Organization:partof
+         &_include:iterate=Organization:partof
+    2. Hämta alla enheter under en vårdgivare (subträdssökning):
+       GET /Organization?partof=Organization/[vg-id]
+         &_revinclude=Organization:partof
+    3. Söka enhet via HSA-id (logisk adress = HSA-id i SKLTP):
        GET /Organization?hsa-id=SE2321000016-ABC1
-    Kräver stöd för _include:iterate och hsa-org-class-parameter.
+    Servern MUST stödja _include:iterate för att trädklättringen ska terminera korrekt
+    (HSACAT-ORG-015: partOf-kedjan är acyklisk och terminerar i rotnod utan partOf).
   """
 
   * resource[+]
     * type = #Organization
     * profile = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization"
-    * documentation = "Kräver: identifier[hsa-id], type[hsa-class], partOf, active. Iterativ _include för rekursiv hierarkihämtning."
+    * documentation = "Kräver: identifier[hsa-id], type[hsa-class], partOf, active. Iterativ _include för rekursiv hierarkihämtning (HSACAT-ORG-006)."
     * interaction[+].code = #read
     * interaction[+].code = #search-type
 
@@ -651,16 +667,17 @@ Description: """
     * searchParam[+]
       * name = "partof"
       * type = #reference
-      * documentation = "Trädklättring: kombinera med _include:iterate=Organization:partof."
+      * documentation = "Trädklättring: kombinera med _include:iterate=Organization:partof (HSACAT-ORG-006)."
     * searchParam[+]
       * name = "hsa-id"
       * definition = "https://hsa.inera.se/fhir/SearchParameter/hsa-id"
       * type = #token
+      * documentation = "Logisk adress = HSA-id i SKLTP TAK."
     * searchParam[+]
       * name = "hsa-org-class"
       * definition = "https://hsa.inera.se/fhir/SearchParameter/hsa-org-class"
       * type = #token
-      * documentation = "Filtrera på healthcare-provider eller healthcare-unit."
+      * documentation = "Filtrera på healthcare-provider (yttre spärr) eller healthcare-unit (inre spärr)."
 
     * searchInclude[+] = "Organization:partof"
     * searchRevInclude[+] = "Organization:partof"
@@ -677,6 +694,12 @@ Title: "HSA Klient – EHR-katalogsynk"
 Description: """
   Klientkonformansdeklaration för regionala EHR-system (t.ex. COSMIC, TakeCare)
   som synkroniserar organisationsdata från HSA till ett lokalt cache.
+
+  Täcker två användningsfall:
+  - UC-01: EHR-katalogsynk – hämta och cachelagra Organization, Location, HealthcareService
+  - UC-04: VGR Encounter.type – slå upp HealthcareService.category[verksamhetskod]
+    för en given vårdenhet vid Encounter-dokumentation
+
   Stödjer två synklägen:
   - Fullsynk: hämta alla aktiva resurser paginerat (_count)
   - Inkrementell synk: hämta resurser ändrade efter en given tidpunkt (_lastUpdated)
@@ -692,7 +715,7 @@ Description: """
 * experimental = false
 * date = "2026-05-21"
 * publisher = "Inera AB / HSA-IG projekt"
-* description = "Klientkonformans för EHR-katalogsynk (UC-01): fullsynk och inkrementell synk av HSA-organisationsdata."
+* description = "Klientkonformans för EHR-katalogsynk (UC-01) och Encounter.type-mappning (UC-04): fullsynk och inkrementell synk av HSA-organisationsdata."
 * kind = #requirements
 * fhirVersion = #5.0.0
 * format[+] = #json
@@ -700,7 +723,7 @@ Description: """
 * rest[+]
   * mode = #client
   * documentation = """
-    EHR-katalogsynk använder följande frågemönster:
+    UC-01 EHR-katalogsynk använder följande frågemönster:
     Fullsynk (nattlig):
       GET /Organization?active=true&_count=100  (+ paginering via Bundle.link[next])
       GET /Location?_count=100
@@ -710,6 +733,11 @@ Description: """
       GET /Location?_lastUpdated=gt[tidsstämpel]&_count=100
       GET /HealthcareService?_lastUpdated=gt[tidsstämpel]&_count=100
     Kräver att servern stödjer _lastUpdated och korrekt paginering (Bundle.link[next]).
+
+    UC-04 VGR Encounter.type-mappning (on-demand):
+      GET /HealthcareService?organization=Organization/[id]&service-category=[verksamhetskod]
+    Verksamhetskod (OID 1.2.752.129.2.2.1.3) är tillgänglig direkt på
+    HealthcareService.category utan transformation (ADR-011).
   """
 
   // ── Organization ─────────────────────────────────────────────────────────────
