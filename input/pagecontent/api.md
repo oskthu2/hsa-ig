@@ -25,7 +25,7 @@ för att respektive klientintegration ska fungera:
 |---|---|---|
 | [1177 Hitta vård](CapabilityStatement-hsa-client-1177-hitta-vard.html) | UC-03: Publik vårdsökning | `near` (geo), `_security` kod 03, `_revinclude` för O+L+HS |
 | [NPÖ](CapabilityStatement-hsa-client-npo.html) | UC-02: Arbetsplatskodssökning | `identifier[apk]`, `_include:iterate` (partOf-kedja) |
-| [SKLTP / Säkerhetstjänster](CapabilityStatement-hsa-client-skltp.html) | Trädklättring för åtkomstkontroll | `hsa-org-class`, `_include:iterate`, `_revinclude` |
+| [Hierarkitraversering](CapabilityStatement-hsa-client-hierarchy-traversal.html) | Trädklättring för åtkomstkontroll (SKLTP, Säkerhetstjänster) | `hsa-org-class`, `_include:iterate`, `_revinclude` |
 | [EHR-katalogsynk](CapabilityStatement-hsa-client-ehr-sync.html) | UC-01: Lokal cachesynk | `_lastUpdated` (inkrementell), `_count` (paginering) |
 
 ---
