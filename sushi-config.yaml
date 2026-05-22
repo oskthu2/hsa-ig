@@ -48,6 +48,8 @@ pages:
     title: Adressövergång
   ldap-mapping.md:
     title: LDAP → FHIR Mappning
+  downloads.md:
+    title: Nedladdningar
 
 menu:
   Hem: index.html
@@ -60,3 +62,4 @@ menu:
     Adressövergång: address-transition.html
     LDAP-mappning: ldap-mapping.html
   Artefakter: artifacts.html
+  Nedladdningar: downloads.html
