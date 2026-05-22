@@ -1,9 +1,34 @@
 # REST API
 
-HSA-IG-konforma servrar implementerar ett FHIR R5 REST-API för läsning och sökning.
-Skrivoperationer (create/update/delete) är inte i scope för v1.
+HSA-IG definierar ett FHIR R5 REST-API för läsning och sökning av katalogdata.
+Konformansdeklarationerna nedan specificerar vad servrar respektive klienter måste stödja.
 
-Fullständig serverkonformans deklareras i [CapabilityStatement-hsa-catalog-server](CapabilityStatement-hsa-catalog-server.html).
+## Konformansdeklarationer
+
+### Serverkonformans
+
+| CapabilityStatement | Syfte |
+|---|---|
+| [HSA Central Catalog Server](CapabilityStatement-hsa-catalog-server.html) | HSA:s egna källsystem – läsaccess, inga skrivoperationer |
+| [HSA Regional Catalog Server](CapabilityStatement-hsa-regional-catalog-server.html) | Regionala/lokala mellanlagringsservrar – läs + skriv + batch för LDAP-synk |
+
+Den regionala servern exponerar samma läs-API som den centrala men adderar skrivoperationer
+(create/update/delete) och transaction-buntar för att möjliggöra LDAP→FHIR-synkronisering.
+Conditional update (`PUT by identifier`) ger idempotent synk.
+
+### Klientkonformans
+
+Klientkonformansdeklarationerna dokumenterar vilka FHIR-förmågor servern måste stödja
+för att respektive klientintegration ska fungera:
+
+| CapabilityStatement | Användningsfall | Nyckelkrav |
+|---|---|---|
+| [1177 Hitta vård](CapabilityStatement-hsa-client-1177-hitta-vard.html) | UC-03: Publik vårdsökning | `near` (geo), `_security` kod 03, `_revinclude` för O+L+HS |
+| [NPÖ](CapabilityStatement-hsa-client-npo.html) | UC-02: Arbetsplatskodssökning | `identifier[apk]`, `_include:iterate` (partOf-kedja) |
+| [SKLTP / Säkerhetstjänster](CapabilityStatement-hsa-client-skltp.html) | Trädklättring för åtkomstkontroll | `hsa-org-class`, `_include:iterate`, `_revinclude` |
+| [EHR-katalogsynk](CapabilityStatement-hsa-client-ehr-sync.html) | UC-01: Lokal cachesynk | `_lastUpdated` (inkrementell), `_count` (paginering) |
+
+---
 
 ---
 
