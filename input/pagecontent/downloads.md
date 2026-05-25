@@ -26,23 +26,25 @@ Paketet innehåller alla StructureDefinition-, CodeSystem-, ValueSet-, SearchPar
 
 ## Konformansdeklarationer (CapabilityStatements)
 
-Ladda ner enskilda CapabilityStatements som FHIR JSON för konfiguration av servrar och klienter.
+CapabilityStatements i denna IG är illustrativa exempel på möjliga integrationsmönster,
+inte formellt antagna krav. De kan laddas ner som FHIR JSON och användas som
+utgångspunkt för egna implementationer.
 
-### Serverkonformans
+### Serverexempel
 
-| Artefakt | Syfte | JSON |
+| Artefakt | Illustrerar | JSON |
 |---|---|---|
-| [HSA Central Catalog Server](CapabilityStatement-hsa-catalog-server.html) | HSA:s centrala källsystem – läsaccess | [↓ JSON](CapabilityStatement-hsa-catalog-server.json) |
-| [HSA Regional Catalog Server](CapabilityStatement-hsa-regional-catalog-server.html) | Regionala/lokala mellanlagringsservrar – läs + skriv + batch | [↓ JSON](CapabilityStatement-hsa-regional-catalog-server.json) |
+| [HSA Central Catalog Server](CapabilityStatement-hsa-catalog-server.html) | Möjligt centralt källsystem med läsaccess | [↓ JSON](CapabilityStatement-hsa-catalog-server.json) |
+| [HSA Regional Catalog Server](CapabilityStatement-hsa-regional-catalog-server.html) | Hypotetiskt regionalt mellanlager med läs- och skrivsupport | [↓ JSON](CapabilityStatement-hsa-regional-catalog-server.json) |
 
-### Klientkonformans
+### Klientexempel
 
-| Artefakt | Täcker | JSON |
+| Artefakt | Illustrerar | JSON |
 |---|---|---|
-| [1177 Hitta vård](CapabilityStatement-hsa-client-1177-hitta-vard.html) | UC-03: Publik vårdsökning, geo-sökning, öppettider | [↓ JSON](CapabilityStatement-hsa-client-1177-hitta-vard.json) |
-| [NPÖ](CapabilityStatement-hsa-client-npo.html) | UC-02: Arbetsplatskodssökning, partOf-kedja | [↓ JSON](CapabilityStatement-hsa-client-npo.json) |
-| [Hierarkitraversering](CapabilityStatement-hsa-client-hierarchy-traversal.html) | SKLTP/Säkerhetstjänster – trädklättring (v1) | [↓ JSON](CapabilityStatement-hsa-client-hierarchy-traversal.json) |
-| [EHR-katalogsynk](CapabilityStatement-hsa-client-ehr-sync.html) | UC-01 + UC-04: Katalogsynk, Encounter.type-mappning | [↓ JSON](CapabilityStatement-hsa-client-ehr-sync.json) |
+| [1177 Hitta vård](CapabilityStatement-hsa-client-1177-hitta-vard.html) | UC-03: Möjliga förmågor för publik vårdsökning och geo-sökning | [↓ JSON](CapabilityStatement-hsa-client-1177-hitta-vard.json) |
+| [NPÖ](CapabilityStatement-hsa-client-npo.html) | UC-02: Möjliga förmågor för arbetsplatskodssökning och hierarki | [↓ JSON](CapabilityStatement-hsa-client-npo.json) |
+| [Hierarkitraversering](CapabilityStatement-hsa-client-hierarchy-traversal.html) | Möjliga förmågor för SKLTP-liknande trädklättring (v1) | [↓ JSON](CapabilityStatement-hsa-client-hierarchy-traversal.json) |
+| [EHR-katalogsynk](CapabilityStatement-hsa-client-ehr-sync.html) | UC-01 + UC-04: Möjliga förmågor för katalogsynk och Encounter.type | [↓ JSON](CapabilityStatement-hsa-client-ehr-sync.json) |
 
 ---
 

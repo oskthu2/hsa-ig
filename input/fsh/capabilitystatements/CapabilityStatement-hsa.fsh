@@ -1,16 +1,22 @@
 // ─── HSA CapabilityStatements ─────────────────────────────────────────────────
-// Två serverkonformansdeklarationer:
-//   1. hsa-central-catalog-server  – HSA:s egna källsystem (läsaccess)
-//   2. hsa-regional-catalog-server – Regionala mellanlagringsservrar (läs + skriv)
+// Dessa deklarationer är exempel på hur ett HSA FHIR-API kan se ut.
+// De är inte formellt antagna krav och HSA har inga beslutade planer
+// på att implementera detta gränssnitt. Deklarationerna illustrerar
+// möjliga integrationsmönster och kan användas som utgångspunkt för
+// diskussion och vidare specifikation.
 //
-// Fyra klientkonformansdeklarationer (beskriver vad klienten förväntar sig av servern):
-//   3. hsa-client-1177-hitta-vard  – 1177 Hitta vård (geo-sökning, publik filtrering)
-//   4. hsa-client-npo              – Nationell Patientöversikt (arbetsplatskod, hierarki)
-//   5. hsa-client-hierarchy-traversal – Hierarkitraversering (SKLTP/Säkerhetstjänster, v1-scope)
-//   6. hsa-client-ehr-sync         – EHR-katalogsynk (batchhämtning, inkrementell synk)
+// Två serverexempel:
+//   1. hsa-central-catalog-server  – möjligt centralt källsystem (läsaccess)
+//   2. hsa-regional-catalog-server – möjligt regionalt mellanlager (en hypotes)
+//
+// Fyra klientexempel (illustrerar vilka FHIR-förmågor respektive scenario kan använda):
+//   3. hsa-client-1177-hitta-vard  – 1177 Hitta vård
+//   4. hsa-client-npo              – Nationell Patientöversikt
+//   5. hsa-client-hierarchy-traversal – Hierarkitraversering
+//   6. hsa-client-ehr-sync         – EHR-katalogsynk
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// 1. HSA Central Catalog Server – källsystem, läsaccess
+// 1. HSA Central Catalog Server – exempel på centralt källsystem med läsaccess
 // ═══════════════════════════════════════════════════════════════════════════════
 
 Instance: CapabilityStatement-hsa-catalog-server
@@ -18,9 +24,11 @@ InstanceOf: CapabilityStatement
 Usage: #definition
 Title: "HSA Central Catalog Server"
 Description: """
-  Konformansdeklaration för HSA:s centrala källsystem.
-  Exponerar organisationer, platser och vårdtjänster ur HSA-katalogen som FHIR R5-resurser.
-  Skrivoperationer (create/update/delete) är inte i scope – data tas emot via LDAP-synk internt.
+  Exempel på hur ett centralt HSA-källsystem kan exponera organisationer, platser
+  och vårdtjänster som FHIR R5-resurser med läsaccess.
+  I detta mönster hanteras datainläsning internt (t.ex. via LDAP) och FHIR-gränssnittet
+  används enbart för läsning och sökning av katalogdata.
+  Detta är ett möjligt upplägg, inte ett beslutat krav.
 """
 
 * id = "hsa-catalog-server"
@@ -32,7 +40,7 @@ Description: """
 * experimental = false
 * date = "2026-05-21"
 * publisher = "Inera AB / HSA-IG projekt"
-* description = "Serverkonformans för HSA-katalog FHIR R5 API – centralt källsystem."
+* description = "Exempel på serverförmågor för ett centralt HSA-katalog FHIR R5 API med läsaccess."
 * kind = #requirements
 * fhirVersion = #5.0.0
 * format[+] = #json
@@ -148,7 +156,7 @@ Description: """
     * searchParam[+]
       * name = "near"
       * type = #special
-      * documentation = "Geo-sökning (position.latitude/longitude). Kräver koordinatstöd på servern."
+      * documentation = "Geo-sökning (position.latitude/longitude). Förutsätter koordinatstöd på servern."
     * searchParam[+]
       * name = "hsa-id"
       * definition = "https://hsa.inera.se/fhir/SearchParameter/hsa-id"
@@ -209,31 +217,37 @@ Description: """
 
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// 2. HSA Regional Catalog Server – mellanlagringsserver (läs + skriv)
+// 2. HSA Regional Catalog Server – hypotes: regionalt mellanlager med läs + skriv
 // ═══════════════════════════════════════════════════════════════════════════════
 
 Instance: CapabilityStatement-hsa-regional-catalog-server
 InstanceOf: CapabilityStatement
 Usage: #definition
-Title: "HSA Regional Catalog Server"
+Title: "HSA Regional Catalog Server (hypotes)"
 Description: """
-  Konformansdeklaration för regionala och lokala mellanlagringsservrar.
-  Dessa servrar speglar HSA-data lokalt för att förbättra svarstider och tillgänglighet.
-  Data kan ha laddats via LDAP-synk (ej FHIR) och exponeras sedan som FHIR R5.
-  Till skillnad från det centrala HSA-systemet stöder dessa servrar skrivoperationer
-  (create, update, delete) och transaktionsbuntar för bulkuppdatering.
+  Illustrerar ett möjligt mönster för regionala och lokala system som vill
+  spegla HSA-data lokalt för förbättrade svarstider och lokal tillgänglighet.
+
+  Detta är en hypotes, inte ett beslutad arkitektur. Det är oklart om regionerna
+  vill använda detta mönster, och om de gör det kan de ha andra krav på hur
+  datainläsning ska fungera.
+
+  En möjlig utformning: data läses in från LDAP och exponeras som FHIR R5.
+  Skrivoperationer (create, update, delete) och transaktionsbuntar kan underlätta
+  synkronisering, men hur det faktiskt ska fungera bör beslutas i dialog med
+  berörda regioner.
 """
 
 * id = "hsa-regional-catalog-server"
 * url = "https://hsa.inera.se/fhir/CapabilityStatement/hsa-regional-catalog-server"
 * version = "0.1.0"
 * name = "HsaRegionalCatalogServer"
-* title = "HSA Regional Catalog Server"
+* title = "HSA Regional Catalog Server (hypotes)"
 * status = #draft
-* experimental = false
+* experimental = true
 * date = "2026-05-21"
 * publisher = "Inera AB / HSA-IG projekt"
-* description = "Serverkonformans för regionala/lokala HSA-mellanlagringsservrar med stöd för LDAP-synkronisering."
+* description = "Hypotetiskt exempel på ett regionalt/lokalt mellanlager för HSA-data med stöd för både läsning och skrivning."
 * kind = #requirements
 * fhirVersion = #5.0.0
 * format[+] = #json
@@ -242,15 +256,16 @@ Description: """
 * rest[+]
   * mode = #server
   * documentation = """
-    Läs- och sök-API kompatibelt med det centrala HSA-systemet, kompletterat med
-    skrivoperationer för LDAP-baserad datainläsning.
-    Stödjer transaction-buntar för atomär bulkuppdatering vid LDAP-synkronisering.
-    Conditional update (PUT by identifier) möjliggör idempotent LDAP→FHIR-synk.
+    En möjlig utformning kombinerar läs-API:et från det centrala exemplet med
+    skrivoperationer för att möjliggöra datainläsning från LDAP eller andra källor.
+    Transaktionsbuntar kan användas för bulkuppdatering och conditional update
+    (PUT by identifier) kan möjliggöra idempotent LDAP→FHIR-synkronisering.
+    Hur detta faktiskt ska fungera i regionala system är en öppen fråga.
   """
 
   * interaction[+]
     * code = #transaction
-    * documentation = "Stöd för transaction-buntar för atomär bulkuppdatering (LDAP-synk)."
+    * documentation = "Transaction-buntar kan möjliggöra atomär bulkuppdatering vid LDAP-synkronisering."
   * interaction[+]
     * code = #batch
     * documentation = "Stöd för batchbuntar för icke-atomär bulkläsning/-skrivning."
@@ -419,10 +434,10 @@ InstanceOf: CapabilityStatement
 Usage: #definition
 Title: "HSA Klient – 1177 Hitta vård"
 Description: """
-  Klientkonformansdeklaration för 1177 Hitta vård.
-  Dokumenterar vilka FHIR-förmågor servern måste stödja för att 1177-integrationen ska fungera.
-  Nyckelkrav: geo-sökning (near), publik filtrering (_security kod 03), hämtning av
-  Organization + Location + HealthcareService i ett anrop via _include/_revinclude.
+  Illustrerar vilka FHIR-förmågor ett system för publik vårdsökning (t.ex. 1177 Hitta vård)
+  kan ha nytta av. Exemplet visar möjliga frågemönster för geo-sökning, publik filtrering
+  och hämtning av Organization, Location och HealthcareService.
+  Detta är ett illustrativt exempel på hur ett sådant scenario kan se ut.
 """
 
 * id = "hsa-client-1177-hitta-vard"
@@ -434,7 +449,7 @@ Description: """
 * experimental = false
 * date = "2026-05-21"
 * publisher = "Inera AB / HSA-IG projekt"
-* description = "Klientkonformans för 1177 Hitta vård (UC-03): geo-sökning, publik filtrering, visning av öppettider och kontaktuppgifter."
+* description = "Illustrativt exempel för 1177 Hitta vård (UC-03): möjliga FHIR-förmågor för geo-sökning, publik filtrering och visning av öppettider."
 * kind = #requirements
 * fhirVersion = #5.0.0
 * format[+] = #json
@@ -454,7 +469,7 @@ Description: """
   * resource[+]
     * type = #Organization
     * profile = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization"
-    * documentation = "Hämtar och visar vårdgivare/vårdenheter. Kräver name, type, active, contact.telecom, contact.address, meta.security."
+    * documentation = "Hämtar och visar vårdgivare/vårdenheter. Relevanta fält: name, type, active, contact.telecom, contact.address, meta.security."
     * interaction[+].code = #read
     * interaction[+].code = #search-type
 
@@ -485,7 +500,7 @@ Description: """
   * resource[+]
     * type = #Location
     * profile = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"
-    * documentation = "Geo-sökning och kartvisning. Kräver position (SWEREF99), address (fysisk, utan postnummer), description (vägbeskrivning)."
+    * documentation = "Geo-sökning och kartvisning. Använder position (SWEREF99), address (fysisk, utan postnummer), description (vägbeskrivning)."
     * interaction[+].code = #read
     * interaction[+].code = #search-type
 
@@ -506,7 +521,7 @@ Description: """
   * resource[+]
     * type = #HealthcareService
     * profile = "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service"
-    * documentation = "Öppettider, verksamhetskod och VPW-texter (Om oss, information till patient, tillfällig info). Kräver availability, category[verksamhetskod], comment, extension[temporaryNotice], extension[patientInfo]."
+    * documentation = "Öppettider, verksamhetskod och VPW-texter (Om oss, information till patient, tillfällig info). Använder availability, category[verksamhetskod], comment, extension[temporaryNotice], extension[patientInfo]."
     * interaction[+].code = #read
     * interaction[+].code = #search-type
 
@@ -534,10 +549,9 @@ InstanceOf: CapabilityStatement
 Usage: #definition
 Title: "HSA Klient – Nationell Patientöversikt (NPÖ)"
 Description: """
-  Klientkonformansdeklaration för NPÖ.
-  NPÖ slår upp vårdenhet via arbetsplatskod (APK) och traverserar partOf-kedjan
-  uppåt för att fastställa vilken vårdgivare som ansvarar.
-  Nyckelkrav: sökning på identifier[apk], _include:iterate för hierarkihämtning.
+  Illustrerar vilka FHIR-förmågor ett NPÖ-liknande scenario kan ha nytta av.
+  Exemplet visar hur en vårdenhet kan slås upp via arbetsplatskod (APK) och hur
+  partOf-kedjan kan traverseras uppåt för att fastställa ansvarig vårdgivare.
 """
 
 * id = "hsa-client-npo"
@@ -549,7 +563,7 @@ Description: """
 * experimental = false
 * date = "2026-05-21"
 * publisher = "Inera AB / HSA-IG projekt"
-* description = "Klientkonformans för NPÖ (UC-02): arbetsplatskodssökning och hierarkihämtning."
+* description = "Illustrativt exempel för NPÖ (UC-02): möjliga förmågor för arbetsplatskodssökning och hierarkihämtning."
 * kind = #requirements
 * fhirVersion = #5.0.0
 * format[+] = #json
@@ -562,13 +576,13 @@ Description: """
        GET /Organization?identifier=urn:oid:1.2.752.29.4.71|[apk-kod]
     2. Hämta partOf-kedja uppåt:
        GET /Organization?_id=[id]&_include=Organization:partof&_include:iterate=Organization:partof
-    Kräver att servern stödjer _include:iterate (rekursiv hierarkihämtning).
+    Scenariot förutsätter att servern har stöd för _include:iterate (rekursiv hierarkihämtning).
   """
 
   * resource[+]
     * type = #Organization
     * profile = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization"
-    * documentation = "Kräver: identifier[apk] (OID 1.2.752.29.4.71), identifier[hsa-id], partOf, active. Iterativ _include för fullständig partOf-kedja."
+    * documentation = "Använder identifier[apk] (OID 1.2.752.29.4.71), identifier[hsa-id], partOf, active. Iterativ _include för fullständig partOf-kedja."
     * interaction[+].code = #read
     * interaction[+].code = #search-type
 
@@ -613,11 +627,11 @@ Description: """
   - Säkerhetstjänster: prövning av SJF-behörighet längs partOf-kedjan
 
   OBS: Full SKLTP TAK-integration (Endpoint-resurs, logisk adressering) är planerad
-  för v2 och täcks inte av denna IG. Denna deklaration gäller enbart
-  Organization.partOf-traversering som stöds i v1.
+  för v2 och täcks inte av denna IG. Det här exemplet illustrerar enbart
+  Organization.partOf-traversering.
 
-  Nyckelkrav (HSACAT-ORG-006): servern SHALL stödja _include:iterate=Organization:partof
-  så att hela hierarkin kan hämtas i ett anrop.
+  För att scenariot ska fungera behöver servern ha stöd för _include:iterate=Organization:partof
+  så att hela hierarkin kan hämtas i ett anrop (se HSACAT-ORG-006).
 """
 
 * id = "hsa-client-hierarchy-traversal"
@@ -629,7 +643,7 @@ Description: """
 * experimental = false
 * date = "2026-05-21"
 * publisher = "Inera AB / HSA-IG projekt"
-* description = "Klientkonformans för hierarkitraversering via Organization.partOf (HSACAT-ORG-006/015). Täcker SKLTP-trädklättring i v1; full Endpoint-profilering planeras till v2."
+* description = "Illustrativt exempel för hierarkitraversering via Organization.partOf. Visar möjliga frågemönster för SKLTP-liknande trädklättring; full Endpoint-profilering planeras till v2."
 * kind = #requirements
 * fhirVersion = #5.0.0
 * format[+] = #json
@@ -647,14 +661,15 @@ Description: """
          &_revinclude=Organization:partof
     3. Söka enhet via HSA-id (logisk adress = HSA-id i SKLTP):
        GET /Organization?hsa-id=SE2321000016-ABC1
-    Servern MUST stödja _include:iterate för att trädklättringen ska terminera korrekt
-    (HSACAT-ORG-015: partOf-kedjan är acyklisk och terminerar i rotnod utan partOf).
+    Scenariot förutsätter att servern har stöd för _include:iterate så att trädklättringen
+    kan terminera korrekt (partOf-kedjan är acyklisk och terminerar i rotnod utan partOf,
+    se HSACAT-ORG-015).
   """
 
   * resource[+]
     * type = #Organization
     * profile = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization"
-    * documentation = "Kräver: identifier[hsa-id], type[hsa-class], partOf, active. Iterativ _include för rekursiv hierarkihämtning (HSACAT-ORG-006)."
+    * documentation = "Använder identifier[hsa-id], type[hsa-class], partOf, active. Iterativ _include möjliggör rekursiv hierarkihämtning (HSACAT-ORG-006)."
     * interaction[+].code = #read
     * interaction[+].code = #search-type
 
@@ -703,7 +718,7 @@ Description: """
   Stödjer två synklägen:
   - Fullsynk: hämta alla aktiva resurser paginerat (_count)
   - Inkrementell synk: hämta resurser ändrade efter en given tidpunkt (_lastUpdated)
-  Nyckelkrav: _lastUpdated, _count (paginering), alla tre resurstyper.
+  Nyckelaspekter: _lastUpdated för inkrementell synk, _count för paginering, alla tre resurstyper.
 """
 
 * id = "hsa-client-ehr-sync"
@@ -715,7 +730,7 @@ Description: """
 * experimental = false
 * date = "2026-05-21"
 * publisher = "Inera AB / HSA-IG projekt"
-* description = "Klientkonformans för EHR-katalogsynk (UC-01) och Encounter.type-mappning (UC-04): fullsynk och inkrementell synk av HSA-organisationsdata."
+* description = "Illustrativt exempel för EHR-katalogsynk (UC-01) och Encounter.type-mappning (UC-04): möjliga förmågor för fullsynk och inkrementell synk av HSA-organisationsdata."
 * kind = #requirements
 * fhirVersion = #5.0.0
 * format[+] = #json
@@ -732,7 +747,7 @@ Description: """
       GET /Organization?_lastUpdated=gt[tidsstämpel]&_count=100
       GET /Location?_lastUpdated=gt[tidsstämpel]&_count=100
       GET /HealthcareService?_lastUpdated=gt[tidsstämpel]&_count=100
-    Kräver att servern stödjer _lastUpdated och korrekt paginering (Bundle.link[next]).
+    Scenariot förutsätter att servern har stöd för _lastUpdated och korrekt paginering (Bundle.link[next]).
 
     UC-04 VGR Encounter.type-mappning (on-demand):
       GET /HealthcareService?organization=Organization/[id]&service-category=[verksamhetskod]
@@ -744,14 +759,14 @@ Description: """
   * resource[+]
     * type = #Organization
     * profile = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization"
-    * documentation = "Kräver alla profilerade fält: identifier (hsa-id, org-no, apk), name, type, active, contact, partOf, meta.security."
+    * documentation = "Använder alla profilerade fält: identifier (hsa-id, org-no, apk), name, type, active, contact, partOf, meta.security."
     * interaction[+].code = #read
     * interaction[+].code = #search-type
 
     * searchParam[+]
       * name = "_lastUpdated"
       * type = #date
-      * documentation = "Nödvändigt för inkrementell synk."
+      * documentation = "Möjliggör inkrementell synk baserat på ändringstidpunkt."
     * searchParam[+]
       * name = "active"
       * type = #token
@@ -769,7 +784,7 @@ Description: """
   * resource[+]
     * type = #Location
     * profile = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"
-    * documentation = "Kräver: address (fysisk), position (SWEREF99), managingOrganization. Synkroniseras parallellt med Organization."
+    * documentation = "Använder address (fysisk), position (SWEREF99), managingOrganization. Synkroniseras parallellt med Organization."
     * interaction[+].code = #read
     * interaction[+].code = #search-type
 
@@ -784,7 +799,7 @@ Description: """
   * resource[+]
     * type = #HealthcareService
     * profile = "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service"
-    * documentation = "Kräver: category[verksamhetskod], availability (öppettider), providedBy. Synkroniseras för Encounter.type-mappning (UC-04)."
+    * documentation = "Använder category[verksamhetskod], availability (öppettider), providedBy. Synkroniseras för möjlig Encounter.type-mappning (UC-04)."
     * interaction[+].code = #read
     * interaction[+].code = #search-type
 
