@@ -1,7 +1,7 @@
 # REST API
 
-HSA-IG definierar ett FHIR R5 REST-API för läsning och sökning av katalogdata.
-Konformansdeklarationerna nedan specificerar vad servrar respektive klienter måste stödja.
+HSA-IG beskriver ett möjligt FHIR R5 REST-API för läsning och sökning av katalogdata.
+Konformansdeklarationerna nedan är illustrativa exempel på vilka förmågor olika servertyper och klienter kan ha.
 
 ## Konformansdeklarationer
 
@@ -18,8 +18,7 @@ Conditional update (`PUT by identifier`) ger idempotent synk.
 
 ### Klientkonformans
 
-Klientkonformansdeklarationerna dokumenterar vilka FHIR-förmågor servern måste stödja
-för att respektive klientintegration ska fungera:
+Klientexemplen illustrerar vilka FHIR-förmågor respektive integrationsscenario kan ha nytta av:
 
 | CapabilityStatement | Användningsfall | Nyckelkrav |
 |---|---|---|

@@ -54,7 +54,7 @@ Flöde: `Encounter.serviceType → HealthcareService.category[verksamhetskod]`
 
 Verksamhetskod (OID `1.2.752.129.2.2.1.3`) modelleras på `HealthcareService.category` (ADR-011) vilket gör den direkt tillgänglig utan transformation. On-demand-anrop: `GET /HealthcareService?organization=Organization/[id]`.
 
-Detta scenario täcks av [CapabilityStatement-hsa-client-ehr-sync](CapabilityStatement-hsa-client-ehr-sync.html) som redan kräver `service-category`-sökning och `HealthcareService`-synk.
+Se [CapabilityStatement-hsa-client-ehr-sync](CapabilityStatement-hsa-client-ehr-sync.html) för ett exempel på hur detta scenario kan lösas med `service-category`-sökning och `HealthcareService`-synk.
 
 ---
 
@@ -70,5 +70,5 @@ Detta är en stödfunktion som används av flera system ovan, inte ett eget verk
 ## Ej täckt i version 1
 
 - **Tjänsteadressering (SKLTP TAK):** Endpoint-resursen och logisk adressering för tjänstekontrakt är planerad för v2. Observera att `Organization.partOf`-traversering *för åtkomstkontroll* stöds i v1 (se Hierarkitraversering ovan).
-- **Person och uppdrag:** Practitioner/PractitionerRole ingår inte — persondata kräver åtkomstkydd utöver katalogscope (ADR-007).
+- **Person och uppdrag:** Practitioner/PractitionerRole ingår inte — persondata förutsätter åtkomstkydd utöver katalogscope (ADR-007).
 - **IAM/behörighetstilldelning:** Åtkomstkontrollslogik modelleras inte; IG:n stödjer enbart katalog-infrastrukturen för trädklättring (ADR-002).
