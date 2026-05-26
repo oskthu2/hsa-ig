@@ -10,8 +10,22 @@ Description: """
   Profil för organisation markerad som vårdgivare (hsaHealthCareProvider,
   OID 1.2.752.29.6.10) i HSA-katalogen.
 
-  Representerar yttre spärrnivå i PDL-sammanhang.
-  Ska ha organisationsnummer (HSACAT-ORG-007).
+  Representerar den yttre spärrnivån i PDL-sammanhang. Alla vårdenheter
+  under en vårdgivare delar journalspärr på VG-nivå — det är därför
+  `partOf` på vårdenhetsprofilen alltid pekar direkt hit.
+
+  **Identifierare (minimum 2):**
+  Profilen kräver alltid *både* HSA-id och organisationsnummer:
+  - `identifier[hsa-id]` (1..1) — systemgenererat, unikt inom HSA.
+  - `identifier[org-no]` (1..1) — juridisk identitet; krävs av NPÖ och
+    PDL-infrastrukturen för att koppla journaler till rätt VG (HSACAT-ORG-007).
+  - `identifier[apk]` (0..0) — arbetsplatskod är alltid en vårdenhetskod
+    (unitPrescriptionCode i LDAP-schemat) och får aldrig sättas på VG.
+  - `identifier[gln]` (0..1) — förekommer på VG som har GLN-registrering.
+
+  **Must Support:** Alla MS-flaggor ärvs från `HsaCatalogOrganization` och
+  visas i snapshot-vyn. Denna profil deklarerar enbart restriktioner som
+  tillkommer utöver basprofilens definition.
 """
 * ^url = "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-provider-organization"
 * ^version = "0.1.0"
@@ -19,6 +33,9 @@ Description: """
 
 // Organisationsnummer är obligatoriskt för vårdgivare (HSACAT-ORG-007)
 * identifier[org-no] 1..1
+
+// APK (unitPrescriptionCode) tilldelas per vårdenhet i LDAP-schemat — aldrig på VG-nivå.
+* identifier[apk] 0..0
 
 // Typ ska vara healthcare-provider
 * type[hsa-class].coding.code = #healthcare-provider (exactly)

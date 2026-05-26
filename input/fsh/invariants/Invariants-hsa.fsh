@@ -55,3 +55,13 @@ Invariant: hsacat-public-org-telecom
 Description: "En publik organisation (destination indicator 03) SHALL ha direkttelefon."
 Severity: #error
 Expression: "meta.security.where(system = 'urn:oid:1.2.752.29.23.1.11' and code = '03').exists() implies contact.telecom.where(system = 'phone').exists()"
+
+Invariant: hsacat-inactive-not-public
+Description: "En inaktiv organisation (active = false) får inte ha destinationIndicator 03 (publik synlighet)."
+Severity: #error
+Expression: "active = false implies meta.security.where(system = 'urn:oid:1.2.752.29.23.1.11' and code = '03').exists().not()"
+
+Invariant: hsacat-temporary-notice-requires-period
+Description: "Om temporaryNotice (hsaVpwInformation2) är satt bör organization-period också vara satt — klienter förlitar sig på period.end för att veta när den gula informationsrutan ska döljas."
+Severity: #warning
+Expression: "extension.where(url = 'https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-notice').exists() implies extension.where(url = 'http://hl7.org/fhir/StructureDefinition/organization-period').exists()"
