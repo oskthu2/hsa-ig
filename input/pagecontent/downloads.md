@@ -104,14 +104,38 @@ utgångspunkt för egna implementationer.
 
 ## Exempelinstanser
 
-Exempel för validering och integrationstestning.
+Exempelbiblioteket täcker ett komplett organisationsträd för Region Blekinge och Blekinge Primärvård AB.
+Varje instans innehåller LDIF-källdata och mappningskommentarer som förklarar översättningen till FHIR.
 
-| Instans | Profil | JSON |
+### Vårdgivare (HsaHealthcareProviderOrganization)
+
+| Instans | Visar | JSON |
 |---|---|---|
-| [VardgivareExample](Organization-VardgivareExample.html) | HsaHealthcareProviderOrganization | [↓ JSON](Organization-VardgivareExample.json) |
-| [VardenhetExample](Organization-VardenhetExample.html) | HsaHealthcareUnitOrganization | [↓ JSON](Organization-VardenhetExample.json) |
-| [LocationExample](Location-LocationExample.html) | HsaCatalogLocation | [↓ JSON](Location-LocationExample.json) |
-| [HealthcareServiceExample](HealthcareService-HealthcareServiceExample.html) | HsaHealthcareService | [↓ JSON](HealthcareService-HealthcareServiceExample.json) |
+| [Region Blekinge](Organization-region-blekinge-vardgivare.html) | Offentlig regional VG, management=01, GLN, legacy postadress | [↓ JSON](Organization-region-blekinge-vardgivare.json) |
+| [Blekinge Primärvård AB](Organization-privat-vardgivare-ab.html) | Privat VG, management=05, separat direkttelefon/växel | [↓ JSON](Organization-privat-vardgivare-ab.json) |
+
+### Vårdenheter (HsaHealthcareUnitOrganization)
+
+| Instans | Visar | JSON |
+|---|---|---|
+| [Blekingesjukhuset](Organization-blekingesjukhuset-vardenhet.html) | Sjukhus, APK, GLN, alla telekomtyper inkl. mobiltelefon och 1177-djuplänk | [↓ JSON](Organization-blekingesjukhuset-vardenhet.json) |
+| [Hjärtmottagningen Karlskrona](Organization-hjartmottagningen-vardenhet.html) | orgPeriod (start+end), temporaryNotice, patientInfo, DN-träd vs. partOf | [↓ JSON](Organization-hjartmottagningen-vardenhet.json) |
+| [Ronneby Vårdcentral](Organization-ronneby-vardcentral-vardenhet.html) | Primärvård, financingOrganization (privat utförare, regionfinansiering), APK | [↓ JSON](Organization-ronneby-vardcentral-vardenhet.json) |
+| [Medicinmottagning Karlshamn](Organization-arkiverad-enhet.html) | Arkiverad enhet, active=false, hsaArchivedObject, minimal datauppsättning | [↓ JSON](Organization-arkiverad-enhet.json) |
+
+### Platser (HsaCatalogLocation)
+
+| Instans | Visar | JSON |
+|---|---|---|
+| [Blekingesjukhuset besöksplats](Location-location-blekingesjukhuset.html) | Strukturerad 5.2+ hsaVisitingAddress → address.line[], SWEREF99, Markdown-vägbeskrivning | [↓ JSON](Location-location-blekingesjukhuset.json) |
+| [Ronneby Vårdcentral besöksplats](Location-location-ronneby-vardcentral.html) | Legacy streetAddress → address.text (pre-5.2 övergångsmönster) | [↓ JSON](Location-location-ronneby-vardcentral.json) |
+
+### Tjänsteutbud (HsaHealthcareService)
+
+| Instans | Visar | JSON |
+|---|---|---|
+| [Blekingesjukhuset tjänster](HealthcareService-hs-tjanst-blekingesjukhuset.html) | Flera verksamhetskoder (1101+1126), öppen+sluten vård, telefontider och drop-in | [↓ JSON](HealthcareService-hs-tjanst-blekingesjukhuset.json) |
+| [Ronneby Vårdcentral tjänster](HealthcareService-hs-tjanst-ronneby-vardcentral.html) | Alla tre VPW-fält (comment/temporaryNotice/patientInfo), tre availability-block | [↓ JSON](HealthcareService-hs-tjanst-ronneby-vardcentral.json) |
 
 ---
 
