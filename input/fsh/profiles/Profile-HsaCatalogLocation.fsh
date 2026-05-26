@@ -92,7 +92,7 @@ Description: """
   (Uppsala-regel; postnummer hör till postadress på Organization).
 """
 * address.type = #physical (exactly)
-* address.line 1..* MS
+* address.line 0..* MS
 * address.city 1..1 MS
 * address.postalCode 0..0   // Besöksadress ska aldrig ha postnummer
 
