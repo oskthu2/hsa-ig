@@ -20,6 +20,9 @@ Description: """
 // Organisationsnummer är obligatoriskt för vårdgivare (HSACAT-ORG-007)
 * identifier[org-no] 1..1
 
+// APK (unitPrescriptionCode) tilldelas per vårdenhet i LDAP-schemat — aldrig på VG-nivå.
+* identifier[apk] 0..0
+
 // Typ ska vara healthcare-provider
 * type[hsa-class].coding.code = #healthcare-provider (exactly)
 * type[hsa-class] 1..1

@@ -40,6 +40,8 @@ Description: """
 * obeys hsacat-provider-orgno
 * obeys hsacat-public-org-telecom
 * obeys hsacat-org-period-end
+* obeys hsacat-inactive-not-public
+* obeys hsacat-temporary-notice-requires-period
 
 // ── Extensions ───────────────────────────────────────────────────────────────
 * extension contains
