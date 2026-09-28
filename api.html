@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>REST API - HSA Katalog Implementation Guide v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"6"}
+    h3,h4,h5,h6{--heading-prefix:"6"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">HSA Katalog Implementation Guide</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="Sweden flag" src="assets/images/swe.svg" height="16" title="Sweden"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R5/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Hem</a>
+  </li>
+  <li>
+    <a href="profiles.html">Profiler</a>
+  </li>
+  <li>
+    <a href="terminology.html">Terminologi</a>
+  </li>
+  <li>
+    <a href="api.html">API</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Vägledning
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="client-rendering.html">Klientrendering</a>
+      </li>
+      <li>
+        <a href="organization-hierarchy.html">Organisationshierarki</a>
+      </li>
+      <li>
+        <a href="address-transition.html">Adressövergång</a>
+      </li>
+      <li>
+        <a href="ldap-mapping.html">LDAP-mappning</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artefakter</a>
+  </li>
+  <li>
+    <a href="downloads.html">Nedladdningar</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>REST API</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">HSA Katalog Implementation Guide - Lokal utvecklingsbygge (v0.1.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://hsa.inera.se/fhir/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <h2>REST API</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#rest-api" id="markdown-toc-rest-api">REST API</a>    <ul>
+      <li><a href="#konformansdeklarationer" id="markdown-toc-konformansdeklarationer">Konformansdeklarationer</a>        <ul>
+          <li><a href="#serverkonformans" id="markdown-toc-serverkonformans">Serverkonformans</a></li>
+          <li><a href="#klientkonformans" id="markdown-toc-klientkonformans">Klientkonformans</a></li>
+        </ul>
+      </li>
+      <li><a href="#sökparametrar" id="markdown-toc-sökparametrar">Sökparametrar</a>        <ul>
+          <li><a href="#standard-fhir-parametrar-gäller-alla-resurser" id="markdown-toc-standard-fhir-parametrar-gäller-alla-resurser">Standard FHIR-parametrar (gäller alla resurser)</a></li>
+          <li><a href="#organization" id="markdown-toc-organization">Organization</a></li>
+          <li><a href="#location" id="markdown-toc-location">Location</a></li>
+          <li><a href="#healthcareservice" id="markdown-toc-healthcareservice">HealthcareService</a></li>
+        </ul>
+      </li>
+      <li><a href="#typiska-frågemönster" id="markdown-toc-typiska-frågemönster">Typiska frågemönster</a>        <ul>
+          <li><a href="#hämta-publik-vårdenhet-med-plats-och-tjänst" id="markdown-toc-hämta-publik-vårdenhet-med-plats-och-tjänst">Hämta publik vårdenhet med plats och tjänst</a></li>
+          <li><a href="#hämta-enhet-via-hsa-id" id="markdown-toc-hämta-enhet-via-hsa-id">Hämta enhet via HSA-id</a></li>
+          <li><a href="#trädklättring-hämta-hela-partof-kedjan-uppåt" id="markdown-toc-trädklättring-hämta-hela-partof-kedjan-uppåt">Trädklättring: hämta hela partOf-kedjan uppåt</a></li>
+          <li><a href="#hitta-alla-enheter-under-en-vårdgivare" id="markdown-toc-hitta-alla-enheter-under-en-vårdgivare">Hitta alla enheter under en vårdgivare</a></li>
+          <li><a href="#npö-slå-upp-vårdenhet-via-arbetsplatskod" id="markdown-toc-npö-slå-upp-vårdenhet-via-arbetsplatskod">NPÖ: slå upp vårdenhet via arbetsplatskod</a></li>
+          <li><a href="#1177-hitta-vård-publika-vårdcentraler-inom-ett-geografiskt-område" id="markdown-toc-1177-hitta-vård-publika-vårdcentraler-inom-ett-geografiskt-område">1177 Hitta vård: publika vårdcentraler inom ett geografiskt område</a></li>
+        </ul>
+      </li>
+      <li><a href="#felsvar" id="markdown-toc-felsvar">Felsvar</a></li>
+      <li><a href="#paginering" id="markdown-toc-paginering">Paginering</a></li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+<h1 id="rest-api">REST API</h1>
+
+<p>HSA-IG beskriver ett möjligt FHIR R5 REST-API för läsning och sökning av katalogdata.
+Konformansdeklarationerna nedan är illustrativa exempel på vilka förmågor olika servertyper och klienter kan ha.</p>
+
+<h2 id="konformansdeklarationer">Konformansdeklarationer</h2>
+
+<h3 id="serverkonformans">Serverkonformans</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>CapabilityStatement</th>
+      <th>Syfte</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-catalog-server.html">HSA Central Catalog Server</a></td>
+      <td>HSA:s egna källsystem – läsaccess, inga skrivoperationer</td>
+    </tr>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-regional-catalog-server.html">HSA Regional Catalog Server</a></td>
+      <td>Regionala/lokala mellanlagringsservrar – läs + skriv + batch för LDAP-synk</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Den regionala servern exponerar samma läs-API som den centrala men adderar skrivoperationer
+(create/update/delete) och transaction-buntar för att möjliggöra LDAP→FHIR-synkronisering.
+Conditional update (<code class="language-plaintext highlighter-rouge">PUT by identifier</code>) ger idempotent synk.</p>
+
+<h3 id="klientkonformans">Klientkonformans</h3>
+
+<p>Klientexemplen illustrerar vilka FHIR-förmågor respektive integrationsscenario kan ha nytta av:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>CapabilityStatement</th>
+      <th>Användningsfall</th>
+      <th>Nyckelkrav</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-client-1177-hitta-vard.html">1177 Hitta vård</a></td>
+      <td>UC-03: Publik vårdsökning</td>
+      <td><code class="language-plaintext highlighter-rouge">near</code> (geo), <code class="language-plaintext highlighter-rouge">_security</code> kod 03, <code class="language-plaintext highlighter-rouge">_revinclude</code> för O+L+HS</td>
+    </tr>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-client-npo.html">NPÖ</a></td>
+      <td>UC-02: Arbetsplatskodssökning</td>
+      <td><code class="language-plaintext highlighter-rouge">identifier[apk]</code>, <code class="language-plaintext highlighter-rouge">_include:iterate</code> (partOf-kedja)</td>
+    </tr>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-client-hierarchy-traversal.html">Hierarkitraversering</a></td>
+      <td>Trädklättring för åtkomstkontroll (SKLTP, Säkerhetstjänster)</td>
+      <td><code class="language-plaintext highlighter-rouge">hsa-org-class</code>, <code class="language-plaintext highlighter-rouge">_include:iterate</code>, <code class="language-plaintext highlighter-rouge">_revinclude</code></td>
+    </tr>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-client-ehr-sync.html">EHR-katalogsynk</a></td>
+      <td>UC-01: Lokal cachesynk</td>
+      <td><code class="language-plaintext highlighter-rouge">_lastUpdated</code> (inkrementell), <code class="language-plaintext highlighter-rouge">_count</code> (paginering)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<hr />
+
+<h2 id="sökparametrar">Sökparametrar</h2>
+
+<h3 id="standard-fhir-parametrar-gäller-alla-resurser">Standard FHIR-parametrar (gäller alla resurser)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Typ</th>
+      <th>Användning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_id</code></td>
+      <td>token</td>
+      <td>Exakt match på resurens FHIR-id</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_security</code></td>
+      <td>token</td>
+      <td>Filtrering på <code class="language-plaintext highlighter-rouge">meta.security</code>; <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.23.1.11\|03</code> för publika resurser</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_include</code></td>
+      <td>special</td>
+      <td>Inkludera refererade resurser i svarsbundtet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">_revinclude</code></td>
+      <td>special</td>
+      <td>Inkludera resurser som refererar till träffarna</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">identifier</code></td>
+      <td>token</td>
+      <td>Sökning på valfri identifierare (<code class="language-plaintext highlighter-rouge">system\|value</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">active</code></td>
+      <td>token</td>
+      <td>Filtrera på <code class="language-plaintext highlighter-rouge">true</code>/<code class="language-plaintext highlighter-rouge">false</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="organization">Organization</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Typ</th>
+      <th>FHIRPath / Anmärkning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">name</code></td>
+      <td>string</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.name</code> (prefix-match)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">type</code></td>
+      <td>token</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type.coding</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">partof</code></td>
+      <td>reference</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.partOf</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsa-id</code>*</td>
+      <td>token</td>
+      <td><code class="language-plaintext highlighter-rouge">identifier.where(system='urn:oid:1.2.752.29.4.19').value</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsa-org-class</code>*</td>
+      <td>token</td>
+      <td><code class="language-plaintext highlighter-rouge">type.coding.where(system='https://hsa.inera.se/fhir/CodeSystem/hsa-object-class')</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="location">Location</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Typ</th>
+      <th>FHIRPath / Anmärkning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">status</code></td>
+      <td>token</td>
+      <td><code class="language-plaintext highlighter-rouge">Location.status</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">organization</code></td>
+      <td>reference</td>
+      <td><code class="language-plaintext highlighter-rouge">Location.managingOrganization</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">near</code></td>
+      <td>special</td>
+      <td>Geosökning (position.latitude/longitude)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsa-id</code>*</td>
+      <td>token</td>
+      <td><code class="language-plaintext highlighter-rouge">identifier.where(system='urn:oid:1.2.752.29.4.19').value</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="healthcareservice">HealthcareService</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Typ</th>
+      <th>FHIRPath / Anmärkning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">organization</code></td>
+      <td>reference</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.providedBy</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">location</code></td>
+      <td>reference</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.location</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">service-category</code></td>
+      <td>token</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.category</code> (verksamhetskod)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">service-type</code></td>
+      <td>token</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.type</code> (careType)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsa-provided-by</code>*</td>
+      <td>reference</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.providedBy</code> (explicit HSA-SP)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>* = Definierad i denna IG. Övriga är standard FHIR R5-parametrar.</p>
+
+<hr />
+
+<h2 id="typiska-frågemönster">Typiska frågemönster</h2>
+
+<h3 id="hämta-publik-vårdenhet-med-plats-och-tjänst">Hämta publik vårdenhet med plats och tjänst</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Hämta alla publika vårdenheter
+GET /Organization?_security=urn:oid:1.2.752.29.23.1.11|03
+  &amp;hsa-org-class=healthcare-unit
+  &amp;_include=Organization:partof
+
+# Hämta plats för en specifik enhet
+GET /Location?organization=Organization/[id]
+  &amp;_security=urn:oid:1.2.752.29.23.1.11|03
+
+# Hämta tjänster för en enhet
+GET /HealthcareService?organization=Organization/[id]
+  &amp;_security=urn:oid:1.2.752.29.23.1.11|03
+</code></pre></div></div>
+
+<h3 id="hämta-enhet-via-hsa-id">Hämta enhet via HSA-id</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Via custom SearchParameter (kortform)
+GET /Organization?hsa-id=SE2321000016-ABC1
+
+# Via standard identifier-parameter (ekvivalent)
+GET /Organization?identifier=urn:oid:1.2.752.29.4.19|SE2321000016-ABC1
+</code></pre></div></div>
+
+<h3 id="trädklättring-hämta-hela-partof-kedjan-uppåt">Trädklättring: hämta hela partOf-kedjan uppåt</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /Organization?_id=[id]
+  &amp;_include=Organization:partof
+  &amp;_include:iterate=Organization:partof
+</code></pre></div></div>
+
+<h3 id="hitta-alla-enheter-under-en-vårdgivare">Hitta alla enheter under en vårdgivare</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /Organization?partof=Organization/[vardgivare-id]
+  &amp;_revinclude=Organization:partof
+</code></pre></div></div>
+
+<h3 id="npö-slå-upp-vårdenhet-via-arbetsplatskod">NPÖ: slå upp vårdenhet via arbetsplatskod</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /Organization?identifier=urn:oid:1.2.752.29.4.71|[apk-kod]
+</code></pre></div></div>
+
+<h3 id="1177-hitta-vård-publika-vårdcentraler-inom-ett-geografiskt-område">1177 Hitta vård: publika vårdcentraler inom ett geografiskt område</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /Location?near=[lat]|[lon]|[radius]|km
+  &amp;_security=urn:oid:1.2.752.29.23.1.11|03
+  &amp;_revinclude=HealthcareService:location
+  &amp;_revinclude=Organization:organization
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="felsvar">Felsvar</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>HTTP-kod</th>
+      <th>Situation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">200 OK</code></td>
+      <td>Lyckad sökning (tom Bundle om inga träffar)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">400 Bad Request</code></td>
+      <td>Ogiltig söksyntax</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">404 Not Found</code></td>
+      <td>Resurs med angivet id finns inte</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">410 Gone</code></td>
+      <td>Resursen existerade men är borttagen</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">422 Unprocessable Entity</code></td>
+      <td>Ogiltig parameterkombo eller värdefel</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="paginering">Paginering</h2>
+
+<p>Servern returnerar ett paginerat <code class="language-plaintext highlighter-rouge">Bundle</code> med <code class="language-plaintext highlighter-rouge">link.relation = next</code> för sökresultat.
+Rekommenderad sidstorlek per förfrågan: 20–100 resurser (<code class="language-plaintext highlighter-rouge">_count=50</code>).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /Organization?hsa-org-class=healthcare-unit&amp;_count=50
+</code></pre></div></div>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se/">Inera AB / HSA-IG projekt</a>.  Package inera.se.hsa.katalog#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R5/">FHIR 5.0.0</a>. Generated <span title="Mon, Sep 28, 2026 08:39+0000">2026-09-28</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

@@ -1,0 +1,46 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/ValueSet/hsa-ownership-type> a fhir:ValueSet ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "hsa-ownership-type"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet hsa-ownership-type</b></p><a name=\"hsa-ownership-type\"> </a><a name=\"hchsa-ownership-type\"> </a><ul><li>Include alla koder som definieras i <code>urn:oid:1.2.752.129.2.2.1.14</code><span title=\"Versionen är inte uttryckligen angiven. Ingen matchande Kodsystem hittades\"> version Ej angiven (använd senaste från terminologiserver)</span></li></ul></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [ fhir:v "https://hsa.inera.se/fhir/ValueSet/hsa-ownership-type"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "HsaOwnershipTypeVS"] ; # 
+  fhir:title [ fhir:v "HSA Ägarform"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-05-20"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Inera AB / HSA-IG projekt"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Inera AB / HSA-IG projekt" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.inera.se/" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Tillåtna koder för ägarform (management/regi) på Organization.\nSystem: HSA ägarform-kodverk (OID 1.2.752.129.2.2.1.14)."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "SE" ] ;
+       fhir:display [ fhir:v "Sweden" ]
+     ] )
+  ] ) ; # 
+  fhir:compose [
+     fhir:include ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.2.2.1.14"^^xsd:anyURI ]
+     ] )
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

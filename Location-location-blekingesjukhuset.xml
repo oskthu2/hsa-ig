@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Location xmlns="http://hl7.org/fhir">
+  <id value="location-blekingesjukhuset"/>
+  <meta>
+    <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"/>
+    <security>
+      <system value="urn:oid:1.2.752.29.23.1.11"/>
+      <code value="03"/>
+      <display value="Internet/allmänheten"/>
+    </security>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: Location location-blekingesjukhuset</b></p><a name="location-blekingesjukhuset"> </a><a name="hclocation-blekingesjukhuset"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profil: <a href="StructureDefinition-hsa-catalog-location.html">HSA Catalog Location</a></p><p style="margin-bottom: 0px">Säkerhetsetikett: </p></div><p><b>identifier</b>: <a href="NamingSystem-hsa-identity.html" title="Unik identifierare för organisationer, enheter, funktioner, uppdrag och
+personer i HSA-katalogen. Tilldelas automatiskt av HSA-systemet vid skapande
+och ska aldrig ändras. Används som stabil nyckel i nationella e-tjänster
+(NPÖ, Pascal, 1177 Hitta vård m.fl.).">HSA-identitet (HSA-id)</a>/SE2321000016-BSJH01</p><p><b>status</b>: Active</p><p><b>name</b>: Blekingesjukhuset</p><p><b>description</b>: </p><div><h2>Yttre vägbeskrivning</h2>
+<p>Från centrum: Kör mot Lyckeby längs E22. Ta av mot sjukhuset vid trafikljusen vid rondellen Lyckeby.</p>
+<p>Parkering finns vid huvudentrén (avgiftsbelagd). Handikapp-parkering närmast entrén.</p>
+<p>Buss linje 1 och 5 stannar vid hållplatsen Blekingesjukhuset (100 m från entrén).</p>
+<h2>Inre vägbeskrivning</h2>
+<p>Huvudentré mot Lyckeby 5 — receptionen finns direkt till höger vid entrén.</p>
+<p>Akutmottagning: separat ingång på norra sidan av byggnaden (skyltad).</p>
+<p>Hjärtmottagningen: Byggnad B, Plan 4 (t.o.m. dec 2027 pga renovering). Ta hissen vid huvudentrén.</p>
+</div><p><b>mode</b>: Instance</p><p><b>address</b>: Lyckeby 5 Karlskrona </p><h3>Positions</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Longitude</b></td><td><b>Latitude</b></td></tr><tr><td style="display: none">*</td><td>15.621</td><td>56.189</td></tr></table><p><b>managingOrganization</b>: <a href="Organization-blekingesjukhuset-vardenhet.html">Organization Blekingesjukhuset</a></p></div>
+  </text>
+  <identifier>
+    <system value="urn:oid:1.2.752.29.4.19"/>
+    <value value="SE2321000016-BSJH01"/>
+  </identifier>
+  <status value="active"/>
+  <name value="Blekingesjukhuset"/>
+  <description value="## Yttre vägbeskrivning&#xA;Från centrum: Kör mot Lyckeby längs E22. Ta av mot sjukhuset vid trafikljusen vid rondellen Lyckeby.&#xA;&#xA;Parkering finns vid huvudentrén (avgiftsbelagd). Handikapp-parkering närmast entrén.&#xA;&#xA;Buss linje 1 och 5 stannar vid hållplatsen Blekingesjukhuset (100 m från entrén).&#xA;&#xA;## Inre vägbeskrivning&#xA;Huvudentré mot Lyckeby 5 — receptionen finns direkt till höger vid entrén.&#xA;&#xA;Akutmottagning: separat ingång på norra sidan av byggnaden (skyltad).&#xA;&#xA;Hjärtmottagningen: Byggnad B, Plan 4 (t.o.m. dec 2027 pga renovering). Ta hissen vid huvudentrén."/>
+  <mode value="instance"/>
+  <address>
+    <type value="physical"/>
+    <line value="Lyckeby 5"/>
+    <city value="Karlskrona"/>
+  </address>
+  <position>
+    <longitude value="15.621"/>
+    <latitude value="56.189"/>
+  </position>
+  <managingOrganization>
+    <reference value="Organization/blekingesjukhuset-vardenhet"/>
+  </managingOrganization>
+</Location>

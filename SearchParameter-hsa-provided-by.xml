@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SearchParameter xmlns="http://hl7.org/fhir">
+  <id value="hsa-provided-by"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: SearchParameter hsa-provided-by</b></p><a name="hsa-provided-by"> </a><a name="hchsa-provided-by"> </a><h2>HsaProvidedBy</h2><p>Parameter <code>hsa-provided-by</code>:<code>reference</code></p><div><p>Filtrera HealthcareService på providedBy-referens (tillhandahållande organisation).</p>
+</div><table class="grid"><tr><td>Resurs</td><td><a href="http://hl7.org/fhir/R5/healthcareservice.html">HealthcareService</a></td></tr><tr><td>Uttryck</td><td><code>HealthcareService.providedBy</code></td></tr><tr><td>Målresurser</td><td><a href="http://hl7.org/fhir/R5/organization.html">Organization</a></td></tr><tr><td>Multipler</td><td><ul><li>multipleAnd: Parametern får endast förekomma en gång</li><li>multipleOr: Parametern kan ha flera värden (separerade med kommatecken) där minst ett måste vara sant</li></ul></td></tr></table></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/SearchParameter/hsa-provided-by"/>
+  <version value="0.1.0"/>
+  <name value="HsaProvidedBy"/>
+  <title value="HSA Tillhandahållande organisation"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-05-21"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="Filtrera HealthcareService på providedBy-referens (tillhandahållande organisation)."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <code value="hsa-provided-by"/>
+  <base value="HealthcareService"/>
+  <type value="reference"/>
+  <expression value="HealthcareService.providedBy"/>
+  <target value="Organization"/>
+  <multipleOr value="true"/>
+  <multipleAnd value="false"/>
+</SearchParameter>

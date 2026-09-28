@@ -1,0 +1,90 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/CapabilityStatement/hsa-client-hierarchy-traversal> a fhir:CapabilityStatement ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "hsa-client-hierarchy-traversal"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CapabilityStatement hsa-client-hierarchy-traversal</b></p><a name=\"hsa-client-hierarchy-traversal\"> </a><a name=\"hchsa-client-hierarchy-traversal\"> </a><h2 id=\"title\">HSA Klient – Hierarkitraversering</h2><ul><li>Implementationsguidens version: 0.1.0 </li><li>FHIR-version: 5.0.0 </li><li>Format som stöds: <code>json</code></li><li>Publicerad: 2026-05-21 </li><li>Publicerad av: Inera AB / HSA-IG projekt </li></ul><blockquote class=\"impl-note\"><p><strong>Notera till implementörer: FHIR-förmågor</strong></p><p>Vilken FHIR-förmåga som helst kan vara 'tillåten' av systemet om den inte uttryckligen är markerad som 'SHALL NOT'. Några objekt är markerade som MAY i implementationsguiden för att belysa deras potentiella relevans för användningsfallet.</p></blockquote><h2 id=\"rest\">FHIR RESTful-förmågor</h2><div class=\"panel panel-default\"><div class=\"panel-heading\"><h3 id=\"mode1\" class=\"panel-title\">Mode: <code>client</code></h3></div><div class=\"panel-body\"><div><p>System som traverserar partOf-kedjan för åtkomstkontroll använder:</p>\n<ol>\n<li>Hämta enhet och fullständig kedja uppåt (SKLTP explicit/hierarkisk behörighet):\nGET /Organization?_id=[id]\n&amp;_include=Organization:partof\n&amp;_include:iterate=Organization:partof</li>\n<li>Hämta alla enheter under en vårdgivare (subträdssökning):\nGET /Organization?partof=Organization/[vg-id]\n&amp;_revinclude=Organization:partof</li>\n<li>Söka enhet via HSA-id (logisk adress = HSA-id i SKLTP):\nGET /Organization?hsa-id=SE2321000016-ABC1\nScenariot förutsätter att servern har stöd för _include:iterate så att trädklättringen\nkan terminera korrekt (partOf-kedjan är acyklisk och terminerar i rotnod utan partOf,\nse HSACAT-ORG-015).</li>\n</ol>\n</div></div></div><h3 id=\"resourcesCap1\">Förmågor per resurs/profil</h3><h4 id=\"resourcesSummary1\">Sammanfattning</h4><p>Sammanfattningstabellen listar resurserna som ingår i denna konfiguration, och för varje resurs listar den:</p><ul><li>De relevanta profilerna (om några)</li><li>Interaktionerna som stöds av varje resurs (<b><span class=\"bg-info\">R</span></b>ead, <b><span class=\"bg-info\">S</span></b>earch, <b><span class=\"bg-info\">U</span></b>pdate, and <b><span class=\"bg-info\">C</span></b>reate, are always shown, while <b><span class=\"bg-info\">VR</span></b>ead, <b><span class=\"bg-info\">P</span></b>atch, <b><span class=\"bg-info\">D</span></b>elete, <b><span class=\"bg-info\">H</span></b>istory on <b><span class=\"bg-info\">I</span></b>nstance, or <b><span class=\"bg-info\">H</span></b>istory on <b><span class=\"bg-info\">T</span></b>yp är endast närvarande om minst en av resurserna har stöd för dem.</li><li><span>De obligatoriska, rekommenderade och vissa valfria sökparametrarna (om några). </span></li><li>De länkade resurserna aktiverade för <code>_include</code></li><li>De övriga resurserna aktiverade för <code>_revinclude</code></li><li>Operationerna på resursen (om några)</li></ul><div class=\"table-responsive\"><table class=\"table table-condensed table-hover\"><thead><tr><th><b>Resurstyp</b></th><th><b>Profil</b></th><th class=\"text-center\"><b title=\"GET en resurs (läs-interaktion)\">R</b></th><th class=\"text-center\"><b title=\"GET alla resurser av typen (sök-interaktion)\">S</b></th><th class=\"text-center\"><b title=\"PUT en ny resursversion (uppdatera-interaktion)\">U</b></th><th class=\"text-center\"><b title=\"POST en ny resurs (skapa-interaktion)\">C</b></th><th><b title=\"Obligatoriska och rekommenderade sökparametrar\">Sökningar</b></th><th><code><b>_include</b></code></th><th><code><b>_revinclude</b></code></th><th><b>Operationer</b></th></tr></thead><tbody><tr><td><a href=\"#Organization1-1\">Organization</a></td><td><a href=\"StructureDefinition-hsa-catalog-organization.html\">https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization</a></td><td class=\"text-center\">y</td><td class=\"text-center\">y</td><td class=\"text-center\"/><td class=\"text-center\"/><td>_id, active, partof, hsa-id, hsa-org-class</td><td><code>Organization:partof</code></td><td><code>Organization:partof</code></td><td/></tr></tbody></table></div><hr/><div class=\"panel panel-default\"><div class=\"panel-heading\"><h4 id=\"Organization1-1\" class=\"panel-title\"><span style=\"float: right;\">Resurskonformans: unspecified </span>Organization</h4></div><div class=\"panel-body\"><div class=\"container\"><div class=\"row\"><div class=\"col-lg-6\"><span class=\"lead\">Bassystemprofil</span><br/><a href=\"StructureDefinition-hsa-catalog-organization.html\">HSA Catalog Organization</a></div><div class=\"col-lg-3\"><span class=\"lead\">Profilkonformans</span><br/><b>SHALL</b></div><div class=\"col-lg-3\"><span class=\"lead\">Referenspolicy</span><br/></div></div><p/><div class=\"row\"><div class=\"col-lg-6\"><span class=\"lead\">Interaktionssammanfattning</span><br/><ul><li>Stöder <code>read</code>, <code>search-type</code>.</li></ul></div></div><p/><div class=\"row\"><div class=\"col-12\"><span class=\"lead\">Dokumentation</span><blockquote><div><p>Använder identifier[hsa-id], type[hsa-class], partOf, active. Iterativ _include möjliggör rekursiv hierarkihämtning (HSACAT-ORG-006).</p>\n</div></blockquote></div></div><div class=\"row\"><div class=\"col-lg-7\"><span class=\"lead\">Sökparametrar</span><table class=\"table table-condensed table-hover\"><thead><tr><th>Konformans</th><th>Parameter</th><th>Typ</th><th>Dokumentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td>_id</td><td><code>token</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>active</td><td><code>token</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>partof</td><td><code>reference</code></td><td><div><p>Trädklättring: kombinera med _include:iterate=Organization:partof (HSACAT-ORG-006).</p>\n</div></td></tr><tr><td><b>SHALL</b></td><td><a href=\"SearchParameter-hsa-id.html\">hsa-id</a></td><td><code>token</code></td><td><div><p>Logisk adress = HSA-id i SKLTP TAK.</p>\n</div></td></tr><tr><td><b>SHALL</b></td><td><a href=\"SearchParameter-hsa-org-class.html\">hsa-org-class</a></td><td><code>token</code></td><td><div><p>Filtrera på healthcare-provider (yttre spärr) eller healthcare-unit (inre spärr).</p>\n</div></td></tr></tbody></table></div><div class=\"col-lg-5\"> </div></div></div></div></div></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [ fhir:v "https://hsa.inera.se/fhir/CapabilityStatement/hsa-client-hierarchy-traversal"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "HsaClientHierarchyTraversal"] ; # 
+  fhir:title [ fhir:v "HSA Klient – Hierarkitraversering"] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-05-21"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Inera AB / HSA-IG projekt"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Inera AB / HSA-IG projekt" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.inera.se/" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Illustrativt exempel för hierarkitraversering via Organization.partOf. Visar möjliga frågemönster för SKLTP-liknande trädklättring; full Endpoint-profilering planeras till v2."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "SE" ] ;
+       fhir:display [ fhir:v "Sweden" ]
+     ] )
+  ] ) ; # 
+  fhir:kind [ fhir:v "requirements"] ; # 
+  fhir:fhirVersion [ fhir:v "5.0.0"] ; # 
+  fhir:format ( [ fhir:v "json"] ) ; # 
+  fhir:rest ( [
+     fhir:mode [ fhir:v "client" ] ;
+     fhir:documentation [ fhir:v "System som traverserar partOf-kedjan för åtkomstkontroll använder:\n1. Hämta enhet och fullständig kedja uppåt (SKLTP explicit/hierarkisk behörighet):\n   GET /Organization?_id=[id]\n     &_include=Organization:partof\n     &_include:iterate=Organization:partof\n2. Hämta alla enheter under en vårdgivare (subträdssökning):\n   GET /Organization?partof=Organization/[vg-id]\n     &_revinclude=Organization:partof\n3. Söka enhet via HSA-id (logisk adress = HSA-id i SKLTP):\n   GET /Organization?hsa-id=SE2321000016-ABC1\nScenariot förutsätter att servern har stöd för _include:iterate så att trädklättringen\nkan terminera korrekt (partOf-kedjan är acyklisk och terminerar i rotnod utan partOf,\nse HSACAT-ORG-015)." ] ;
+     fhir:resource ( [
+       fhir:type [ fhir:v "Organization" ] ;
+       fhir:profile [
+         fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization"^^xsd:anyURI ;
+         fhir:link <https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization>
+       ] ;
+       fhir:documentation [ fhir:v "Använder identifier[hsa-id], type[hsa-class], partOf, active. Iterativ _include möjliggör rekursiv hierarkihämtning (HSACAT-ORG-006)." ] ;
+       fhir:interaction ( [
+         fhir:code [ fhir:v "read" ]
+       ] [
+         fhir:code [ fhir:v "search-type" ]
+       ] ) ;
+       fhir:searchInclude ( [ fhir:v "Organization:partof" ] ) ;
+       fhir:searchRevInclude ( [ fhir:v "Organization:partof" ] ) ;
+       fhir:searchParam ( [
+         fhir:name [ fhir:v "_id" ] ;
+         fhir:type [ fhir:v "token" ]
+       ] [
+         fhir:name [ fhir:v "active" ] ;
+         fhir:type [ fhir:v "token" ]
+       ] [
+         fhir:name [ fhir:v "partof" ] ;
+         fhir:type [ fhir:v "reference" ] ;
+         fhir:documentation [ fhir:v "Trädklättring: kombinera med _include:iterate=Organization:partof (HSACAT-ORG-006)." ]
+       ] [
+         fhir:name [ fhir:v "hsa-id" ] ;
+         fhir:definition [
+           fhir:v "https://hsa.inera.se/fhir/SearchParameter/hsa-id"^^xsd:anyURI ;
+           fhir:link <https://hsa.inera.se/fhir/SearchParameter/hsa-id>
+         ] ;
+         fhir:type [ fhir:v "token" ] ;
+         fhir:documentation [ fhir:v "Logisk adress = HSA-id i SKLTP TAK." ]
+       ] [
+         fhir:name [ fhir:v "hsa-org-class" ] ;
+         fhir:definition [
+           fhir:v "https://hsa.inera.se/fhir/SearchParameter/hsa-org-class"^^xsd:anyURI ;
+           fhir:link <https://hsa.inera.se/fhir/SearchParameter/hsa-org-class>
+         ] ;
+         fhir:type [ fhir:v "token" ] ;
+         fhir:documentation [ fhir:v "Filtrera på healthcare-provider (yttre spärr) eller healthcare-unit (inre spärr)." ]
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

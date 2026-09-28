@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="hsa-telecom-type"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: CodeSystem hsa-telecom-type</b></p><a name="hsa-telecom-type"> </a><a name="hchsa-telecom-type"> </a><p>Detta case-sensitive kodsystem <code>https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code> definierar följande koder:</p><table class="codes"><tr><td style="white-space:nowrap"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style="white-space:nowrap">direct-phone<a name="hsa-telecom-type-direct-phone"> </a></td><td>Direkttelefon</td><td>Direkt telefonnummer till enheten (telephoneNumber).</td></tr><tr><td style="white-space:nowrap">switchboard<a name="hsa-telecom-type-switchboard"> </a></td><td>Växeltelefon</td><td>Växeltelefonnummer (obligatoriskt för offentliga enheter).</td></tr><tr><td style="white-space:nowrap">public-phone<a name="hsa-telecom-type-public-phone"> </a></td><td>Publik telefon</td><td>Telefonnummer avsett för allmänheten (hsaPublicTelephone).</td></tr><tr><td style="white-space:nowrap">fax<a name="hsa-telecom-type-fax"> </a></td><td>Telefax</td><td>Faxnummer.</td></tr><tr><td style="white-space:nowrap">email<a name="hsa-telecom-type-email"> </a></td><td>E-post</td><td>E-postadress (mail/rfc822Mailbox).</td></tr><tr><td style="white-space:nowrap">directory-contact<a name="hsa-telecom-type-directory-contact"> </a></td><td>Innehållsansvarig e-post</td><td>Funktionsbrevlåda för innehållsfrågor (hsaDirectoryContact).</td></tr></table></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+  <version value="0.1.0"/>
+  <name value="HsaTelecomType"/>
+  <title value="HSA Kontaktvägstyp"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-05-20"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="Klassificering av kontaktvägar (telecom) i HSA för att skilja på&#xA;direkttelefon, växeltelefon, e-post, m.fl."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <caseSensitive value="true"/>
+  <content value="complete"/>
+  <count value="6"/>
+  <concept>
+    <code value="direct-phone"/>
+    <display value="Direkttelefon"/>
+    <definition value="Direkt telefonnummer till enheten (telephoneNumber)."/>
+  </concept>
+  <concept>
+    <code value="switchboard"/>
+    <display value="Växeltelefon"/>
+    <definition value="Växeltelefonnummer (obligatoriskt för offentliga enheter)."/>
+  </concept>
+  <concept>
+    <code value="public-phone"/>
+    <display value="Publik telefon"/>
+    <definition value="Telefonnummer avsett för allmänheten (hsaPublicTelephone)."/>
+  </concept>
+  <concept>
+    <code value="fax"/>
+    <display value="Telefax"/>
+    <definition value="Faxnummer."/>
+  </concept>
+  <concept>
+    <code value="email"/>
+    <display value="E-post"/>
+    <definition value="E-postadress (mail/rfc822Mailbox)."/>
+  </concept>
+  <concept>
+    <code value="directory-contact"/>
+    <display value="Innehållsansvarig e-post"/>
+    <definition value="Funktionsbrevlåda för innehållsfrågor (hsaDirectoryContact)."/>
+  </concept>
+</CodeSystem>

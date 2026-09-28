@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Location xmlns="http://hl7.org/fhir">
+  <id value="location-ronneby-vardcentral"/>
+  <meta>
+    <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"/>
+    <security>
+      <system value="urn:oid:1.2.752.29.23.1.11"/>
+      <code value="03"/>
+      <display value="Internet/allmänheten"/>
+    </security>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: Location location-ronneby-vardcentral</b></p><a name="location-ronneby-vardcentral"> </a><a name="hclocation-ronneby-vardcentral"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profil: <a href="StructureDefinition-hsa-catalog-location.html">HSA Catalog Location</a></p><p style="margin-bottom: 0px">Säkerhetsetikett: </p></div><p><b>identifier</b>: <a href="NamingSystem-hsa-identity.html" title="Unik identifierare för organisationer, enheter, funktioner, uppdrag och
+personer i HSA-katalogen. Tilldelas automatiskt av HSA-systemet vid skapande
+och ska aldrig ändras. Används som stabil nyckel i nationella e-tjänster
+(NPÖ, Pascal, 1177 Hitta vård m.fl.).">HSA-identitet (HSA-id)</a>/SE5566778899-RNBY1</p><p><b>status</b>: Active</p><p><b>name</b>: Ronneby Vårdcentral</p><p><b>description</b>: </p><div><p>Centralt läge i Ronneby, 200 m från järnvägsstationen. Parkering bakom fastigheten, ingång från Järnvägsgatan 14.</p>
+</div><p><b>mode</b>: Instance</p><p><b>address</b>: Järnvägsgatan 14</p><h3>Positions</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Longitude</b></td><td><b>Latitude</b></td></tr><tr><td style="display: none">*</td><td>15.2791</td><td>56.2098</td></tr></table><p><b>managingOrganization</b>: <a href="Organization-ronneby-vardcentral-vardenhet.html">Organization Ronneby Vårdcentral</a></p></div>
+  </text>
+  <identifier>
+    <system value="urn:oid:1.2.752.29.4.19"/>
+    <value value="SE5566778899-RNBY1"/>
+  </identifier>
+  <status value="active"/>
+  <name value="Ronneby Vårdcentral"/>
+  <description value="Centralt läge i Ronneby, 200 m från järnvägsstationen. Parkering bakom fastigheten, ingång från Järnvägsgatan 14."/>
+  <mode value="instance"/>
+  <address>
+    <type value="physical"/>
+    <text value="Järnvägsgatan 14"/>
+    <city value="Ronneby"/>
+  </address>
+  <position>
+    <longitude value="15.2791"/>
+    <latitude value="56.2098"/>
+  </position>
+  <managingOrganization>
+    <reference value="Organization/ronneby-vardcentral-vardenhet"/>
+  </managingOrganization>
+</Location>

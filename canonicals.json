@@ -1,0 +1,210 @@
+[{
+  "id" : "hsa-catalog-server",
+  "type" : "CapabilityStatement",
+  "url" : "https://hsa.inera.se/fhir/CapabilityStatement/hsa-catalog-server",
+  "version" : "0.1.0",
+  "name" : "HsaCatalogServer"
+},
+{
+  "id" : "hsa-client-1177-hitta-vard",
+  "type" : "CapabilityStatement",
+  "url" : "https://hsa.inera.se/fhir/CapabilityStatement/hsa-client-1177-hitta-vard",
+  "version" : "0.1.0",
+  "name" : "HsaClient1177HittaVard"
+},
+{
+  "id" : "hsa-client-ehr-sync",
+  "type" : "CapabilityStatement",
+  "url" : "https://hsa.inera.se/fhir/CapabilityStatement/hsa-client-ehr-sync",
+  "version" : "0.1.0",
+  "name" : "HsaClientEhrSync"
+},
+{
+  "id" : "hsa-client-hierarchy-traversal",
+  "type" : "CapabilityStatement",
+  "url" : "https://hsa.inera.se/fhir/CapabilityStatement/hsa-client-hierarchy-traversal",
+  "version" : "0.1.0",
+  "name" : "HsaClientHierarchyTraversal"
+},
+{
+  "id" : "hsa-client-npo",
+  "type" : "CapabilityStatement",
+  "url" : "https://hsa.inera.se/fhir/CapabilityStatement/hsa-client-npo",
+  "version" : "0.1.0",
+  "name" : "HsaClientNpo"
+},
+{
+  "id" : "hsa-regional-catalog-server",
+  "type" : "CapabilityStatement",
+  "url" : "https://hsa.inera.se/fhir/CapabilityStatement/hsa-regional-catalog-server",
+  "version" : "0.1.0",
+  "name" : "HsaRegionalCatalogServer"
+},
+{
+  "id" : "hsa-object-class",
+  "type" : "CodeSystem",
+  "url" : "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class",
+  "version" : "0.1.0",
+  "name" : "HsaObjectClass"
+},
+{
+  "id" : "hsa-telecom-type",
+  "type" : "CodeSystem",
+  "url" : "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type",
+  "version" : "0.1.0",
+  "name" : "HsaTelecomType"
+},
+{
+  "id" : "inera.se.hsa.katalog",
+  "type" : "ImplementationGuide",
+  "url" : "https://hsa.inera.se/fhir/ImplementationGuide/inera.se.hsa.katalog",
+  "version" : "0.1.0",
+  "name" : "HsaCatalogIG"
+},
+{
+  "id" : "hsa-identity",
+  "type" : "NamingSystem",
+  "url" : "https://hsa.inera.se/fhir/NamingSystem/hsa-identity",
+  "version" : "0.1.0",
+  "name" : "HsaIdentity"
+},
+{
+  "id" : "organisation-nummer",
+  "type" : "NamingSystem",
+  "url" : "https://hsa.inera.se/fhir/NamingSystem/organisation-nummer",
+  "version" : "0.1.0",
+  "name" : "OrganisationsnummerSE"
+},
+{
+  "id" : "hsa-id",
+  "type" : "SearchParameter",
+  "url" : "https://hsa.inera.se/fhir/SearchParameter/hsa-id",
+  "version" : "0.1.0",
+  "name" : "HsaId"
+},
+{
+  "id" : "hsa-org-class",
+  "type" : "SearchParameter",
+  "url" : "https://hsa.inera.se/fhir/SearchParameter/hsa-org-class",
+  "version" : "0.1.0",
+  "name" : "HsaOrgClass"
+},
+{
+  "id" : "hsa-provided-by",
+  "type" : "SearchParameter",
+  "url" : "https://hsa.inera.se/fhir/SearchParameter/hsa-provided-by",
+  "version" : "0.1.0",
+  "name" : "HsaProvidedBy"
+},
+{
+  "id" : "hsa-catalog-location",
+  "type" : "StructureDefinition",
+  "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location",
+  "version" : "0.1.0",
+  "name" : "HsaCatalogLocation"
+},
+{
+  "id" : "hsa-catalog-organization",
+  "type" : "StructureDefinition",
+  "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization",
+  "version" : "0.1.0",
+  "name" : "HsaCatalogOrganization"
+},
+{
+  "id" : "hsa-financing-organization",
+  "type" : "StructureDefinition",
+  "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-financing-organization",
+  "version" : "0.1.0",
+  "name" : "HsaFinancingOrganizationExtension"
+},
+{
+  "id" : "hsa-healthcare-provider-organization",
+  "type" : "StructureDefinition",
+  "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-provider-organization",
+  "version" : "0.1.0",
+  "name" : "HsaHealthcareProviderOrganization"
+},
+{
+  "id" : "hsa-healthcare-service",
+  "type" : "StructureDefinition",
+  "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service",
+  "version" : "0.1.0",
+  "name" : "HsaHealthcareService"
+},
+{
+  "id" : "hsa-healthcare-unit-organization",
+  "type" : "StructureDefinition",
+  "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization",
+  "version" : "0.1.0",
+  "name" : "HsaHealthcareUnitOrganization"
+},
+{
+  "id" : "hsa-patient-info",
+  "type" : "StructureDefinition",
+  "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-patient-info",
+  "version" : "0.1.0",
+  "name" : "HsaPatientInfoExtension"
+},
+{
+  "id" : "hsa-telecom-type",
+  "type" : "StructureDefinition",
+  "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type",
+  "version" : "0.1.0",
+  "name" : "HsaTelecomTypeExtension"
+},
+{
+  "id" : "hsa-temporary-notice",
+  "type" : "StructureDefinition",
+  "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-notice",
+  "version" : "0.1.0",
+  "name" : "HsaTemporaryNoticeExtension"
+},
+{
+  "id" : "hsa-business-type",
+  "type" : "ValueSet",
+  "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-business-type",
+  "version" : "0.1.0",
+  "name" : "HsaBusinessTypeVS"
+},
+{
+  "id" : "hsa-care-type",
+  "type" : "ValueSet",
+  "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-care-type",
+  "version" : "0.1.0",
+  "name" : "HsaCareTypeVS"
+},
+{
+  "id" : "hsa-destination-indicator",
+  "type" : "ValueSet",
+  "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-destination-indicator",
+  "version" : "0.1.0",
+  "name" : "HsaDestinationIndicatorVS"
+},
+{
+  "id" : "hsa-organization-type",
+  "type" : "ValueSet",
+  "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-organization-type",
+  "version" : "0.1.0",
+  "name" : "HsaOrganizationTypeVS"
+},
+{
+  "id" : "hsa-ownership-type",
+  "type" : "ValueSet",
+  "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-ownership-type",
+  "version" : "0.1.0",
+  "name" : "HsaOwnershipTypeVS"
+},
+{
+  "id" : "hsa-service-type",
+  "type" : "ValueSet",
+  "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-service-type",
+  "version" : "0.1.0",
+  "name" : "HsaServiceTypeVS"
+},
+{
+  "id" : "hsa-telecom-type-vs",
+  "type" : "ValueSet",
+  "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-telecom-type",
+  "version" : "0.1.0",
+  "name" : "HsaTelecomTypeVS"
+}]

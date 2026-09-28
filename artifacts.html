@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Artifacts Summary - HSA Katalog Implementation Guide v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"13"}
+    h3,h4,h5,h6{--heading-prefix:"13.0"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">HSA Katalog Implementation Guide</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="Sweden flag" src="assets/images/swe.svg" height="16" title="Sweden"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R5/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Hem</a>
+  </li>
+  <li>
+    <a href="profiles.html">Profiler</a>
+  </li>
+  <li>
+    <a href="terminology.html">Terminologi</a>
+  </li>
+  <li>
+    <a href="api.html">API</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Vägledning
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="client-rendering.html">Klientrendering</a>
+      </li>
+      <li>
+        <a href="organization-hierarchy.html">Organisationshierarki</a>
+      </li>
+      <li>
+        <a href="address-transition.html">Adressövergång</a>
+      </li>
+      <li>
+        <a href="ldap-mapping.html">LDAP-mappning</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artefakter</a>
+  </li>
+  <li>
+    <a href="downloads.html">Nedladdningar</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Artifacts Summary</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">HSA Katalog Implementation Guide - Lokal utvecklingsbygge (v0.1.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://hsa.inera.se/fhir/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <h2>Artifacts Summary</h2>
+  
+  
+  
+  <!--DO NOT EDIT THIS FILE - It is generated by https://github.com/HL7/ig-template-base/blob/master/scripts/createArtifactSummary.xslt and any changes made will be overwritten--><div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://hl7.org/fhir"
+     xmlns:html="http://www.w3.org/1999/xhtml"
+     class="markdown-toc">
+   <p>Contents:</p>
+   <ul>
+      <li>
+         <a href="#1">Behavior: Capability Statements</a>
+      </li>
+      <li>
+         <a href="#2">Behavior: Search Parameters</a>
+      </li>
+      <li>
+         <a href="#3">Structures: Resource Profiles</a>
+      </li>
+      <li>
+         <a href="#4">Structures: Extension Definitions</a>
+      </li>
+      <li>
+         <a href="#5">Terminology: Value Sets</a>
+      </li>
+      <li>
+         <a href="#6">Terminology: Code Systems</a>
+      </li>
+      <li>
+         <a href="#7">Terminology: Naming Systems</a>
+      </li>
+      <li>
+         <a href="#8">Example: Example Instances</a>
+      </li>
+   </ul>
+</div>
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://hl7.org/fhir"
+     xmlns:html="http://www.w3.org/1999/xhtml">
+   <p>This page provides a list of the FHIR artifacts defined as part of this implementation guide.</p>
+   <a name="1"> </a>
+   <h3>Behavior: Capability Statements </h3>
+    <p>The following artifacts define the specific capabilities that different types of systems are expected to have in order to comply with this implementation guide.  Systems conforming to this implementation guide are expected to declare conformance to one or more of the following capability statements.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CapabilityStatement-hsa-catalog-server.html"
+                  title="CapabilityStatement/hsa-catalog-server">HSA Central Catalog Server</a>
+            </td>
+            <td>
+<p>Exempel på hur ett centralt HSA-källsystem kan exponera organisationer, platser
+och vårdtjänster som FHIR R5-resurser med läsaccess.
+I detta mönster hanteras datainläsning internt (t.ex. via LDAP) och FHIR-gränssnittet
+används enbart för läsning och sökning av katalogdata.
+Detta är ett möjligt upplägg, inte ett beslutat krav.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CapabilityStatement-hsa-client-1177-hitta-vard.html"
+                  title="CapabilityStatement/hsa-client-1177-hitta-vard">HSA Klient – 1177 Hitta vård</a>
+            </td>
+            <td>
+<p>Illustrerar vilka FHIR-förmågor ett system för publik vårdsökning (t.ex. 1177 Hitta vård)
+kan ha nytta av. Exemplet visar möjliga frågemönster för geo-sökning, publik filtrering
+och hämtning av Organization, Location och HealthcareService.
+Detta är ett illustrativt exempel på hur ett sådant scenario kan se ut.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CapabilityStatement-hsa-client-ehr-sync.html"
+                  title="CapabilityStatement/hsa-client-ehr-sync">HSA Klient – EHR-katalogsynk</a>
+            </td>
+            <td>
+<p>Klientkonformansdeklaration för regionala EHR-system (t.ex. COSMIC, TakeCare)
+som synkroniserar organisationsdata från HSA till ett lokalt cache.</p>
+
+<p>Täcker två användningsfall:</p>
+<ul>
+  <li>UC-01: EHR-katalogsynk – hämta och cachelagra Organization, Location, HealthcareService</li>
+  <li>UC-04: VGR Encounter.type – slå upp HealthcareService.category[verksamhetskod]
+för en given vårdenhet vid Encounter-dokumentation</li>
+</ul>
+
+<p>Stödjer två synklägen:</p>
+<ul>
+  <li>Fullsynk: hämta alla aktiva resurser paginerat (_count)</li>
+  <li>Inkrementell synk: hämta resurser ändrade efter en given tidpunkt (_lastUpdated)
+Nyckelaspekter: _lastUpdated för inkrementell synk, _count för paginering, alla tre resurstyper.</li>
+</ul>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CapabilityStatement-hsa-client-hierarchy-traversal.html"
+                  title="CapabilityStatement/hsa-client-hierarchy-traversal">HSA Klient – Hierarkitraversering</a>
+            </td>
+            <td>
+<p>Klientkonformansdeklaration för system som traverserar Organization.partOf-kedjan
+för åtkomstkontroll eller hierarkisökning (HSACAT-ORG-006, HSACAT-ORG-015).</p>
+
+<p>Primära konsumenter i v1:</p>
+<ul>
+  <li>Tjänsteplattformen (SKLTP): bestämmer ansvarig vårdgivare via trädklättring</li>
+  <li>Säkerhetstjänster: prövning av SJF-behörighet längs partOf-kedjan</li>
+</ul>
+
+<p>OBS: Full SKLTP TAK-integration (Endpoint-resurs, logisk adressering) är planerad
+för v2 och täcks inte av denna IG. Det här exemplet illustrerar enbart
+Organization.partOf-traversering.</p>
+
+<p>För att scenariot ska fungera behöver servern ha stöd för _include:iterate=Organization:partof
+så att hela hierarkin kan hämtas i ett anrop (se HSACAT-ORG-006).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CapabilityStatement-hsa-client-npo.html"
+                  title="CapabilityStatement/hsa-client-npo">HSA Klient – Nationell Patientöversikt (NPÖ)</a>
+            </td>
+            <td>
+<p>Illustrerar vilka FHIR-förmågor ett NPÖ-liknande scenario kan ha nytta av.
+Exemplet visar hur en vårdenhet kan slås upp via arbetsplatskod (APK) och hur
+partOf-kedjan kan traverseras uppåt för att fastställa ansvarig vårdgivare.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CapabilityStatement-hsa-regional-catalog-server.html"
+                  title="CapabilityStatement/hsa-regional-catalog-server">HSA Regional Catalog Server (hypotes)</a>
+            </td>
+            <td>
+<p>Illustrerar ett möjligt mönster för regionala och lokala system som vill
+spegla HSA-data lokalt för förbättrade svarstider och lokal tillgänglighet.</p>
+
+<p>Detta är en hypotes, inte ett beslutad arkitektur. Det är oklart om regionerna
+vill använda detta mönster, och om de gör det kan de ha andra krav på hur
+datainläsning ska fungera.</p>
+
+<p>En möjlig utformning: data läses in från LDAP och exponeras som FHIR R5.
+Skrivoperationer (create, update, delete) och transaktionsbuntar kan underlätta
+synkronisering, men hur det faktiskt ska fungera bör beslutas i dialog med
+berörda regioner.</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="2"> </a>
+   <h3>Behavior: Search Parameters </h3>
+    <p>These define the properties by which a RESTful server can be searched.  They can also be used for sorting and including related resources.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="SearchParameter-hsa-org-class.html"
+                  title="SearchParameter/hsa-org-class">HSA Organisationsklass</a>
+            </td>
+            <td>
+<p>Sökning på HSA-objektklassificering (type[hsa-class], CodeSystem HsaObjectClass).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="SearchParameter-hsa-provided-by.html"
+                  title="SearchParameter/hsa-provided-by">HSA Tillhandahållande organisation</a>
+            </td>
+            <td>
+<p>Sökning på HealthcareService.providedBy (tillhandahållande organisation).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="SearchParameter-hsa-id.html" title="SearchParameter/hsa-id">HSA-id</a>
+            </td>
+            <td>
+<p>Sökning på HSA-identitet (hsaIdentity, OID 1.2.752.29.4.19).</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="3"> </a>
+   <h3>Structures: Resource Profiles </h3>
+    <p>These define constraints on FHIR resources for systems conforming to this implementation guide.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-hsa-catalog-location.html"
+                  title="StructureDefinition/hsa-catalog-location">HSA Catalog Location</a>
+            </td>
+            <td>
+<p>Profil för platser hämtade ur HSA-katalogen. Representerar fysiska
+besöksplatser, mottagningar och vårdlokaler.</p>
+
+<p>Fysiska platser måste ha besöksadress (gatuadress + stad) och
+en referens till ansvarig organisation. Koordinater (SWEREF99) krävs
+för offentlig publicering på 1177 Hitta vård.</p>
+
+<p><strong>Synlighet:</strong> Anges via <code class="language-plaintext highlighter-rouge">meta.security[destination-indicator]</code> med
+system <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.23.1.11</code>, kod 03 = Internet/allmänheten.</p>
+
+<p><strong>Vägbeskrivning:</strong> Lagras i <code class="language-plaintext highlighter-rouge">description</code> som Markdown. Konvention:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">## Yttre vägbeskrivning</code> – kollektivtrafik, parkering, hur man hittar till platsen</li>
+  <li><code class="language-plaintext highlighter-rouge">## Inre vägbeskrivning</code> – entré, plan, hiss, rum etc.
+Klienter bör rendera description som Markdown.</li>
+</ul>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-hsa-catalog-organization.html"
+                  title="StructureDefinition/hsa-catalog-organization">HSA Catalog Organization</a>
+            </td>
+            <td>
+<p>Basprofil för organisationer hämtade ur HSA-katalogen. Täcker
+vårdgivare, vårdenheter och organisatoriska enheter i organisationsträdet.</p>
+
+<p>Alla HSA-organisationer har ett HSA-id, ett namn och information om
+publicerings- och åtkomststatus. Hierarkin representeras via <code class="language-plaintext highlighter-rouge">partOf</code>.</p>
+
+<p><strong>Synlighet (destinationIndicator):</strong> Modelleras som <code class="language-plaintext highlighter-rouge">meta.security[destination-indicator]</code>
+med system <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.23.1.11</code>. Kod 03 = Internet/allmänheten.
+Klienter som 1177 Hitta vård bör filtrera på detta fält.</p>
+
+<p><strong>Tillfällig information:</strong> En enhet med tidsbegränsad status använder
+<code class="language-plaintext highlighter-rouge">extension[orgPeriod]</code> (organization-period) med start och obligatoriskt end.
+Klienter bör rendera en visuell varningsindikator (t.ex. gul informationsruta)
+när orgPeriod är satt och <code class="language-plaintext highlighter-rouge">active = true</code>. Varje klient ansvarar för att
+texten som ska visas hämtas från ett lämpligt fält (t.ex. Organization.contact
+med purpose = "TEMP" eller IG-sida för klientkonventioner).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-hsa-healthcare-provider-organization.html"
+                  title="StructureDefinition/hsa-healthcare-provider-organization">HSA Healthcare Provider Organization</a>
+            </td>
+            <td>
+<p>Profil för organisation markerad som vårdgivare (hsaHealthCareProvider,
+OID 1.2.752.29.6.10) i HSA-katalogen.</p>
+
+<p>Representerar den yttre spärrnivån i PDL-sammanhang. Alla vårdenheter
+under en vårdgivare delar journalspärr på VG-nivå — det är därför
+<code class="language-plaintext highlighter-rouge">partOf</code> på vårdenhetsprofilen alltid pekar direkt hit.</p>
+
+<p><strong>Identifierare (minimum 2):</strong>
+Profilen kräver alltid <em>både</em> HSA-id och organisationsnummer:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">identifier[hsa-id]</code> (1..1) — systemgenererat, unikt inom HSA.</li>
+  <li><code class="language-plaintext highlighter-rouge">identifier[org-no]</code> (1..1) — juridisk identitet; krävs av NPÖ och
+PDL-infrastrukturen för att koppla journaler till rätt VG (HSACAT-ORG-007).</li>
+  <li><code class="language-plaintext highlighter-rouge">identifier[apk]</code> (0..0) — arbetsplatskod är alltid en vårdenhetskod
+(unitPrescriptionCode i LDAP-schemat) och får aldrig sättas på VG.</li>
+  <li><code class="language-plaintext highlighter-rouge">identifier[gln]</code> (0..1) — förekommer på VG som har GLN-registrering.</li>
+</ul>
+
+<p><strong>Must Support:</strong> Alla MS-flaggor ärvs från <code class="language-plaintext highlighter-rouge">HsaCatalogOrganization</code> och
+visas i snapshot-vyn. Denna profil deklarerar enbart restriktioner som
+tillkommer utöver basprofilens definition.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-hsa-healthcare-service.html"
+                  title="StructureDefinition/hsa-healthcare-service">HSA Healthcare Service</a>
+            </td>
+            <td>
+<p>Profil för vårdtjänster och tjänsteutbud från HSA-katalogen.
+Verksamhetskod och vård-/omsorgsform är obligatoriska för enheter som
+bedriver vård.</p>
+
+<p>Verksamhetskod (businessClassificationCode) modelleras på <code class="language-plaintext highlighter-rouge">category</code> i
+enlighet med eHMs Nationell katalog-IG (hvo-business-category-inera).
+Vård-/omsorgsform (careType) modelleras på <code class="language-plaintext highlighter-rouge">type</code> som mer specifik
+tjänsteklassificering.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-hsa-healthcare-unit-organization.html"
+                  title="StructureDefinition/hsa-healthcare-unit-organization">HSA Healthcare Unit Organization</a>
+            </td>
+            <td>
+<p>Profil för organisation markerad som vårdenhet (hsaHealthCareUnit,
+OID 1.2.752.29.6.13) i HSA-katalogen.</p>
+
+<p>Representerar inre spärrnivå i PDL-sammanhang. Ska alltid ha en
+referens till överordnad organisation (partOf → HsaHealthcareProviderOrganization).</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="4"> </a>
+   <h3>Structures: Extension Definitions </h3>
+    <p>These define constraints on FHIR data types for systems conforming to this implementation guide.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-hsa-financing-organization.html"
+                  title="StructureDefinition/hsa-financing-organization">HSA Finansierande region/kommun</a>
+            </td>
+            <td>
+<p>Den eller de regioner/kommuner som finansierar vården vid enheten.
+Mappar till LDAP-attributet financingOrganization (OID 1.2.752.129.5.1.1).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-hsa-patient-info.html"
+                  title="StructureDefinition/hsa-patient-info">HSA Information till patient</a>
+            </td>
+            <td>
+<p>Informationstext riktad till patient som visas på enhetens 1177-sida.
+Mappar till LDAP-attributet hsaVpwInformation4.
+Klienter bör rendera som Markdown.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-hsa-telecom-type.html"
+                  title="StructureDefinition/hsa-telecom-type">HSA Kontaktvägstyp</a>
+            </td>
+            <td>
+<p>Klassificerar kontaktvägstyp för att skilja direkttelefon från
+växeltelefon, publik telefon, innehållsansvarig e-post m.fl.
+Mappar till LDAP-kontexten (telephoneNumber, hsaSwitchboardNumber etc.).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="StructureDefinition-hsa-temporary-notice.html"
+                  title="StructureDefinition/hsa-temporary-notice">HSA Tillfällig information (text)</a>
+            </td>
+            <td>
+<p>Fri text för tillfällig information om enheten, visas som gul informationsruta
+på enhetens kontaktkort på 1177.se. Mappar till LDAP-attributet
+hsaVpwInformation2. Slutdatum hanteras separat via organization-period
+(http://hl7.org/fhir/StructureDefinition/organization-period).</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="5"> </a>
+   <h3>Terminology: Value Sets </h3>
+    <p>These define sets of codes used by systems conforming to this implementation guide.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-hsa-business-type.html"
+                  title="ValueSet/hsa-business-type">HSA Enhetstyp (hsaBusinessType)</a>
+            </td>
+            <td>
+<p>Enhetstyp för organisation eller enhet i HSA.
+System: HSA enhetstyp-kodverk (OID 1.2.752.129.2.2.1.12).
+Typiska värden: sjukhus, vårdcentral, apotek m.fl.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-hsa-telecom-type-vs.html"
+                  title="ValueSet/hsa-telecom-type-vs">HSA Kontaktvägstyp</a>
+            </td>
+            <td>
+<p>Tillåtna typer av kontaktvägar i HSA.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-hsa-organization-type.html"
+                  title="ValueSet/hsa-organization-type">HSA Organisationstyp</a>
+            </td>
+            <td>
+<p>Tillåtna klassificeringar för Organization.type i HSA-profiler.
+Kombinerar HSA-objektklasser (vårdgivare/vårdenhet) med enhetstyp-kodverk
+(sjukhus, vårdcentral, apotek).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-hsa-service-type.html" title="ValueSet/hsa-service-type">HSA Verksamhetskod (businessClassificationCode)</a>
+            </td>
+            <td>
+<p>Tillåtna verksamhetskoder för HealthcareService.type.
+System: HSA verksamhetskod-kodverk (OID 1.2.752.129.2.2.1.3).
+Faktiska kodvärden hämtas från Terminologitjänsten (terminologitjansten.inera.se).
+Jämförs med eHMs Nationella vårdtjänster v.1.0.0 (SRC-014).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-hsa-destination-indicator.html"
+                  title="ValueSet/hsa-destination-indicator">HSA Visas för (hsaDestinationIndicator)</a>
+            </td>
+            <td>
+<p>Koder för visningsscope i HSA (hsaDestinationIndicator).
+Kod 03 = Internet/allmänheten = publik visning på t.ex. 1177 Hitta vård.
+System: OID 1.2.752.29.23.1.11.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-hsa-care-type.html" title="ValueSet/hsa-care-type">HSA Vård- och omsorgsform (careType)</a>
+            </td>
+            <td>
+<p>Tillåtna koder för vård- och omsorgsform (careType).
+Obligatorisk för vårdenheter.
+System: OID 1.2.752.129.2.2.1.13.
+Kända värden: 01=Öppen vård, 02=Sluten vård, 03=Hemsjukvård, 04=Socialtjänst.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="ValueSet-hsa-ownership-type.html"
+                  title="ValueSet/hsa-ownership-type">HSA Ägarform</a>
+            </td>
+            <td>
+<p>Tillåtna koder för ägarform (management/regi) på Organization.
+System: HSA ägarform-kodverk (OID 1.2.752.129.2.2.1.14).</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="6"> </a>
+   <h3>Terminology: Code Systems </h3>
+    <p>These define new code systems used by systems conforming to this implementation guide.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CodeSystem-hsa-telecom-type.html"
+                  title="CodeSystem/hsa-telecom-type">HSA Kontaktvägstyp</a>
+            </td>
+            <td>
+<p>Klassificering av kontaktvägar (telecom) i HSA för att skilja på
+direkttelefon, växeltelefon, e-post, m.fl.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="CodeSystem-hsa-object-class.html"
+                  title="CodeSystem/hsa-object-class">HSA Objektklassificering</a>
+            </td>
+            <td>
+<p>Klassificering av HSA-objekt baserat på LDAP-objektklasser i HSA-schemat.
+Används för att identifiera om en organisation är vårdgivare, vårdenhet
+eller annan organisatorisk enhet, samt för statusmarkering.</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="7"> </a>
+   <h3>Terminology: Naming Systems </h3>
+    <p>These define identifier and/or code system identities used by systems conforming to this implementation guide.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="NamingSystem-hsa-identity.html" title="NamingSystem/hsa-identity">HSA-identitet (HSA-id)</a>
+            </td>
+            <td>
+<p>Unik identifierare för organisationer, enheter, funktioner, uppdrag och
+personer i HSA-katalogen. Tilldelas automatiskt av HSA-systemet vid skapande
+och ska aldrig ändras. Används som stabil nyckel i nationella e-tjänster
+(NPÖ, Pascal, 1177 Hitta vård m.fl.).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="NamingSystem-organisation-nummer.html"
+                  title="NamingSystem/organisation-nummer">Organisationsnummer (Sverige)</a>
+            </td>
+            <td>
+<p>Unikt nummer för juridiska personer i Sverige, tilldelat av Skatteverket
+eller Bolagsverket. Obligatoriskt för organisationer som representerar
+vårdgivare (hsaHealthCareProvider).</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+   <a name="8"> </a>
+   <h3>Example: Example Instances </h3>
+    <p>These are example instances that show what data produced and consumed by systems conforming with this implementation guide might look like.</p>
+<table class="grid">
+      <col style="width:20%"/>
+      <tbody>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Organization-privat-vardgivare-ab.html"
+                  title="Organization/privat-vardgivare-ab">Blekinge Primärvård AB (Privat Vårdgivare)</a>
+            </td>
+            <td>
+<p>Exempelinstans för Blekinge Primärvård AB — ett privat aktiebolag som
+bedriver primärvård på uppdrag av Region Blekinge.</p>
+
+<p>Demonstrerar: management=05 (privat ägande), avsaknad av GLN och APK på
+VG-nivå, separat direkttelefon och växelnummer, och frånvaro av
+destinationIndicator (VGs är inte direkt sökbara på 1177 Hitta vård).
+Kontrastera med RegionBlekingeVardgivare (offentlig region, management=01).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Location-location-blekingesjukhuset.html"
+                  title="Location/location-blekingesjukhuset">Blekingesjukhuset (Besöksplats)</a>
+            </td>
+            <td>
+<p>Exempelinstans för Blekingessjukhusets fysiska besöksplats.
+Demonstrerar: strukturerad besöksadress (HSA 5.2+ hsaVisitingAddress),
+SWEREF99-koordinater, Markdown-vägbeskrivning med ## Yttre / ## Inre
+vägbeskrivning-konvention, meta.security[destination-indicator]=03,
+och relationen till Organization via managingOrganization.</p>
+
+<p>Kontrastera med LocationRonnebyVardcentral som använder legacy
+streetAddress (pre-5.2) → address.text.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Organization-blekingesjukhuset-vardenhet.html"
+                  title="Organization/blekingesjukhuset-vardenhet">Blekingesjukhuset (Vårdenhet)</a>
+            </td>
+            <td>
+<p>Exempelinstans för Blekingesjukhuset som publik specialiserad vårdenhet under
+Region Blekinge. Demonstrerar: APK (arbetsplatskod), GLN, alla telekomtyper
+inkl. mobiltelefon, fax och 1177-djuplänk (hsaVpwWebpage), legacy postadress
+(pre-5.2), strukturerad besöksadress i separat Location-resurs,
+destinationIndicator=03 och partOf → VG-instansen.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="HealthcareService-hs-tjanst-blekingesjukhuset.html"
+                  title="HealthcareService/hs-tjanst-blekingesjukhuset">Blekingesjukhuset Tjänsteutbud (HealthcareService)</a>
+            </td>
+            <td>
+<p>Exempelinstans för Blekingesjukhusets vårdtjänst med internmedicin och
+kardiologi, öppen- och slutenvård, telefontider och drop-in-tider.</p>
+
+<p>Demonstrerar: category[verksamhetskod] med flera koder (1101 Internmedicin
+och 1126 Kardiologi), type[care-type] med öppen och sluten vård,
+availability för telefonmottagning (öppettider) och drop-in, comment
+(hsaVpwInformation3 → "om oss"-text) och relationen till Location-resursen.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Organization-hjartmottagningen-vardenhet.html"
+                  title="Organization/hjartmottagningen-vardenhet">Hjärtmottagningen Karlskrona (Vårdenhet)</a>
+            </td>
+            <td>
+<p>Exempelinstans för Hjärtmottagningen Karlskrona — en specialistmottagning
+(kardiologi) organisatoriskt placerad under Blekingesjukhuset i LDAP-trädet,
+men med partOf direkt till Region Blekinge som ansvarig vårdgivare per
+profil-kravet partOf only Reference(HsaHealthcareProviderOrganization).</p>
+
+<p>Demonstrerar: orgPeriod med start OCH end (hsacat-org-period-end uppfylld),
+tillfällig information (hsaVpwInformation2 → temporaryNotice),
+patientinformation (hsaVpwInformation4 → patientInfo),
+hsaBusinessType=15 (Mottagning) och den viktiga distinktionen att
+DN-trädpositionen INTE representeras som partOf i FHIR v1.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Organization-arkiverad-enhet.html"
+                  title="Organization/arkiverad-enhet">Medicinmottagning Karlshamn (arkiverad)</a>
+            </td>
+            <td>
+<p>Exempelinstans för en arkiverad (inaktiv) vårdenhet — Medicinmottagning
+Karlshamn — som stängde 2023-12-31 och är markerad med hsaArchivedObject: TRUE
+i LDAP.</p>
+
+<p>Demonstrerar: active = false som FHIR-representation av hsaArchivedObject,
+minimal datauppsättning för arkiverade enheter (identitet + typ + status),
+frånvaro av destinationIndicator och avsaknad av orgPeriod (se mappningskommentar).</p>
+
+<p>Alla inaktiveringsskäl (hsaArchivedObject, hiddenObject, hsaInaccurateHCP/HCU)
+mappas till active = false — distinktionen görs inte synlig i FHIR v1.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Organization-region-blekinge-vardgivare.html"
+                  title="Organization/region-blekinge-vardgivare">Region Blekinge (Vårdgivare)</a>
+            </td>
+            <td>
+<p>Exempelinstans för Region Blekinge som offentlig regional vårdgivare.
+Demonstrerar: management=01 (landsting/region), GLN-kod, legacy postadress
+(pre-5.2 övergångsform), telekomtyper (direkttelefon = växel, e-post,
+innehållsansvarig, webbadress) och frånvaro av destinationIndicator på VG-nivå.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Location-location-ronneby-vardcentral.html"
+                  title="Location/location-ronneby-vardcentral">Ronneby Vårdcentral (Besöksplats, legacy adress)</a>
+            </td>
+            <td>
+<p>Exempelinstans för Ronneby Vårdcentrals fysiska besöksplats med legacy
+adressformat (pre-HSA 5.2).</p>
+
+<p>Demonstrerar: address.text (ostrukturerat streetAddress-attribut) som
+övergångsmönster under migrationsperioden t.o.m. september 2026, jämfört
+med address.line[] i LocationBlekingesjukhuset (strukturerat 5.2+).</p>
+
+<p>Konsumenter bör kontrollera om address.line är satt för att avgöra vilket
+format som används — address.text är fallback för ej-migrerade enheter.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Organization-ronneby-vardcentral-vardenhet.html"
+                  title="Organization/ronneby-vardcentral-vardenhet">Ronneby Vårdcentral (Vårdenhet, privat utförare)</a>
+            </td>
+            <td>
+<p>Exempelinstans för Ronneby Vårdcentral — en primärvårdsenhet driven av
+Blekinge Primärvård AB (privat) med finansiering från Region Blekinge.</p>
+
+<p>Demonstrerar: careLevel=01 (Primärvård), hsaBusinessType=05 (Vårdcentral),
+financingOrganization-extensionen (privat utförare med regionfinansiering),
+APK-kod, mobiltelefon, patientInfo (hsaVpwInformation4) och legacy
+streetAddress (besöksadress ej migrerat till 5.2+ hsaVisitingAddress).
+Besöksadressen modelleras i Instance-LocationRonnebyVardcentral.</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="HealthcareService-hs-tjanst-ronneby-vardcentral.html"
+                  title="HealthcareService/hs-tjanst-ronneby-vardcentral">Ronneby Vårdcentral Tjänsteutbud (HealthcareService)</a>
+            </td>
+            <td>
+<p>Exempelinstans för Ronneby Vårdcentrals vårdtjänst med allmänmedicin,
+tre typer av tillgänglighetsinformation (telefontider, tidig telefontid,
+drop-in) och alla tre VPW-textfälten.</p>
+
+<p>Demonstrerar: category[verksamhetskod]=1502 (Allmänmedicin), tre separata
+availability-block (telefontider + tidig telefontid + drop-in med selektiva
+veckodagar), comment (hsaVpwInformation3), temporaryNotice (hsaVpwInformation2)
+och patientInfo (hsaVpwInformation4) på HealthcareService-resursen.</p>
+</td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se/">Inera AB / HSA-IG projekt</a>.  Package inera.se.hsa.katalog#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R5/">FHIR 5.0.0</a>. Generated <span title="Mon, Sep 28, 2026 08:39+0000">2026-09-28</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

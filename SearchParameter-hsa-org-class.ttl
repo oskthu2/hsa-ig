@@ -1,0 +1,47 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/SearchParameter/hsa-org-class> a fhir:SearchParameter ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "hsa-org-class"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: SearchParameter hsa-org-class</b></p><a name=\"hsa-org-class\"> </a><a name=\"hchsa-org-class\"> </a><h2>HsaOrgClass</h2><p>Parameter <code>hsa-org-class</code>:<code>token</code></p><div><p>Sökning på HSA-objektklassificering. Filtrerar på type.coding med system = 'https://hsa.inera.se/fhir/CodeSystem/hsa-object-class'.</p>\n</div><table class=\"grid\"><tr><td>Resurs</td><td><a href=\"http://hl7.org/fhir/R5/organization.html\">Organization</a></td></tr><tr><td>Uttryck</td><td><code>type.coding.where(system = 'https://hsa.inera.se/fhir/CodeSystem/hsa-object-class')</code></td></tr><tr><td>Multipler</td><td><ul><li>multipleAnd: Parametern får endast förekomma en gång</li><li>multipleOr: Parametern kan ha flera värden (separerade med kommatecken) där minst ett måste vara sant</li></ul></td></tr></table></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [ fhir:v "https://hsa.inera.se/fhir/SearchParameter/hsa-org-class"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "HsaOrgClass"] ; # 
+  fhir:title [ fhir:v "HSA Organisationsklass"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-05-21"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Inera AB / HSA-IG projekt"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Inera AB / HSA-IG projekt" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.inera.se/" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Sökning på HSA-objektklassificering. Filtrerar på type.coding med system = 'https://hsa.inera.se/fhir/CodeSystem/hsa-object-class'."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "SE" ] ;
+       fhir:display [ fhir:v "Sweden" ]
+     ] )
+  ] ) ; # 
+  fhir:code [ fhir:v "hsa-org-class"] ; # 
+  fhir:base ( [ fhir:v "Organization"] ) ; # 
+  fhir:type [ fhir:v "token"] ; # 
+  fhir:expression [ fhir:v "type.coding.where(system = 'https://hsa.inera.se/fhir/CodeSystem/hsa-object-class')"] ; # 
+  fhir:multipleOr [ fhir:v true] ; # 
+  fhir:multipleAnd [ fhir:v false] . # 
+
+# -------------------------------------------------------------------------------------
+

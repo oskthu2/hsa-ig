@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CapabilityStatement xmlns="http://hl7.org/fhir">
+  <id value="hsa-client-ehr-sync"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: CapabilityStatement hsa-client-ehr-sync</b></p><a name="hsa-client-ehr-sync"> </a><a name="hchsa-client-ehr-sync"> </a><h2 id="title">HSA Klient – EHR-katalogsynk</h2><ul><li>Implementationsguidens version: 0.1.0 </li><li>FHIR-version: 5.0.0 </li><li>Format som stöds: <code>json</code></li><li>Publicerad: 2026-05-21 </li><li>Publicerad av: Inera AB / HSA-IG projekt </li></ul><blockquote class="impl-note"><p><strong>Notera till implementörer: FHIR-förmågor</strong></p><p>Vilken FHIR-förmåga som helst kan vara 'tillåten' av systemet om den inte uttryckligen är markerad som 'SHALL NOT'. Några objekt är markerade som MAY i implementationsguiden för att belysa deras potentiella relevans för användningsfallet.</p></blockquote><h2 id="rest">FHIR RESTful-förmågor</h2><div class="panel panel-default"><div class="panel-heading"><h3 id="mode1" class="panel-title">Mode: <code>client</code></h3></div><div class="panel-body"><div><p>UC-01 EHR-katalogsynk använder följande frågemönster:
+Fullsynk (nattlig):
+GET /Organization?active=true&amp;_count=100  (+ paginering via Bundle.link[next])
+GET /Location?_count=100
+GET /HealthcareService?active=true&amp;_count=100
+Inkrementell synk (händelsedriven):
+GET /Organization?_lastUpdated=gt[tidsstämpel]&amp;_count=100
+GET /Location?_lastUpdated=gt[tidsstämpel]&amp;_count=100
+GET /HealthcareService?_lastUpdated=gt[tidsstämpel]&amp;_count=100
+Scenariot förutsätter att servern har stöd för _lastUpdated och korrekt paginering (Bundle.link[next]).</p>
+<p>UC-04 VGR Encounter.type-mappning (on-demand):
+GET /HealthcareService?organization=Organization/[id]&amp;service-category=[verksamhetskod]
+Verksamhetskod (OID 1.2.752.129.2.2.1.3) är tillgänglig direkt på
+HealthcareService.category utan transformation (ADR-011).</p>
+</div></div></div><h3 id="resourcesCap1">Förmågor per resurs/profil</h3><h4 id="resourcesSummary1">Sammanfattning</h4><p>Sammanfattningstabellen listar resurserna som ingår i denna konfiguration, och för varje resurs listar den:</p><ul><li>De relevanta profilerna (om några)</li><li>Interaktionerna som stöds av varje resurs (<b><span class="bg-info">R</span></b>ead, <b><span class="bg-info">S</span></b>earch, <b><span class="bg-info">U</span></b>pdate, and <b><span class="bg-info">C</span></b>reate, are always shown, while <b><span class="bg-info">VR</span></b>ead, <b><span class="bg-info">P</span></b>atch, <b><span class="bg-info">D</span></b>elete, <b><span class="bg-info">H</span></b>istory on <b><span class="bg-info">I</span></b>nstance, or <b><span class="bg-info">H</span></b>istory on <b><span class="bg-info">T</span></b>yp är endast närvarande om minst en av resurserna har stöd för dem.</li><li><span>De obligatoriska, rekommenderade och vissa valfria sökparametrarna (om några). </span></li><li>De länkade resurserna aktiverade för <code>_include</code></li><li>De övriga resurserna aktiverade för <code>_revinclude</code></li><li>Operationerna på resursen (om några)</li></ul><div class="table-responsive"><table class="table table-condensed table-hover"><thead><tr><th><b>Resurstyp</b></th><th><b>Profil</b></th><th class="text-center"><b title="GET en resurs (läs-interaktion)">R</b></th><th class="text-center"><b title="GET alla resurser av typen (sök-interaktion)">S</b></th><th class="text-center"><b title="PUT en ny resursversion (uppdatera-interaktion)">U</b></th><th class="text-center"><b title="POST en ny resurs (skapa-interaktion)">C</b></th><th><b title="Obligatoriska och rekommenderade sökparametrar">Sökningar</b></th><th><code><b>_include</b></code></th><th><code><b>_revinclude</b></code></th><th><b>Operationer</b></th></tr></thead><tbody><tr><td><a href="#Organization1-1">Organization</a></td><td><a href="StructureDefinition-hsa-catalog-organization.html">https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization</a></td><td class="text-center">y</td><td class="text-center">y</td><td class="text-center"/><td class="text-center"/><td>_lastUpdated, active, identifier, hsa-org-class</td><td><code>Organization:partof</code></td><td/><td/></tr><tr><td><a href="#Location1-2">Location</a></td><td><a href="StructureDefinition-hsa-catalog-location.html">https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location</a></td><td class="text-center">y</td><td class="text-center">y</td><td class="text-center"/><td class="text-center"/><td>_lastUpdated, organization</td><td/><td/><td/></tr><tr><td><a href="#HealthcareService1-3">HealthcareService</a></td><td><a href="StructureDefinition-hsa-healthcare-service.html">https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service</a></td><td class="text-center">y</td><td class="text-center">y</td><td class="text-center"/><td class="text-center"/><td>_lastUpdated, active, organization, service-category</td><td/><td/><td/></tr></tbody></table></div><hr/><div class="panel panel-default"><div class="panel-heading"><h4 id="Organization1-1" class="panel-title"><span style="float: right;">Resurskonformans: unspecified </span>Organization</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-6"><span class="lead">Bassystemprofil</span><br/><a href="StructureDefinition-hsa-catalog-organization.html">HSA Catalog Organization</a></div><div class="col-lg-3"><span class="lead">Profilkonformans</span><br/><b>SHALL</b></div><div class="col-lg-3"><span class="lead">Referenspolicy</span><br/></div></div><p/><div class="row"><div class="col-lg-6"><span class="lead">Interaktionssammanfattning</span><br/><ul><li>Stöder <code>read</code>, <code>search-type</code>.</li></ul></div></div><p/><div class="row"><div class="col-12"><span class="lead">Dokumentation</span><blockquote><div><p>Använder alla profilerade fält: identifier (hsa-id, org-no, apk), name, type, active, contact, partOf, meta.security.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Sökparametrar</span><table class="table table-condensed table-hover"><thead><tr><th>Konformans</th><th>Parameter</th><th>Typ</th><th>Dokumentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td>_lastUpdated</td><td><code>date</code></td><td><div><p>Möjliggör inkrementell synk baserat på ändringstidpunkt.</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>active</td><td><code>token</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>identifier</td><td><code>token</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td><a href="SearchParameter-hsa-org-class.html">hsa-org-class</a></td><td><code>token</code></td><td><div/></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="Location1-2" class="panel-title"><span style="float: right;">Resurskonformans: unspecified </span>Location</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-6"><span class="lead">Bassystemprofil</span><br/><a href="StructureDefinition-hsa-catalog-location.html">HSA Catalog Location</a></div><div class="col-lg-3"><span class="lead">Profilkonformans</span><br/><b>SHALL</b></div><div class="col-lg-3"><span class="lead">Referenspolicy</span><br/></div></div><p/><div class="row"><div class="col-lg-6"><span class="lead">Interaktionssammanfattning</span><br/><ul><li>Stöder <code>read</code>, <code>search-type</code>.</li></ul></div></div><p/><div class="row"><div class="col-12"><span class="lead">Dokumentation</span><blockquote><div><p>Använder address (fysisk), position (SWEREF99), managingOrganization. Synkroniseras parallellt med Organization.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Sökparametrar</span><table class="table table-condensed table-hover"><thead><tr><th>Konformans</th><th>Parameter</th><th>Typ</th><th>Dokumentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td>_lastUpdated</td><td><code>date</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>organization</td><td><code>reference</code></td><td><div/></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="HealthcareService1-3" class="panel-title"><span style="float: right;">Resurskonformans: unspecified </span>HealthcareService</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-6"><span class="lead">Bassystemprofil</span><br/><a href="StructureDefinition-hsa-healthcare-service.html">HSA Healthcare Service</a></div><div class="col-lg-3"><span class="lead">Profilkonformans</span><br/><b>SHALL</b></div><div class="col-lg-3"><span class="lead">Referenspolicy</span><br/></div></div><p/><div class="row"><div class="col-lg-6"><span class="lead">Interaktionssammanfattning</span><br/><ul><li>Stöder <code>read</code>, <code>search-type</code>.</li></ul></div></div><p/><div class="row"><div class="col-12"><span class="lead">Dokumentation</span><blockquote><div><p>Använder category[verksamhetskod], availability (öppettider), providedBy. Synkroniseras för möjlig Encounter.type-mappning (UC-04).</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Sökparametrar</span><table class="table table-condensed table-hover"><thead><tr><th>Konformans</th><th>Parameter</th><th>Typ</th><th>Dokumentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td>_lastUpdated</td><td><code>date</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>active</td><td><code>token</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>organization</td><td><code>reference</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>service-category</td><td><code>token</code></td><td><div/></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/CapabilityStatement/hsa-client-ehr-sync"/>
+  <version value="0.1.0"/>
+  <name value="HsaClientEhrSync"/>
+  <title value="HSA Klient – EHR-katalogsynk"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2026-05-21"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="Illustrativt exempel för EHR-katalogsynk (UC-01) och Encounter.type-mappning (UC-04): möjliga förmågor för fullsynk och inkrementell synk av HSA-organisationsdata."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <kind value="requirements"/>
+  <fhirVersion value="5.0.0"/>
+  <format value="json"/>
+  <rest>
+    <mode value="client"/>
+    <documentation value="UC-01 EHR-katalogsynk använder följande frågemönster:&#xA;Fullsynk (nattlig):&#xA;  GET /Organization?active=true&amp;_count=100  (+ paginering via Bundle.link[next])&#xA;  GET /Location?_count=100&#xA;  GET /HealthcareService?active=true&amp;_count=100&#xA;Inkrementell synk (händelsedriven):&#xA;  GET /Organization?_lastUpdated=gt[tidsstämpel]&amp;_count=100&#xA;  GET /Location?_lastUpdated=gt[tidsstämpel]&amp;_count=100&#xA;  GET /HealthcareService?_lastUpdated=gt[tidsstämpel]&amp;_count=100&#xA;Scenariot förutsätter att servern har stöd för _lastUpdated och korrekt paginering (Bundle.link[next]).&#xA;&#xA;UC-04 VGR Encounter.type-mappning (on-demand):&#xA;  GET /HealthcareService?organization=Organization/[id]&amp;service-category=[verksamhetskod]&#xA;Verksamhetskod (OID 1.2.752.129.2.2.1.3) är tillgänglig direkt på&#xA;HealthcareService.category utan transformation (ADR-011)."/>
+    <resource>
+      <type value="Organization"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization"/>
+      <documentation value="Använder alla profilerade fält: identifier (hsa-id, org-no, apk), name, type, active, contact, partOf, meta.security."/>
+      <interaction>
+        <code value="read"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+      </interaction>
+      <searchInclude value="Organization:partof"/>
+      <searchParam>
+        <name value="_lastUpdated"/>
+        <type value="date"/>
+        <documentation value="Möjliggör inkrementell synk baserat på ändringstidpunkt."/>
+      </searchParam>
+      <searchParam>
+        <name value="active"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="identifier"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="hsa-org-class"/>
+        <definition value="https://hsa.inera.se/fhir/SearchParameter/hsa-org-class"/>
+        <type value="token"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <type value="Location"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"/>
+      <documentation value="Använder address (fysisk), position (SWEREF99), managingOrganization. Synkroniseras parallellt med Organization."/>
+      <interaction>
+        <code value="read"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+      </interaction>
+      <searchParam>
+        <name value="_lastUpdated"/>
+        <type value="date"/>
+      </searchParam>
+      <searchParam>
+        <name value="organization"/>
+        <type value="reference"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <type value="HealthcareService"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service"/>
+      <documentation value="Använder category[verksamhetskod], availability (öppettider), providedBy. Synkroniseras för möjlig Encounter.type-mappning (UC-04)."/>
+      <interaction>
+        <code value="read"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+      </interaction>
+      <searchParam>
+        <name value="_lastUpdated"/>
+        <type value="date"/>
+      </searchParam>
+      <searchParam>
+        <name value="active"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="organization"/>
+        <type value="reference"/>
+      </searchParam>
+      <searchParam>
+        <name value="service-category"/>
+        <type value="token"/>
+      </searchParam>
+    </resource>
+  </rest>
+</CapabilityStatement>

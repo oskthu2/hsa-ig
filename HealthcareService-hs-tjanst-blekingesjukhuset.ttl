@@ -1,0 +1,75 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/HealthcareService/hs-tjanst-blekingesjukhuset> a fhir:HealthcareService ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "hs-tjanst-blekingesjukhuset"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service"^^xsd:anyURI ;
+       fhir:link <https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service>
+     ] ) ;
+     fhir:security ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.29.23.1.11"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "03" ] ;
+       fhir:display [ fhir:v "Internet/allmänheten" ]
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: HealthcareService hs-tjanst-blekingesjukhuset</b></p><a name=\"hs-tjanst-blekingesjukhuset\"> </a><a name=\"hchs-tjanst-blekingesjukhuset\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profil: <a href=\"StructureDefinition-hsa-healthcare-service.html\">HSA Healthcare Service</a></p><p style=\"margin-bottom: 0px\">Säkerhetsetikett: </p></div><p><b>active</b>: true</p><p><b>providedBy</b>: <a href=\"Organization-blekingesjukhuset-vardenhet.html\">Organization Blekingesjukhuset</a></p><p><b>category</b>: <span title=\"Koder:{urn:oid:1.2.752.129.2.2.1.3 1101}, {urn:oid:1.2.752.129.2.2.1.3 1126}\">Internmedicin</span></p><p><b>type</b>: <span title=\"Koder:{urn:oid:1.2.752.129.2.2.1.13 01}, {urn:oid:1.2.752.129.2.2.1.13 02}\">Öppen vård</span></p><p><b>location</b>: <a href=\"Location-location-blekingesjukhuset.html\">Location Blekingesjukhuset</a></p><p><b>name</b>: Internmedicin och Kardiologi</p><p><b>comment</b>: </p><div><p>Akutmottagning är öppen dygnet runt alla dagar. Planerade mottagningar kräver remiss via din vårdcentral.</p>\n</div><blockquote><p><b>availability</b></p><blockquote><p><b>availableTime</b></p><p><b>daysOfWeek</b>: Monday, Tuesday, Wednesday, Thursday, Friday</p><p><b>availableStartTime</b>: 08:00:00</p><p><b>availableEndTime</b>: 16:30:00</p></blockquote></blockquote><blockquote><p><b>availability</b></p><blockquote><p><b>availableTime</b></p><p><b>daysOfWeek</b>: Monday, Tuesday, Wednesday, Thursday, Friday</p><p><b>availableStartTime</b>: 08:00:00</p><p><b>availableEndTime</b>: 11:00:00</p></blockquote></blockquote></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:active [ fhir:v true] ; # 
+  fhir:providedBy [
+     fhir:link <https://hsa.inera.se/fhir/Organization/blekingesjukhuset-vardenhet> ;
+     fhir:reference [ fhir:v "Organization/blekingesjukhuset-vardenhet" ]
+  ] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.2.2.1.3"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1101" ] ;
+       fhir:display [ fhir:v "Internmedicin" ]
+     ] [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.2.2.1.3"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1126" ] ;
+       fhir:display [ fhir:v "Kardiologi" ]
+     ] )
+  ] ) ; # 
+  fhir:type ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.2.2.1.13"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "01" ] ;
+       fhir:display [ fhir:v "Öppen vård" ]
+     ] [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.2.2.1.13"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "02" ] ;
+       fhir:display [ fhir:v "Sluten vård" ]
+     ] )
+  ] ) ; # 
+  fhir:location ( [
+     fhir:link <https://hsa.inera.se/fhir/Location/location-blekingesjukhuset> ;
+     fhir:reference [ fhir:v "Location/location-blekingesjukhuset" ]
+  ] ) ; # 
+  fhir:name [ fhir:v "Internmedicin och Kardiologi"] ; # 
+  fhir:comment [ fhir:v "Akutmottagning är öppen dygnet runt alla dagar. Planerade mottagningar kräver remiss via din vårdcentral."] ; # 
+  fhir:availability ( [
+     fhir:availableTime ( [
+       fhir:daysOfWeek ( [ fhir:v "mon" ] [ fhir:v "tue" ] [ fhir:v "wed" ] [ fhir:v "thu" ] [ fhir:v "fri" ] ) ;
+       fhir:availableStartTime [ fhir:v "08:00:00"^^xsd:time ] ;
+       fhir:availableEndTime [ fhir:v "16:30:00"^^xsd:time ]
+     ] )
+  ] [
+     fhir:availableTime ( [
+       fhir:daysOfWeek ( [ fhir:v "mon" ] [ fhir:v "tue" ] [ fhir:v "wed" ] [ fhir:v "thu" ] [ fhir:v "fri" ] ) ;
+       fhir:availableStartTime [ fhir:v "08:00:00"^^xsd:time ] ;
+       fhir:availableEndTime [ fhir:v "11:00:00"^^xsd:time ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

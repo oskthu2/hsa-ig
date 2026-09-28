@@ -1,0 +1,19 @@
+{
+  "url" : "https://hsa.inera.se/fhir/ImplementationGuide/inera.se.hsa.katalog",
+  "name" : "HsaCatalogIG",
+  "title" : "HSA Katalog Implementation Guide",
+  "description" : "FHIR R5 Implementation Guide för HSA-baserad kataloginformation om organisationer, platser, vårdtjänster och ändpunkter inom svensk vård och omsorg.",
+  "status" : "draft",
+  "package-id" : "inera.se.hsa.katalog",
+  "ig-ver" : "0.1.0",
+  "date" : "Mon, 28 Sep, 2026 08:39:43 +0000",
+  "dateISO8601" : "2026-09-28T08:39:43+00:00",
+  "errs" : 47,
+  "warnings" : 130,
+  "hints" : 112,
+  "suppressed-hints" : 0,
+  "suppressed-warnings" : 0,
+  "version" : "5.0.0",
+  "tool" : "5.0.0 (3)",
+  "maxMemory" : 1615137992
+}

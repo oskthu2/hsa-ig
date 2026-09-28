@@ -1,0 +1,49 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/NamingSystem/organisation-nummer> a fhir:NamingSystem ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "organisation-nummer"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: NamingSystem organisation-nummer</b></p><a name=\"organisation-nummer\"> </a><a name=\"hcorganisation-nummer\"> </a><h3>Sammanfattning</h3><table class=\"grid\"><tr><td>Definierande URL</td><td>https://hsa.inera.se/fhir/NamingSystem/organisation-nummer</td></tr><tr><td>Version</td><td>0.1.0</td></tr><tr><td>Namn</td><td>OrganisationsnummerSE</td></tr><tr><td>Titel</td><td>Organisationsnummer (Sverige)</td></tr><tr><td>Status</td><td>active</td></tr><tr><td>Definition</td><td><div><p>Unikt nummer för juridiska personer i Sverige, tilldelat av Skatteverket\neller Bolagsverket. Obligatoriskt för organisationer som representerar\nvårdgivare (hsaHealthCareProvider).</p>\n</div></td></tr><tr><td>Utgivare</td><td>Inera AB / HSA-IG projekt</td></tr></table><h3>Identifierare</h3><table class=\"grid\"><tr><td><b>Typ</b></td><td><b>Värde</b></td><td><b>Föredragen</b></td></tr><tr><td>OID</td><td>2.5.4.97</td><td>true</td></tr><tr><td>URI</td><td>urn:oid:2.5.4.97</td><td/></tr></table></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [ fhir:v "https://hsa.inera.se/fhir/NamingSystem/organisation-nummer"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "OrganisationsnummerSE"] ; # 
+  fhir:title [ fhir:v "Organisationsnummer (Sverige)"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:kind [ fhir:v "identifier"] ; # 
+  fhir:date [ fhir:v "2026-05-20"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Inera AB / HSA-IG projekt"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Inera AB / HSA-IG projekt" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.inera.se/" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Unikt nummer för juridiska personer i Sverige, tilldelat av Skatteverket\neller Bolagsverket. Obligatoriskt för organisationer som representerar\nvårdgivare (hsaHealthCareProvider)."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "SE" ] ;
+       fhir:display [ fhir:v "Sweden" ]
+     ] )
+  ] ) ; # 
+  fhir:uniqueId ( [
+     fhir:type [ fhir:v "oid" ] ;
+     fhir:value [ fhir:v "2.5.4.97" ] ;
+     fhir:preferred [ fhir:v true ]
+  ] [
+     fhir:type [ fhir:v "uri" ] ;
+     fhir:value [ fhir:v "urn:oid:2.5.4.97" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

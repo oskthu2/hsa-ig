@@ -1,0 +1,7 @@
+{
+  "version" : "0.1.0",
+  "fhirVersion" : ["5.0.0"],
+  "date" : "20260928083943",
+  "name" : "inera.se.hsa.katalog",
+  "jurisdiction" : "urn:iso:std:iso:3166#SE"
+}

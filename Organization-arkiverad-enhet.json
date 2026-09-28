@@ -1,0 +1,34 @@
+{
+  "resourceType" : "Organization",
+  "id" : "arkiverad-enhet",
+  "meta" : {
+    "profile" : ["https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: Organization arkiverad-enhet</b></p><a name=\"arkiverad-enhet\"> </a><a name=\"hcarkiverad-enhet\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profil: <a href=\"StructureDefinition-hsa-healthcare-unit-organization.html\">HSA Healthcare Unit Organization</a></p></div><p><b>identifier</b>: <a href=\"NamingSystem-hsa-identity.html\" title=\"Unik identifierare för organisationer, enheter, funktioner, uppdrag och\npersoner i HSA-katalogen. Tilldelas automatiskt av HSA-systemet vid skapande\noch ska aldrig ändras. Används som stabil nyckel i nationella e-tjänster\n(NPÖ, Pascal, 1177 Hitta vård m.fl.).\">HSA-identitet (HSA-id)</a>/SE2321000016-ARKV1</p><p><b>active</b>: false</p><p><b>type</b>: <span title=\"Koder:{https://hsa.inera.se/fhir/CodeSystem/hsa-object-class healthcare-unit}\">Vårdenhet</span>, <span title=\"Koder:{urn:oid:1.2.752.129.5.1.46 02}\">Specialiserad somatisk vård</span></p><p><b>name</b>: Medicinmottagning Karlshamn</p><p><b>partOf</b>: <a href=\"Organization-region-blekinge-vardgivare.html\">Organization Region Blekinge</a></p></div>"
+  },
+  "identifier" : [{
+    "system" : "urn:oid:1.2.752.29.4.19",
+    "value" : "SE2321000016-ARKV1"
+  }],
+  "active" : false,
+  "type" : [{
+    "coding" : [{
+      "system" : "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class",
+      "code" : "healthcare-unit",
+      "display" : "Vårdenhet"
+    }]
+  },
+  {
+    "coding" : [{
+      "system" : "urn:oid:1.2.752.129.5.1.46",
+      "code" : "02",
+      "display" : "Specialiserad somatisk vård"
+    }]
+  }],
+  "name" : "Medicinmottagning Karlshamn",
+  "partOf" : {
+    "reference" : "Organization/region-blekinge-vardgivare"
+  }
+}

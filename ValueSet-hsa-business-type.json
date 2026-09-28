@@ -1,0 +1,36 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "hsa-business-type",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet hsa-business-type</b></p><a name=\"hsa-business-type\"> </a><a name=\"hchsa-business-type\"> </a><ul><li>Include alla koder som definieras i <code>urn:oid:1.2.752.129.2.2.1.12</code><span title=\"Versionen är inte uttryckligen angiven. Ingen matchande Kodsystem hittades\"> version Ej angiven (använd senaste från terminologiserver)</span></li></ul></div>"
+  },
+  "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-business-type",
+  "version" : "0.1.0",
+  "name" : "HsaBusinessTypeVS",
+  "title" : "HSA Enhetstyp (hsaBusinessType)",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2026-05-21",
+  "publisher" : "Inera AB / HSA-IG projekt",
+  "contact" : [{
+    "name" : "Inera AB / HSA-IG projekt",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.inera.se/"
+    }]
+  }],
+  "description" : "Enhetstyp för organisation eller enhet i HSA.\nSystem: HSA enhetstyp-kodverk (OID 1.2.752.129.2.2.1.12).\nTypiska värden: sjukhus, vårdcentral, apotek m.fl.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "SE",
+      "display" : "Sweden"
+    }]
+  }],
+  "compose" : {
+    "include" : [{
+      "system" : "urn:oid:1.2.752.129.2.2.1.12"
+    }]
+  }
+}

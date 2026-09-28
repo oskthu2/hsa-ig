@@ -1,0 +1,86 @@
+# inera.se.hsa.katalog#0.1.0: HSA Katalog Implementation Guide
+
+## Pages
+
+* [Introduktion](index.md)
+* [Användningsfall](use-cases.md)
+* [Designprinciper](design-principles.md)
+* [Profiler](profiles.md)
+* [LDAP → FHIR Mappning](ldap-mapping.md)
+* [Terminologi](terminology.md)
+* [Adressövergång](address-transition.md)
+* [Klientrendering](client-rendering.md)
+* [Artifacts Summary](artifacts.md)
+* [REST API](api.md)
+* [Nedladdningar](downloads.md)
+* [Harmonisering med eHM](ehm-alignment.md)
+* [Organisationshierarki](organization-hierarchy.md)
+
+## Resources
+
+### CodeSystems
+
+* [HSA Objektklassificering](CodeSystem-hsa-object-class.md)
+* [HSA Kontaktvägstyp](CodeSystem-hsa-telecom-type.md)
+
+### ValueSets
+
+* [HSA Enhetstyp (hsaBusinessType)](ValueSet-hsa-business-type.md)
+* [HSA Vård- och omsorgsform (careType)](ValueSet-hsa-care-type.md)
+* [HSA Visas för (hsaDestinationIndicator)](ValueSet-hsa-destination-indicator.md)
+* [HSA Organisationstyp](ValueSet-hsa-organization-type.md)
+* [HSA Ägarform](ValueSet-hsa-ownership-type.md)
+* [HSA Verksamhetskod (businessClassificationCode)](ValueSet-hsa-service-type.md)
+* [HSA Kontaktvägstyp](ValueSet-hsa-telecom-type-vs.md)
+
+### Resource Profiles
+
+* [HSA Catalog Location](StructureDefinition-hsa-catalog-location.md)
+* [HSA Catalog Organization](StructureDefinition-hsa-catalog-organization.md)
+* [HSA Healthcare Provider Organization](StructureDefinition-hsa-healthcare-provider-organization.md)
+* [HSA Healthcare Service](StructureDefinition-hsa-healthcare-service.md)
+* [HSA Healthcare Unit Organization](StructureDefinition-hsa-healthcare-unit-organization.md)
+
+### Extensions
+
+* [HSA Finansierande region/kommun](StructureDefinition-hsa-financing-organization.md)
+* [HSA Information till patient](StructureDefinition-hsa-patient-info.md)
+* [HSA Kontaktvägstyp](StructureDefinition-hsa-telecom-type.md)
+* [HSA Tillfällig information (text)](StructureDefinition-hsa-temporary-notice.md)
+
+### CapabilityStatements
+
+* [HSA Central Catalog Server](CapabilityStatement-hsa-catalog-server.md)
+* [HSA Klient – 1177 Hitta vård](CapabilityStatement-hsa-client-1177-hitta-vard.md)
+* [HSA Klient – EHR-katalogsynk](CapabilityStatement-hsa-client-ehr-sync.md)
+* [HSA Klient – Hierarkitraversering](CapabilityStatement-hsa-client-hierarchy-traversal.md)
+* [HSA Klient – Nationell Patientöversikt (NPÖ)](CapabilityStatement-hsa-client-npo.md)
+* [HSA Regional Catalog Server (hypotes)](CapabilityStatement-hsa-regional-catalog-server.md)
+
+### ImplementationGuides
+
+* [HSA Katalog Implementation Guide](index.md)
+
+### NamingSystems
+
+* [HSA-identitet (HSA-id)](NamingSystem-hsa-identity.md)
+* [Organisationsnummer (Sverige)](NamingSystem-organisation-nummer.md)
+
+### SearchParameters
+
+* [HSA-id](SearchParameter-hsa-id.md)
+* [HSA Organisationsklass](SearchParameter-hsa-org-class.md)
+* [HSA Tillhandahållande organisation](SearchParameter-hsa-provided-by.md)
+
+### Examples
+
+* [Internmedicin och Kardiologi (HealthcareService)](HealthcareService-hs-tjanst-blekingesjukhuset.md)
+* [Allmänmedicin Ronneby Vårdcentral (HealthcareService)](HealthcareService-hs-tjanst-ronneby-vardcentral.md)
+* [Blekingesjukhuset (Location)](Location-location-blekingesjukhuset.md)
+* [Ronneby Vårdcentral (Location)](Location-location-ronneby-vardcentral.md)
+* [Medicinmottagning Karlshamn (Organization)](Organization-arkiverad-enhet.md)
+* [Blekingesjukhuset (Organization)](Organization-blekingesjukhuset-vardenhet.md)
+* [Hjärtmottagningen Karlskrona (Organization)](Organization-hjartmottagningen-vardenhet.md)
+* [Blekinge Primärvård AB (Organization)](Organization-privat-vardgivare-ab.md)
+* [Region Blekinge (Organization)](Organization-region-blekinge-vardgivare.md)
+* [Ronneby Vårdcentral (Organization)](Organization-ronneby-vardcentral-vardenhet.md)

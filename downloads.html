@@ -1,0 +1,686 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Nedladdningar - HSA Katalog Implementation Guide v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link rel="stylesheet" href="fhir.css"/>
+
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-fhir.css"/>
+
+      <!-- Project extras -->
+    <link rel="stylesheet" href="assets/css/project.css"/>
+    <link rel="stylesheet" href="assets/css/pygments-manni.css"/>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css"/>
+  	<link rel="stylesheet" href="assets/css/prism.css"/>
+  	<link rel="stylesheet" href="assets/css/cqf.css"/>
+      <!-- Placeholder for child template CSS declarations -->
+
+    <script src="fhir-table-scripts.js" type="text/javascript"> </script>
+
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- [if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif] -->
+
+      <!-- Favicons -->
+    <link sizes="144x144" rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-144.png"/>
+    <link sizes="114x114" rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-114.png"/>
+    <link sizes="72x72" rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script src="assets/js/mermaid.js" type="text/javascript"></script>
+    <script src="assets/js/mermaid-init.js" type="text/javascript"></script>
+    <style type="text/css">h2{--heading-prefix:"12"}
+    h3,h4,h5,h6{--heading-prefix:"12"}</style>
+    <div id="segment-header" class="segment">    <!-- segment-header -->
+      <div class="container">    <!-- container -->
+
+          <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">HSA Katalog Implementation Guide</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img src="assets/images/swe.svg" alt="Sweden flag" title="Sweden" height="16"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div>   <!-- /container -->
+    </div>    <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">    <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">    <!-- container -->
+          <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+            <!-- status-bar -->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a href="http://hl7.org/fhir/R5/index.html" class="navbar-brand hidden">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml -->
+
+<ul class="nav navbar-nav">
+  <li>
+    <a href="index.html">Hem</a>
+  </li>
+  <li>
+    <a href="profiles.html">Profiler</a>
+  </li>
+  <li>
+    <a href="terminology.html">Terminologi</a>
+  </li>
+  <li>
+    <a href="api.html">API</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Vägledning
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="client-rendering.html">Klientrendering</a>
+      </li>
+      <li>
+        <a href="organization-hierarchy.html">Organisationshierarki</a>
+      </li>
+      <li>
+        <a href="address-transition.html">Adressövergång</a>
+      </li>
+      <li>
+        <a href="ldap-mapping.html">LDAP-mappning</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artefakter</a>
+  </li>
+  <li>
+    <a href="downloads.html">Nedladdningar</a>
+  </li>
+</ul>
+            </div>    <!-- /.nav-collapse -->
+          </div>    <!-- /.container -->
+        </nav>    <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-navbar -->
+      <!-- status-bar -->
+
+    <div id="segment-breadcrumb" class="segment">    <!-- segment-breadcrumb -->
+      <div class="container">    <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href="toc.html"><b>Table of Contents</b></a></li><li><b>Nedladdningar</b></li>
+
+        </ul>
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">    <!-- segment-content -->
+      <div class="container">    <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+    <!-- ReleaseHeader --><p id="publish-box">HSA Katalog Implementation Guide - Lokal utvecklingsbygge (v0.1.0) byggt av FHIR (HL7&reg; FHIR&reg; Standard) Build Tools. Se <a href="https://hsa.inera.se/fhir/history.html">katalogen över publicerade versioner</a></p>  <!-- EndReleaseHeader -->
+  <h2>Nedladdningar</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>  <!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#nedladdningar" id="markdown-toc-nedladdningar">Nedladdningar</a>    <ul>
+      <li><a href="#fhir-paket-npm" id="markdown-toc-fhir-paket-npm">FHIR-paket (npm)</a></li>
+      <li><a href="#konformansdeklarationer-capabilitystatements" id="markdown-toc-konformansdeklarationer-capabilitystatements">Konformansdeklarationer (CapabilityStatements)</a>        <ul>
+          <li><a href="#serverexempel" id="markdown-toc-serverexempel">Serverexempel</a></li>
+          <li><a href="#klientexempel" id="markdown-toc-klientexempel">Klientexempel</a></li>
+        </ul>
+      </li>
+      <li><a href="#profiler-structuredefinitions" id="markdown-toc-profiler-structuredefinitions">Profiler (StructureDefinitions)</a>        <ul>
+          <li><a href="#extensions" id="markdown-toc-extensions">Extensions</a></li>
+        </ul>
+      </li>
+      <li><a href="#terminologi" id="markdown-toc-terminologi">Terminologi</a>        <ul>
+          <li><a href="#codesystems" id="markdown-toc-codesystems">CodeSystems</a></li>
+          <li><a href="#valuesets" id="markdown-toc-valuesets">ValueSets</a></li>
+        </ul>
+      </li>
+      <li><a href="#sökparametrar-searchparameters" id="markdown-toc-sökparametrar-searchparameters">Sökparametrar (SearchParameters)</a></li>
+      <li><a href="#exempelinstanser" id="markdown-toc-exempelinstanser">Exempelinstanser</a>        <ul>
+          <li><a href="#vårdgivare-hsahealthcareproviderorganization" id="markdown-toc-vårdgivare-hsahealthcareproviderorganization">Vårdgivare (HsaHealthcareProviderOrganization)</a></li>
+          <li><a href="#vårdenheter-hsahealthcareunitorganization" id="markdown-toc-vårdenheter-hsahealthcareunitorganization">Vårdenheter (HsaHealthcareUnitOrganization)</a></li>
+          <li><a href="#platser-hsacataloglocation" id="markdown-toc-platser-hsacataloglocation">Platser (HsaCatalogLocation)</a></li>
+          <li><a href="#tjänsteutbud-hsahealthcareservice" id="markdown-toc-tjänsteutbud-hsahealthcareservice">Tjänsteutbud (HsaHealthcareService)</a></li>
+        </ul>
+      </li>
+      <li><a href="#komplett-ig-nedladdning" id="markdown-toc-komplett-ig-nedladdning">Komplett IG-nedladdning</a></li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+<h1 id="nedladdningar">Nedladdningar</h1>
+
+<p>Denna sida samlar nedladdningsbara artefakter från HSA Katalog IG.</p>
+
+<hr/>
+
+<h2 id="fhir-paket-npm">FHIR-paket (npm)</h2>
+
+<p>Det rekommenderade sättet att använda IG:n i FHIR-verktyg, validerare och IG-byggare.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Paket</th>
+      <th>Beskrivning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">inera.se.hsa.katalog#0.1.0</code></td>
+      <td>Komplett IG-paket med alla profiler, kodverk, exempel och konformansdeklarationer</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Installera med FHIR npm-registret
+npm --registry https://packages.simplifier.net install inera.se.hsa.katalog@0.1.0
+
+# Eller med fhir-package-loader
+fhir-package-loader install inera.se.hsa.katalog#0.1.0
+</code></pre></div></div>
+
+<p>Paketet innehåller alla StructureDefinition-, CodeSystem-, ValueSet-, SearchParameter- och CapabilityStatement-resurser i JSON-format.</p>
+
+<hr/>
+
+<h2 id="konformansdeklarationer-capabilitystatements">Konformansdeklarationer (CapabilityStatements)</h2>
+
+<p>CapabilityStatements i denna IG är illustrativa exempel på möjliga integrationsmönster,
+inte formellt antagna krav. De kan laddas ner som FHIR JSON och användas som
+utgångspunkt för egna implementationer.</p>
+
+<h3 id="serverexempel">Serverexempel</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artefakt</th>
+      <th>Illustrerar</th>
+      <th>JSON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-catalog-server.html">HSA Central Catalog Server</a></td>
+      <td>Möjligt centralt källsystem med läsaccess</td>
+      <td><a href="CapabilityStatement-hsa-catalog-server.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-regional-catalog-server.html">HSA Regional Catalog Server</a></td>
+      <td>Hypotetiskt regionalt mellanlager med läs- och skrivsupport</td>
+      <td><a href="CapabilityStatement-hsa-regional-catalog-server.json">↓ JSON</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="klientexempel">Klientexempel</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Artefakt</th>
+      <th>Illustrerar</th>
+      <th>JSON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-client-1177-hitta-vard.html">1177 Hitta vård</a></td>
+      <td>UC-03: Möjliga förmågor för publik vårdsökning och geo-sökning</td>
+      <td><a href="CapabilityStatement-hsa-client-1177-hitta-vard.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-client-npo.html">NPÖ</a></td>
+      <td>UC-02: Möjliga förmågor för arbetsplatskodssökning och hierarki</td>
+      <td><a href="CapabilityStatement-hsa-client-npo.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-client-hierarchy-traversal.html">Hierarkitraversering</a></td>
+      <td>Möjliga förmågor för SKLTP-liknande trädklättring (v1)</td>
+      <td><a href="CapabilityStatement-hsa-client-hierarchy-traversal.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="CapabilityStatement-hsa-client-ehr-sync.html">EHR-katalogsynk</a></td>
+      <td>UC-01 + UC-04: Möjliga förmågor för katalogsynk och Encounter.type</td>
+      <td><a href="CapabilityStatement-hsa-client-ehr-sync.json">↓ JSON</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h2 id="profiler-structuredefinitions">Profiler (StructureDefinitions)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profil</th>
+      <th>Resurs</th>
+      <th>JSON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="StructureDefinition-hsa-catalog-organization.html">HsaCatalogOrganization</a></td>
+      <td>Organization</td>
+      <td><a href="StructureDefinition-hsa-catalog-organization.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-hsa-healthcare-provider-organization.html">HsaHealthcareProviderOrganization</a></td>
+      <td>Organization</td>
+      <td><a href="StructureDefinition-hsa-healthcare-provider-organization.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-hsa-healthcare-unit-organization.html">HsaHealthcareUnitOrganization</a></td>
+      <td>Organization</td>
+      <td><a href="StructureDefinition-hsa-healthcare-unit-organization.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-hsa-catalog-location.html">HsaCatalogLocation</a></td>
+      <td>Location</td>
+      <td><a href="StructureDefinition-hsa-catalog-location.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-hsa-healthcare-service.html">HsaHealthcareService</a></td>
+      <td>HealthcareService</td>
+      <td><a href="StructureDefinition-hsa-healthcare-service.json">↓ JSON</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="extensions">Extensions</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Extension</th>
+      <th>Användning</th>
+      <th>JSON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="StructureDefinition-hsa-financing-organization.html">HsaFinancingOrganization</a></td>
+      <td>Finansierande region/kommun på Organization</td>
+      <td><a href="StructureDefinition-hsa-financing-organization.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-hsa-telecom-type.html">HsaTelecomType</a></td>
+      <td>Typ-kod på ContactPoint (direkttelefon, växel m.fl.)</td>
+      <td><a href="StructureDefinition-hsa-telecom-type.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-hsa-temporary-notice.html">HsaTemporaryNotice</a></td>
+      <td>Tillfällig informationstext (gul ruta på 1177)</td>
+      <td><a href="StructureDefinition-hsa-temporary-notice.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="StructureDefinition-hsa-patient-info.html">HsaPatientInfo</a></td>
+      <td>Information riktad till patient (1177)</td>
+      <td><a href="StructureDefinition-hsa-patient-info.json">↓ JSON</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h2 id="terminologi">Terminologi</h2>
+
+<h3 id="codesystems">CodeSystems</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>CodeSystem</th>
+      <th>OID / URI</th>
+      <th>JSON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="CodeSystem-hsa-object-class.html">HsaObjectClass</a></td>
+      <td><code class="language-plaintext highlighter-rouge">https://hsa.inera.se/fhir/CodeSystem/hsa-object-class</code></td>
+      <td><a href="CodeSystem-hsa-object-class.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="CodeSystem-hsa-telecom-type.html">HsaTelecomType</a></td>
+      <td><code class="language-plaintext highlighter-rouge">https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code></td>
+      <td><a href="CodeSystem-hsa-telecom-type.json">↓ JSON</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="valuesets">ValueSets</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>ValueSet</th>
+      <th>Binder till</th>
+      <th>JSON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="ValueSet-hsa-organization-type.html">HsaOrganizationTypeVS</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type</code></td>
+      <td><a href="ValueSet-hsa-organization-type.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="ValueSet-hsa-business-type.html">HsaBusinessTypeVS</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[business-type]</code></td>
+      <td><a href="ValueSet-hsa-business-type.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="ValueSet-hsa-ownership-type.html">HsaOwnershipTypeVS</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[ownership]</code></td>
+      <td><a href="ValueSet-hsa-ownership-type.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="ValueSet-hsa-destination-indicator.html">HsaDestinationIndicatorVS</a></td>
+      <td><code class="language-plaintext highlighter-rouge">meta.security[destination-indicator]</code></td>
+      <td><a href="ValueSet-hsa-destination-indicator.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="ValueSet-hsa-care-type.html">HsaCareTypeVS</a></td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.type[care-type]</code></td>
+      <td><a href="ValueSet-hsa-care-type.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="ValueSet-hsa-service-type.html">HsaServiceTypeVS</a></td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.category[verksamhetskod]</code></td>
+      <td><a href="ValueSet-hsa-service-type.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a name="l922">​</a><a href="ValueSet-hsa-telecom-type.html">HsaTelecomTypeVS</a></td>
+      <td><code class="language-plaintext highlighter-rouge">extension[hsa-telecom-type]</code></td>
+      <td><a name="l930">​</a><a href="ValueSet-hsa-telecom-type.json">↓ JSON</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h2 id="sökparametrar-searchparameters">Sökparametrar (SearchParameters)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>SearchParameter</th>
+      <th>Typ</th>
+      <th>Resurs</th>
+      <th>JSON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="SearchParameter-hsa-id.html">hsa-id</a></td>
+      <td>token</td>
+      <td>Organization, Location, HealthcareService</td>
+      <td><a href="SearchParameter-hsa-id.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="SearchParameter-hsa-org-class.html">hsa-org-class</a></td>
+      <td>token</td>
+      <td>Organization</td>
+      <td><a href="SearchParameter-hsa-org-class.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="SearchParameter-hsa-provided-by.html">hsa-provided-by</a></td>
+      <td>reference</td>
+      <td>HealthcareService</td>
+      <td><a href="SearchParameter-hsa-provided-by.json">↓ JSON</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h2 id="exempelinstanser">Exempelinstanser</h2>
+
+<p>Exempelbiblioteket täcker ett komplett organisationsträd för Region Blekinge och Blekinge Primärvård AB.
+Varje instans innehåller LDIF-källdata och mappningskommentarer som förklarar översättningen till FHIR.</p>
+
+<h3 id="vårdgivare-hsahealthcareproviderorganization">Vårdgivare (HsaHealthcareProviderOrganization)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instans</th>
+      <th>Visar</th>
+      <th>JSON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="Organization-region-blekinge-vardgivare.html">Region Blekinge</a></td>
+      <td>Offentlig regional VG, management=01, GLN, legacy postadress</td>
+      <td><a href="Organization-region-blekinge-vardgivare.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="Organization-privat-vardgivare-ab.html">Blekinge Primärvård AB</a></td>
+      <td>Privat VG, management=05, separat direkttelefon/växel</td>
+      <td><a href="Organization-privat-vardgivare-ab.json">↓ JSON</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="vårdenheter-hsahealthcareunitorganization">Vårdenheter (HsaHealthcareUnitOrganization)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instans</th>
+      <th>Visar</th>
+      <th>JSON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="Organization-blekingesjukhuset-vardenhet.html">Blekingesjukhuset</a></td>
+      <td>Sjukhus, APK, GLN, alla telekomtyper inkl. mobiltelefon och 1177-djuplänk</td>
+      <td><a href="Organization-blekingesjukhuset-vardenhet.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="Organization-hjartmottagningen-vardenhet.html">Hjärtmottagningen Karlskrona</a></td>
+      <td>orgPeriod (start+end), temporaryNotice, patientInfo, DN-träd vs. partOf</td>
+      <td><a href="Organization-hjartmottagningen-vardenhet.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="Organization-ronneby-vardcentral-vardenhet.html">Ronneby Vårdcentral</a></td>
+      <td>Primärvård, financingOrganization (privat utförare, regionfinansiering), APK</td>
+      <td><a href="Organization-ronneby-vardcentral-vardenhet.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="Organization-arkiverad-enhet.html">Medicinmottagning Karlshamn</a></td>
+      <td>Arkiverad enhet, active=false, hsaArchivedObject, minimal datauppsättning</td>
+      <td><a href="Organization-arkiverad-enhet.json">↓ JSON</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="platser-hsacataloglocation">Platser (HsaCatalogLocation)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instans</th>
+      <th>Visar</th>
+      <th>JSON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="Location-location-blekingesjukhuset.html">Blekingesjukhuset besöksplats</a></td>
+      <td>Strukturerad 5.2+ hsaVisitingAddress → address.line[], SWEREF99, Markdown-vägbeskrivning</td>
+      <td><a href="Location-location-blekingesjukhuset.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="Location-location-ronneby-vardcentral.html">Ronneby Vårdcentral besöksplats</a></td>
+      <td>Legacy streetAddress → address.text (pre-5.2 övergångsmönster)</td>
+      <td><a href="Location-location-ronneby-vardcentral.json">↓ JSON</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="tjänsteutbud-hsahealthcareservice">Tjänsteutbud (HsaHealthcareService)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instans</th>
+      <th>Visar</th>
+      <th>JSON</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="HealthcareService-hs-tjanst-blekingesjukhuset.html">Blekingesjukhuset tjänster</a></td>
+      <td>Flera verksamhetskoder (1101+1126), öppen+sluten vård, telefontider och drop-in</td>
+      <td><a href="HealthcareService-hs-tjanst-blekingesjukhuset.json">↓ JSON</a></td>
+    </tr>
+    <tr>
+      <td><a href="HealthcareService-hs-tjanst-ronneby-vardcentral.html">Ronneby Vårdcentral tjänster</a></td>
+      <td>Alla tre VPW-fält (comment/temporaryNotice/patientInfo), tre availability-block</td>
+      <td><a href="HealthcareService-hs-tjanst-ronneby-vardcentral.json">↓ JSON</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<h2 id="komplett-ig-nedladdning">Komplett IG-nedladdning</h2>
+
+<p>Den fullständiga IG:n med alla HTML-sidor och artefakter finns som zip-arkiv via IG Publisher-bygget.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Format</th>
+      <th>Länk</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Zip-arkiv (full IG)</td>
+      <td><a href="full-ig.zip">full-ig.zip</a></td>
+    </tr>
+    <tr>
+      <td>Enbart definitioner (JSON)</td>
+      <td><a href="definitions.json.zip">definitions.json.zip</a></td>
+    </tr>
+    <tr>
+      <td>Enbart definitioner (XML)</td>
+      <td><a href="definitions.xml.zip">definitions.xml.zip</a></td>
+    </tr>
+    <tr>
+      <td>Enbart exempel (JSON)</td>
+      <td><a href="examples.json.zip">examples.json.zip</a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+</div>
+        </div>    <!-- /inner-wrapper -->
+      </div>    <!-- /row -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-content -->
+
+  <script src="assets/js/jquery.js" type="text/javascript"> </script>       <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script src="assets/js/jquery-ui.min.js" type="text/javascript"> </script>
+
+  <script src="assets/js/window-hash.js" type="text/javascript"> </script>
+  <a name="bottom"> </a>
+  <div igtool="footer" id="segment-footer" class="segment">    <!-- segment-footer -->
+    <div class="container">    <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &copy; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se/">Inera AB / HSA-IG projekt</a>.  Package inera.se.hsa.katalog#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R5/">FHIR 5.0.0</a>. Generated <span title="Mon, Sep 28, 2026 08:39+0000">2026-09-28</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>    <!-- /inner-wrapper -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">    <!-- segment-post-footer -->
+    <div class="container">    <!-- container -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-post-footer -->
+
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+  ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/bootstrap.min.js" type="text/javascript"> </script>
+  <script src="assets/js/respond.min.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard-btn.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor-hover.js" type="text/javascript"> </script>
+    <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>

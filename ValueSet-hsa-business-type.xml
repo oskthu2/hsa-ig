@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="hsa-business-type"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: ValueSet hsa-business-type</b></p><a name="hsa-business-type"> </a><a name="hchsa-business-type"> </a><ul><li>Include alla koder som definieras i <code>urn:oid:1.2.752.129.2.2.1.12</code><span title="Versionen är inte uttryckligen angiven. Ingen matchande Kodsystem hittades"> version Ej angiven (använd senaste från terminologiserver)</span></li></ul></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/ValueSet/hsa-business-type"/>
+  <version value="0.1.0"/>
+  <name value="HsaBusinessTypeVS"/>
+  <title value="HSA Enhetstyp (hsaBusinessType)"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-05-21"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="Enhetstyp för organisation eller enhet i HSA.&#xA;System: HSA enhetstyp-kodverk (OID 1.2.752.129.2.2.1.12).&#xA;Typiska värden: sjukhus, vårdcentral, apotek m.fl."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <compose>
+    <include>
+      <system value="urn:oid:1.2.752.129.2.2.1.12"/>
+    </include>
+  </compose>
+</ValueSet>

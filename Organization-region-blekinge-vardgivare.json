@@ -1,0 +1,98 @@
+{
+  "resourceType" : "Organization",
+  "id" : "region-blekinge-vardgivare",
+  "meta" : {
+    "profile" : ["https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-provider-organization"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: Organization region-blekinge-vardgivare</b></p><a name=\"region-blekinge-vardgivare\"> </a><a name=\"hcregion-blekinge-vardgivare\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profil: <a href=\"StructureDefinition-hsa-healthcare-provider-organization.html\">HSA Healthcare Provider Organization</a></p></div><p><b>identifier</b>: <a href=\"NamingSystem-hsa-identity.html\" title=\"Unik identifierare för organisationer, enheter, funktioner, uppdrag och\npersoner i HSA-katalogen. Tilldelas automatiskt av HSA-systemet vid skapande\noch ska aldrig ändras. Används som stabil nyckel i nationella e-tjänster\n(NPÖ, Pascal, 1177 Hitta vård m.fl.).\">HSA-identitet (HSA-id)</a>/SE2321000016-BLKNG, <a href=\"NamingSystem-organisation-nummer.html\" title=\"Unikt nummer för juridiska personer i Sverige, tilldelat av Skatteverket\neller Bolagsverket. Obligatoriskt för organisationer som representerar\nvårdgivare (hsaHealthCareProvider).\">Organisationsnummer (Sverige)</a>/2321000016, <a href=\"http://terminology.hl7.org/7.4.0/NamingSystem-GLN.html\" title=\"Global Location Number (GLN) can be used by companies to identify their locations, giving them complete flexibility to identify any type or level of location required.\r\n\r\nFor more information as to how GLNs are used in healthcare, see a GS1 provided guide located here https://www.gs1.org/docs/healthcare/GLN_Healthcare_Imp_Guide.pdf \r\n\r\nFor additional information regarding the GLN standard refer to the GS1 General Specifications (https://www.gs1.org/standards/barcodes-epcrfid-id-keys/gs1-general-specifications) and for assignment refer to the GS1 GLN Allocation Rules (https://www.gs1.org/1/glnrules/en/).\r\n\r\nGS1 local offices handle all enquiries related to GS1 standards. Please see the list of GS1 offices (https://www.gs1.org/contact/overview) for more information.\r\n\r\nIn relation to the &quot;Healthcare GLN Implementation Guideline&quot;:\r\n\r\n&quot;GS1®, under its IP Policy, seeks to avoid uncertainty regarding intellectual property claims by requiring the participants in the Work Group that developed this Healthcare GLN Implementation Guideline to agree to grant to GS1 members a royalty-free licence or a RAND licence to Necessary Claims, as that term is defined in the GS1 IP Policy. Furthermore, attention is drawn to the possibility that an implementation of one or more features of this Specification may be the subject of a patent or other intellectual property right that does not involve a Necessary Claim. Any such patent or other intellectual property right is not subject to the licensing obligations of GS1. Moreover, the agreement to grant licences provided under the GS1 IP Policy does not include IP rights and any claims of third parties who were not participants in the Work Group.\r\n\r\nAccordingly, GS1 recommends that any organisation developing an implementation designed to be in conformance with this Specification should determine whether there are any patents that may encompass a specific implementation that the organisation is developing in compliance with the Specification and whether a licence under a patent or other intellectual property right is needed. Such a determination of a need for licencing should be made in view of the details of the specific system designed by the organisation in consultation with their own patent counsel.&quot;\r\n\r\n&quot;GS1 disclaims all liability for any damages arising from use or misuse of this document, whether special, indirect, consequential, or compensatory damages, and including liability for infringement of any intellectual property rights, relating to use of information in or reliance upon this document.&quot;\r\n\r\nGS1 and the GS1 logo are registered trademarks of GS1 AISBL.\">Global Location Number (GLN)</a>/7350088100003</p><p><b>active</b>: true</p><p><b>type</b>: <span title=\"Koder:{https://hsa.inera.se/fhir/CodeSystem/hsa-object-class healthcare-provider}\">Vårdgivare</span>, <span title=\"Koder:{urn:oid:1.2.752.129.2.2.1.14 01}\">Landsting/region</span></p><p><b>name</b>: Region Blekinge</p><h3>Contacts</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Telecom</b></td><td><b>Address</b></td></tr><tr><td style=\"display: none\">*</td><td>ph: 0455-73 10 00(Work), ph: 0455-73 10 00(Work), <a href=\"mailto:region@regionblekinge.se\">region@regionblekinge.se</a>, <a href=\"mailto:redaktion@regionblekinge.se\">redaktion@regionblekinge.se</a>, <a href=\"https://www.regionblekinge.se\">https://www.regionblekinge.se</a></td><td> </td></tr><tr><td style=\"display: none\">*</td><td> </td><td>Box 515</td></tr></table></div>"
+  },
+  "identifier" : [{
+    "system" : "urn:oid:1.2.752.29.4.19",
+    "value" : "SE2321000016-BLKNG"
+  },
+  {
+    "system" : "urn:oid:2.5.4.97",
+    "value" : "2321000016"
+  },
+  {
+    "system" : "urn:oid:1.3.88",
+    "value" : "7350088100003"
+  }],
+  "active" : true,
+  "type" : [{
+    "coding" : [{
+      "system" : "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class",
+      "code" : "healthcare-provider",
+      "display" : "Vårdgivare"
+    }]
+  },
+  {
+    "coding" : [{
+      "system" : "urn:oid:1.2.752.129.2.2.1.14",
+      "code" : "01",
+      "display" : "Landsting/region"
+    }]
+  }],
+  "name" : "Region Blekinge",
+  "contact" : [{
+    "telecom" : [{
+      "extension" : [{
+        "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type",
+        "valueCoding" : {
+          "system" : "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type",
+          "code" : "direct-phone",
+          "display" : "Direkttelefon"
+        }
+      }],
+      "system" : "phone",
+      "value" : "0455-73 10 00",
+      "use" : "work"
+    },
+    {
+      "extension" : [{
+        "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type",
+        "valueCoding" : {
+          "system" : "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type",
+          "code" : "switchboard",
+          "display" : "Växeltelefon"
+        }
+      }],
+      "system" : "phone",
+      "value" : "0455-73 10 00",
+      "use" : "work"
+    },
+    {
+      "system" : "email",
+      "value" : "region@regionblekinge.se",
+      "use" : "work"
+    },
+    {
+      "extension" : [{
+        "url" : "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type",
+        "valueCoding" : {
+          "system" : "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type",
+          "code" : "directory-contact",
+          "display" : "Innehållsansvarig"
+        }
+      }],
+      "system" : "email",
+      "value" : "redaktion@regionblekinge.se",
+      "use" : "work"
+    },
+    {
+      "system" : "url",
+      "value" : "https://www.regionblekinge.se",
+      "use" : "work"
+    }]
+  },
+  {
+    "address" : {
+      "type" : "postal",
+      "text" : "Box 515",
+      "city" : "Karlskrona",
+      "postalCode" : "371 81"
+    }
+  }]
+}

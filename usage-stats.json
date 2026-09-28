@@ -1,0 +1,109 @@
+{
+  "package": "inera.se.hsa.katalog",
+  "version": "0.1.0",
+  "fhirVersion": "5.0.0",
+  "jurisdiction": "SE",
+  "extensions": [
+    {
+      "url": "https://hsa.inera.se/fhir/StructureDefinition/hsa-financing-organization",
+      "title": "HSA Finansierande region/kommun",
+      "types": [
+        "Coding"
+      ]
+    },
+    {
+      "url": "https://hsa.inera.se/fhir/StructureDefinition/hsa-patient-info",
+      "title": "HSA Information till patient",
+      "types": [
+        "string"
+      ]
+    },
+    {
+      "url": "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type",
+      "title": "HSA Kontaktvägstyp",
+      "types": [
+        "Coding"
+      ]
+    },
+    {
+      "url": "https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-notice",
+      "title": "HSA Tillfällig information (text)",
+      "types": [
+        "string"
+      ]
+    }
+  ],
+  "profiles": {
+    "Location": [
+      {
+        "url": "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location",
+        "title": "HSA Catalog Location"
+      }
+    ],
+    "Organization": [
+      {
+        "url": "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization",
+        "title": "HSA Healthcare Unit Organization"
+      }
+    ],
+    "HealthcareService": [
+      {
+        "url": "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service",
+        "title": "HSA Healthcare Service"
+      }
+    ]
+  },
+  "usage": {
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice": [
+      "StructureDefinition.snapshot.element.constraint"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-bestpractice-explanation": [
+      "StructureDefinition.snapshot.element.constraint"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName": [
+      "StructureDefinition.snapshot.element.binding"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/elementdefinition-translatable": [
+      "StructureDefinition.snapshot.element"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/organization-period": [
+      "Organization"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/structuredefinition-fhir-type": [
+      "StructureDefinition.snapshot.element.type"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/structuredefinition-hierarchy": [
+      "StructureDefinition.differential.element.type",
+      "StructureDefinition.snapshot.element.type"
+    ],
+    "http://hl7.org/fhir/StructureDefinition/structuredefinition-type-characteristics": [
+      "StructureDefinition"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency": [
+      "ImplementationGuide.definition"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment": [
+      "ImplementationGuide.dependsOn"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/resource-information": [
+      "ImplementationGuide.definition.resource"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/snapshot-base-version": [
+      "StructureDefinition.snapshot"
+    ],
+    "https://hsa.inera.se/fhir/StructureDefinition/hsa-financing-organization": [
+      "Organization"
+    ],
+    "https://hsa.inera.se/fhir/StructureDefinition/hsa-patient-info": [
+      "HealthcareService",
+      "Organization"
+    ],
+    "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type": [
+      "Organization.contact.telecom"
+    ],
+    "https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-notice": [
+      "HealthcareService",
+      "Organization"
+    ]
+  }
+}

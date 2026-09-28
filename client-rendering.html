@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Klientrendering - HSA Katalog Implementation Guide v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"8"}
+    h3,h4,h5,h6{--heading-prefix:"8"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">HSA Katalog Implementation Guide</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="Sweden flag" src="assets/images/swe.svg" height="16" title="Sweden"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R5/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Hem</a>
+  </li>
+  <li>
+    <a href="profiles.html">Profiler</a>
+  </li>
+  <li>
+    <a href="terminology.html">Terminologi</a>
+  </li>
+  <li>
+    <a href="api.html">API</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Vägledning
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="client-rendering.html">Klientrendering</a>
+      </li>
+      <li>
+        <a href="organization-hierarchy.html">Organisationshierarki</a>
+      </li>
+      <li>
+        <a href="address-transition.html">Adressövergång</a>
+      </li>
+      <li>
+        <a href="ldap-mapping.html">LDAP-mappning</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artefakter</a>
+  </li>
+  <li>
+    <a href="downloads.html">Nedladdningar</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Klientrendering</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">HSA Katalog Implementation Guide - Lokal utvecklingsbygge (v0.1.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://hsa.inera.se/fhir/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <h2>Klientrendering</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#klientrendering-och-presentationskonventioner" id="markdown-toc-klientrendering-och-presentationskonventioner">Klientrendering och presentationskonventioner</a>    <ul>
+      <li><a href="#publik-synlighet-metasecuritydestination-indicator" id="markdown-toc-publik-synlighet-metasecuritydestination-indicator">Publik synlighet: <code class="language-plaintext highlighter-rouge">meta.security[destination-indicator]</code></a></li>
+      <li><a href="#tillfällig-information-organization-period-och-varningsindikator" id="markdown-toc-tillfällig-information-organization-period-och-varningsindikator">Tillfällig information: organization-period och varningsindikator</a>        <ul>
+          <li><a href="#renderingsregel" id="markdown-toc-renderingsregel">Renderingsregel</a></li>
+          <li><a href="#textinnehåll-i-varningsrutan" id="markdown-toc-textinnehåll-i-varningsrutan">Textinnehåll i varningsrutan</a></li>
+          <li><a href="#exempel-på-instans-organization-med-tillfällig-period" id="markdown-toc-exempel-på-instans-organization-med-tillfällig-period">Exempel på instans (Organization med tillfällig period)</a></li>
+        </ul>
+      </li>
+      <li><a href="#vägbeskrivning-locationdescription-som-markdown" id="markdown-toc-vägbeskrivning-locationdescription-som-markdown">Vägbeskrivning: <code class="language-plaintext highlighter-rouge">Location.description</code> som Markdown</a>        <ul>
+          <li><a href="#konventionella-rubriker" id="markdown-toc-konventionella-rubriker">Konventionella rubriker</a></li>
+        </ul>
+      </li>
+      <li><a href="#adressrendering" id="markdown-toc-adressrendering">Adressrendering</a>        <ul>
+          <li><a href="#uppsala-regeln" id="markdown-toc-uppsala-regeln">Uppsala-regeln</a></li>
+          <li><a href="#adressövergång-tom-sept-2026" id="markdown-toc-adressövergång-tom-sept-2026">Adressövergång (t.o.m. sept 2026)</a></li>
+        </ul>
+      </li>
+      <li><a href="#telefonnummer-och-kontaktvägar" id="markdown-toc-telefonnummer-och-kontaktvägar">Telefonnummer och kontaktvägar</a></li>
+      <li><a href="#öppettider" id="markdown-toc-öppettider">Öppettider</a></li>
+      <li><a href="#1177-specifika-textfält" id="markdown-toc-1177-specifika-textfält">1177-specifika textfält</a></li>
+      <li><a href="#1177-hitta-vård-publiceringschecklista" id="markdown-toc-1177-hitta-vård-publiceringschecklista">1177 Hitta vård: publiceringschecklista</a></li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+<h1 id="klientrendering-och-presentationskonventioner">Klientrendering och presentationskonventioner</h1>
+
+<p>Denna sida beskriver hur klienter som konsumerar HSA-IG-resurser förväntas presentera data för slutanvändare. Reglerna på denna sida är implementationsriktlinjer — de normativa FHIR-begränsningarna finns i respektive profil. Primär målgrupp är konsumentsystem som 1177 Hitta vård, regionala vårdsystem och NPÖ.</p>
+
+<hr />
+
+<h2 id="publik-synlighet-metasecuritydestination-indicator">Publik synlighet: <code class="language-plaintext highlighter-rouge">meta.security[destination-indicator]</code></h2>
+
+<p><code class="language-plaintext highlighter-rouge">hsaDestinationIndicator</code> anger vilket publiceringsscope en resurs har. Det modelleras som ett Coding-element i <code class="language-plaintext highlighter-rouge">meta.security</code> med system <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.23.1.11</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kod</th>
+      <th>Visningsscope</th>
+      <th>Typisk konsument</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">01</code></td>
+      <td>Interna system</td>
+      <td>Vårdsystem med legitimering</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">02</code></td>
+      <td>Samverkan</td>
+      <td>Andra HSA-anslutna system</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">03</code></td>
+      <td>Internet/allmänheten</td>
+      <td>1177 Hitta vård, publika API:er</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Klientregel:</strong> Klienter som publicerar data för allmänheten (t.ex. 1177) SKA filtrera sökresultat på <code class="language-plaintext highlighter-rouge">meta.security.code = '03'</code> och system <code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.23.1.11</code>. Resurser utan denna kod ska inte visas.</p>
+
+<p>Sökning via SearchParameter (se <a href="api.html">REST API</a>):</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /Organization?_security=urn:oid:1.2.752.29.23.1.11|03
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="tillfällig-information-organization-period-och-varningsindikator">Tillfällig information: organization-period och varningsindikator</h2>
+
+<p>En organisation eller enhet som är aktiv under en tidsbegränsad period, t.ex. en sommarmottagning eller ett tillfälligt utökat servicerbjudande, kan ha <code class="language-plaintext highlighter-rouge">extension[orgPeriod]</code> satt (<code class="language-plaintext highlighter-rouge">http://hl7.org/fhir/StructureDefinition/organization-period</code>).</p>
+
+<h3 id="renderingsregel">Renderingsregel</h3>
+
+<p>Om <code class="language-plaintext highlighter-rouge">Organization.extension[orgPeriod]</code> är satt OCH <code class="language-plaintext highlighter-rouge">Organization.active = true</code>:</p>
+
+<ol>
+  <li><strong>Visa en visuell varningsindikator</strong> — t.ex. en gul informationsruta med varningssymbol (⚠) ovanför eller i anslutning till enhetens kontaktkort.</li>
+  <li>Rutan bör innehålla: periodens slutdatum (<code class="language-plaintext highlighter-rouge">period.end</code>) och eventuell text om vad den tidsbegränsade statusen innebär.</li>
+  <li>Text som ska visas i rutan hämtas från det fält klienten valt att mappa till (se nedan).</li>
+</ol>
+
+<h3 id="textinnehåll-i-varningsrutan">Textinnehåll i varningsrutan</h3>
+
+<p>HSA-IG lägger ingen normativ begränsning på vilket fält som bär varningsrutetexten — det är en presentationsfråga för respektive konsument. Rekommenderade alternativ:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fält</th>
+      <th>Lämplighet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Organization.contact</code> med purpose <code class="language-plaintext highlighter-rouge">TEMP</code></td>
+      <td>Rekommenderat för maskinläsbarhet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.comment</code></td>
+      <td>Fungerar för tjänstenivå</td>
+    </tr>
+    <tr>
+      <td>Fritext utanför FHIR-resursen (CMS/redaktionellt)</td>
+      <td>Sista utväg; riskerar inkonsistens</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="exempel-på-instans-organization-med-tillfällig-period">Exempel på instans (Organization med tillfällig period)</h3>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Organization"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"active"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/StructureDefinition/organization-period"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"valuePeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-06-01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-08-31"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Klienten läser <code class="language-plaintext highlighter-rouge">extension.valuePeriod.end</code> och renderar varningsrutan tills detta datum passerat.</p>
+
+<hr />
+
+<h2 id="vägbeskrivning-locationdescription-som-markdown">Vägbeskrivning: <code class="language-plaintext highlighter-rouge">Location.description</code> som Markdown</h2>
+
+<p>Yttre och inre vägbeskrivning lagras i <code class="language-plaintext highlighter-rouge">Location.description</code> som fritext med Markdown-formatering.</p>
+
+<h3 id="konventionella-rubriker">Konventionella rubriker</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">## Yttre vägbeskrivning</span>
+Kollektivtrafik, parkering och hur man hittar till byggnaden.
+
+<span class="gu">## Inre vägbeskrivning</span>
+Entré, hiss, plan och rum.
+</code></pre></div></div>
+
+<p>Klienter SKA rendera detta fält som Markdown (CommonMark). Klienter som inte stödjer Markdown bör visa fältet som oformaterad text, men ska inte presentera Markdown-syntaxen synlig för slutanvändaren.</p>
+
+<p><strong>Rubrikerna är en konvention, inte ett normativt krav</strong> — klienter bör inte förutsätta att rubrikerna alltid finns, utan rendera all text i <code class="language-plaintext highlighter-rouge">description</code>-fältet som Markdown oavsett struktur.</p>
+
+<hr />
+
+<h2 id="adressrendering">Adressrendering</h2>
+
+<p>HSA-IG skiljer på besöksadress och postadress. Distinktionen är central för korrekt visning.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Adresstyp</th>
+      <th>FHIR-fält</th>
+      <th><code class="language-plaintext highlighter-rouge">address.type</code></th>
+      <th>Postnummer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Postadress</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.contact.address</code></td>
+      <td><code class="language-plaintext highlighter-rouge">postal</code></td>
+      <td>Alltid med</td>
+    </tr>
+    <tr>
+      <td>Besöksadress</td>
+      <td><code class="language-plaintext highlighter-rouge">Location.address</code></td>
+      <td><code class="language-plaintext highlighter-rouge">physical</code></td>
+      <td>Aldrig (Uppsala-regel)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="uppsala-regeln">Uppsala-regeln</h3>
+
+<p>Besöksadresser (fysisk adress, <code class="language-plaintext highlighter-rouge">type = physical</code>) ska <strong>aldrig</strong> innehålla postnummer. Postnumret hör till postadressen på <code class="language-plaintext highlighter-rouge">Organization</code>. Profilen begränsar <code class="language-plaintext highlighter-rouge">Location.address.postalCode</code> till 0..0.</p>
+
+<p><strong>Skäl:</strong> Postnumret för en besöksadress matchar sällan postutdelningsadressen och vilseleder GPS-system och posthantering. Se HSACAT-LOC-005.</p>
+
+<h3 id="adressövergång-tom-sept-2026">Adressövergång (t.o.m. sept 2026)</h3>
+
+<p>HSA 5.2 introducerade strukturerade adressattribut. Under övergångsperioden kan konsumenter möta legacy-attribut (<code class="language-plaintext highlighter-rouge">postalAddress</code>, <code class="language-plaintext highlighter-rouge">streetAddress</code>) mappade till <code class="language-plaintext highlighter-rouge">Address.text</code>. Se <a href="address-transition.html">Adressövergång</a> för detaljer.</p>
+
+<p><strong>Konsumentrekommendation:</strong> Föredra strukturerade komponenter (<code class="language-plaintext highlighter-rouge">Address.line</code>, <code class="language-plaintext highlighter-rouge">.city</code>, <code class="language-plaintext highlighter-rouge">.postalCode</code>) framför <code class="language-plaintext highlighter-rouge">.text</code>. Klienter bör hantera båda formerna.</p>
+
+<hr />
+
+<h2 id="telefonnummer-och-kontaktvägar">Telefonnummer och kontaktvägar</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Organization.contact.telecom</code> bär kontaktuppgifter. Typen anges via <code class="language-plaintext highlighter-rouge">HsaTelecomTypeExtension</code> (system <code class="language-plaintext highlighter-rouge">https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code>).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Typ-kod</th>
+      <th>Visningsetikett</th>
+      <th>Visningsprioritet</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">direct-phone</code></td>
+      <td>Direkttelefon</td>
+      <td>1 (primär)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">switchboard</code></td>
+      <td>Växel</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mobile</code></td>
+      <td>Mobiltelefon</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">fax</code></td>
+      <td>Telefax</td>
+      <td>4 (ofta dold för konsumenter)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">directory-contact</code></td>
+      <td>Innehållsansvarig e-post</td>
+      <td>Admingränssnitt</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Klientregel:</strong> Klienter för allmänheten (t.ex. 1177) bör visa direkttelefon som primär kontaktväg och växeltelefon som sekundär. E-post av typen <code class="language-plaintext highlighter-rouge">directory-contact</code> visas normalt inte för slutanvändare.</p>
+
+<hr />
+
+<h2 id="öppettider">Öppettider</h2>
+
+<p><code class="language-plaintext highlighter-rouge">HealthcareService.availability.availableTime</code> bär öppettider per veckodag. HSA-katalogen har tre tidtyper som bör presenteras tydligt och separerade:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tidtyp</th>
+      <th>Beskrivning</th>
+      <th>Visningsetikett</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Öppethållning</td>
+      <td>Fysiska besök</td>
+      <td>Öppettider</td>
+    </tr>
+    <tr>
+      <td>Telefontid</td>
+      <td>Tillgänglighet per telefon</td>
+      <td>Telefontider</td>
+    </tr>
+    <tr>
+      <td>Drop-in</td>
+      <td>Besök utan bokning</td>
+      <td>Drop-in</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Separata <code class="language-plaintext highlighter-rouge">HealthcareService</code>-instanser (eller separata <code class="language-plaintext highlighter-rouge">availability</code>-element) används för att bära olika tidtyper. Klienter bör gruppera och etikettera dessa tydligt i UI.</p>
+
+<hr />
+
+<h2 id="1177-specifika-textfält">1177-specifika textfält</h2>
+
+<p>HSA exponerar flera textfält som enbart riktar sig mot 1177-presentationslagret (<code class="language-plaintext highlighter-rouge">hsaVpw</code>-attributen). Alla lagras som fritext och bör renderas som Markdown av klienter.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>FHIR-element</th>
+      <th>LDAP-attribut</th>
+      <th>1177-visning</th>
+      <th>Krav</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">extension[temporaryNotice]</code> (Organization/HealthcareService)</td>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwInformation2</code></td>
+      <td>Gul informationsruta med ⚠-symbol</td>
+      <td>MAY; kombineras med <code class="language-plaintext highlighter-rouge">extension[orgPeriod]</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">extension[patientInfo]</code> (Organization/HealthcareService)</td>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwInformation4</code></td>
+      <td>Informationsruta riktad till patient</td>
+      <td>MAY</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.comment</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwInformation1</code></td>
+      <td>"Mer om oss"-sektion</td>
+      <td>MAY</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Organization.contact.telecom</code> (system=#url)</td>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwWebpage</code></td>
+      <td>Länk till 1177-kontaktkort</td>
+      <td>MAY</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Renderingsregler för gul ruta:</strong> Visa <code class="language-plaintext highlighter-rouge">extension[temporaryNotice]</code> som gul informationsruta med varningsikon (⚠) när <strong>båda</strong> villkoren uppfylls: <code class="language-plaintext highlighter-rouge">extension[orgPeriod]</code> är satt OCH <code class="language-plaintext highlighter-rouge">active = true</code>. Visa slutdatum från <code class="language-plaintext highlighter-rouge">orgPeriod.valuePeriod.end</code>. Dölj rutan automatiskt efter slutdatum.</p>
+
+<p><strong>URL till 1177-kontaktkort</strong> bör visas som klickbar länk och kan användas för djuplänkning från externa system till enhetens 1177-sida.</p>
+
+<hr />
+
+<h2 id="1177-hitta-vård-publiceringschecklista">1177 Hitta vård: publiceringschecklista</h2>
+
+<p>En resurs som ska synas på 1177 Hitta vård ska uppfylla samtliga punkter nedan. Klienter bör validera dessa fält innan publicering och varna användaren om något saknas.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Fält</th>
+      <th>FHIR-element</th>
+      <th>Krav</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Publik visibilitetsflagga</td>
+      <td><code class="language-plaintext highlighter-rouge">meta.security</code> kod <code class="language-plaintext highlighter-rouge">03</code></td>
+      <td>SHALL</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Enhetsnamn</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.name</code></td>
+      <td>SHALL</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Besöksadress (gatuadress)</td>
+      <td><code class="language-plaintext highlighter-rouge">Location.address.line</code></td>
+      <td>SHALL</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Besöksadress (stad)</td>
+      <td><code class="language-plaintext highlighter-rouge">Location.address.city</code></td>
+      <td>SHALL</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Direkttelefon</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.contact.telecom[direct-phone]</code></td>
+      <td>SHALL</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Kartkoordinater (SWEREF99)</td>
+      <td><code class="language-plaintext highlighter-rouge">Location.position</code></td>
+      <td>SHALL (publik)</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Verksamhetskod</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.category[verksamhetskod]</code></td>
+      <td>SHOULD</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Vård-/omsorgsform</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.type[care-type]</code></td>
+      <td>SHOULD</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Öppettider</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.availability</code></td>
+      <td>SHOULD</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Vägbeskrivning</td>
+      <td><code class="language-plaintext highlighter-rouge">Location.description</code></td>
+      <td>MAY</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Ägarform</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[ownership]</code></td>
+      <td>MAY</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Fält märkta SHALL för publik visning är normativt krävda för alla resurser med <code class="language-plaintext highlighter-rouge">meta.security</code> kod <code class="language-plaintext highlighter-rouge">03</code>. SHALL-krav valideras av invarianterna <code class="language-plaintext highlighter-rouge">hsacat-public-org-telecom</code> (profil) och <code class="language-plaintext highlighter-rouge">hsacat-public-location-position</code> (profil).</p>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se/">Inera AB / HSA-IG projekt</a>.  Package inera.se.hsa.katalog#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R5/">FHIR 5.0.0</a>. Generated <span title="Mon, Sep 28, 2026 08:39+0000">2026-09-28</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

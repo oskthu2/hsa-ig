@@ -1,0 +1,150 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/Organization/hjartmottagningen-vardenhet> a fhir:Organization ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "hjartmottagningen-vardenhet"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization"^^xsd:anyURI ;
+       fhir:link <https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization>
+     ] ) ;
+     fhir:security ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.29.23.1.11"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "03" ] ;
+       fhir:display [ fhir:v "Internet/allmänheten" ]
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: Organization hjartmottagningen-vardenhet</b></p><a name=\"hjartmottagningen-vardenhet\"> </a><a name=\"hchjartmottagningen-vardenhet\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profil: <a href=\"StructureDefinition-hsa-healthcare-unit-organization.html\">HSA Healthcare Unit Organization</a></p><p style=\"margin-bottom: 0px\">Säkerhetsetikett: </p></div><p><b>Organization Period</b>: 2006-03-01 --&gt; 2028-01-01</p><p><b>HSA Tillfällig information (text)</b>: Tillfällig lokal under renovering. Vi finns nu i byggnad B, plan 4 t.o.m. 31 december 2027.</p><p><b>HSA Information till patient</b>: Ta med aktuell medicinlista och remiss till ditt besök. Kontakta oss i god tid om du behöver avboka.</p><p><b>identifier</b>: <a href=\"NamingSystem-hsa-identity.html\" title=\"Unik identifierare för organisationer, enheter, funktioner, uppdrag och#xA;personer i HSA-katalogen. Tilldelas automatiskt av HSA-systemet vid skapande#xA;och ska aldrig ändras. Används som stabil nyckel i nationella e-tjänster#xA;(NPÖ, Pascal, 1177 Hitta vård m.fl.).\">HSA-identitet (HSA-id)</a>/SE2321000016-HJRT01</p><p><b>active</b>: true</p><p><b>type</b>: <span title=\"Koder:{https://hsa.inera.se/fhir/CodeSystem/hsa-object-class healthcare-unit}\">Vårdenhet</span>, <span title=\"Koder:{urn:oid:1.2.752.129.5.1.46 02}\">Specialiserad somatisk vård</span>, <span title=\"Koder:{urn:oid:1.2.752.129.2.2.1.12 15}\">Mottagning</span>, <span title=\"Koder:{urn:oid:1.2.752.129.2.2.1.14 01}\">Landsting/region</span></p><p><b>name</b>: Hjärtmottagningen Karlskrona</p><h3>Contacts</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Telecom</b></td><td><b>Address</b></td></tr><tr><td style=\"display: none\">*</td><td>ph: 0455-73 48 00(Work), ph: 0455-73 10 00(Work), <a href=\"mailto:hjartvard@regionblekinge.se\">hjartvard@regionblekinge.se</a>, <a href=\"mailto:redaktion.hjart@regionblekinge.se\">redaktion.hjart@regionblekinge.se</a>, <a href=\"https://www.1177.test/blekinge/hitta-vard/SE2321000016-HJRT01\">https://www.1177.test/blekinge/hitta-vard/SE2321000016-HJRT01</a></td><td> </td></tr><tr><td style=\"display: none\">*</td><td> </td><td>Lyckeby 5</td></tr></table><p><b>partOf</b>: <a href=\"Organization-region-blekinge-vardgivare.html\">Organization Region Blekinge</a></p></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/organization-period"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Period ;
+       fhir:start [ fhir:v "2006-03-01"^^xsd:date ] ;
+       fhir:end [ fhir:v "2028-01-01"^^xsd:date ]
+     ]
+  ] [
+     fhir:url [ fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-notice"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:string ;
+       fhir:v "Tillfällig lokal under renovering. Vi finns nu i byggnad B, plan 4 t.o.m. 31 december 2027."
+     ]
+  ] [
+     fhir:url [ fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-patient-info"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:string ;
+       fhir:v "Ta med aktuell medicinlista och remiss till ditt besök. Kontakta oss i god tid om du behöver avboka."
+     ]
+  ] ) ; # 
+  fhir:identifier ( [
+     fhir:system [ fhir:v "urn:oid:1.2.752.29.4.19"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "SE2321000016-HJRT01" ]
+  ] ) ; # 
+  fhir:active [ fhir:v true] ; # 
+  fhir:type ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "healthcare-unit" ] ;
+       fhir:display [ fhir:v "Vårdenhet" ]
+     ] )
+  ] [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.5.1.46"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "02" ] ;
+       fhir:display [ fhir:v "Specialiserad somatisk vård" ]
+     ] )
+  ] [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.2.2.1.12"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "15" ] ;
+       fhir:display [ fhir:v "Mottagning" ]
+     ] )
+  ] [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.2.2.1.14"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "01" ] ;
+       fhir:display [ fhir:v "Landsting/region" ]
+     ] )
+  ] ) ; # 
+  fhir:name [ fhir:v "Hjärtmottagningen Karlskrona"] ; # 
+  fhir:contact ( [
+     fhir:telecom ( [
+       fhir:extension ( [
+         fhir:url [ fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:Coding ;
+           fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "direct-phone" ] ;
+           fhir:display [ fhir:v "Direkttelefon" ]
+         ]
+       ] ) ;
+       fhir:system [ fhir:v "phone" ] ;
+       fhir:value [ fhir:v "0455-73 48 00" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:Coding ;
+           fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "switchboard" ] ;
+           fhir:display [ fhir:v "Växeltelefon" ]
+         ]
+       ] ) ;
+       fhir:system [ fhir:v "phone" ] ;
+       fhir:value [ fhir:v "0455-73 10 00" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] [
+       fhir:system [ fhir:v "email" ] ;
+       fhir:value [ fhir:v "hjartvard@regionblekinge.se" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:Coding ;
+           fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "directory-contact" ] ;
+           fhir:display [ fhir:v "Innehållsansvarig" ]
+         ]
+       ] ) ;
+       fhir:system [ fhir:v "email" ] ;
+       fhir:value [ fhir:v "redaktion.hjart@regionblekinge.se" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:Coding ;
+           fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "vpw-webpage" ] ;
+           fhir:display [ fhir:v "1177-kontaktkortsadress" ]
+         ]
+       ] ) ;
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.1177.test/blekinge/hitta-vard/SE2321000016-HJRT01" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] )
+  ] [
+     fhir:address [
+       fhir:type [ fhir:v "postal" ] ;
+       fhir:text [ fhir:v "Lyckeby 5" ] ;
+       fhir:city [ fhir:v "Karlskrona" ] ;
+       fhir:postalCode [ fhir:v "371 85" ]
+     ]
+  ] ) ; # 
+  fhir:partOf [
+     fhir:link <https://hsa.inera.se/fhir/Organization/region-blekinge-vardgivare> ;
+     fhir:reference [ fhir:v "Organization/region-blekinge-vardgivare" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

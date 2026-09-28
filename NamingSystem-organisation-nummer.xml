@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<NamingSystem xmlns="http://hl7.org/fhir">
+  <id value="organisation-nummer"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: NamingSystem organisation-nummer</b></p><a name="organisation-nummer"> </a><a name="hcorganisation-nummer"> </a><h3>Sammanfattning</h3><table class="grid"><tr><td>Definierande URL</td><td>https://hsa.inera.se/fhir/NamingSystem/organisation-nummer</td></tr><tr><td>Version</td><td>0.1.0</td></tr><tr><td>Namn</td><td>OrganisationsnummerSE</td></tr><tr><td>Titel</td><td>Organisationsnummer (Sverige)</td></tr><tr><td>Status</td><td>active</td></tr><tr><td>Definition</td><td><div><p>Unikt nummer för juridiska personer i Sverige, tilldelat av Skatteverket
+eller Bolagsverket. Obligatoriskt för organisationer som representerar
+vårdgivare (hsaHealthCareProvider).</p>
+</div></td></tr><tr><td>Utgivare</td><td>Inera AB / HSA-IG projekt</td></tr></table><h3>Identifierare</h3><table class="grid"><tr><td><b>Typ</b></td><td><b>Värde</b></td><td><b>Föredragen</b></td></tr><tr><td>OID</td><td>2.5.4.97</td><td>true</td></tr><tr><td>URI</td><td>urn:oid:2.5.4.97</td><td/></tr></table></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/NamingSystem/organisation-nummer"/>
+  <version value="0.1.0"/>
+  <name value="OrganisationsnummerSE"/>
+  <title value="Organisationsnummer (Sverige)"/>
+  <status value="active"/>
+  <kind value="identifier"/>
+  <date value="2026-05-20"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="Unikt nummer för juridiska personer i Sverige, tilldelat av Skatteverket&#xA;eller Bolagsverket. Obligatoriskt för organisationer som representerar&#xA;vårdgivare (hsaHealthCareProvider)."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <uniqueId>
+    <type value="oid"/>
+    <value value="2.5.4.97"/>
+    <preferred value="true"/>
+  </uniqueId>
+  <uniqueId>
+    <type value="uri"/>
+    <value value="urn:oid:2.5.4.97"/>
+  </uniqueId>
+</NamingSystem>

@@ -1,0 +1,18 @@
+{
+  "codeSystems" : [{
+    "url" : "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class",
+    "version" : "0.1.0",
+    "status" : "active",
+    "name" : "HsaObjectClass",
+    "title" : "HSA Objektklassificering",
+    "description" : "Klassificering av HSA-objekt baserat på LDAP-objektklasser i HSA-schemat.\nAnvänds för att identifiera om en organisation är vårdgivare, vårdenhet\neller annan organisatorisk enhet, samt för statusmarkering."
+  },
+  {
+    "url" : "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type",
+    "version" : "0.1.0",
+    "status" : "active",
+    "name" : "HsaTelecomType",
+    "title" : "HSA Kontaktvägstyp",
+    "description" : "Klassificering av kontaktvägar (telecom) i HSA för att skilja på\ndirekttelefon, växeltelefon, e-post, m.fl."
+  }]
+}

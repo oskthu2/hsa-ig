@@ -1,0 +1,74 @@
+{
+  "resourceType" : "CodeSystem",
+  "id" : "hsa-object-class",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem hsa-object-class</b></p><a name=\"hsa-object-class\"> </a><a name=\"hchsa-object-class\"> </a><p>Detta case-sensitive kodsystem <code>https://hsa.inera.se/fhir/CodeSystem/hsa-object-class</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">healthcare-provider<a name=\"hsa-object-class-healthcare-provider\"> </a></td><td>Vårdgivare (hsaHealthCareProvider)</td><td>Organisation som är markerad som vårdgivare enligt HSA (OID 1.2.752.29.6.10). Representerar yttre spärrnivå i PDL.</td></tr><tr><td style=\"white-space:nowrap\">healthcare-unit<a name=\"hsa-object-class-healthcare-unit\"> </a></td><td>Vårdenhet (hsaHealthCareUnit)</td><td>Organisation som är markerad som vårdenhet enligt HSA (OID 1.2.752.29.6.13). Representerar inre spärrnivå i PDL.</td></tr><tr><td style=\"white-space:nowrap\">organizational-unit<a name=\"hsa-object-class-organizational-unit\"> </a></td><td>Organisationsenhet</td><td>Organisatorisk enhet som varken är vårdgivare eller vårdenhet (LDAP organizationalUnit).</td></tr><tr><td style=\"white-space:nowrap\">hidden<a name=\"hsa-object-class-hidden\"> </a></td><td>Dolt objekt (hiddenObject)</td><td>Objektet är dolt och ska inte exponeras i publikt API. Sätts active = false (OID 1.2.752.41.6.107).</td></tr><tr><td style=\"white-space:nowrap\">archived<a name=\"hsa-object-class-archived\"> </a></td><td>Arkiverat objekt (hsaArchivedObject)</td><td>Objektet är arkiverat. Sätts active = false (OID 1.2.752.29.6.20).</td></tr><tr><td style=\"white-space:nowrap\">inaccurate-provider<a name=\"hsa-object-class-inaccurate-provider\"> </a></td><td>Felaktigt utpekad vårdgivare (hsaInaccurateHCP)</td><td>Vårdgivaren är felaktigt utpekad (OID 1.2.752.29.6.26).</td></tr><tr><td style=\"white-space:nowrap\">inaccurate-unit<a name=\"hsa-object-class-inaccurate-unit\"> </a></td><td>Felaktigt utpekad vårdenhet (hsaInaccurateHCU)</td><td>Vårdenheten är felaktigt utpekad (OID 1.2.752.29.6.27).</td></tr><tr><td style=\"white-space:nowrap\">feigned<a name=\"hsa-object-class-feigned\"> </a></td><td>Fingerat objekt (hsaFeignedDataObject)</td><td>Testdata eller fingerat objekt (OID 1.2.752.29.6.25).</td></tr></table></div>"
+  },
+  "url" : "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class",
+  "version" : "0.1.0",
+  "name" : "HsaObjectClass",
+  "title" : "HSA Objektklassificering",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2026-03-16",
+  "publisher" : "Inera AB / HSA-IG projekt",
+  "contact" : [{
+    "name" : "Inera AB / HSA-IG projekt",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.inera.se/"
+    }]
+  }],
+  "description" : "Klassificering av HSA-objekt baserat på LDAP-objektklasser i HSA-schemat.\nAnvänds för att identifiera om en organisation är vårdgivare, vårdenhet\neller annan organisatorisk enhet, samt för statusmarkering.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "SE",
+      "display" : "Sweden"
+    }]
+  }],
+  "caseSensitive" : true,
+  "content" : "complete",
+  "count" : 8,
+  "concept" : [{
+    "code" : "healthcare-provider",
+    "display" : "Vårdgivare (hsaHealthCareProvider)",
+    "definition" : "Organisation som är markerad som vårdgivare enligt HSA (OID 1.2.752.29.6.10). Representerar yttre spärrnivå i PDL."
+  },
+  {
+    "code" : "healthcare-unit",
+    "display" : "Vårdenhet (hsaHealthCareUnit)",
+    "definition" : "Organisation som är markerad som vårdenhet enligt HSA (OID 1.2.752.29.6.13). Representerar inre spärrnivå i PDL."
+  },
+  {
+    "code" : "organizational-unit",
+    "display" : "Organisationsenhet",
+    "definition" : "Organisatorisk enhet som varken är vårdgivare eller vårdenhet (LDAP organizationalUnit)."
+  },
+  {
+    "code" : "hidden",
+    "display" : "Dolt objekt (hiddenObject)",
+    "definition" : "Objektet är dolt och ska inte exponeras i publikt API. Sätts active = false (OID 1.2.752.41.6.107)."
+  },
+  {
+    "code" : "archived",
+    "display" : "Arkiverat objekt (hsaArchivedObject)",
+    "definition" : "Objektet är arkiverat. Sätts active = false (OID 1.2.752.29.6.20)."
+  },
+  {
+    "code" : "inaccurate-provider",
+    "display" : "Felaktigt utpekad vårdgivare (hsaInaccurateHCP)",
+    "definition" : "Vårdgivaren är felaktigt utpekad (OID 1.2.752.29.6.26)."
+  },
+  {
+    "code" : "inaccurate-unit",
+    "display" : "Felaktigt utpekad vårdenhet (hsaInaccurateHCU)",
+    "definition" : "Vårdenheten är felaktigt utpekad (OID 1.2.752.29.6.27)."
+  },
+  {
+    "code" : "feigned",
+    "display" : "Fingerat objekt (hsaFeignedDataObject)",
+    "definition" : "Testdata eller fingerat objekt (OID 1.2.752.29.6.25)."
+  }]
+}

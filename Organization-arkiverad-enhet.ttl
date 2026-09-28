@@ -1,0 +1,47 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/Organization/arkiverad-enhet> a fhir:Organization ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "arkiverad-enhet"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization"^^xsd:anyURI ;
+       fhir:link <https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: Organization arkiverad-enhet</b></p><a name=\"arkiverad-enhet\"> </a><a name=\"hcarkiverad-enhet\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profil: <a href=\"StructureDefinition-hsa-healthcare-unit-organization.html\">HSA Healthcare Unit Organization</a></p></div><p><b>identifier</b>: <a href=\"NamingSystem-hsa-identity.html\" title=\"Unik identifierare för organisationer, enheter, funktioner, uppdrag och#xA;personer i HSA-katalogen. Tilldelas automatiskt av HSA-systemet vid skapande#xA;och ska aldrig ändras. Används som stabil nyckel i nationella e-tjänster#xA;(NPÖ, Pascal, 1177 Hitta vård m.fl.).\">HSA-identitet (HSA-id)</a>/SE2321000016-ARKV1</p><p><b>active</b>: false</p><p><b>type</b>: <span title=\"Koder:{https://hsa.inera.se/fhir/CodeSystem/hsa-object-class healthcare-unit}\">Vårdenhet</span>, <span title=\"Koder:{urn:oid:1.2.752.129.5.1.46 02}\">Specialiserad somatisk vård</span></p><p><b>name</b>: Medicinmottagning Karlshamn</p><p><b>partOf</b>: <a href=\"Organization-region-blekinge-vardgivare.html\">Organization Region Blekinge</a></p></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:identifier ( [
+     fhir:system [ fhir:v "urn:oid:1.2.752.29.4.19"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "SE2321000016-ARKV1" ]
+  ] ) ; # 
+  fhir:active [ fhir:v false] ; # 
+  fhir:type ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "healthcare-unit" ] ;
+       fhir:display [ fhir:v "Vårdenhet" ]
+     ] )
+  ] [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.5.1.46"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "02" ] ;
+       fhir:display [ fhir:v "Specialiserad somatisk vård" ]
+     ] )
+  ] ) ; # 
+  fhir:name [ fhir:v "Medicinmottagning Karlshamn"] ; # 
+  fhir:partOf [
+     fhir:link <https://hsa.inera.se/fhir/Organization/region-blekinge-vardgivare> ;
+     fhir:reference [ fhir:v "Organization/region-blekinge-vardgivare" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

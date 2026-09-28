@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ImplementationGuide xmlns="http://hl7.org/fhir">
+  <id value="inera.se.hsa.katalog"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: ImplementationGuide inera.se.hsa.katalog</b></p><a name="inera.se.hsa.katalog"> </a><a name="hcinera.se.hsa.katalog"> </a><h2>HsaCatalogIG</h2><p>Den officiella URL:en för denna implementationsguide är: </p><pre>https://hsa.inera.se/fhir/ImplementationGuide/inera.se.hsa.katalog</pre><div><p>FHIR R5 Implementation Guide för HSA-baserad kataloginformation om organisationer, platser, vårdtjänster och ändpunkter inom svensk vård och omsorg.</p>
+</div></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/ImplementationGuide/inera.se.hsa.katalog"/>
+  <version value="0.1.0"/>
+  <name value="HsaCatalogIG"/>
+  <title value="HSA Katalog Implementation Guide"/>
+  <status value="draft"/>
+  <date value="2026-09-28T08:39:43+00:00"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="FHIR R5 Implementation Guide för HSA-baserad kataloginformation om organisationer, platser, vårdtjänster och ändpunkter inom svensk vård och omsorg.&#xA;"/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <packageId value="inera.se.hsa.katalog"/>
+  <license value="CC0-1.0"/>
+  <fhirVersion value="5.0.0"/>
+  <dependsOn id="hl7tx">
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
+      <valueMarkdown value="Automatically added as a dependency - all IGs depend on HL7 Terminology"/>
+    </extension>
+    <uri value="http://terminology.hl7.org/ImplementationGuide/hl7.terminology"/>
+    <packageId value="hl7.terminology.r5"/>
+    <version value="7.4.0"/>
+  </dependsOn>
+  <dependsOn id="hl7ext">
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment">
+      <valueMarkdown value="Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"/>
+    </extension>
+    <uri value="http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions"/>
+    <packageId value="hl7.fhir.uv.extensions.r5"/>
+    <version value="5.3.0"/>
+  </dependsOn>
+  <dependsOn id="hl7_fhir_r5_core">
+    <uri value="http://hl7.org/fhir/ImplementationGuide/fhir"/>
+    <packageId value="hl7.fhir.r5.core"/>
+    <version value="5.0.0"/>
+  </dependsOn>
+  <definition>
+    <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency">
+      <valueCode value="hl7.fhir.uv.tools.r5#1.1.2"/>
+    </extension>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/privat-vardgivare-ab"/>
+      </reference>
+      <name value="Blekinge Primärvård AB (Privat Vårdgivare)"/>
+      <description value="Exempelinstans för Blekinge Primärvård AB — ett privat aktiebolag som&#xA;bedriver primärvård på uppdrag av Region Blekinge.&#xA;&#xA;Demonstrerar: management=05 (privat ägande), avsaknad av GLN och APK på&#xA;VG-nivå, separat direkttelefon och växelnummer, och frånvaro av&#xA;destinationIndicator (VGs är inte direkt sökbara på 1177 Hitta vård).&#xA;Kontrastera med RegionBlekingeVardgivare (offentlig region, management=01)."/>
+      <isExample value="true"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-provider-organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Location"/>
+      </extension>
+      <reference>
+        <reference value="Location/location-blekingesjukhuset"/>
+      </reference>
+      <name value="Blekingesjukhuset (Besöksplats)"/>
+      <description value="Exempelinstans för Blekingessjukhusets fysiska besöksplats.&#xA;Demonstrerar: strukturerad besöksadress (HSA 5.2+ hsaVisitingAddress),&#xA;SWEREF99-koordinater, Markdown-vägbeskrivning med ## Yttre / ## Inre&#xA;vägbeskrivning-konvention, meta.security[destination-indicator]=03,&#xA;och relationen till Organization via managingOrganization.&#xA;&#xA;Kontrastera med LocationRonnebyVardcentral som använder legacy&#xA;streetAddress (pre-5.2) → address.text."/>
+      <isExample value="true"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/blekingesjukhuset-vardenhet"/>
+      </reference>
+      <name value="Blekingesjukhuset (Vårdenhet)"/>
+      <description value="Exempelinstans för Blekingesjukhuset som publik specialiserad vårdenhet under&#xA;Region Blekinge. Demonstrerar: APK (arbetsplatskod), GLN, alla telekomtyper&#xA;inkl. mobiltelefon, fax och 1177-djuplänk (hsaVpwWebpage), legacy postadress&#xA;(pre-5.2), strukturerad besöksadress i separat Location-resurs,&#xA;destinationIndicator=03 och partOf → VG-instansen."/>
+      <isExample value="true"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="HealthcareService"/>
+      </extension>
+      <reference>
+        <reference value="HealthcareService/hs-tjanst-blekingesjukhuset"/>
+      </reference>
+      <name value="Blekingesjukhuset Tjänsteutbud (HealthcareService)"/>
+      <description value="Exempelinstans för Blekingesjukhusets vårdtjänst med internmedicin och&#xA;kardiologi, öppen- och slutenvård, telefontider och drop-in-tider.&#xA;&#xA;Demonstrerar: category[verksamhetskod] med flera koder (1101 Internmedicin&#xA;och 1126 Kardiologi), type[care-type] med öppen och sluten vård,&#xA;availability för telefonmottagning (öppettider) och drop-in, comment&#xA;(hsaVpwInformation3 → &quot;om oss&quot;-text) och relationen till Location-resursen."/>
+      <isExample value="true"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/hjartmottagningen-vardenhet"/>
+      </reference>
+      <name value="Hjärtmottagningen Karlskrona (Vårdenhet)"/>
+      <description value="Exempelinstans för Hjärtmottagningen Karlskrona — en specialistmottagning&#xA;(kardiologi) organisatoriskt placerad under Blekingesjukhuset i LDAP-trädet,&#xA;men med partOf direkt till Region Blekinge som ansvarig vårdgivare per&#xA;profil-kravet partOf only Reference(HsaHealthcareProviderOrganization).&#xA;&#xA;Demonstrerar: orgPeriod med start OCH end (hsacat-org-period-end uppfylld),&#xA;tillfällig information (hsaVpwInformation2 → temporaryNotice),&#xA;patientinformation (hsaVpwInformation4 → patientInfo),&#xA;hsaBusinessType=15 (Mottagning) och den viktiga distinktionen att&#xA;DN-trädpositionen INTE representeras som partOf i FHIR v1."/>
+      <isExample value="true"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/hsa-catalog-location"/>
+      </reference>
+      <name value="HSA Catalog Location"/>
+      <description value="Profil för platser hämtade ur HSA-katalogen. Representerar fysiska&#xA;besöksplatser, mottagningar och vårdlokaler.&#xA;&#xA;Fysiska platser måste ha besöksadress (gatuadress + stad) och&#xA;en referens till ansvarig organisation. Koordinater (SWEREF99) krävs&#xA;för offentlig publicering på 1177 Hitta vård.&#xA;&#xA;**Synlighet:** Anges via `meta.security[destination-indicator]` med&#xA;system `urn:oid:1.2.752.29.23.1.11`, kod 03 = Internet/allmänheten.&#xA;&#xA;**Vägbeskrivning:** Lagras i `description` som Markdown. Konvention:&#xA;- `## Yttre vägbeskrivning` – kollektivtrafik, parkering, hur man hittar till platsen&#xA;- `## Inre vägbeskrivning` – entré, plan, hiss, rum etc.&#xA;Klienter bör rendera description som Markdown."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/hsa-catalog-organization"/>
+      </reference>
+      <name value="HSA Catalog Organization"/>
+      <description value="Basprofil för organisationer hämtade ur HSA-katalogen. Täcker&#xA;vårdgivare, vårdenheter och organisatoriska enheter i organisationsträdet.&#xA;&#xA;Alla HSA-organisationer har ett HSA-id, ett namn och information om&#xA;publicerings- och åtkomststatus. Hierarkin representeras via `partOf`.&#xA;&#xA;**Synlighet (destinationIndicator):** Modelleras som `meta.security[destination-indicator]`&#xA;med system `urn:oid:1.2.752.29.23.1.11`. Kod 03 = Internet/allmänheten.&#xA;Klienter som 1177 Hitta vård bör filtrera på detta fält.&#xA;&#xA;**Tillfällig information:** En enhet med tidsbegränsad status använder&#xA;`extension[orgPeriod]` (organization-period) med start och obligatoriskt end.&#xA;Klienter bör rendera en visuell varningsindikator (t.ex. gul informationsruta)&#xA;när orgPeriod är satt och `active = true`. Varje klient ansvarar för att&#xA;texten som ska visas hämtas från ett lämpligt fält (t.ex. Organization.contact&#xA;med purpose = &quot;TEMP&quot; eller IG-sida för klientkonventioner)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/hsa-catalog-server"/>
+      </reference>
+      <name value="HSA Central Catalog Server"/>
+      <description value="Exempel på hur ett centralt HSA-källsystem kan exponera organisationer, platser&#xA;och vårdtjänster som FHIR R5-resurser med läsaccess.&#xA;I detta mönster hanteras datainläsning internt (t.ex. via LDAP) och FHIR-gränssnittet&#xA;används enbart för läsning och sökning av katalogdata.&#xA;Detta är ett möjligt upplägg, inte ett beslutat krav."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/hsa-business-type"/>
+      </reference>
+      <name value="HSA Enhetstyp (hsaBusinessType)"/>
+      <description value="Enhetstyp för organisation eller enhet i HSA.&#xA;System: HSA enhetstyp-kodverk (OID 1.2.752.129.2.2.1.12).&#xA;Typiska värden: sjukhus, vårdcentral, apotek m.fl."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/hsa-financing-organization"/>
+      </reference>
+      <name value="HSA Finansierande region/kommun"/>
+      <description value="Den eller de regioner/kommuner som finansierar vården vid enheten.&#xA;Mappar till LDAP-attributet financingOrganization (OID 1.2.752.129.5.1.1)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/hsa-healthcare-provider-organization"/>
+      </reference>
+      <name value="HSA Healthcare Provider Organization"/>
+      <description value="Profil för organisation markerad som vårdgivare (hsaHealthCareProvider,&#xA;OID 1.2.752.29.6.10) i HSA-katalogen.&#xA;&#xA;Representerar den yttre spärrnivån i PDL-sammanhang. Alla vårdenheter&#xA;under en vårdgivare delar journalspärr på VG-nivå — det är därför&#xA;`partOf` på vårdenhetsprofilen alltid pekar direkt hit.&#xA;&#xA;**Identifierare (minimum 2):**&#xA;Profilen kräver alltid *både* HSA-id och organisationsnummer:&#xA;- `identifier[hsa-id]` (1..1) — systemgenererat, unikt inom HSA.&#xA;- `identifier[org-no]` (1..1) — juridisk identitet; krävs av NPÖ och&#xA;  PDL-infrastrukturen för att koppla journaler till rätt VG (HSACAT-ORG-007).&#xA;- `identifier[apk]` (0..0) — arbetsplatskod är alltid en vårdenhetskod&#xA;  (unitPrescriptionCode i LDAP-schemat) och får aldrig sättas på VG.&#xA;- `identifier[gln]` (0..1) — förekommer på VG som har GLN-registrering.&#xA;&#xA;**Must Support:** Alla MS-flaggor ärvs från `HsaCatalogOrganization` och&#xA;visas i snapshot-vyn. Denna profil deklarerar enbart restriktioner som&#xA;tillkommer utöver basprofilens definition."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/hsa-healthcare-service"/>
+      </reference>
+      <name value="HSA Healthcare Service"/>
+      <description value="Profil för vårdtjänster och tjänsteutbud från HSA-katalogen.&#xA;Verksamhetskod och vård-/omsorgsform är obligatoriska för enheter som&#xA;bedriver vård.&#xA;&#xA;Verksamhetskod (businessClassificationCode) modelleras på `category` i&#xA;enlighet med eHMs Nationell katalog-IG (hvo-business-category-inera).&#xA;Vård-/omsorgsform (careType) modelleras på `type` som mer specifik&#xA;tjänsteklassificering."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:resource"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/hsa-healthcare-unit-organization"/>
+      </reference>
+      <name value="HSA Healthcare Unit Organization"/>
+      <description value="Profil för organisation markerad som vårdenhet (hsaHealthCareUnit,&#xA;OID 1.2.752.29.6.13) i HSA-katalogen.&#xA;&#xA;Representerar inre spärrnivå i PDL-sammanhang. Ska alltid ha en&#xA;referens till överordnad organisation (partOf → HsaHealthcareProviderOrganization)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/hsa-patient-info"/>
+      </reference>
+      <name value="HSA Information till patient"/>
+      <description value="Informationstext riktad till patient som visas på enhetens 1177-sida.&#xA;Mappar till LDAP-attributet hsaVpwInformation4.&#xA;Klienter bör rendera som Markdown."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/hsa-client-1177-hitta-vard"/>
+      </reference>
+      <name value="HSA Klient – 1177 Hitta vård"/>
+      <description value="Illustrerar vilka FHIR-förmågor ett system för publik vårdsökning (t.ex. 1177 Hitta vård)&#xA;kan ha nytta av. Exemplet visar möjliga frågemönster för geo-sökning, publik filtrering&#xA;och hämtning av Organization, Location och HealthcareService.&#xA;Detta är ett illustrativt exempel på hur ett sådant scenario kan se ut."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/hsa-client-ehr-sync"/>
+      </reference>
+      <name value="HSA Klient – EHR-katalogsynk"/>
+      <description value="Klientkonformansdeklaration för regionala EHR-system (t.ex. COSMIC, TakeCare)&#xA;som synkroniserar organisationsdata från HSA till ett lokalt cache.&#xA;&#xA;Täcker två användningsfall:&#xA;- UC-01: EHR-katalogsynk – hämta och cachelagra Organization, Location, HealthcareService&#xA;- UC-04: VGR Encounter.type – slå upp HealthcareService.category[verksamhetskod]&#xA;  för en given vårdenhet vid Encounter-dokumentation&#xA;&#xA;Stödjer två synklägen:&#xA;- Fullsynk: hämta alla aktiva resurser paginerat (_count)&#xA;- Inkrementell synk: hämta resurser ändrade efter en given tidpunkt (_lastUpdated)&#xA;Nyckelaspekter: _lastUpdated för inkrementell synk, _count för paginering, alla tre resurstyper."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/hsa-client-hierarchy-traversal"/>
+      </reference>
+      <name value="HSA Klient – Hierarkitraversering"/>
+      <description value="Klientkonformansdeklaration för system som traverserar Organization.partOf-kedjan&#xA;för åtkomstkontroll eller hierarkisökning (HSACAT-ORG-006, HSACAT-ORG-015).&#xA;&#xA;Primära konsumenter i v1:&#xA;- Tjänsteplattformen (SKLTP): bestämmer ansvarig vårdgivare via trädklättring&#xA;- Säkerhetstjänster: prövning av SJF-behörighet längs partOf-kedjan&#xA;&#xA;OBS: Full SKLTP TAK-integration (Endpoint-resurs, logisk adressering) är planerad&#xA;för v2 och täcks inte av denna IG. Det här exemplet illustrerar enbart&#xA;Organization.partOf-traversering.&#xA;&#xA;För att scenariot ska fungera behöver servern ha stöd för _include:iterate=Organization:partof&#xA;så att hela hierarkin kan hämtas i ett anrop (se HSACAT-ORG-006)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/hsa-client-npo"/>
+      </reference>
+      <name value="HSA Klient – Nationell Patientöversikt (NPÖ)"/>
+      <description value="Illustrerar vilka FHIR-förmågor ett NPÖ-liknande scenario kan ha nytta av.&#xA;Exemplet visar hur en vårdenhet kan slås upp via arbetsplatskod (APK) och hur&#xA;partOf-kedjan kan traverseras uppåt för att fastställa ansvarig vårdgivare."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/hsa-telecom-type"/>
+      </reference>
+      <name value="HSA Kontaktvägstyp"/>
+      <description value="Klassificerar kontaktvägstyp för att skilja direkttelefon från&#xA;växeltelefon, publik telefon, innehållsansvarig e-post m.fl.&#xA;Mappar till LDAP-kontexten (telephoneNumber, hsaSwitchboardNumber etc.)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/hsa-telecom-type-vs"/>
+      </reference>
+      <name value="HSA Kontaktvägstyp"/>
+      <description value="Tillåtna typer av kontaktvägar i HSA."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/hsa-telecom-type"/>
+      </reference>
+      <name value="HSA Kontaktvägstyp"/>
+      <description value="Klassificering av kontaktvägar (telecom) i HSA för att skilja på&#xA;direkttelefon, växeltelefon, e-post, m.fl."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CodeSystem"/>
+      </extension>
+      <reference>
+        <reference value="CodeSystem/hsa-object-class"/>
+      </reference>
+      <name value="HSA Objektklassificering"/>
+      <description value="Klassificering av HSA-objekt baserat på LDAP-objektklasser i HSA-schemat.&#xA;Används för att identifiera om en organisation är vårdgivare, vårdenhet&#xA;eller annan organisatorisk enhet, samt för statusmarkering."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="SearchParameter"/>
+      </extension>
+      <reference>
+        <reference value="SearchParameter/hsa-org-class"/>
+      </reference>
+      <name value="HSA Organisationsklass"/>
+      <description value="Sökning på HSA-objektklassificering (type[hsa-class], CodeSystem HsaObjectClass)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/hsa-organization-type"/>
+      </reference>
+      <name value="HSA Organisationstyp"/>
+      <description value="Tillåtna klassificeringar för Organization.type i HSA-profiler.&#xA;Kombinerar HSA-objektklasser (vårdgivare/vårdenhet) med enhetstyp-kodverk&#xA;(sjukhus, vårdcentral, apotek)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CapabilityStatement"/>
+      </extension>
+      <reference>
+        <reference value="CapabilityStatement/hsa-regional-catalog-server"/>
+      </reference>
+      <name value="HSA Regional Catalog Server (hypotes)"/>
+      <description value="Illustrerar ett möjligt mönster för regionala och lokala system som vill&#xA;spegla HSA-data lokalt för förbättrade svarstider och lokal tillgänglighet.&#xA;&#xA;Detta är en hypotes, inte ett beslutad arkitektur. Det är oklart om regionerna&#xA;vill använda detta mönster, och om de gör det kan de ha andra krav på hur&#xA;datainläsning ska fungera.&#xA;&#xA;En möjlig utformning: data läses in från LDAP och exponeras som FHIR R5.&#xA;Skrivoperationer (create, update, delete) och transaktionsbuntar kan underlätta&#xA;synkronisering, men hur det faktiskt ska fungera bör beslutas i dialog med&#xA;berörda regioner."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="StructureDefinition:extension"/>
+      </extension>
+      <reference>
+        <reference value="StructureDefinition/hsa-temporary-notice"/>
+      </reference>
+      <name value="HSA Tillfällig information (text)"/>
+      <description value="Fri text för tillfällig information om enheten, visas som gul informationsruta&#xA;på enhetens kontaktkort på 1177.se. Mappar till LDAP-attributet&#xA;hsaVpwInformation2. Slutdatum hanteras separat via organization-period&#xA;(http://hl7.org/fhir/StructureDefinition/organization-period)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="SearchParameter"/>
+      </extension>
+      <reference>
+        <reference value="SearchParameter/hsa-provided-by"/>
+      </reference>
+      <name value="HSA Tillhandahållande organisation"/>
+      <description value="Sökning på HealthcareService.providedBy (tillhandahållande organisation)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/hsa-service-type"/>
+      </reference>
+      <name value="HSA Verksamhetskod (businessClassificationCode)"/>
+      <description value="Tillåtna verksamhetskoder för HealthcareService.type.&#xA;System: HSA verksamhetskod-kodverk (OID 1.2.752.129.2.2.1.3).&#xA;Faktiska kodvärden hämtas från Terminologitjänsten (terminologitjansten.inera.se).&#xA;Jämförs med eHMs Nationella vårdtjänster v.1.0.0 (SRC-014)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/hsa-destination-indicator"/>
+      </reference>
+      <name value="HSA Visas för (hsaDestinationIndicator)"/>
+      <description value="Koder för visningsscope i HSA (hsaDestinationIndicator).&#xA;Kod 03 = Internet/allmänheten = publik visning på t.ex. 1177 Hitta vård.&#xA;System: OID 1.2.752.29.23.1.11."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/hsa-care-type"/>
+      </reference>
+      <name value="HSA Vård- och omsorgsform (careType)"/>
+      <description value="Tillåtna koder för vård- och omsorgsform (careType).&#xA;Obligatorisk för vårdenheter.&#xA;System: OID 1.2.752.129.2.2.1.13.&#xA;Kända värden: 01=Öppen vård, 02=Sluten vård, 03=Hemsjukvård, 04=Socialtjänst."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ValueSet"/>
+      </extension>
+      <reference>
+        <reference value="ValueSet/hsa-ownership-type"/>
+      </reference>
+      <name value="HSA Ägarform"/>
+      <description value="Tillåtna koder för ägarform (management/regi) på Organization.&#xA;System: HSA ägarform-kodverk (OID 1.2.752.129.2.2.1.14)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="SearchParameter"/>
+      </extension>
+      <reference>
+        <reference value="SearchParameter/hsa-id"/>
+      </reference>
+      <name value="HSA-id"/>
+      <description value="Sökning på HSA-identitet (hsaIdentity, OID 1.2.752.29.4.19)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/hsa-identity"/>
+      </reference>
+      <name value="HSA-identitet (HSA-id)"/>
+      <description value="Unik identifierare för organisationer, enheter, funktioner, uppdrag och&#xA;personer i HSA-katalogen. Tilldelas automatiskt av HSA-systemet vid skapande&#xA;och ska aldrig ändras. Används som stabil nyckel i nationella e-tjänster&#xA;(NPÖ, Pascal, 1177 Hitta vård m.fl.)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/arkiverad-enhet"/>
+      </reference>
+      <name value="Medicinmottagning Karlshamn (arkiverad)"/>
+      <description value="Exempelinstans för en arkiverad (inaktiv) vårdenhet — Medicinmottagning&#xA;Karlshamn — som stängde 2023-12-31 och är markerad med hsaArchivedObject: TRUE&#xA;i LDAP.&#xA;&#xA;Demonstrerar: active = false som FHIR-representation av hsaArchivedObject,&#xA;minimal datauppsättning för arkiverade enheter (identitet + typ + status),&#xA;frånvaro av destinationIndicator och avsaknad av orgPeriod (se mappningskommentar).&#xA;&#xA;Alla inaktiveringsskäl (hsaArchivedObject, hiddenObject, hsaInaccurateHCP/HCU)&#xA;mappas till active = false — distinktionen görs inte synlig i FHIR v1."/>
+      <isExample value="true"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="NamingSystem"/>
+      </extension>
+      <reference>
+        <reference value="NamingSystem/organisation-nummer"/>
+      </reference>
+      <name value="Organisationsnummer (Sverige)"/>
+      <description value="Unikt nummer för juridiska personer i Sverige, tilldelat av Skatteverket&#xA;eller Bolagsverket. Obligatoriskt för organisationer som representerar&#xA;vårdgivare (hsaHealthCareProvider)."/>
+      <isExample value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/region-blekinge-vardgivare"/>
+      </reference>
+      <name value="Region Blekinge (Vårdgivare)"/>
+      <description value="Exempelinstans för Region Blekinge som offentlig regional vårdgivare.&#xA;Demonstrerar: management=01 (landsting/region), GLN-kod, legacy postadress&#xA;(pre-5.2 övergångsform), telekomtyper (direkttelefon = växel, e-post,&#xA;innehållsansvarig, webbadress) och frånvaro av destinationIndicator på VG-nivå."/>
+      <isExample value="true"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-provider-organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Location"/>
+      </extension>
+      <reference>
+        <reference value="Location/location-ronneby-vardcentral"/>
+      </reference>
+      <name value="Ronneby Vårdcentral (Besöksplats, legacy adress)"/>
+      <description value="Exempelinstans för Ronneby Vårdcentrals fysiska besöksplats med legacy&#xA;adressformat (pre-HSA 5.2).&#xA;&#xA;Demonstrerar: address.text (ostrukturerat streetAddress-attribut) som&#xA;övergångsmönster under migrationsperioden t.o.m. september 2026, jämfört&#xA;med address.line[] i LocationBlekingesjukhuset (strukturerat 5.2+).&#xA;&#xA;Konsumenter bör kontrollera om address.line är satt för att avgöra vilket&#xA;format som används — address.text är fallback för ej-migrerade enheter."/>
+      <isExample value="true"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/ronneby-vardcentral-vardenhet"/>
+      </reference>
+      <name value="Ronneby Vårdcentral (Vårdenhet, privat utförare)"/>
+      <description value="Exempelinstans för Ronneby Vårdcentral — en primärvårdsenhet driven av&#xA;Blekinge Primärvård AB (privat) med finansiering från Region Blekinge.&#xA;&#xA;Demonstrerar: careLevel=01 (Primärvård), hsaBusinessType=05 (Vårdcentral),&#xA;financingOrganization-extensionen (privat utförare med regionfinansiering),&#xA;APK-kod, mobiltelefon, patientInfo (hsaVpwInformation4) och legacy&#xA;streetAddress (besöksadress ej migrerat till 5.2+ hsaVisitingAddress).&#xA;Besöksadressen modelleras i Instance-LocationRonnebyVardcentral."/>
+      <isExample value="true"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="HealthcareService"/>
+      </extension>
+      <reference>
+        <reference value="HealthcareService/hs-tjanst-ronneby-vardcentral"/>
+      </reference>
+      <name value="Ronneby Vårdcentral Tjänsteutbud (HealthcareService)"/>
+      <description value="Exempelinstans för Ronneby Vårdcentrals vårdtjänst med allmänmedicin,&#xA;tre typer av tillgänglighetsinformation (telefontider, tidig telefontid,&#xA;drop-in) och alla tre VPW-textfälten.&#xA;&#xA;Demonstrerar: category[verksamhetskod]=1502 (Allmänmedicin), tre separata&#xA;availability-block (telefontider + tidig telefontid + drop-in med selektiva&#xA;veckodagar), comment (hsaVpwInformation3), temporaryNotice (hsaVpwInformation2)&#xA;och patientInfo (hsaVpwInformation4) på HealthcareService-resursen."/>
+      <isExample value="true"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service"/>
+    </resource>
+    <page>
+      <sourceUrl value="toc.html"/>
+      <name value="toc.html"/>
+      <title value="Table of Contents"/>
+      <generation value="html"/>
+      <page>
+        <sourceUrl value="index.html"/>
+        <name value="index.html"/>
+        <title value="Introduktion"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <sourceUrl value="design-principles.html"/>
+        <name value="design-principles.html"/>
+        <title value="Designprinciper"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <sourceUrl value="use-cases.html"/>
+        <name value="use-cases.html"/>
+        <title value="Användningsfall"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <sourceUrl value="profiles.html"/>
+        <name value="profiles.html"/>
+        <title value="Profiler"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <sourceUrl value="terminology.html"/>
+        <name value="terminology.html"/>
+        <title value="Terminologi"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <sourceUrl value="api.html"/>
+        <name value="api.html"/>
+        <title value="REST API"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <sourceUrl value="ehm-alignment.html"/>
+        <name value="ehm-alignment.html"/>
+        <title value="Harmonisering med eHM"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <sourceUrl value="client-rendering.html"/>
+        <name value="client-rendering.html"/>
+        <title value="Klientrendering"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <sourceUrl value="organization-hierarchy.html"/>
+        <name value="organization-hierarchy.html"/>
+        <title value="Organisationshierarki"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <sourceUrl value="address-transition.html"/>
+        <name value="address-transition.html"/>
+        <title value="Adressövergång"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <sourceUrl value="ldap-mapping.html"/>
+        <name value="ldap-mapping.html"/>
+        <title value="LDAP → FHIR Mappning"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <sourceUrl value="downloads.html"/>
+        <name value="downloads.html"/>
+        <title value="Nedladdningar"/>
+        <generation value="markdown"/>
+      </page>
+    </page>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="copyrightyear"/>
+      </code>
+      <value value="2026+"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="releaselabel"/>
+      </code>
+      <value value="ci-build"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="show-inherited-invariants"/>
+      </code>
+      <value value="false"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="apply-contact"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="apply-jurisdiction"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="apply-publisher"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="apply-version"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="autoload-resources"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="input/capabilities"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="input/examples"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="input/extensions"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="input/models"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="input/operations"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="input/profiles"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="input/resources"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="input/vocabulary"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="input/maps"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="input/testing"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="input/history"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-resource"/>
+      </code>
+      <value value="fsh-generated/resources"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-pages"/>
+      </code>
+      <value value="template/config"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-pages"/>
+      </code>
+      <value value="input/images"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="path-liquid"/>
+      </code>
+      <value value="template/liquid"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="path-liquid"/>
+      </code>
+      <value value="input/liquid"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="path-qa"/>
+      </code>
+      <value value="temp/qa"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="path-temp"/>
+      </code>
+      <value value="temp/pages"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="path-output"/>
+      </code>
+      <value value="output"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/guide-parameter-code"/>
+        <code value="path-tx-cache"/>
+      </code>
+      <value value="input-cache/txcache"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="path-suppressed-warnings"/>
+      </code>
+      <value value="input/ignoreWarnings.txt"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="path-history"/>
+      </code>
+      <value value="https://hsa.inera.se/fhir/history.html"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="template-html"/>
+      </code>
+      <value value="template-page.html"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="template-md"/>
+      </code>
+      <value value="template-page-md.html"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="apply-context"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="apply-copyright"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="apply-license"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="apply-wg"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="active-tables"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="fmm-definition"/>
+      </code>
+      <value value="http://hl7.org/fhir/versions.html#maturity"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="propagate-status"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="excludelogbinaryformat"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+    <parameter>
+      <code>
+        <system value="http://hl7.org/fhir/tools/CodeSystem/ig-parameters"/>
+        <code value="tabbed-snapshots"/>
+      </code>
+      <value value="true"/>
+    </parameter>
+  </definition>
+</ImplementationGuide>

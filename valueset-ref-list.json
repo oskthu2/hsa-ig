@@ -1,0 +1,89 @@
+{
+  "codeSystems" : [{
+    "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-business-type",
+    "version" : "0.1.0",
+    "status" : "active",
+    "name" : "HsaBusinessTypeVS",
+    "title" : "HSA Enhetstyp (hsaBusinessType)",
+    "description" : "Enhetstyp för organisation eller enhet i HSA.\nSystem: HSA enhetstyp-kodverk (OID 1.2.752.129.2.2.1.12).\nTypiska värden: sjukhus, vårdcentral, apotek m.fl.",
+    "systems" : ["urn:oid:1.2.752.129.2.2.1.12"],
+    "uses" : {
+    },
+    "StructureDefinition-hsa-catalog-organization.html" : "HSA Catalog Organization"
+  },
+  {
+    "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-care-type",
+    "version" : "0.1.0",
+    "status" : "active",
+    "name" : "HsaCareTypeVS",
+    "title" : "HSA Vård- och omsorgsform (careType)",
+    "description" : "Tillåtna koder för vård- och omsorgsform (careType).\nObligatorisk för vårdenheter.\nSystem: OID 1.2.752.129.2.2.1.13.\nKända värden: 01=Öppen vård, 02=Sluten vård, 03=Hemsjukvård, 04=Socialtjänst.",
+    "systems" : ["urn:oid:1.2.752.129.2.2.1.13"],
+    "uses" : {
+    },
+    "StructureDefinition-hsa-healthcare-service.html" : "HSA Healthcare Service"
+  },
+  {
+    "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-destination-indicator",
+    "version" : "0.1.0",
+    "status" : "active",
+    "name" : "HsaDestinationIndicatorVS",
+    "title" : "HSA Visas för (hsaDestinationIndicator)",
+    "description" : "Koder för visningsscope i HSA (hsaDestinationIndicator).\nKod 03 = Internet/allmänheten = publik visning på t.ex. 1177 Hitta vård.\nSystem: OID 1.2.752.29.23.1.11.",
+    "systems" : ["urn:oid:1.2.752.29.23.1.11"],
+    "uses" : {
+    },
+    "StructureDefinition-hsa-healthcare-service.html" : "HSA Healthcare Service",
+    "StructureDefinition-hsa-catalog-location.html" : "HSA Catalog Location",
+    "StructureDefinition-hsa-catalog-organization.html" : "HSA Catalog Organization"
+  },
+  {
+    "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-organization-type",
+    "version" : "0.1.0",
+    "status" : "active",
+    "name" : "HsaOrganizationTypeVS",
+    "title" : "HSA Organisationstyp",
+    "description" : "Tillåtna klassificeringar för Organization.type i HSA-profiler.\nKombinerar HSA-objektklasser (vårdgivare/vårdenhet) med enhetstyp-kodverk\n(sjukhus, vårdcentral, apotek).",
+    "systems" : ["https://hsa.inera.se/fhir/CodeSystem/hsa-object-class",
+    "urn:oid:1.2.752.129.2.2.1.12"],
+    "uses" : {
+    },
+    "StructureDefinition-hsa-catalog-organization.html" : "HSA Catalog Organization"
+  },
+  {
+    "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-ownership-type",
+    "version" : "0.1.0",
+    "status" : "active",
+    "name" : "HsaOwnershipTypeVS",
+    "title" : "HSA Ägarform",
+    "description" : "Tillåtna koder för ägarform (management/regi) på Organization.\nSystem: HSA ägarform-kodverk (OID 1.2.752.129.2.2.1.14).",
+    "systems" : ["urn:oid:1.2.752.129.2.2.1.14"],
+    "uses" : {
+    },
+    "StructureDefinition-hsa-catalog-organization.html" : "HSA Catalog Organization"
+  },
+  {
+    "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-service-type",
+    "version" : "0.1.0",
+    "status" : "active",
+    "name" : "HsaServiceTypeVS",
+    "title" : "HSA Verksamhetskod (businessClassificationCode)",
+    "description" : "Tillåtna verksamhetskoder för HealthcareService.type.\nSystem: HSA verksamhetskod-kodverk (OID 1.2.752.129.2.2.1.3).\nFaktiska kodvärden hämtas från Terminologitjänsten (terminologitjansten.inera.se).\nJämförs med eHMs Nationella vårdtjänster v.1.0.0 (SRC-014).",
+    "systems" : ["urn:oid:1.2.752.129.2.2.1.3"],
+    "uses" : {
+    },
+    "StructureDefinition-hsa-healthcare-service.html" : "HSA Healthcare Service"
+  },
+  {
+    "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-telecom-type",
+    "version" : "0.1.0",
+    "status" : "active",
+    "name" : "HsaTelecomTypeVS",
+    "title" : "HSA Kontaktvägstyp",
+    "description" : "Tillåtna typer av kontaktvägar i HSA.",
+    "systems" : ["https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"],
+    "uses" : {
+    },
+    "StructureDefinition-hsa-telecom-type.html" : "HSA Kontaktvägstyp"
+  }]
+}

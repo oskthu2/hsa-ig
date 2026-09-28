@@ -1,0 +1,90 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/HealthcareService/hs-tjanst-ronneby-vardcentral> a fhir:HealthcareService ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "hs-tjanst-ronneby-vardcentral"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service"^^xsd:anyURI ;
+       fhir:link <https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service>
+     ] ) ;
+     fhir:security ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.29.23.1.11"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "03" ] ;
+       fhir:display [ fhir:v "Internet/allmänheten" ]
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: HealthcareService hs-tjanst-ronneby-vardcentral</b></p><a name=\"hs-tjanst-ronneby-vardcentral\"> </a><a name=\"hchs-tjanst-ronneby-vardcentral\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profil: <a href=\"StructureDefinition-hsa-healthcare-service.html\">HSA Healthcare Service</a></p><p style=\"margin-bottom: 0px\">Säkerhetsetikett: </p></div><p><b>HSA Tillfällig information (text)</b>: Telefonköerna är kortast tidigt på morgonen (07:30-08:00). Ring gärna vid öppning för snabbare svar.</p><p><b>HSA Information till patient</b>: Du kan lista dig hos oss via 1177.se. Vi tar emot både bokade besök och drop-in.</p><p><b>active</b>: true</p><p><b>providedBy</b>: <a href=\"Organization-ronneby-vardcentral-vardenhet.html\">Organization Ronneby Vårdcentral</a></p><p><b>category</b>: <span title=\"Koder:{urn:oid:1.2.752.129.2.2.1.3 1502}\">Allmänmedicin</span></p><p><b>type</b>: <span title=\"Koder:{urn:oid:1.2.752.129.2.2.1.13 01}\">Öppen vård</span></p><p><b>location</b>: <a href=\"Location-location-ronneby-vardcentral.html\">Location Ronneby Vårdcentral</a></p><p><b>name</b>: Allmänmedicin Ronneby Vårdcentral</p><p><b>comment</b>: </p><div><p>Vi är din fasta läkarkontakt för allmänmedicin och förebyggande vård i Ronneby. Listning görs via 1177.se.</p>\n</div><blockquote><p><b>availability</b></p><blockquote><p><b>availableTime</b></p><p><b>daysOfWeek</b>: Monday, Tuesday, Wednesday, Thursday, Friday</p><p><b>availableStartTime</b>: 08:00:00</p><p><b>availableEndTime</b>: 17:00:00</p></blockquote></blockquote><blockquote><p><b>availability</b></p><blockquote><p><b>availableTime</b></p><p><b>daysOfWeek</b>: Monday, Tuesday, Wednesday, Thursday, Friday</p><p><b>availableStartTime</b>: 07:30:00</p><p><b>availableEndTime</b>: 08:00:00</p></blockquote></blockquote><blockquote><p><b>availability</b></p><blockquote><p><b>availableTime</b></p><p><b>daysOfWeek</b>: Monday</p><p><b>availableStartTime</b>: 13:00:00</p><p><b>availableEndTime</b>: 16:00:00</p></blockquote><blockquote><p><b>availableTime</b></p><p><b>daysOfWeek</b>: Wednesday</p><p><b>availableStartTime</b>: 13:00:00</p><p><b>availableEndTime</b>: 16:00:00</p></blockquote></blockquote></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-notice"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:string ;
+       fhir:v "Telefonköerna är kortast tidigt på morgonen (07:30-08:00). Ring gärna vid öppning för snabbare svar."
+     ]
+  ] [
+     fhir:url [ fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-patient-info"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:string ;
+       fhir:v "Du kan lista dig hos oss via 1177.se. Vi tar emot både bokade besök och drop-in."
+     ]
+  ] ) ; # 
+  fhir:active [ fhir:v true] ; # 
+  fhir:providedBy [
+     fhir:link <https://hsa.inera.se/fhir/Organization/ronneby-vardcentral-vardenhet> ;
+     fhir:reference [ fhir:v "Organization/ronneby-vardcentral-vardenhet" ]
+  ] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.2.2.1.3"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "1502" ] ;
+       fhir:display [ fhir:v "Allmänmedicin" ]
+     ] )
+  ] ) ; # 
+  fhir:type ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.2.2.1.13"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "01" ] ;
+       fhir:display [ fhir:v "Öppen vård" ]
+     ] )
+  ] ) ; # 
+  fhir:location ( [
+     fhir:link <https://hsa.inera.se/fhir/Location/location-ronneby-vardcentral> ;
+     fhir:reference [ fhir:v "Location/location-ronneby-vardcentral" ]
+  ] ) ; # 
+  fhir:name [ fhir:v "Allmänmedicin Ronneby Vårdcentral"] ; # 
+  fhir:comment [ fhir:v "Vi är din fasta läkarkontakt för allmänmedicin och förebyggande vård i Ronneby. Listning görs via 1177.se."] ; # 
+  fhir:availability ( [
+     fhir:availableTime ( [
+       fhir:daysOfWeek ( [ fhir:v "mon" ] [ fhir:v "tue" ] [ fhir:v "wed" ] [ fhir:v "thu" ] [ fhir:v "fri" ] ) ;
+       fhir:availableStartTime [ fhir:v "08:00:00"^^xsd:time ] ;
+       fhir:availableEndTime [ fhir:v "17:00:00"^^xsd:time ]
+     ] )
+  ] [
+     fhir:availableTime ( [
+       fhir:daysOfWeek ( [ fhir:v "mon" ] [ fhir:v "tue" ] [ fhir:v "wed" ] [ fhir:v "thu" ] [ fhir:v "fri" ] ) ;
+       fhir:availableStartTime [ fhir:v "07:30:00"^^xsd:time ] ;
+       fhir:availableEndTime [ fhir:v "08:00:00"^^xsd:time ]
+     ] )
+  ] [
+     fhir:availableTime ( [
+       fhir:daysOfWeek ( [ fhir:v "mon" ] ) ;
+       fhir:availableStartTime [ fhir:v "13:00:00"^^xsd:time ] ;
+       fhir:availableEndTime [ fhir:v "16:00:00"^^xsd:time ]
+     ] [
+       fhir:daysOfWeek ( [ fhir:v "wed" ] ) ;
+       fhir:availableStartTime [ fhir:v "13:00:00"^^xsd:time ] ;
+       fhir:availableEndTime [ fhir:v "16:00:00"^^xsd:time ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

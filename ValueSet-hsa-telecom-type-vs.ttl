@@ -1,0 +1,46 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/ValueSet/hsa-telecom-type-vs> a fhir:ValueSet ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "hsa-telecom-type-vs"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet hsa-telecom-type-vs</b></p><a name=\"hsa-telecom-type-vs\"> </a><a name=\"hchsa-telecom-type-vs\"> </a><ul><li>Include alla koder som definieras i <a href=\"CodeSystem-hsa-telecom-type.html\"><code>https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version &#x1F4E6;0.1.0</span></li></ul></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [ fhir:v "https://hsa.inera.se/fhir/ValueSet/hsa-telecom-type"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "HsaTelecomTypeVS"] ; # 
+  fhir:title [ fhir:v "HSA Kontaktvägstyp"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-05-20"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Inera AB / HSA-IG projekt"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Inera AB / HSA-IG projekt" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.inera.se/" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Tillåtna typer av kontaktvägar i HSA."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "SE" ] ;
+       fhir:display [ fhir:v "Sweden" ]
+     ] )
+  ] ) ; # 
+  fhir:compose [
+     fhir:include ( [
+       fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"^^xsd:anyURI ]
+     ] )
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

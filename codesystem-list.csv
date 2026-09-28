@@ -1,0 +1,3 @@
+URL,Version,Status,OIDs,Name,Title,Description,Used
+https://hsa.inera.se/fhir/CodeSystem/hsa-object-class,0.1.0,active,,HsaObjectClass,HSA Objektklassificering,"Klassificering av HSA-objekt baserat på LDAP-objektklasser i HSA-schemat. Används för att identifiera om en organisation är vårdgivare, vårdenhet eller annan organisatorisk enhet, samt för statusmarkering.",
+https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type,0.1.0,active,,HsaTelecomType,HSA Kontaktvägstyp,"Klassificering av kontaktvägar (telecom) i HSA för att skilja på direkttelefon, växeltelefon, e-post, m.fl.",

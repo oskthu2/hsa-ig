@@ -1,0 +1,103 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/Organization/privat-vardgivare-ab> a fhir:Organization ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "privat-vardgivare-ab"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-provider-organization"^^xsd:anyURI ;
+       fhir:link <https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-provider-organization>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: Organization privat-vardgivare-ab</b></p><a name=\"privat-vardgivare-ab\"> </a><a name=\"hcprivat-vardgivare-ab\"> </a><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profil: <a href=\"StructureDefinition-hsa-healthcare-provider-organization.html\">HSA Healthcare Provider Organization</a></p></div><p><b>identifier</b>: <a href=\"NamingSystem-hsa-identity.html\" title=\"Unik identifierare för organisationer, enheter, funktioner, uppdrag och#xA;personer i HSA-katalogen. Tilldelas automatiskt av HSA-systemet vid skapande#xA;och ska aldrig ändras. Används som stabil nyckel i nationella e-tjänster#xA;(NPÖ, Pascal, 1177 Hitta vård m.fl.).\">HSA-identitet (HSA-id)</a>/SE5566778899-BPAB1, <a href=\"NamingSystem-organisation-nummer.html\" title=\"Unikt nummer för juridiska personer i Sverige, tilldelat av Skatteverket#xA;eller Bolagsverket. Obligatoriskt för organisationer som representerar#xA;vårdgivare (hsaHealthCareProvider).\">Organisationsnummer (Sverige)</a>/5566778899</p><p><b>active</b>: true</p><p><b>type</b>: <span title=\"Koder:{https://hsa.inera.se/fhir/CodeSystem/hsa-object-class healthcare-provider}\">Vårdgivare</span>, <span title=\"Koder:{urn:oid:1.2.752.129.2.2.1.14 05}\">Privat</span></p><p><b>name</b>: Blekinge Primärvård AB</p><h3>Contacts</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Telecom</b></td><td><b>Address</b></td></tr><tr><td style=\"display: none\">*</td><td>ph: 0457-55 66 77(Work), ph: 0457-55 66 00(Work), <a href=\"mailto:info@blekingeprimaervard.se\">info@blekingeprimaervard.se</a>, <a href=\"mailto:redaktion@blekingeprimaervard.se\">redaktion@blekingeprimaervard.se</a>, <a href=\"https://www.blekingeprimaervard.test\">https://www.blekingeprimaervard.test</a></td><td> </td></tr><tr><td style=\"display: none\">*</td><td> </td><td>Järnvägsgatan 12</td></tr></table></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:identifier ( [
+     fhir:system [ fhir:v "urn:oid:1.2.752.29.4.19"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "SE5566778899-BPAB1" ]
+  ] [
+     fhir:system [ fhir:v "urn:oid:2.5.4.97"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "5566778899" ]
+  ] ) ; # 
+  fhir:active [ fhir:v true] ; # 
+  fhir:type ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "healthcare-provider" ] ;
+       fhir:display [ fhir:v "Vårdgivare" ]
+     ] )
+  ] [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.2.2.1.14"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "05" ] ;
+       fhir:display [ fhir:v "Privat" ]
+     ] )
+  ] ) ; # 
+  fhir:name [ fhir:v "Blekinge Primärvård AB"] ; # 
+  fhir:contact ( [
+     fhir:telecom ( [
+       fhir:extension ( [
+         fhir:url [ fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:Coding ;
+           fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "direct-phone" ] ;
+           fhir:display [ fhir:v "Direkttelefon" ]
+         ]
+       ] ) ;
+       fhir:system [ fhir:v "phone" ] ;
+       fhir:value [ fhir:v "0457-55 66 77" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:Coding ;
+           fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "switchboard" ] ;
+           fhir:display [ fhir:v "Växeltelefon" ]
+         ]
+       ] ) ;
+       fhir:system [ fhir:v "phone" ] ;
+       fhir:value [ fhir:v "0457-55 66 00" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] [
+       fhir:system [ fhir:v "email" ] ;
+       fhir:value [ fhir:v "info@blekingeprimaervard.se" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:Coding ;
+           fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "directory-contact" ] ;
+           fhir:display [ fhir:v "Innehållsansvarig" ]
+         ]
+       ] ) ;
+       fhir:system [ fhir:v "email" ] ;
+       fhir:value [ fhir:v "redaktion@blekingeprimaervard.se" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.blekingeprimaervard.test" ] ;
+       fhir:use [ fhir:v "work" ]
+     ] )
+  ] [
+     fhir:address [
+       fhir:type [ fhir:v "postal" ] ;
+       fhir:text [ fhir:v "Järnvägsgatan 12" ] ;
+       fhir:city [ fhir:v "Ronneby" ] ;
+       fhir:postalCode [ fhir:v "372 35" ]
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

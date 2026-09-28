@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="f023cf59-ec55-4bf2-9c98-72f9ef2bc453"/>
+  <meta>
+    <lastUpdated value="2026-09-28T08:39:43.320+00:00"/>
+  </meta>
+  <type value="collection"/>
+  <entry>
+    <fullUrl value="https://hsa.inera.se/fhir/ValueSet/hsa-telecom-type"/>
+    <resource>
+      <ValueSet>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml" data-fhir="generated">
+            <p class="res-header-id"/>
+            <p style="border: black 1px dotted; background-color: #EEEEEE; padding: 8px; margin-bottom: 8px">Expansion utförd internt baserad på 
+              <a href="CodeSystem-hsa-telecom-type.html">codesystem HSA Kontaktvägstyp v0.1.0 (CodeSystem)</a>
+              <span class="copy-text-inline">
+                <button data-clipboard-text="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type|0.1.0" title="Klicka för att kopiera URL" class="btn-copy"> </button>
+              </span>
+            </p>
+            <p>Denna värdemängd innehåller 6 begrepp</p>
+            <table class="codes" data-fhir="generated">
+              <tr>
+                <td>
+                  <b>System</b>
+                </td>
+                <td style="white-space:nowrap">
+                  <b>Kod</b>
+                </td>
+                <td>
+                  <b>Visning (sv)</b>
+                </td>
+                <td>
+                  <b>Definition</b>
+                </td>
+                <td>
+                  <b>JSON</b>
+                </td>
+                <td>
+                  <b>XML</b>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type-direct-phone"> </a>
+                  <code>https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-hsa-telecom-type.html#hsa-telecom-type-direct-phone">direct-phone</a>
+                </td>
+                <td/>
+                <td>Direkt telefonnummer till enheten (telephoneNumber).</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;direct-phone&quot;}" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;direct-phone&quot;&gt;&lt;/coding&gt;" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type-switchboard"> </a>
+                  <code>https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-hsa-telecom-type.html#hsa-telecom-type-switchboard">switchboard</a>
+                </td>
+                <td/>
+                <td>Växeltelefonnummer (obligatoriskt för offentliga enheter).</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;switchboard&quot;}" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;switchboard&quot;&gt;&lt;/coding&gt;" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type-public-phone"> </a>
+                  <code>https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-hsa-telecom-type.html#hsa-telecom-type-public-phone">public-phone</a>
+                </td>
+                <td/>
+                <td>Telefonnummer avsett för allmänheten (hsaPublicTelephone).</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;public-phone&quot;}" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;public-phone&quot;&gt;&lt;/coding&gt;" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type-fax"> </a>
+                  <code>https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-hsa-telecom-type.html#hsa-telecom-type-fax">fax</a>
+                </td>
+                <td/>
+                <td>Faxnummer.</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;fax&quot;}" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;fax&quot;&gt;&lt;/coding&gt;" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type-email"> </a>
+                  <code>https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-hsa-telecom-type.html#hsa-telecom-type-email">email</a>
+                </td>
+                <td/>
+                <td>E-postadress (mail/rfc822Mailbox).</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;email&quot;}" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;email&quot;&gt;&lt;/coding&gt;" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a name="x-https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type-directory-contact"> </a>
+                  <code>https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code>
+                </td>
+                <td style="white-space:nowrap">  
+                  <a href="CodeSystem-hsa-telecom-type.html#hsa-telecom-type-directory-contact">directory-contact</a>
+                </td>
+                <td/>
+                <td>Funktionsbrevlåda för innehållsfrågor (hsaDirectoryContact).</td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="{&quot;system&quot;: &quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;, &quot;version&quot;: &quot;0.1.0&quot;, &quot;code&quot;: &quot;directory-contact&quot;}" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+                <td>
+                  <span class="copy-text-inline">
+                    <button data-clipboard-text="&lt;coding&gt;&lt;system value=&quot;https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type&quot;&gt;&lt;version value=&quot;0.1.0&quot;&gt;&lt;code value=&quot;directory-contact&quot;&gt;&lt;/coding&gt;" title="Klicka för att kopiera som Coding" class="btn-copy"> </button>
+                  </span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </text>
+        <url value="https://hsa.inera.se/fhir/ValueSet/hsa-telecom-type"/>
+        <version value="0.1.0"/>
+        <name value="HsaTelecomTypeVS"/>
+        <title value="HSA Kontaktvägstyp"/>
+        <status value="active"/>
+        <experimental value="false"/>
+        <date value="2026-05-20"/>
+        <jurisdiction>
+          <coding>
+            <system value="urn:iso:std:iso:3166"/>
+            <code value="SE"/>
+            <display value="Sweden"/>
+          </coding>
+        </jurisdiction>
+        <expansion>
+          <identifier value="urn:uuid:e0ec7b70-a5e4-454a-82a1-b0fba91a2bb0"/>
+          <timestamp value="2026-09-28T08:40:34+00:00"/>
+          <total value="6"/>
+          <offset value="0"/>
+          <parameter>
+            <name value="displayLanguage"/>
+            <valueCode value="sv"/>
+          </parameter>
+          <parameter>
+            <name value="count"/>
+            <valueInteger value="1000"/>
+          </parameter>
+          <parameter>
+            <name value="offset"/>
+            <valueInteger value="0"/>
+          </parameter>
+          <parameter>
+            <name value="excludeNested"/>
+            <valueBoolean value="false"/>
+          </parameter>
+          <parameter>
+            <name value="used-codesystem"/>
+            <valueUri value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type|0.1.0"/>
+          </parameter>
+          <contains>
+            <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+            <code value="direct-phone"/>
+          </contains>
+          <contains>
+            <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+            <code value="switchboard"/>
+          </contains>
+          <contains>
+            <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+            <code value="public-phone"/>
+          </contains>
+          <contains>
+            <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+            <code value="fax"/>
+          </contains>
+          <contains>
+            <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+            <code value="email"/>
+          </contains>
+          <contains>
+            <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+            <code value="directory-contact"/>
+          </contains>
+        </expansion>
+      </ValueSet>
+    </resource>
+  </entry>
+</Bundle>

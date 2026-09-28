@@ -1,0 +1,347 @@
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Ronneby Vårdcentral Tjänsteutbud (HealthcareService) - XML Representation - HSA Katalog Implementation Guide v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"13.39"}
+    h3,h4,h5,h6{--heading-prefix:"13.39"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">HSA Katalog Implementation Guide</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="Sweden flag" src="assets/images/swe.svg" height="16" title="Sweden"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R5/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Hem</a>
+  </li>
+  <li>
+    <a href="profiles.html">Profiler</a>
+  </li>
+  <li>
+    <a href="terminology.html">Terminologi</a>
+  </li>
+  <li>
+    <a href="api.html">API</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Vägledning
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="client-rendering.html">Klientrendering</a>
+      </li>
+      <li>
+        <a href="organization-hierarchy.html">Organisationshierarki</a>
+      </li>
+      <li>
+        <a href="address-transition.html">Adressövergång</a>
+      </li>
+      <li>
+        <a href="ldap-mapping.html">LDAP-mappning</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artefakter</a>
+  </li>
+  <li>
+    <a href="downloads.html">Nedladdningar</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='artifacts.html'><b>Artifacts Summary</b></a></li><li><b>Ronneby Vårdcentral Tjänsteutbud (HealthcareService)</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<div style="counter-reset: section 7" class="col-12">
+<!--ReleaseHeader--><p id="publish-box">HSA Katalog Implementation Guide - Lokal utvecklingsbygge (v0.1.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://hsa.inera.se/fhir/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+
+
+
+
+
+
+
+
+
+<ul class="nav nav-tabs">
+
+  <li>
+    <a href="HealthcareService-hs-tjanst-ronneby-vardcentral.html">Narrative Content</a>
+  </li>
+
+
+
+  
+    <li class="active">
+      <a href="#">XML</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="HealthcareService-hs-tjanst-ronneby-vardcentral.json.html">JSON</a>
+    </li>
+  
+
+
+  
+    <li>
+      <a href="HealthcareService-hs-tjanst-ronneby-vardcentral.ttl.html">TTL</a>
+    </li>
+  
+
+
+
+</ul>
+
+
+<a name="root"> </a>
+
+
+<h2 id="root">: Ronneby Vårdcentral Tjänsteutbud (HealthcareService) - XML Representation</h2>
+
+
+<p><a href="HealthcareService-hs-tjanst-ronneby-vardcentral.xml" no-download="true">Raw xml</a> | <a href="HealthcareService-hs-tjanst-ronneby-vardcentral.xml" download>Download</a></p>
+
+  <!-- insert intro if present -->
+  
+
+
+
+  <pre class="xml" data-fhir="generated" style="white-space: pre; text-wrap: nowrap; width: auto;"><code class="language-xml" style="white-space: pre; text-wrap: nowrap;">
+&lt;<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService">HealthcareService</a> xmlns=&quot;http://hl7.org/fhir&quot;&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/resource.html#XHealthcareService.id">id</a> <a href="http://hl7.org/fhir/R5/datatypes.html#id">value</a>=&quot;hs-tjanst-ronneby-vardcentral&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/resource.html#XHealthcareService.meta">meta</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R5/resource.html#Meta#XMeta.profile">profile</a>
+             <a href="http://hl7.org/fhir/R5/datatypes.html#canonical">value</a>=&quot;https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service&quot;/&gt;
+    &lt;<a href="http://hl7.org/fhir/R5/resource.html#Meta#XMeta.security">security</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/datatypes.html#Coding#XCoding.system">system</a> <a href="http://hl7.org/fhir/R5/datatypes.html#uri">value</a>=&quot;urn:oid:1.2.752.29.23.1.11&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/datatypes.html#Coding#XCoding.code">code</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;03&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/datatypes.html#Coding#XCoding.display">display</a> <a href="http://hl7.org/fhir/R5/datatypes.html#string">value</a>=&quot;Internet/allmänheten&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R5/resource.html#Meta#XMeta.security">security</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R5/resource.html#XHealthcareService.meta">meta</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/domainresource.html#XHealthcareService.text">text</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R5/narrative.html#Narrative#XNarrative.status">status</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;extensions&quot;/&gt;
+    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;p class=&quot;res-header-id&quot;&gt;&lt;b&gt;Genererad berättande text: HealthcareService hs-tjanst-ronneby-vardcentral&lt;/b&gt;&lt;/p&gt;&lt;a name=&quot;hs-tjanst-ronneby-vardcentral&quot;&gt; &lt;/a&gt;&lt;a name=&quot;hchs-tjanst-ronneby-vardcentral&quot;&gt; &lt;/a&gt;&lt;div style=&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%&quot;&gt;&lt;p style=&quot;margin-bottom: 0px&quot;/&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Profil: &lt;a href=&quot;StructureDefinition-hsa-healthcare-service.html&quot;&gt;HSA Healthcare Service&lt;/a&gt;&lt;/p&gt;&lt;p style=&quot;margin-bottom: 0px&quot;&gt;Säkerhetsetikett: &lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;HSA Tillfällig information (text)&lt;/b&gt;: Telefonköerna är kortast tidigt på morgonen (07:30-08:00). Ring gärna vid öppning för snabbare svar.&lt;/p&gt;&lt;p&gt;&lt;b&gt;HSA Information till patient&lt;/b&gt;: Du kan lista dig hos oss via 1177.se. Vi tar emot både bokade besök och drop-in.&lt;/p&gt;&lt;p&gt;&lt;b&gt;active&lt;/b&gt;: true&lt;/p&gt;&lt;p&gt;&lt;b&gt;providedBy&lt;/b&gt;: &lt;a href=&quot;Organization-ronneby-vardcentral-vardenhet.html&quot;&gt;Organization Ronneby Vårdcentral&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;category&lt;/b&gt;: &lt;span title=&quot;Koder:{urn:oid:1.2.752.129.2.2.1.3 1502}&quot;&gt;Allmänmedicin&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: &lt;span title=&quot;Koder:{urn:oid:1.2.752.129.2.2.1.13 01}&quot;&gt;Öppen vård&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;location&lt;/b&gt;: &lt;a href=&quot;Location-location-ronneby-vardcentral.html&quot;&gt;Location Ronneby Vårdcentral&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;name&lt;/b&gt;: Allmänmedicin Ronneby Vårdcentral&lt;/p&gt;&lt;p&gt;&lt;b&gt;comment&lt;/b&gt;: &lt;/p&gt;&lt;div&gt;&lt;p&gt;Vi är din fasta läkarkontakt för allmänmedicin och förebyggande vård i Ronneby. Listning görs via 1177.se.&lt;/p&gt;
+&lt;/div&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;availability&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;availableTime&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;daysOfWeek&lt;/b&gt;: Monday, Tuesday, Wednesday, Thursday, Friday&lt;/p&gt;&lt;p&gt;&lt;b&gt;availableStartTime&lt;/b&gt;: 08:00:00&lt;/p&gt;&lt;p&gt;&lt;b&gt;availableEndTime&lt;/b&gt;: 17:00:00&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;availability&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;availableTime&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;daysOfWeek&lt;/b&gt;: Monday, Tuesday, Wednesday, Thursday, Friday&lt;/p&gt;&lt;p&gt;&lt;b&gt;availableStartTime&lt;/b&gt;: 07:30:00&lt;/p&gt;&lt;p&gt;&lt;b&gt;availableEndTime&lt;/b&gt;: 08:00:00&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;availability&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;availableTime&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;daysOfWeek&lt;/b&gt;: Monday&lt;/p&gt;&lt;p&gt;&lt;b&gt;availableStartTime&lt;/b&gt;: 13:00:00&lt;/p&gt;&lt;p&gt;&lt;b&gt;availableEndTime&lt;/b&gt;: 16:00:00&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;availableTime&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;daysOfWeek&lt;/b&gt;: Wednesday&lt;/p&gt;&lt;p&gt;&lt;b&gt;availableStartTime&lt;/b&gt;: 13:00:00&lt;/p&gt;&lt;p&gt;&lt;b&gt;availableEndTime&lt;/b&gt;: 16:00:00&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;/div&gt;<a name="end-xhtml"></a>
+  &lt;/<a href="http://hl7.org/fhir/R5/domainresource.html#XHealthcareService.text">text</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/domainresource.html#XHealthcareService.extension">extension</a>
+             <a href="http://hl7.org/fhir/R5/datatypes.html#uri">url</a>=&quot;https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-notice&quot;&gt;
+    &lt;<a href="http://hl7.org/fhir/R5/extensibility.html#Extension#XExtension.value_x_">valueString</a>
+                 <a href="http://hl7.org/fhir/R5/datatypes.html#string">value</a>=&quot;Telefonköerna är kortast tidigt på morgonen (07:30-08:00). Ring gärna vid öppning för snabbare svar.&quot;/&gt;
+  &lt;/<a href="http://hl7.org/fhir/R5/domainresource.html#XHealthcareService.extension">extension</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/domainresource.html#XHealthcareService.extension">extension</a>
+             <a href="http://hl7.org/fhir/R5/datatypes.html#uri">url</a>=&quot;https://hsa.inera.se/fhir/StructureDefinition/hsa-patient-info&quot;&gt;
+    &lt;<a href="http://hl7.org/fhir/R5/extensibility.html#Extension#XExtension.value_x_">valueString</a>
+                 <a href="http://hl7.org/fhir/R5/datatypes.html#string">value</a>=&quot;Du kan lista dig hos oss via 1177.se. Vi tar emot både bokade besök och drop-in.&quot;/&gt;
+  &lt;/<a href="http://hl7.org/fhir/R5/domainresource.html#XHealthcareService.extension">extension</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.active">active</a> <a href="http://hl7.org/fhir/R5/datatypes.html#boolean">value</a>=&quot;true&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.providedBy">providedBy</a>&gt;<a href="Organization-ronneby-vardcentral-vardenhet.html" style="color: Maroon">&#x1F517;</a> 
+    &lt;<a href="http://hl7.org/fhir/R5/references.html#Reference#XReference.reference">reference</a> <a href="http://hl7.org/fhir/R5/datatypes.html#string">value</a>=&quot;Organization/ronneby-vardcentral-vardenhet&quot;/&gt;
+  &lt;/<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.providedBy">providedBy</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.category">category</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R5/datatypes.html#CodeableConcept#XCodeableConcept.coding">coding</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/datatypes.html#Coding#XCoding.system">system</a> <a href="http://hl7.org/fhir/R5/datatypes.html#uri">value</a>=&quot;urn:oid:1.2.752.129.2.2.1.3&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/datatypes.html#Coding#XCoding.code">code</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;1502&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/datatypes.html#Coding#XCoding.display">display</a> <a href="http://hl7.org/fhir/R5/datatypes.html#string">value</a>=&quot;Allmänmedicin&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R5/datatypes.html#CodeableConcept#XCodeableConcept.coding">coding</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.category">category</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.type">type</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R5/datatypes.html#CodeableConcept#XCodeableConcept.coding">coding</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/datatypes.html#Coding#XCoding.system">system</a> <a href="http://hl7.org/fhir/R5/datatypes.html#uri">value</a>=&quot;urn:oid:1.2.752.129.2.2.1.13&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/datatypes.html#Coding#XCoding.code">code</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;01&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/datatypes.html#Coding#XCoding.display">display</a> <a href="http://hl7.org/fhir/R5/datatypes.html#string">value</a>=&quot;Öppen vård&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R5/datatypes.html#CodeableConcept#XCodeableConcept.coding">coding</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.type">type</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.location">location</a>&gt;<a href="Location-location-ronneby-vardcentral.html" style="color: Maroon">&#x1F517;</a> 
+    &lt;<a href="http://hl7.org/fhir/R5/references.html#Reference#XReference.reference">reference</a> <a href="http://hl7.org/fhir/R5/datatypes.html#string">value</a>=&quot;Location/location-ronneby-vardcentral&quot;/&gt;
+  &lt;/<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.location">location</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.name">name</a> <a href="http://hl7.org/fhir/R5/datatypes.html#string">value</a>=&quot;Allmänmedicin Ronneby Vårdcentral&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.comment">comment</a>
+           <a href="http://hl7.org/fhir/R5/datatypes.html#markdown">value</a>=&quot;Vi är din fasta läkarkontakt för allmänmedicin och förebyggande vård i Ronneby. Listning görs via 1177.se.&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.availability">availability</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime">availableTime</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;mon&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;tue&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;wed&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;thu&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;fri&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.availableStartTime">availableStartTime</a> <a href="http://hl7.org/fhir/R5/datatypes.html#time">value</a>=&quot;08:00:00&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.availableEndTime">availableEndTime</a> <a href="http://hl7.org/fhir/R5/datatypes.html#time">value</a>=&quot;17:00:00&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime">availableTime</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.availability">availability</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.availability">availability</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime">availableTime</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;mon&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;tue&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;wed&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;thu&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;fri&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.availableStartTime">availableStartTime</a> <a href="http://hl7.org/fhir/R5/datatypes.html#time">value</a>=&quot;07:30:00&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.availableEndTime">availableEndTime</a> <a href="http://hl7.org/fhir/R5/datatypes.html#time">value</a>=&quot;08:00:00&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime">availableTime</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.availability">availability</a>&gt;
+  &lt;<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.availability">availability</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime">availableTime</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;mon&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.availableStartTime">availableStartTime</a> <a href="http://hl7.org/fhir/R5/datatypes.html#time">value</a>=&quot;13:00:00&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.availableEndTime">availableEndTime</a> <a href="http://hl7.org/fhir/R5/datatypes.html#time">value</a>=&quot;16:00:00&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime">availableTime</a>&gt;
+    &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime">availableTime</a>&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.daysOfWeek">daysOfWeek</a> <a href="http://hl7.org/fhir/R5/datatypes.html#code">value</a>=&quot;wed&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.availableStartTime">availableStartTime</a> <a href="http://hl7.org/fhir/R5/datatypes.html#time">value</a>=&quot;13:00:00&quot;/&gt;
+      &lt;<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime.availableEndTime">availableEndTime</a> <a href="http://hl7.org/fhir/R5/datatypes.html#time">value</a>=&quot;16:00:00&quot;/&gt;
+    &lt;/<a href="http://hl7.org/fhir/R5/metadatatypes.html#Availability#XAvailability.availableTime">availableTime</a>&gt;
+  &lt;/<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService.availability">availability</a>&gt;
+&lt;/<a href="http://hl7.org/fhir/R5/healthcareservice.html#XHealthcareService">HealthcareService</a>&gt;</code></pre>
+
+
+  <!-- insert notes if present -->
+  
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se/">Inera AB / HSA-IG projekt</a>.  Package inera.se.hsa.katalog#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R5/">FHIR 5.0.0</a>. Generated <span title="Mon, Sep 28, 2026 08:39+0000">2026-09-28</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

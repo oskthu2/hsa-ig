@@ -1,0 +1,60 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "hsa-organization-type",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet hsa-organization-type</b></p><a name=\"hsa-organization-type\"> </a><a name=\"hchsa-organization-type\"> </a><p>Denna värdemängd inkluderar koder baserat på följande regler:</p><ul><li>Inkludera koder från<a href=\"CodeSystem-hsa-object-class.html\"><code>https://hsa.inera.se/fhir/CodeSystem/hsa-object-class</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version &#x1F4E6;0.1.0</span> där concept  är-en <a href=\"CodeSystem-hsa-object-class.html#hsa-object-class-healthcare-provider\">healthcare-provider</a></li><li>Inkludera koder från<a href=\"CodeSystem-hsa-object-class.html\"><code>https://hsa.inera.se/fhir/CodeSystem/hsa-object-class</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version &#x1F4E6;0.1.0</span> där concept  är-en <a href=\"CodeSystem-hsa-object-class.html#hsa-object-class-healthcare-unit\">healthcare-unit</a></li><li>Inkludera koder från<a href=\"CodeSystem-hsa-object-class.html\"><code>https://hsa.inera.se/fhir/CodeSystem/hsa-object-class</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version &#x1F4E6;0.1.0</span> där concept  är-en <a href=\"CodeSystem-hsa-object-class.html#hsa-object-class-organizational-unit\">organizational-unit</a></li><li>Inkludera alla koder som definieras i <code>urn:oid:1.2.752.129.2.2.1.12</code><span title=\"Versionen är inte uttryckligen angiven. Ingen matchande Kodsystem hittades\"> version Ej angiven (använd senaste från terminologiserver)</span></li></ul></div>"
+  },
+  "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-organization-type",
+  "version" : "0.1.0",
+  "name" : "HsaOrganizationTypeVS",
+  "title" : "HSA Organisationstyp",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2026-05-20",
+  "publisher" : "Inera AB / HSA-IG projekt",
+  "contact" : [{
+    "name" : "Inera AB / HSA-IG projekt",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.inera.se/"
+    }]
+  }],
+  "description" : "Tillåtna klassificeringar för Organization.type i HSA-profiler.\nKombinerar HSA-objektklasser (vårdgivare/vårdenhet) med enhetstyp-kodverk\n(sjukhus, vårdcentral, apotek).",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "SE",
+      "display" : "Sweden"
+    }]
+  }],
+  "compose" : {
+    "include" : [{
+      "system" : "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "healthcare-provider"
+      }]
+    },
+    {
+      "system" : "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "healthcare-unit"
+      }]
+    },
+    {
+      "system" : "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class",
+      "filter" : [{
+        "property" : "concept",
+        "op" : "is-a",
+        "value" : "organizational-unit"
+      }]
+    },
+    {
+      "system" : "urn:oid:1.2.752.129.2.2.1.12"
+    }]
+  }
+}

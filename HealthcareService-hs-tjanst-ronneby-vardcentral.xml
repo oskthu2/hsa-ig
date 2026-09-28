@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<HealthcareService xmlns="http://hl7.org/fhir">
+  <id value="hs-tjanst-ronneby-vardcentral"/>
+  <meta>
+    <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service"/>
+    <security>
+      <system value="urn:oid:1.2.752.29.23.1.11"/>
+      <code value="03"/>
+      <display value="Internet/allmänheten"/>
+    </security>
+  </meta>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: HealthcareService hs-tjanst-ronneby-vardcentral</b></p><a name="hs-tjanst-ronneby-vardcentral"> </a><a name="hchs-tjanst-ronneby-vardcentral"> </a><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profil: <a href="StructureDefinition-hsa-healthcare-service.html">HSA Healthcare Service</a></p><p style="margin-bottom: 0px">Säkerhetsetikett: </p></div><p><b>HSA Tillfällig information (text)</b>: Telefonköerna är kortast tidigt på morgonen (07:30-08:00). Ring gärna vid öppning för snabbare svar.</p><p><b>HSA Information till patient</b>: Du kan lista dig hos oss via 1177.se. Vi tar emot både bokade besök och drop-in.</p><p><b>active</b>: true</p><p><b>providedBy</b>: <a href="Organization-ronneby-vardcentral-vardenhet.html">Organization Ronneby Vårdcentral</a></p><p><b>category</b>: <span title="Koder:{urn:oid:1.2.752.129.2.2.1.3 1502}">Allmänmedicin</span></p><p><b>type</b>: <span title="Koder:{urn:oid:1.2.752.129.2.2.1.13 01}">Öppen vård</span></p><p><b>location</b>: <a href="Location-location-ronneby-vardcentral.html">Location Ronneby Vårdcentral</a></p><p><b>name</b>: Allmänmedicin Ronneby Vårdcentral</p><p><b>comment</b>: </p><div><p>Vi är din fasta läkarkontakt för allmänmedicin och förebyggande vård i Ronneby. Listning görs via 1177.se.</p>
+</div><blockquote><p><b>availability</b></p><blockquote><p><b>availableTime</b></p><p><b>daysOfWeek</b>: Monday, Tuesday, Wednesday, Thursday, Friday</p><p><b>availableStartTime</b>: 08:00:00</p><p><b>availableEndTime</b>: 17:00:00</p></blockquote></blockquote><blockquote><p><b>availability</b></p><blockquote><p><b>availableTime</b></p><p><b>daysOfWeek</b>: Monday, Tuesday, Wednesday, Thursday, Friday</p><p><b>availableStartTime</b>: 07:30:00</p><p><b>availableEndTime</b>: 08:00:00</p></blockquote></blockquote><blockquote><p><b>availability</b></p><blockquote><p><b>availableTime</b></p><p><b>daysOfWeek</b>: Monday</p><p><b>availableStartTime</b>: 13:00:00</p><p><b>availableEndTime</b>: 16:00:00</p></blockquote><blockquote><p><b>availableTime</b></p><p><b>daysOfWeek</b>: Wednesday</p><p><b>availableStartTime</b>: 13:00:00</p><p><b>availableEndTime</b>: 16:00:00</p></blockquote></blockquote></div>
+  </text>
+  <extension url="https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-notice">
+    <valueString value="Telefonköerna är kortast tidigt på morgonen (07:30-08:00). Ring gärna vid öppning för snabbare svar."/>
+  </extension>
+  <extension url="https://hsa.inera.se/fhir/StructureDefinition/hsa-patient-info">
+    <valueString value="Du kan lista dig hos oss via 1177.se. Vi tar emot både bokade besök och drop-in."/>
+  </extension>
+  <active value="true"/>
+  <providedBy>
+    <reference value="Organization/ronneby-vardcentral-vardenhet"/>
+  </providedBy>
+  <category>
+    <coding>
+      <system value="urn:oid:1.2.752.129.2.2.1.3"/>
+      <code value="1502"/>
+      <display value="Allmänmedicin"/>
+    </coding>
+  </category>
+  <type>
+    <coding>
+      <system value="urn:oid:1.2.752.129.2.2.1.13"/>
+      <code value="01"/>
+      <display value="Öppen vård"/>
+    </coding>
+  </type>
+  <location>
+    <reference value="Location/location-ronneby-vardcentral"/>
+  </location>
+  <name value="Allmänmedicin Ronneby Vårdcentral"/>
+  <comment value="Vi är din fasta läkarkontakt för allmänmedicin och förebyggande vård i Ronneby. Listning görs via 1177.se."/>
+  <availability>
+    <availableTime>
+      <daysOfWeek value="mon"/>
+      <daysOfWeek value="tue"/>
+      <daysOfWeek value="wed"/>
+      <daysOfWeek value="thu"/>
+      <daysOfWeek value="fri"/>
+      <availableStartTime value="08:00:00"/>
+      <availableEndTime value="17:00:00"/>
+    </availableTime>
+  </availability>
+  <availability>
+    <availableTime>
+      <daysOfWeek value="mon"/>
+      <daysOfWeek value="tue"/>
+      <daysOfWeek value="wed"/>
+      <daysOfWeek value="thu"/>
+      <daysOfWeek value="fri"/>
+      <availableStartTime value="07:30:00"/>
+      <availableEndTime value="08:00:00"/>
+    </availableTime>
+  </availability>
+  <availability>
+    <availableTime>
+      <daysOfWeek value="mon"/>
+      <availableStartTime value="13:00:00"/>
+      <availableEndTime value="16:00:00"/>
+    </availableTime>
+    <availableTime>
+      <daysOfWeek value="wed"/>
+      <availableStartTime value="13:00:00"/>
+      <availableEndTime value="16:00:00"/>
+    </availableTime>
+  </availability>
+</HealthcareService>

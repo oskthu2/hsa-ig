@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Terminologi - HSA Katalog Implementation Guide v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"5"}
+    h3,h4,h5,h6{--heading-prefix:"5"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">HSA Katalog Implementation Guide</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="Sweden flag" src="assets/images/swe.svg" height="16" title="Sweden"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R5/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Hem</a>
+  </li>
+  <li>
+    <a href="profiles.html">Profiler</a>
+  </li>
+  <li>
+    <a href="terminology.html">Terminologi</a>
+  </li>
+  <li>
+    <a href="api.html">API</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Vägledning
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="client-rendering.html">Klientrendering</a>
+      </li>
+      <li>
+        <a href="organization-hierarchy.html">Organisationshierarki</a>
+      </li>
+      <li>
+        <a href="address-transition.html">Adressövergång</a>
+      </li>
+      <li>
+        <a href="ldap-mapping.html">LDAP-mappning</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artefakter</a>
+  </li>
+  <li>
+    <a href="downloads.html">Nedladdningar</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Terminologi</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">HSA Katalog Implementation Guide - Lokal utvecklingsbygge (v0.1.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://hsa.inera.se/fhir/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <h2>Terminologi</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
+</div>
+<h1 id="terminologi">Terminologi</h1>
+
+<p>Denna sida dokumenterar de CodeSystems, ValueSets och namnrymder som HSA-IG använder.</p>
+
+<hr />
+
+<h2 id="oid-tabell">OID-tabell</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>OID</th>
+      <th>Systemnamn</th>
+      <th>Används för</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.2.752.29.4.19</code></td>
+      <td>HSA-id</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.identifier[hsa-id].system</code></td>
+      <td>Bekräftad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">2.5.4.97</code></td>
+      <td>Organisationsnummer</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.identifier[org-no].system</code></td>
+      <td>Bekräftad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.2.752.29.4.71</code></td>
+      <td>Arbetsplatskod (APK)</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.identifier[apk].system</code></td>
+      <td><strong>Preliminär – öppen fråga 8</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.2.752.29.23.1.11</code></td>
+      <td>hsaDestinationIndicator</td>
+      <td><code class="language-plaintext highlighter-rouge">meta.security[destination-indicator].system</code></td>
+      <td>Bekräftad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.2.1.3</code></td>
+      <td>Verksamhetskod</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.category[verksamhetskod].coding.system</code></td>
+      <td>Bekräftad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.2.1.13</code></td>
+      <td>Vård-/omsorgsform (careType)</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.type[care-type].coding.system</code></td>
+      <td>Bekräftad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.2.1.14</code></td>
+      <td>Ägarform (management)</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[ownership].coding.system</code></td>
+      <td>Bekräftad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.2.752.129.5.1.1</code></td>
+      <td>Finansierande organisation</td>
+      <td><code class="language-plaintext highlighter-rouge">extension[financingOrganization].valueCoding.system</code></td>
+      <td>Bekräftad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.2.752.129.5.1.46</code></td>
+      <td>Administrativ vårdnivå</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[care-level].coding.system</code></td>
+      <td>Bekräftad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.2.752.129.2.2.1.12</code></td>
+      <td>Enhetstyp (hsaBusinessType)</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[business-type].coding.system</code></td>
+      <td>Bekräftad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.3.88</code></td>
+      <td>GLN (Global Location Number, GS1)</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.identifier[gln].system</code></td>
+      <td>Bekräftad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.2.752.29.6.10</code></td>
+      <td>hsaHealthCareProvider</td>
+      <td>Typ-OID för vårdgivare (bakgrundsinformation)</td>
+      <td>Bekräftad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">1.2.752.29.6.13</code></td>
+      <td>hsaHealthCareUnit</td>
+      <td>Typ-OID för vårdenhet (bakgrundsinformation)</td>
+      <td>Bekräftad</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="definierade-codesystems">Definierade CodeSystems</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Canonical URL</th>
+      <th>Syfte</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HsaObjectClass</td>
+      <td><code class="language-plaintext highlighter-rouge">https://hsa.inera.se/fhir/CodeSystem/hsa-object-class</code></td>
+      <td>Klassificering av org-typ (healthcare-provider, healthcare-unit)</td>
+    </tr>
+    <tr>
+      <td>HsaTelecomType</td>
+      <td><code class="language-plaintext highlighter-rouge">https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code></td>
+      <td>Telecom-typ (direct-phone, switchboard, …)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="definierade-valuesets">Definierade ValueSets</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Bindningsstyrka</th>
+      <th>Bunden till</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HsaOrganizationTypeVS</td>
+      <td>required</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[hsa-class]</code></td>
+    </tr>
+    <tr>
+      <td>HsaOwnershipTypeVS</td>
+      <td>required</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[ownership]</code></td>
+    </tr>
+    <tr>
+      <td>HsaDestinationIndicatorVS</td>
+      <td>required</td>
+      <td><code class="language-plaintext highlighter-rouge">meta.security[destination-indicator]</code></td>
+    </tr>
+    <tr>
+      <td>HsaCareTypeVS</td>
+      <td>required</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.type[care-type]</code></td>
+    </tr>
+    <tr>
+      <td>HsaServiceTypeVS</td>
+      <td>required</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.category[verksamhetskod]</code></td>
+    </tr>
+    <tr>
+      <td>HsaTelecomTypeVS</td>
+      <td>extensible</td>
+      <td><code class="language-plaintext highlighter-rouge">extension[telecomType]</code> på ContactPoint</td>
+    </tr>
+    <tr>
+      <td>HsaBusinessTypeVS</td>
+      <td>required</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[business-type]</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="öppna-frågor">Öppna frågor</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Fråga</th>
+      <th>Blockerar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>6</td>
+      <td>Terminologitjänstens kanoniska URL:er för ValueSets och CodeSystems</td>
+      <td>Stabil canonical URL (nu används <code class="language-plaintext highlighter-rouge">urn:oid:...</code> som interimslösning)</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>eHM Nationella vårdtjänster Excel (SRC-014)</td>
+      <td>HSACAT-TERM-001 harmoniseringsmatris</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Bekräftelse av APK-OID <code class="language-plaintext highlighter-rouge">1.2.752.29.4.71</code> mot Ineras OID-register</td>
+      <td>HSACAT-ORG-012 normativt</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se/">Inera AB / HSA-IG projekt</a>.  Package inera.se.hsa.katalog#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R5/">FHIR 5.0.0</a>. Generated <span title="Mon, Sep 28, 2026 08:39+0000">2026-09-28</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+
