@@ -88,26 +88,28 @@ jobs:
           name: ig-output
           path: output/
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: output/
-
   deploy-pages:
-    name: GitHub Pages – deployment
+    name: GitHub Pages – deployment (gh-pages)
     needs: ig-publisher
     if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      contents: write
+    concurrency:
+      group: gh-pages
+      cancel-in-progress: false
     steps:
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+      - name: Download IG output
+        uses: actions/download-artifact@v4
+        with:
+          name: ig-output
+          path: output/
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: output/
+          force_orphan: true
+          commit_message: "Deploy IG from ${{ github.sha }}"
