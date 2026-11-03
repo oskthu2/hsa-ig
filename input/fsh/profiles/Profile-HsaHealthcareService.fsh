@@ -28,6 +28,9 @@ Description: """
 * obeys hsacat-phone-format
 * obeys hsacat-destination-indicator-format
 * obeys hsacat-service-code-format
+* obeys hsacat-temporary-notice-requires-period
+* obeys hsacat-availability-time-order
+* obeys hsacat-availability-allday-no-times
 
 // ── Synlighet: meta.security ──────────────────────────────────────────────────
 * meta.security MS
@@ -51,7 +54,7 @@ Description: """
     HsaPatientInfoExtension named patientInfo 0..1 MS
 
 * extension[temporaryNotice]
-  * ^short = "Tillfällig information (hsaVpwInformation2)"
+  * ^short = "Tillfällig information med visningsperiod (hsaVpwInformation2)"
 * extension[patientInfo]
   * ^short = "Information till patient (hsaVpwInformation4)"
 
@@ -120,5 +123,17 @@ Description: """
 * availability ^short = "Tillgänglighet / öppettider"
 * availability.availableTime MS
 * availability.availableTime ^short = "Öppettider per veckodag"
+* availability ^definition = """
+  Ett HSA-tidsvärde `<FD>-<TD>#<FT>#<TT>[#kommentar][#fr.o.m.#t.o.m.]` mappas så här (ADR-014):
+  - `FD-TD` → `availableTime.daysOfWeek` (1 = mon … 7 = sun).
+  - `00:00#24:00` → `allDay = true` utan klockslag. Annan sluttid `24:00` → `availableEndTime = 23:59:59`.
+  - Kommentar → `extension[comment]`; datumintervall → `extension[period]`.
+  Ett tidsvärde med kommentar eller datumintervall blir en egen `availability`-post.
+"""
+* availability.extension contains
+    HsaAvailabilityCommentExtension named comment 0..1 MS and
+    HsaAvailabilityPeriodExtension named period 0..1 MS
+* availability.extension[comment] ^short = "Kommentar till öppettiden (max 19 tecken)"
+* availability.extension[period] ^short = "Giltighetsperiod för avvikande öppettid"
 
 * endpoint MS

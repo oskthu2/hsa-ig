@@ -89,7 +89,7 @@ Attributen nedan gäller för LDAP-objekttyperna `Organisation` och/eller `Enhet
 
 | LDAP-attribut | Visningsnamn | FHIR-element | Notering |
 |---|---|---|---|
-| `hsaVpwInformation2` | Tillfällig information | `extension[temporaryNotice].valueString` | Gul informationsruta; kombineras med `extension[orgPeriod]` |
+| `hsaVpwInformation2` | Tillfällig information | `extension[temporaryNotice]`: `text` + `period` | Gul informationsruta. Datumprefixet `;ÅÅÅÅMMDD;ÅÅÅÅMMDD;` tolkas till `period` och tas bort ur texten (ADR-013) |
 | `hsaVpwInformation4` | Information till patient | `extension[patientInfo].valueString` | Riktad till patient; Markdown |
 | `financingOrganization` | Finansierande region/kommun | `extension[financingOrganization].valueCoding` | `urn:oid:1.2.752.129.5.1.1` |
 
@@ -105,11 +105,11 @@ LDAP-attribut på Enhet-objekt som handlar om verksamhet, tjänster och öppetti
 |---|---|---|---|---|
 | `businessClassificationCode` | Verksamhetskod | `category[verksamhetskod].coding` | `urn:oid:1.2.752.129.2.2.1.3` | Bred klassificering; eHM-alignment (ADR-011) |
 | `careType` | Vård- och omsorgsform | `type[care-type].coding` | `urn:oid:1.2.752.129.2.2.1.13` | Öppenvård, sluten vård, hemsjukvård m.fl. |
-| `surgeryHours` | Öppettider | `availability.availableTime` | — | En `availability`-post per tidtyp rekommenderas |
+| `surgeryHours` | Öppettider | `availability.availableTime` | — | En `availability`-post per tidtyp rekommenderas; se tidsformat nedan |
 | `telephoneHours` | Telefontider | `availability.availableTime` | — | Separeras från öppettider |
 | `dropInHours` | Drop-in-tider | `availability.availableTime` | — | Besök utan bokning |
 | `hsaVpwInformation1` | Mer om (Om oss) | `comment` | — | Fritext; Markdown; visas på 1177-sidan |
-| `hsaVpwInformation2` | Tillfällig information | `extension[temporaryNotice].valueString` | — | Gul informationsruta |
+| `hsaVpwInformation2` | Tillfällig information | `extension[temporaryNotice]`: `text` + `period` | — | Gul informationsruta; se ovan (ADR-013) |
 | `hsaVpwInformation4` | Information till patient | `extension[patientInfo].valueString` | — | Riktad till patient |
 | `hsaDestinationIndicator` | Visas för | `meta.security[destination-indicator].code` | `urn:oid:1.2.752.29.23.1.11` | Delad med Organization/Location |
 | `requestTemplateURI` | Adress till remissanvisning | — | — | Ej modellerat i v1 |
@@ -117,6 +117,25 @@ LDAP-attribut på Enhet-objekt som handlar om verksamhet, tjänster och öppetti
 | `hsaVisitingRuleReferral` | Remisskrav | — | — | Ej modellerat i v1 |
 | `hsaVisitingRuleAge` | Åldersregler | — | — | Ej modellerat i v1 |
 | `visitingHours` | Besökstider för anhöriga | — | — | Ej modellerat i v1 |
+
+### Tidsformat (ADR-014)
+
+Tidsattributen har formatet `<FD>-<TD>#<FT>#<TT>[#<kommentar>][#<fr.o.m.>#<t.o.m.>]`.
+Varje värde mappas så här:
+
+| HSA-del | Exempel | FHIR | Regel |
+|---|---|---|---|
+| `FD-TD` | `1-5` | `availableTime.daysOfWeek` | 1 = `mon` … 7 = `sun`; alla dagar i intervallet listas |
+| `FT#TT` | `08:00#17:00` | `availableStartTime` / `availableEndTime` | Sekunder läggs till: `08:00:00` |
+| `00:00#24:00` | `1-7#00:00#24:00` | `allDay = true` | Inga klockslag (`hsacat-availability-allday-no-times`) |
+| `TT` = `24:00` | `5-5#21:00#24:00` | `availableEndTime = "23:59:59"` | FHIR `time` tillåter inte `24:00`; klienten visar `24:00` |
+| Kommentar | `Halvdag` | `availability.extension[comment]` | Max 19 tecken (`hsacat-availability-comment-length`) |
+| Datumintervall | `20261223#20261223` | `availability.extension[period]` | Datum, båda inklusive; tom t.o.m. = tills vidare |
+
+Ett värde med kommentar eller datumintervall blir en egen `availability`-post, så att
+kommentaren och perioden gäller just de tiderna. Värden utan kommentar och period av
+samma tidtyp kan dela post. Sluttiden måste vara senare än starttiden
+(`hsacat-availability-time-order`), eftersom HSA inte tillåter att dygnsgränsen passeras.
 
 ---
 
@@ -167,8 +186,8 @@ FHIRPath-motorer.
 | `careType` | `\d{2}` | `01` | `HealthcareService.type[care-type]` | `hsacat-service-code-format` |
 | `hsaSweref99Latitude` / `hsaSweref99Longitude` | `\d{7}` resp. `\d{6}` (SWEREF99 TM, meter) | `6227289` / `538541` | `Location.position` | – (se förslag om koordinatomräkning) |
 | `startDate`, `endDate` | `\d{14}Z` (UTC) | `20231231000000Z` | `Period.start` / `Period.end` | – |
-| `surgeryHours`, `telephoneHours`, `dropInHours`, `visitingHours` | `[1-7]-[1-7]#hh:mm#hh:mm[#kommentar ≤19 tecken][#fromDatum#tomDatum]` | `1-5#08:00#17:00` | `availability.availableTime` | – |
-| `hsaVpwInformation2` | valfritt prefix `;ÅÅÅÅMMDD;ÅÅÅÅMMDD;` före texten | `;20201201;20210101;Stängt för underhåll` | `extension[temporaryNotice]` | – |
+| `surgeryHours`, `telephoneHours`, `dropInHours`, `visitingHours` | `[1-7]-[1-7]#hh:mm#hh:mm[#kommentar ≤19 tecken][#fromDatum#tomDatum]` | `1-5#08:00#17:00` | `availability` (se [Tidsformat](#tidsformat-adr-014)) | `hsacat-availability-*` |
+| `hsaVpwInformation2` | valfritt prefix `;ÅÅÅÅMMDD;ÅÅÅÅMMDD;` före texten | `;20201201;20210101;Stängt för underhåll` | `extension[temporaryNotice]`: `text` + `period` | `hsacat-temporary-notice-*` |
 
 Den fullständiga listan med uttryck finns i
 `docs/sources/informationsspecifikation_hsa_3.5.1_regex.txt`.

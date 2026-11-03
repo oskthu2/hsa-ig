@@ -10,8 +10,8 @@
 // l: Karlskrona
 // hsaSweRef99Latitude: 56.1890
 // hsaSweRef99Longitude: 15.6210
-// hsaPublicTelephoneHours: Måndag-Fredag 08:00-16:30 (öppettider för reception)
-// hsaDropinHours: Måndag-Fredag 08:00-11:00 (akutmottagning)
+// telephoneHours: 1-5#08:00#16:30 (reception)
+// dropInHours: 1-5#08:00#11:00
 // hsaVpwNavigation: ## Yttre vägbeskrivning\nFrån centrum: Kör mot Lyckeby
 //   längs E22. Ta av mot sjukhuset vid trafikljusen.\n\nBuss 1 och 5 stannar
 //   vid hållplatsen Blekingesjukhuset.\n\n## Inre vägbeskrivning\nHuvudentré

@@ -64,7 +64,9 @@ utgångspunkt för egna implementationer.
 |---|---|---|
 | [HsaFinancingOrganization](StructureDefinition-hsa-financing-organization.html) | Finansierande region/kommun på Organization | [↓ JSON](StructureDefinition-hsa-financing-organization.json) |
 | [HsaTelecomType](StructureDefinition-hsa-telecom-type.html) | Typ-kod på ContactPoint (direkttelefon, växel m.fl.) | [↓ JSON](StructureDefinition-hsa-telecom-type.json) |
-| [HsaTemporaryNotice](StructureDefinition-hsa-temporary-notice.html) | Tillfällig informationstext (gul ruta på 1177) | [↓ JSON](StructureDefinition-hsa-temporary-notice.json) |
+| [HsaTemporaryNotice](StructureDefinition-hsa-temporary-notice.html) | Tillfällig information med visningsperiod (gul ruta på 1177) | [↓ JSON](StructureDefinition-hsa-temporary-notice.json) |
+| [HsaAvailabilityComment](StructureDefinition-hsa-availability-comment.html) | Kommentar till öppettid (max 19 tecken) | [↓ JSON](StructureDefinition-hsa-availability-comment.json) |
+| [HsaAvailabilityPeriod](StructureDefinition-hsa-availability-period.html) | Giltighetsperiod för avvikande öppettid | [↓ JSON](StructureDefinition-hsa-availability-period.json) |
 | [HsaPatientInfo](StructureDefinition-hsa-patient-info.html) | Information riktad till patient (1177) | [↓ JSON](StructureDefinition-hsa-patient-info.json) |
 
 ---

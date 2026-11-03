@@ -34,7 +34,7 @@
 | HSACAT-ORG-013 | Beslutad | ✅ doc | SRC-021, SRC-001 | ADR-010 | RSK-002 | Adressövergång dokumenteras som kommentar i profil och informativ IG-sida; normativ form = strukturerade komponenter | — |
 | HSACAT-ORG-014 | Källbekräftad | ✅ | SRC-026 | - | - | `Organization.identifier[gln]` 0..1 MS; system=`urn:oid:1.3.88`; LDAP: hsaGlnCode | — |
 | HSACAT-ORG-015 | Källbekräftad | ✅ | SRC-026, SRC-001 | - | - | `Organization.type[business-type]` 0..1 MS; system=`urn:oid:1.2.752.129.2.2.1.12`; HsaBusinessTypeVS | Bekräfta kodvärden |
-| HSACAT-ORG-016 | Källbekräftad | ✅ | SRC-026 | - | - | `extension[temporaryNotice]` (HsaTemporaryNoticeExtension, hsaVpwInformation2); `extension[patientInfo]` (HsaPatientInfoExtension, hsaVpwInformation4); 1177-URL i `contact.telecom` (hsaVpwWebpage) | — |
+| HSACAT-ORG-016 | Källbekräftad | ✅ | SRC-026 | - | - | `extension[temporaryNotice]` (HsaTemporaryNoticeExtension, `text` + `period`, hsaVpwInformation2, ADR-013); `extension[patientInfo]` (HsaPatientInfoExtension, hsaVpwInformation4); 1177-URL i `contact.telecom` (hsaVpwWebpage) | — |
 
 ## Implementationsstatus
 

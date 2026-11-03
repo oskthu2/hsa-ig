@@ -4,14 +4,12 @@
 // dn: ou=Ronneby Vårdcentral,o=Blekinge Primärvård AB,c=SE
 // businessClassificationCode: 1502  ← Allmänmedicin (OID 1.2.752.129.2.2.1.3)
 // hsaCareType: 01                   ← Öppen vård (OID 1.2.752.129.2.2.1.13)
-// hsaPublicTelephoneHours:
-//   Måndag-Fredag 08:00-17:00
-// hsaTelephoneHours:
-//   Måndag-Fredag 07:30-08:00 (tidig telefonid; listas separat)
-// hsaDropinHours:
-//   Måndag 13:00-16:00
-//   Onsdag 13:00-16:00
-// hsaVpwInformation2: Telefonköerna är kortast tidigt på morgonen (07:30-08:00).
+// telephoneHours: 1-5#08:00#17:00
+// telephoneHours: 1-5#07:30#08:00#Tidig telefontid
+// dropInHours: 1-1#13:00#16:00
+// dropInHours: 3-3#13:00#16:00
+// hsaVpwInformation2: ;20261101;20261231;Telefonköerna är kortast tidigt på
+//   morgonen (07:30-08:00). Ring gärna vid öppning för snabbare svar.
 //   (hsaVpwInformation2 → tillfällig information/råd, gul ruta på 1177)
 // hsaVpwInformation3: Vi är din fasta läkarkontakt för allmänmedicin och
 //   förebyggande vård i Ronneby. Listning görs via 1177.se.
@@ -33,11 +31,11 @@
 // extension[temporaryNotice]        ← hsaVpwInformation2 (gul informationsruta)
 // extension[patientInfo]            ← hsaVpwInformation4 (patientinformation)
 // location                          ← Reference(LocationRonnebyVardcentral)
-// availability[0]                   ← hsaPublicTelephoneHours: Mån-Fre 08:00-17:00
+// availability[0]                   ← telephoneHours 1-5#08:00#17:00
 //   Telefontider (ordinarie kontorsdagar)
-// availability[1]                   ← hsaTelephoneHours: Mån-Fre 07:30-08:00
-//   Tidig telefontid (listas som separat tillgänglighetsblock)
-// availability[2]                   ← hsaDropinHours: Mån+Ons 13:00-16:00
+// availability[1]                   ← telephoneHours 1-5#07:30#08:00#Tidig telefontid
+//   Egen post eftersom värdet har kommentar → extension[comment] (ADR-014)
+// availability[2]                   ← dropInHours 1-1#13:00#16:00 och 3-3#13:00#16:00
 //   Drop-in (ej alla dagar — modelleras med specifika dagar)
 //
 // ALLA TRE TEXTFÄLTEN:
@@ -81,8 +79,12 @@ Description: """
 * comment = "Vi är din fasta läkarkontakt för allmänmedicin och förebyggande vård i Ronneby. Listning görs via 1177.se."
 
 // hsaVpwInformation2 → temporaryNotice (gul informationsruta på 1177, tillfällig)
+// Prefixet ;20261101;20261231; tolkas till period och tas bort ur texten (ADR-013).
 * extension[temporaryNotice]
-  * valueString = "Telefonköerna är kortast tidigt på morgonen (07:30-08:00). Ring gärna vid öppning för snabbare svar."
+  * extension[text].valueString = "Telefonköerna är kortast tidigt på morgonen (07:30-08:00). Ring gärna vid öppning för snabbare svar."
+  * extension[period].valuePeriod
+    * start = "2026-11-01"
+    * end = "2026-12-31"
 
 // hsaVpwInformation4 → patientInfo (information till patient, kan vara Markdown)
 * extension[patientInfo]
@@ -109,7 +111,7 @@ Description: """
 * location = Reference(LocationRonnebyVardcentral)
 
 // ── Tillgänglighet (tre block) ────────────────────────────────────────────────
-// Block 1: hsaPublicTelephoneHours — Ordinarie telefontider (Mån-Fre 08:00-17:00)
+// Block 1: telephoneHours 1-5#08:00#17:00 — ordinarie telefontider
 * availability[0]
   * availableTime[0]
     * daysOfWeek[0] = #mon
@@ -120,10 +122,10 @@ Description: """
     * availableStartTime = "08:00:00"
     * availableEndTime = "17:00:00"
 
-// Block 2: hsaTelephoneHours — Tidig telefontid (Mån-Fre 07:30-08:00)
-// Listas som separat availability för att klienter ska kunna rendera
-// "tidig telefontid" som en distinkt visningskategori.
+// Block 2: telephoneHours 1-5#07:30#08:00#Tidig telefontid
+// Egen availability eftersom värdet har en kommentar (ADR-014).
 * availability[1]
+  * extension[comment].valueString = "Tidig telefontid"
   * availableTime[0]
     * daysOfWeek[0] = #mon
     * daysOfWeek[1] = #tue
@@ -133,7 +135,7 @@ Description: """
     * availableStartTime = "07:30:00"
     * availableEndTime = "08:00:00"
 
-// Block 3: hsaDropinHours — Drop-in (Mån 13:00-16:00 + Ons 13:00-16:00)
+// Block 3: dropInHours 1-1#13:00#16:00 och 3-3#13:00#16:00 — drop-in
 // Selektiva veckodagar — modelleras med specifika days-of-week-poster.
 // Drop-in erbjuds ej alla dagar; varje dag med drop-in representeras separat.
 * availability[2]

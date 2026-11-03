@@ -108,6 +108,26 @@ Severity: #error
 Expression: "active = false implies meta.security.where(system = 'urn:oid:1.2.752.29.23.1.11' and code = '03').exists().not()"
 
 Invariant: hsacat-temporary-notice-requires-period
-Description: "Om temporaryNotice (hsaVpwInformation2) är satt bör organization-period också vara satt — klienter förlitar sig på period.end för att veta när den gula informationsrutan ska döljas."
+Description: "Tillfällig information (hsaVpwInformation2) bör ha en egen visningsperiod så att klienter vet när den gula informationsrutan ska döljas (ADR-013)."
 Severity: #warning
-Expression: "extension.where(url = 'https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-notice').exists() implies extension.where(url = 'http://hl7.org/fhir/StructureDefinition/organization-period').exists()"
+Expression: "extension('https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-notice').all(extension('period').exists())"
+
+Invariant: hsacat-temporary-notice-no-prefix
+Description: "Datumprefixet ;ÅÅÅÅMMDD;ÅÅÅÅMMDD; i hsaVpwInformation2 ska tolkas till period och tas bort ur texten (ADR-013)."
+Severity: #warning
+Expression: "extension('text').value.ofType(string).all(startsWith(';').not())"
+
+Invariant: hsacat-availability-comment-length
+Description: "Kommentaren i ett tidsattribut är högst 19 tecken (Informationsspecifikation HSA 11.3.101)."
+Severity: #error
+Expression: "value.ofType(string).all(length() <= 19)"
+
+Invariant: hsacat-availability-time-order
+Description: "Sluttid ska vara senare än starttid; HSA tillåter inte att dygnsgränsen passeras (ADR-014)."
+Severity: #error
+Expression: "availability.availableTime.all((availableStartTime.exists() and availableEndTime.exists()) implies availableStartTime < availableEndTime)"
+
+Invariant: hsacat-availability-allday-no-times
+Description: "En öppettid med allDay = true (00:00–24:00 i HSA) anger inga klockslag (ADR-014)."
+Severity: #error
+Expression: "availability.availableTime.all(allDay.where($this = true).exists() implies (availableStartTime.empty() and availableEndTime.empty()))"

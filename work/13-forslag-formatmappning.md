@@ -1,6 +1,7 @@
 # Förslag: mappning av HSA-värden med inbyggt format
 
-Status: **Förslag, ej beslutat.** Underlag för beslut (ADR-013–015).
+Status: Avsnitt 2 och 3 är **beslutade och införda** (ADR-013, ADR-014, 2026-11-03).
+Avsnitt 1 är fortfarande ett **förslag** (ADR-015).
 Källa: Informationsspecifikation för Katalogtjänst HSA 3.5.1, kap. 11 (SRC-027).
 
 De enkla formatreglerna (HSA-id, organisationsnummer, GLN, telefon, postnummer,
@@ -10,7 +11,7 @@ mappningsbeslut.
 
 ---
 
-## 1. SWEREF99-koordinater → `Location.position` (förslag ADR-013)
+## 1. SWEREF99-koordinater → `Location.position` (förslag ADR-015)
 
 ### Problem
 
@@ -49,7 +50,7 @@ Båda är fel: värdet från HSA måste räknas om.
 
 ---
 
-## 2. `hsaVpwInformation2` med inbäddade datum (förslag ADR-014)
+## 2. `hsaVpwInformation2` med inbäddade datum (beslutad: ADR-013)
 
 ### Problem
 
@@ -88,7 +89,7 @@ som idag. Enklare, men blandar ihop två olika giltighetstider.
 
 ---
 
-## 3. Öppettider och `24:00` (förslag ADR-015)
+## 3. Öppettider och `24:00` (beslutad: ADR-014)
 
 ### Problem
 

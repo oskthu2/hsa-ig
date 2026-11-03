@@ -24,8 +24,8 @@
 // postalCode: 37185
 // startDate: 20060301000000Z
 // endDate: 20280101000000Z
-// hsaVpwInformation2: Tillfällig lokal under renovering. Vi finns nu i byggnad B,
-//                     plan 4 t.o.m. 31 december 2027.
+// hsaVpwInformation2: ;20260901;20271231;Tillfällig lokal under renovering. Vi
+//                     finns nu i byggnad B, plan 4.
 // hsaVpwInformation4: Ta med aktuell medicinlista och remiss till ditt besök.
 //                     Kontakta oss i god tid om du behöver avboka.
 //
@@ -145,16 +145,20 @@ Description: """
 // ── Tillfällig status och patientinformation ─────────────────────────────────
 // orgPeriod: startDate=20060301, endDate=20280101 → båda är satta → korrekt per
 // invariant hsacat-org-period-end (Period.end 1..1 i orgPeriod-slicen).
-// Klienter bör rendera en visuell varningsindikator (gul ruta) när orgPeriod
-// är satt och active = true, kombinerat med temporaryNotice-texten.
+// orgPeriod är enhetens giltighetstid. Den gula rutan styrs av
+// temporaryNotice.period, inte av orgPeriod (ADR-013).
 * extension[orgPeriod]
   * valuePeriod
     * start = "2006-03-01"
     * end = "2028-01-01"
 
 // hsaVpwInformation2 → temporaryNotice (visas som gul informationsruta på 1177)
+// Prefixet ;20260901;20271231; tolkas till period och tas bort ur texten (ADR-013).
 * extension[temporaryNotice]
-  * valueString = "Tillfällig lokal under renovering. Vi finns nu i byggnad B, plan 4 t.o.m. 31 december 2027."
+  * extension[text].valueString = "Tillfällig lokal under renovering. Vi finns nu i byggnad B, plan 4."
+  * extension[period].valuePeriod
+    * start = "2026-09-01"
+    * end = "2027-12-31"
 
 // hsaVpwInformation4 → patientInfo (patientinformation, renderas som Markdown)
 * extension[patientInfo]

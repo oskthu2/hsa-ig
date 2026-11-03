@@ -19,12 +19,12 @@ Description: """
   med system `urn:oid:1.2.752.29.23.1.11`. Kod 03 = Internet/allmänheten.
   Klienter som 1177 Hitta vård bör filtrera på detta fält.
 
-  **Tillfällig information:** En enhet med tidsbegränsad status använder
-  `extension[orgPeriod]` (organization-period) med start och obligatoriskt end.
-  Klienter bör rendera en visuell varningsindikator (t.ex. gul informationsruta)
-  när orgPeriod är satt och `active = true`. Varje klient ansvarar för att
-  texten som ska visas hämtas från ett lämpligt fält (t.ex. Organization.contact
-  med purpose = "TEMP" eller IG-sida för klientkonventioner).
+  **Tillfällig information:** `extension[temporaryNotice]` (hsaVpwInformation2)
+  bär text och egen visningsperiod. Klienter visar en gul informationsruta när
+  dagens datum ligger inom perioden (ADR-013).
+
+  **Giltighetstid:** `extension[orgPeriod]` (organization-period) bär
+  organisationens startDate/endDate och styr inte informationsrutan.
 """
 * ^url = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization"
 * ^version = "0.1.0"
@@ -60,9 +60,8 @@ Description: """
 * extension[temporaryNotice]
   * ^short = "Tillfällig information (hsaVpwInformation2)"
   * ^definition = """
-    Fri text som visas som gul informationsruta på 1177. Ska kombineras med
-    extension[orgPeriod] (organization-period) som anger giltighetstid.
-    Klienter bör rendera visuell varningsindikator när detta fält är satt.
+    Text som visas som gul informationsruta på 1177, med egen visningsperiod
+    tolkad ur datumprefixet i hsaVpwInformation2 (ADR-013).
   """
 
 * extension[patientInfo]
@@ -70,11 +69,11 @@ Description: """
   * ^definition = "Informationstext riktad direkt till patient. Visas på 1177-sidan. Klienter bör rendera som Markdown."
 
 * extension[orgPeriod]
-  * ^short = "Organisationens giltighetsperiod (t.ex. tillfällig enhet)"
+  * ^short = "Organisationens giltighetsperiod (startDate/endDate)"
   * ^definition = """
     Sätts när enheten är aktiv under en begränsad period. Period.end är obligatoriskt
-    (invariant hsacat-org-period-end). Klienter ska rendera en visuell varningsindikator
-    när detta fält är satt och `active = true`.
+    (invariant hsacat-org-period-end). Styr inte visningen av tillfällig information;
+    den har egen period i extension[temporaryNotice] (ADR-013).
   """
   * value[x] only Period
   * valuePeriod.end 1..1
