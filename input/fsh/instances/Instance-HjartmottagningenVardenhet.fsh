@@ -11,17 +11,17 @@
 // hsaBusinessType: 15
 // management: 01
 // hsaDestinationIndicator: 03
-// telephoneNumber: 0455-73 48 00
-// hsaSwitchboardNumber: 0455-73 10 00
+// telephoneNumber: +46455734800
+// hsaSwitchboardNumber: +46455731000
 // mail: hjartvard@regionblekinge.se
 // hsaDirectoryContact: redaktion.hjart@regionblekinge.se
-// hsaVpwWebpage: https://www.1177.test/blekinge/hitta-vard/SE2321000016-HJRT01
+// hsaVpwWebpage: https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000016-HJRT01
 // hsaVisitingAddress: Lyckeby 5$Ingång B$Plan 4$Karlskrona
 // l: Karlskrona
 // hsaSweRef99Latitude: 56.1892
 // hsaSweRef99Longitude: 15.6215
 // postalAddress: Lyckeby 5
-// postalCode: 371 85
+// postalCode: 37185
 // startDate: 20060301000000Z
 // endDate: 20280101000000Z
 // hsaVpwInformation2: Tillfällig lokal under renovering. Vi finns nu i byggnad B,
@@ -165,7 +165,7 @@ Description: """
   // telephoneNumber → direkttelefon
   * telecom[0]
     * system = #phone
-    * value = "0455-73 48 00"
+    * value = "+46455734800"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -175,7 +175,7 @@ Description: """
   // hsaSwitchboardNumber → regionens gemensamma växel
   * telecom[1]
     * system = #phone
-    * value = "0455-73 10 00"
+    * value = "+46455731000"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -200,7 +200,7 @@ Description: """
   // hsaVpwWebpage → 1177-djuplänk
   * telecom[4]
     * system = #url
-    * value = "https://www.1177.test/blekinge/hitta-vard/SE2321000016-HJRT01"
+    * value = "https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000016-HJRT01"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -215,5 +215,5 @@ Description: """
   * address
     * type = #postal
     * text = "Lyckeby 5"
-    * postalCode = "371 85"
+    * postalCode = "37185"
     * city = "Karlskrona"

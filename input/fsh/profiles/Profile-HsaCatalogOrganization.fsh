@@ -36,7 +36,14 @@ Description: """
 
 // ── Obey invarianter ──────────────────────────────────────────────────────────
 * obeys hsacat-org-hsa-id
-* obeys hsacat-org-hsa-id-format
+* obeys hsacat-hsa-id-format
+* obeys hsacat-orgno-format
+* obeys hsacat-gln-format
+* obeys hsacat-phone-format
+* obeys hsacat-postal-code-format
+* obeys hsacat-vpw-webpage-format
+* obeys hsacat-destination-indicator-format
+* obeys hsacat-business-type-format
 * obeys hsacat-provider-orgno
 * obeys hsacat-public-org-telecom
 * obeys hsacat-org-period-end

@@ -13,15 +13,15 @@
 // unitPrescriptionCode: 1082040
 // hsaDestinationIndicator: 03
 // financingOrganization: SE2321000016-BLKNG
-// telephoneNumber: 0457-55 66 88
-// hsaSwitchboardNumber: 0457-55 66 00
-// mobile: 072-987 65 43
+// telephoneNumber: +46457556688
+// hsaSwitchboardNumber: +46457556600
+// mobile: +46729876543
 // mail: ronneby@blekingeprimaervard.se
 // hsaDirectoryContact: redaktion.ronneby@blekingeprimaervard.se
-// hsaVpwWebpage: https://www.1177.test/blekinge/hitta-vard/SE5566778899-RNBY1
+// hsaVpwWebpage: https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE5566778899-RNBY1
 // streetAddress: Järnvägsgatan 14        ← LEGACY pre-5.2 (ej migrerat till hsaVisitingAddress)
 // postalAddress: Järnvägsgatan 14
-// postalCode: 372 35
+// postalCode: 37235
 // l: Ronneby
 // hsaSweRef99Latitude: 56.2098
 // hsaSweRef99Longitude: 15.2791
@@ -159,7 +159,7 @@ Description: """
   // telephoneNumber → direkttelefon
   * telecom[0]
     * system = #phone
-    * value = "0457-55 66 88"
+    * value = "+46457556688"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -169,7 +169,7 @@ Description: """
   // hsaSwitchboardNumber → bolagets gemensamma växel
   * telecom[1]
     * system = #phone
-    * value = "0457-55 66 00"
+    * value = "+46457556600"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -179,7 +179,7 @@ Description: """
   // mobile → mobiltelefon (t.ex. för distriktssköterskan på hembesök)
   * telecom[2]
     * system = #phone
-    * value = "072-987 65 43"
+    * value = "+46729876543"
     * use = #mobile
     * extension[telecomType]
       * valueCoding
@@ -204,7 +204,7 @@ Description: """
   // hsaVpwWebpage → 1177-djuplänk
   * telecom[5]
     * system = #url
-    * value = "https://www.1177.test/blekinge/hitta-vard/SE5566778899-RNBY1"
+    * value = "https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE5566778899-RNBY1"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -218,5 +218,5 @@ Description: """
   * address
     * type = #postal
     * text = "Järnvägsgatan 14"
-    * postalCode = "372 35"
+    * postalCode = "37235"
     * city = "Ronneby"

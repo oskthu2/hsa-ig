@@ -24,6 +24,10 @@ Description: """
 
 * obeys hsacat-service-provider
 * obeys hsacat-digital-service-contact
+* obeys hsacat-hsa-id-format
+* obeys hsacat-phone-format
+* obeys hsacat-destination-indicator-format
+* obeys hsacat-service-code-format
 
 // ── Synlighet: meta.security ──────────────────────────────────────────────────
 * meta.security MS

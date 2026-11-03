@@ -33,6 +33,9 @@ Description: """
 * obeys hsacat-physical-location-address
 * obeys hsacat-physical-location-city
 * obeys hsacat-public-location-position
+* obeys hsacat-hsa-id-format
+* obeys hsacat-phone-format
+* obeys hsacat-destination-indicator-format
 
 // ── Synlighet: meta.security (HSACAT-LOC-DESTINATION) ────────────────────────
 * meta.security MS

@@ -142,6 +142,39 @@ Adress- och positionsattribut för Enhet-objekt mappas till en `Location`-resurs
 
 ---
 
+## Värdeformat och validering
+
+HSA validerar varje strängattribut mot en vitlista med reguljära uttryck
+(Informationsspecifikation för Katalogtjänst HSA 3.5.1, kap. 11). Data som kommer
+från HSA följer därför alltid dessa format, och IG:n behåller dem oförändrade i FHIR.
+Formatering för visning (t.ex. `0455-73 17 00`) görs av klienten.
+
+Specens uttryck är skrivna för Java och matchar hela strängen. I invarianterna nedan
+är de ankrade med `^…$` och omskrivna utan lookahead så att de fungerar i alla
+FHIRPath-motorer.
+
+| LDAP-attribut | Format i HSA | Exempel | FHIR-element | Invariant |
+|---|---|---|---|---|
+| `hsaIdentity` (och alla attribut som pekar på ett HSA-id) | `[a-zA-Z0-9-]{1,31}` | `SE2321000016-BSJH01` | `identifier[hsa-id].value` | `hsacat-hsa-id-format` |
+| `orgNo`, `financingOrganization` | `\d{6}-\d{4}` | `232100-0016` | `identifier[org-no].value` | `hsacat-orgno-format` |
+| `hsaGlnCode` | `\d{13}` | `7350088110002` | `identifier[gln].value` | `hsacat-gln-format` |
+| `telephoneNumber`, `hsaSwitchboardNumber`, `mobile`, `facsimileTelephoneNumber` | `(?=\+|11|020|0771)(\+|\d)\d{1,31}` – endast siffror och inledande `+` | `+46455731700` | `contact.telecom.value` (system `phone`/`fax`) | `hsacat-phone-format` |
+| `postalCode` / `postCode` i `hsaPostalAddress` | `[a-zA-Z0-9]+` resp. `[0-9]{5}` – inga mellanslag | `37185` | `contact.address.postalCode` | `hsacat-postal-code-format` |
+| `hsaVpwWebPage` | `https?://www\.1177\.se/Hitta-vard/Kontakt/\?hsaid=<HSA-id>` | `https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000016-BSJH01` | `contact.telecom` (typ `vpw-webpage`) | `hsacat-vpw-webpage-format` (kräver även objektets eget HSA-id) |
+| `hsaDestinationIndicator` | `\d{2}` | `03` | `meta.security[destination-indicator].code` | `hsacat-destination-indicator-format` |
+| `hsaBusinessType` | `\d{2}` | `01` | `Organization.type[business-type]` | `hsacat-business-type-format` |
+| `businessClassificationCode` | `\d{4}` | `1101` | `HealthcareService.category[verksamhetskod]` | `hsacat-service-code-format` |
+| `careType` | `\d{2}` | `01` | `HealthcareService.type[care-type]` | `hsacat-service-code-format` |
+| `hsaSweref99Latitude` / `hsaSweref99Longitude` | `\d{7}` resp. `\d{6}` (SWEREF99 TM, meter) | `6227289` / `538541` | `Location.position` | – (se förslag om koordinatomräkning) |
+| `startDate`, `endDate` | `\d{14}Z` (UTC) | `20231231000000Z` | `Period.start` / `Period.end` | – |
+| `surgeryHours`, `telephoneHours`, `dropInHours`, `visitingHours` | `[1-7]-[1-7]#hh:mm#hh:mm[#kommentar ≤19 tecken][#fromDatum#tomDatum]` | `1-5#08:00#17:00` | `availability.availableTime` | – |
+| `hsaVpwInformation2` | valfritt prefix `;ÅÅÅÅMMDD;ÅÅÅÅMMDD;` före texten | `;20201201;20210101;Stängt för underhåll` | `extension[temporaryNotice]` | – |
+
+Den fullständiga listan med uttryck finns i
+`docs/sources/informationsspecifikation_hsa_3.5.1_regex.txt`.
+
+---
+
 ## Ej mappade attribut (v1)
 
 Attribut som medvetet utelämnats ur v1 med motivering.

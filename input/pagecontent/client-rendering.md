@@ -122,6 +122,8 @@ HSA 5.2 introducerade strukturerade adressattribut. Under övergångsperioden ka
 
 **Klientregel:** Klienter för allmänheten (t.ex. 1177) bör visa direkttelefon som primär kontaktväg och växeltelefon som sekundär. E-post av typen `directory-contact` visas normalt inte för slutanvändare.
 
+**Nummerformat:** Telefon- och faxnummer levereras i HSA:s lagringsformat, utan mellanslag och bindestreck och normalt med landsprefix, t.ex. `+46455731700` (invariant `hsacat-phone-format`). Endast nummer som inte kan ringas från utlandet (`020…`, `0771…`, `11…`) saknar `+`. Klienten ansvarar för att formatera numret för visning, t.ex. `0455-73 17 00`, och kan använda det oformaterade värdet direkt i `tel:`-länkar.
+
 ---
 
 ## Öppettider

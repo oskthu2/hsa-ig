@@ -94,7 +94,7 @@ Description: """
   * text = "Järnvägsgatan 14"
   * city = "Ronneby"
   // Obs: postalCode saknas avsiktligt — besöksadress har aldrig postnummer
-  // (Uppsala-regel). Postnumret 372 35 hör till postadress på Organization.
+  // (Uppsala-regel). Postnumret 37235 hör till postadress på Organization.
 
 // ── Koordinater (SWEREF99) ────────────────────────────────────────────────────
 * position

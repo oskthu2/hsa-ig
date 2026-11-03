@@ -95,7 +95,7 @@ Description: """
   * line[0] = "Lyckeby 5"
   * city = "Karlskrona"
   // Obs: postalCode saknas avsiktligt — besöksadress har inga postnummer per
-  // Uppsala-regeln. Postnumret 371 85 hör till postadress på Organization.
+  // Uppsala-regeln. Postnumret 37185 hör till postadress på Organization.
 
 // ── Koordinater (SWEREF99) ────────────────────────────────────────────────────
 // hsaSweRef99Latitude / hsaSweRef99Longitude → position.latitude / longitude
