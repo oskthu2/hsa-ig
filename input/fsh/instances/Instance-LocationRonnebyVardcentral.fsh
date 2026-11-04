@@ -8,8 +8,8 @@
 // streetAddress: Järnvägsgatan 14   ← LEGACY pre-5.2 (ej migrerat till hsaVisitingAddress)
 //   (hsaVisitingAddress saknas — enheten har INTE uppdaterats till 5.2+ ännu)
 // l: Ronneby
-// hsaSweRef99Latitude: 56.2098
-// hsaSweRef99Longitude: 15.2791
+// hsaSweref99Latitude: 6229465
+// hsaSweref99Longitude: 517312
 // hsaVpwNavigation: Centralt läge i Ronneby, 200 m från järnvägsstationen.
 //   Parkering bakom fastigheten, ingång Järnvägsgatan 14.
 //
@@ -43,8 +43,8 @@
 //   INTE finns i hsaVisitingAddress-strukturen. Gatuadressen i streetAddress
 //   innehåller normalt INTE orten — den anges i l-attributet.
 // address.postalCode                ← 0..0 (Uppsala-regel: besöksadress saknar postnummer)
-// position.latitude                 ← hsaSweRef99Latitude = 56.2098
-// position.longitude                ← hsaSweRef99Longitude = 15.2791
+// position.latitude                 ← hsaSweref99Latitude/Longitude omräknade till WGS84 = 56.209798
+// position.longitude                ← hsaSweref99Latitude/Longitude omräknade till WGS84 = 15.279093
 // description                       ← hsaVpwNavigation (ej Markdown-rubrikstruktur
 //                                      i detta exempel — äldre data utan rubriker)
 // managingOrganization              ← Reference(RonnebyVardcentralVardenhet)
@@ -96,10 +96,12 @@ Description: """
   // Obs: postalCode saknas avsiktligt — besöksadress har aldrig postnummer
   // (Uppsala-regel). Postnumret 37235 hör till postadress på Organization.
 
-// ── Koordinater (SWEREF99) ────────────────────────────────────────────────────
+// ── Koordinater ───────────────────────────────────────────────────────────────
+// hsaSweref99Latitude 6229465 / hsaSweref99Longitude 517312 (SWEREF99 TM, meter)
+// → omräknade till WGS84 decimalgrader i position (ADR-015).
 * position
-  * latitude = 56.2098
-  * longitude = 15.2791
+  * latitude = 56.209798
+  * longitude = 15.279093
 
 // ── Vägbeskrivning ────────────────────────────────────────────────────────────
 // Äldre data utan Markdown-rubrikstruktur — description är en enkel textsträng.

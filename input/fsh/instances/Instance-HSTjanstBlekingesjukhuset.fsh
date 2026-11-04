@@ -109,6 +109,7 @@ Description: """
 // R5-modellen: availability.availableTime ersätter R4:s availableTime
 // telephoneHours 1-5#08:00#16:30
 * availability[0]
+  * extension[availabilityType].valueCoding = https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type#telephone-hours "Telefontider"
   * availableTime[0]
     * daysOfWeek[0] = #mon
     * daysOfWeek[1] = #tue
@@ -120,6 +121,7 @@ Description: """
 
 // dropInHours 1-5#08:00#11:00
 * availability[1]
+  * extension[availabilityType].valueCoding = https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type#drop-in-hours "Drop-in"
   * availableTime[0]
     * daysOfWeek[0] = #mon
     * daysOfWeek[1] = #tue
@@ -132,6 +134,7 @@ Description: """
 // surgeryHours 1-7#00:00#24:00#Akutmottagning
 // FHIR time tillåter inte 24:00; hela dygnet anges med allDay (ADR-014).
 * availability[2]
+  * extension[availabilityType].valueCoding = https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type#surgery-hours "Öppettider"
   * extension[comment].valueString = "Akutmottagning"
   * availableTime[0]
     * daysOfWeek[0] = #mon
@@ -146,6 +149,7 @@ Description: """
 // surgeryHours 1-7#08:00#12:30#Halvdag#20261223#20261223
 // Avvikande öppettid en enskild dag: kommentar och period på egen availability.
 * availability[3]
+  * extension[availabilityType].valueCoding = https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type#surgery-hours "Öppettider"
   * extension[comment].valueString = "Halvdag"
   * extension[period].valuePeriod
     * start = "2026-12-23"

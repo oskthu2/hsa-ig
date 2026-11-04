@@ -65,6 +65,7 @@ utgångspunkt för egna implementationer.
 | [HsaFinancingOrganization](StructureDefinition-hsa-financing-organization.html) | Finansierande region/kommun på Organization | [↓ JSON](StructureDefinition-hsa-financing-organization.json) |
 | [HsaTelecomType](StructureDefinition-hsa-telecom-type.html) | Typ-kod på ContactPoint (direkttelefon, växel m.fl.) | [↓ JSON](StructureDefinition-hsa-telecom-type.json) |
 | [HsaTemporaryNotice](StructureDefinition-hsa-temporary-notice.html) | Tillfällig information med visningsperiod (gul ruta på 1177) | [↓ JSON](StructureDefinition-hsa-temporary-notice.json) |
+| [HsaAvailabilityType](StructureDefinition-hsa-availability-type.html) | Tidtyp för en availability-post (öppettider, telefontider, drop-in, besökstider) | [↓ JSON](StructureDefinition-hsa-availability-type.json) |
 | [HsaAvailabilityComment](StructureDefinition-hsa-availability-comment.html) | Kommentar till öppettid (max 19 tecken) | [↓ JSON](StructureDefinition-hsa-availability-comment.json) |
 | [HsaAvailabilityPeriod](StructureDefinition-hsa-availability-period.html) | Giltighetsperiod för avvikande öppettid | [↓ JSON](StructureDefinition-hsa-availability-period.json) |
 | [HsaPatientInfo](StructureDefinition-hsa-patient-info.html) | Information riktad till patient (1177) | [↓ JSON](StructureDefinition-hsa-patient-info.json) |
@@ -79,6 +80,7 @@ utgångspunkt för egna implementationer.
 |---|---|---|
 | [HsaObjectClass](CodeSystem-hsa-object-class.html) | `https://hsa.inera.se/fhir/CodeSystem/hsa-object-class` | [↓ JSON](CodeSystem-hsa-object-class.json) |
 | [HsaTelecomType](CodeSystem-hsa-telecom-type.html) | `https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type` | [↓ JSON](CodeSystem-hsa-telecom-type.json) |
+| [HsaAvailabilityType](CodeSystem-hsa-availability-type.html) | `https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type` | [↓ JSON](CodeSystem-hsa-availability-type.json) |
 
 ### ValueSets
 
@@ -91,6 +93,7 @@ utgångspunkt för egna implementationer.
 | [HsaCareTypeVS](ValueSet-hsa-care-type.html) | `HealthcareService.type[care-type]` | [↓ JSON](ValueSet-hsa-care-type.json) |
 | [HsaServiceTypeVS](ValueSet-hsa-service-type.html) | `HealthcareService.category[verksamhetskod]` | [↓ JSON](ValueSet-hsa-service-type.json) |
 | [HsaTelecomTypeVS](ValueSet-hsa-telecom-type.html) | `extension[hsa-telecom-type]` | [↓ JSON](ValueSet-hsa-telecom-type.json) |
+| [HsaAvailabilityTypeVS](ValueSet-hsa-availability-type.html) | `availability.extension[availabilityType]` | [↓ JSON](ValueSet-hsa-availability-type.json) |
 
 ---
 
@@ -129,7 +132,7 @@ Varje instans innehåller LDIF-källdata och mappningskommentarer som förklarar
 
 | Instans | Visar | JSON |
 |---|---|---|
-| [Blekingesjukhuset besöksplats](Location-location-blekingesjukhuset.html) | Strukturerad 5.2+ hsaVisitingAddress → address.line[], SWEREF99, Markdown-vägbeskrivning | [↓ JSON](Location-location-blekingesjukhuset.json) |
+| [Blekingesjukhuset besöksplats](Location-location-blekingesjukhuset.html) | Strukturerad 5.2+ hsaVisitingAddress → address.line[], koordinater omräknade från SWEREF99 TM, Markdown-vägbeskrivning | [↓ JSON](Location-location-blekingesjukhuset.json) |
 | [Ronneby Vårdcentral besöksplats](Location-location-ronneby-vardcentral.html) | Legacy streetAddress → address.text (pre-5.2 övergångsmönster) | [↓ JSON](Location-location-ronneby-vardcentral.json) |
 
 ### Tjänsteutbud (HsaHealthcareService)

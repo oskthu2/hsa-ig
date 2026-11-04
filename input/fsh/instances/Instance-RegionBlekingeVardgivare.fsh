@@ -5,8 +5,8 @@
 // objectClass: organization
 // objectClass: hsaOrganisation
 // o: Region Blekinge
-// hsaIdentity: SE2321000016-BLKNG
-// orgNo: 232100-0016
+// hsaIdentity: SE2321000081-BLKNG
+// orgNo: 232100-0081
 // management: 01
 // hsaGlnCode: 7350088100003
 // telephoneNumber: +46455731000
@@ -80,11 +80,11 @@ Description: """
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
-  * value = "SE2321000016-BLKNG"
+  * value = "SE2321000081-BLKNG"
 
 * identifier[org-no]
   * system = "urn:oid:2.5.4.97"
-  * value = "232100-0016"
+  * value = "232100-0081"
 
 * identifier[gln]
   * system = "urn:oid:1.3.88"

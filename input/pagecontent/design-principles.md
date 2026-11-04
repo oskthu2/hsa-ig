@@ -27,6 +27,7 @@ Custom extensions används bara när standard-FHIR saknar lämplig mekanism:
 | Vägbeskrivning | `Location.description` (Markdown) | Nej |
 | Organisationens giltighetstid (startDate/endDate) | `organization-period` (HL7-standard) | Nej |
 | Tillfällig information med visningsperiod | `HsaTemporaryNoticeExtension` (`text` + `period`) | **Ja** – visningsperioden skiljer sig från organisationens giltighetstid (ADR-013) |
+| Tidtyp för öppettid (öppettider/telefon/drop-in/besök) | `HsaAvailabilityTypeExtension` | **Ja** – R5 `Availability` saknar typelement (ADR-016) |
 | Kommentar och giltighetsperiod för öppettid | `HsaAvailabilityCommentExtension`, `HsaAvailabilityPeriodExtension` | **Ja** – R5 `Availability` saknar motsvarande element (ADR-014) |
 | Finansierande region/kommun | `HsaFinancingOrganizationExtension` | **Ja** – inget FHIR-standard-alternativ |
 | Telecom-typ (direkttelefon/växel) | `HsaTelecomTypeExtension` | **Ja** – `ContactPoint.type` täcker ej distinktionen |

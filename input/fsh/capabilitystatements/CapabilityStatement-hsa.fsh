@@ -500,7 +500,7 @@ Description: """
   * resource[+]
     * type = #Location
     * profile = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"
-    * documentation = "Geo-sökning och kartvisning. Använder position (SWEREF99), address (fysisk, utan postnummer), description (vägbeskrivning)."
+    * documentation = "Geo-sökning och kartvisning. Använder position (WGS84), address (fysisk, utan postnummer), description (vägbeskrivning)."
     * interaction[+].code = #read
     * interaction[+].code = #search-type
 
@@ -660,7 +660,7 @@ Description: """
        GET /Organization?partof=Organization/[vg-id]
          &_revinclude=Organization:partof
     3. Söka enhet via HSA-id (logisk adress = HSA-id i SKLTP):
-       GET /Organization?hsa-id=SE2321000016-ABC1
+       GET /Organization?hsa-id=SE2321000081-ABC1
     Scenariot förutsätter att servern har stöd för _include:iterate så att trädklättringen
     kan terminera korrekt (partOf-kedjan är acyklisk och terminerar i rotnod utan partOf,
     se HSACAT-ORG-015).
@@ -784,7 +784,7 @@ Description: """
   * resource[+]
     * type = #Location
     * profile = "https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"
-    * documentation = "Använder address (fysisk), position (SWEREF99), managingOrganization. Synkroniseras parallellt med Organization."
+    * documentation = "Använder address (fysisk), position (WGS84), managingOrganization. Synkroniseras parallellt med Organization."
     * interaction[+].code = #read
     * interaction[+].code = #search-type
 

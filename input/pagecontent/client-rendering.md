@@ -122,15 +122,16 @@ HSA 5.2 introducerade strukturerade adressattribut. Under övergångsperioden ka
 
 ## Öppettider
 
-`HealthcareService.availability.availableTime` bär öppettider per veckodag. HSA-katalogen har tre tidtyper som bör presenteras tydligt och separerade:
+`HealthcareService.availability.availableTime` bär öppettider per veckodag. Varje `availability`-post anger sin tidtyp i `extension[availabilityType]` (system `https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type`, ADR-016). Klienter grupperar posterna på tidtypen och etiketterar dem tydligt:
 
-| Tidtyp | Beskrivning | Visningsetikett |
+| Kod | HSA-attribut | Visningsetikett |
 |---|---|---|
-| Öppethållning | Fysiska besök | Öppettider |
-| Telefontid | Tillgänglighet per telefon | Telefontider |
-| Drop-in | Besök utan bokning | Drop-in |
+| `surgery-hours` | `surgeryHours` | Öppettider |
+| `telephone-hours` | `telephoneHours` | Telefontider |
+| `drop-in-hours` | `dropInHours` | Drop-in |
+| `visiting-hours` | `visitingHours` | Besökstider för anhöriga |
 
-Separata `HealthcareService`-instanser (eller separata `availability`-element) används för att bära olika tidtyper. Klienter bör gruppera och etikettera dessa tydligt i UI.
+Klienter ska inte gissa tidtypen utifrån postens ordning eller klockslag.
 
 ### Kommentarer, avvikande tider och dygnet runt
 
@@ -173,7 +174,7 @@ En resurs som ska synas på 1177 Hitta vård ska uppfylla samtliga punkter nedan
 | 3 | Besöksadress (gatuadress) | `Location.address.line` | SHALL |
 | 4 | Besöksadress (stad) | `Location.address.city` | SHALL |
 | 5 | Direkttelefon | `Organization.contact.telecom[direct-phone]` | SHALL |
-| 6 | Kartkoordinater (SWEREF99) | `Location.position` | SHALL (publik) |
+| 6 | Kartkoordinater (WGS84) | `Location.position` | SHALL (publik) |
 | 7 | Verksamhetskod | `HealthcareService.category[verksamhetskod]` | SHOULD |
 | 8 | Vård-/omsorgsform | `HealthcareService.type[care-type]` | SHOULD |
 | 9 | Öppettider | `HealthcareService.availability` | SHOULD |

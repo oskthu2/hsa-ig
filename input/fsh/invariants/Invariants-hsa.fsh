@@ -18,9 +18,9 @@ Severity: #error
 Expression: "identifier.where(system = 'urn:oid:1.2.752.29.4.19').all(value.matches('^[a-zA-Z0-9-]{1,31}$'))"
 
 Invariant: hsacat-orgno-format
-Description: "Organisationsnummer anges som sex siffror, bindestreck och fyra siffror, t.ex. 232100-0016 (orgNo, Informationsspecifikation HSA 11.3.88)."
+Description: "Organisationsnummer, även finansierande organisation, anges som sex siffror, bindestreck och fyra siffror, t.ex. 232100-0081 (orgNo 11.3.88, financingOrganization 11.3.13)."
 Severity: #error
-Expression: "identifier.where(system = 'urn:oid:2.5.4.97').all(value.matches('^[0-9]{6}-[0-9]{4}$'))"
+Expression: "identifier.where(system = 'urn:oid:2.5.4.97').all(value.matches('^[0-9]{6}-[0-9]{4}$')) and extension('https://hsa.inera.se/fhir/StructureDefinition/hsa-financing-organization').value.ofType(Coding).all(code.matches('^[0-9]{6}-[0-9]{4}$'))"
 
 Invariant: hsacat-gln-format
 Description: "GLN-kod består av exakt 13 siffror (hsaGlnCode, Informationsspecifikation HSA 11.3.37)."
@@ -131,3 +131,8 @@ Invariant: hsacat-availability-allday-no-times
 Description: "En öppettid med allDay = true (00:00–24:00 i HSA) anger inga klockslag (ADR-014)."
 Severity: #error
 Expression: "availability.availableTime.all(allDay.where($this = true).exists() implies (availableStartTime.empty() and availableEndTime.empty()))"
+
+Invariant: hsacat-position-sweden
+Description: "Position anges i WGS84 decimalgrader inom Sverige (latitud 55–70, longitud 10–25). Fångar oomräknade SWEREF99 TM-meter och omkastade koordinater (ADR-015)."
+Severity: #warning
+Expression: "position.exists() implies (position.latitude >= 55 and position.latitude <= 70 and position.longitude >= 10 and position.longitude <= 25)"

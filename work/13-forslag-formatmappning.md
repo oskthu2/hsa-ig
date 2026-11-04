@@ -1,7 +1,7 @@
 # Förslag: mappning av HSA-värden med inbyggt format
 
-Status: Avsnitt 2 och 3 är **beslutade och införda** (ADR-013, ADR-014, 2026-11-03).
-Avsnitt 1 är fortfarande ett **förslag** (ADR-015).
+Status: Alla tre avsnitten är **beslutade och införda**: ADR-013 och ADR-014 (2026-11-03),
+ADR-015 (2026-11-04). Tidtyp för öppettider är införd som ADR-016.
 Källa: Informationsspecifikation för Katalogtjänst HSA 3.5.1, kap. 11 (SRC-027).
 
 De enkla formatreglerna (HSA-id, organisationsnummer, GLN, telefon, postnummer,
@@ -11,7 +11,7 @@ mappningsbeslut.
 
 ---
 
-## 1. SWEREF99-koordinater → `Location.position` (förslag ADR-015)
+## 1. SWEREF99-koordinater → `Location.position` (beslutad: ADR-015)
 
 ### Problem
 
@@ -128,7 +128,8 @@ Tre saker går inte att mappa direkt till R5 `Availability`:
   max 35, adressplatsnummer `^\d{1,5}(-\d{1,4})?`, littera max 2 bokstäver, postnummer
   exakt 5 siffror. De kan bli invarianter när det är bestämt hur delarna fördelas på
   `Address.line`.
-- Exemplen använder `SE2321000016`, som är Region Stockholms HSA-id-prefix
-  (organisationsnummer 232100-0016), för Region Blekinge. Riktlinjerna för testdata
-  (SRC-028) kräver riktiga organisationsnummer i testmiljöerna. Byt till ett nummer
-  som tydligt är fiktivt, eller till Region Blekinges riktiga.
+- ~~Exemplen använder `SE2321000016` (Region Stockholm) för Region Blekinge.~~ Åtgärdat
+  2026-11-04: exemplen använder Region Blekinges organisationsnummer 232100-0081 och
+  HSA-id-prefixet `SE2321000081`. `financingOrganization` i exemplet är nu ett
+  organisationsnummer, som specen kräver (11.3.13), i stället för ett HSA-id.
+- ~~Tidtyp saknas på `availability`.~~ Åtgärdat 2026-11-04 (ADR-016): `HsaAvailabilityTypeExtension`.

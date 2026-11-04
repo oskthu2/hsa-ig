@@ -5,8 +5,8 @@
 // objectClass: organizationalUnit
 // objectClass: hsaUnit
 // ou: Medicinmottagning Karlshamn
-// hsaIdentity: SE2321000016-ARKV1
-// hsaResponsibleHealthCareProvider: SE2321000016-BLKNG
+// hsaIdentity: SE2321000081-ARKV1
+// hsaResponsibleHealthCareProvider: SE2321000081-BLKNG
 // careLevel: 02
 // hsaArchivedObject: TRUE
 // startDate: 20050101000000Z
@@ -74,7 +74,7 @@ Description: """
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
-  * value = "SE2321000016-ARKV1"
+  * value = "SE2321000081-ARKV1"
 
 // active = false ← hsaArchivedObject: TRUE
 // Alla varianter av inaktivering i HSA (archived, hidden, inaccurate) → active = false

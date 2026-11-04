@@ -14,7 +14,7 @@ Relevanta profiler: `HsaCatalogOrganization`, `HsaHealthcareProviderOrganization
 
 Typiska fält:
 - `Organization`: `identifier[hsa-id]`, `name`, `active`, `partOf`, `type[hsa-class]`, `contact.telecom`, `contact.address`
-- `Location`: `address` (fysisk), `position` (SWEREF99), `managingOrganization`
+- `Location`: `address` (fysisk), `position` (WGS84), `managingOrganization`
 - `HealthcareService`: `category[verksamhetskod]`, `availability`, `providedBy`
 
 Se [CapabilityStatement-hsa-client-ehr-sync](CapabilityStatement-hsa-client-ehr-sync.html) för fullständiga serverkrav.

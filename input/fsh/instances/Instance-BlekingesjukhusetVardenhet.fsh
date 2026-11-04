@@ -5,8 +5,8 @@
 // objectClass: organizationalUnit
 // objectClass: hsaUnit
 // ou: Blekingesjukhuset
-// hsaIdentity: SE2321000016-BSJH01
-// hsaResponsibleHealthCareProvider: SE2321000016-BLKNG
+// hsaIdentity: SE2321000081-BSJH01
+// hsaResponsibleHealthCareProvider: SE2321000081-BLKNG
 // careLevel: 02
 // hsaBusinessType: 01
 // management: 01
@@ -20,14 +20,14 @@
 // mail: blekingesjukhuset@regionblekinge.se
 // hsaDirectoryContact: redaktion.bsj@regionblekinge.se
 // labeledURI: https://www.regionblekinge.se/blekingesjukhuset
-// hsaVpwWebpage: https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000016-BSJH01
+// hsaVpwWebpage: https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000081-BSJH01
 // hsaVisitingAddress: Lyckeby 5$$$Karlskrona       (strukturerad 5.2+, $=radbryt)
 // l: Karlskrona
-// hsaSweRef99Latitude: 56.1890
-// hsaSweRef99Longitude: 15.6210
+// hsaSweref99Latitude: 6227289
+// hsaSweref99Longitude: 538541
 // postalAddress: Lyckeby 5
 // postalCode: 37185
-// orgNo: 232100-0016
+// orgNo: 232100-0081
 // startDate: 19940101000000Z
 // endDate: (ej satt)
 // hsaArchivedObject: (ej satt)
@@ -93,11 +93,11 @@ Description: """
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
-  * value = "SE2321000016-BSJH01"
+  * value = "SE2321000081-BSJH01"
 
 * identifier[org-no]
   * system = "urn:oid:2.5.4.97"
-  * value = "232100-0016"
+  * value = "232100-0081"
 
 // Arbetsplatskod (unitPrescriptionCode) — OID preliminärt, bekräftas i HSACAT-ORG-012
 * identifier[apk]
@@ -202,7 +202,7 @@ Description: """
   // hsaVpwWebpage → 1177-djuplänk (används av 1177-klienten för kontaktkortsnavigering)
   * telecom[7]
     * system = #url
-    * value = "https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000016-BSJH01"
+    * value = "https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000081-BSJH01"
     * use = #work
     * extension[telecomType]
       * valueCoding

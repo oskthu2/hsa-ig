@@ -5,8 +5,8 @@
 // objectClass: organizationalUnit
 // objectClass: hsaUnit
 // ou: Hjärtmottagningen Karlskrona
-// hsaIdentity: SE2321000016-HJRT01
-// hsaResponsibleHealthCareProvider: SE2321000016-BLKNG
+// hsaIdentity: SE2321000081-HJRT01
+// hsaResponsibleHealthCareProvider: SE2321000081-BLKNG
 // careLevel: 02
 // hsaBusinessType: 15
 // management: 01
@@ -15,11 +15,11 @@
 // hsaSwitchboardNumber: +46455731000
 // mail: hjartvard@regionblekinge.se
 // hsaDirectoryContact: redaktion.hjart@regionblekinge.se
-// hsaVpwWebpage: https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000016-HJRT01
+// hsaVpwWebpage: https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000081-HJRT01
 // hsaVisitingAddress: Lyckeby 5$Ingång B$Plan 4$Karlskrona
 // l: Karlskrona
-// hsaSweRef99Latitude: 56.1892
-// hsaSweRef99Longitude: 15.6215
+// hsaSweref99Latitude: 6227311
+// hsaSweref99Longitude: 538572
 // postalAddress: Lyckeby 5
 // postalCode: 37185
 // startDate: 20060301000000Z
@@ -48,7 +48,7 @@
 //   VIKTIGT – DN-träd vs. partOf:
 //   DN-trädet visar att Hjärtmottagningen är organisatoriskt placerad UNDER
 //   ou=Blekingesjukhuset. Men i FHIR pekar partOf ALLTID på den ansvariga
-//   VÅRDGIVAREN (hsaResponsibleHealthCareProvider = SE2321000016-BLKNG),
+//   VÅRDGIVAREN (hsaResponsibleHealthCareProvider = SE2321000081-BLKNG),
 //   INTE på sjukhuset. Profilen kräver:
 //     partOf only Reference(HsaHealthcareProviderOrganization)
 //   Blekingesjukhuset är en HsaHealthcareUnitOrganization, inte en
@@ -101,7 +101,7 @@ Description: """
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
-  * value = "SE2321000016-HJRT01"
+  * value = "SE2321000081-HJRT01"
 
 // Obs: identifier[org-no] saknas — mottagningen har inte eget organisationsnummer.
 // Profilkravet identifier[org-no] 1..1 gäller HsaHealthcareProviderOrganization,
@@ -138,7 +138,7 @@ Description: """
 
 * name = "Hjärtmottagningen Karlskrona"
 
-// partOf → hsaResponsibleHealthCareProvider (SE2321000016-BLKNG = Region Blekinge VG)
+// partOf → hsaResponsibleHealthCareProvider (SE2321000081-BLKNG = Region Blekinge VG)
 // Inte till Blekingesjukhuset — se mappningskommentarer ovan.
 * partOf = Reference(RegionBlekingeVardgivare)
 
@@ -204,7 +204,7 @@ Description: """
   // hsaVpwWebpage → 1177-djuplänk
   * telecom[4]
     * system = #url
-    * value = "https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000016-HJRT01"
+    * value = "https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000081-HJRT01"
     * use = #work
     * extension[telecomType]
       * valueCoding

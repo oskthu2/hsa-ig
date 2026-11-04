@@ -12,7 +12,7 @@
 // management: 05
 // unitPrescriptionCode: 1082040
 // hsaDestinationIndicator: 03
-// financingOrganization: SE2321000016-BLKNG
+// financingOrganization: 232100-0081 (organisationsnummer, inte HSA-id)
 // telephoneNumber: +46457556688
 // hsaSwitchboardNumber: +46457556600
 // mobile: +46729876543
@@ -23,8 +23,8 @@
 // postalAddress: Järnvägsgatan 14
 // postalCode: 37235
 // l: Ronneby
-// hsaSweRef99Latitude: 56.2098
-// hsaSweRef99Longitude: 15.2791
+// hsaSweref99Latitude: 6229465
+// hsaSweref99Longitude: 517312
 // hsaVpwInformation4: Du kan lista dig hos oss via 1177.se. Vi tar emot
 //                     både bokade besök och drop-in.
 // startDate: 20100601000000Z
@@ -53,12 +53,12 @@
 // partOf                            ← hsaResponsibleHealthCareProvider →
 //                                      Reference(PrivatVardgivareAB)
 // meta.security[destination-indicator] ← hsaDestinationIndicator=03
-// extension[financingOrganization]  ← financingOrganization=SE2321000016-BLKNG
+// extension[financingOrganization]  ← financingOrganization=232100-0081
 //   VIKTIG DISTINKTION: Enheten är PRIVAT utförare (management=05) men
 //   REGIONFINANSIERAD. Finansierande organisation modelleras som
 //   extension[financingOrganization].valueCoding med:
 //     system = "urn:oid:1.2.752.129.5.1.1"  (LDAP-OID för financingOrganization)
-//     code = "SE2321000016-BLKNG"
+//     code = "232100-0081"  (organisationsnummer enligt 11.3.13)
 //   Detta är ett centralt mönster för privata utförare med LOV/LOV-avtal.
 // extension[patientInfo]            ← hsaVpwInformation4
 // contact[0].telecom[0]             ← telephoneNumber → telecomType=#direct-phone
@@ -141,13 +141,13 @@ Description: """
 * partOf = Reference(PrivatVardgivareAB)
 
 // ── Finansiering ─────────────────────────────────────────────────────────────
-// financingOrganization=SE2321000016-BLKNG → Region Blekinge finansierar vården
+// financingOrganization=232100-0081 (Region Blekinges organisationsnummer) → Region Blekinge finansierar vården
 // trots att utföraren är privat. Vanligt mönster för LOV-upphandlade vårdcentraler.
 // System = OID för LDAP-attributet financingOrganization (1.2.752.129.5.1.1).
 * extension[financingOrganization]
   * valueCoding
     * system = "urn:oid:1.2.752.129.5.1.1"
-    * code = #SE2321000016-BLKNG
+    * code = #232100-0081
     * display = "Region Blekinge"
 
 // hsaVpwInformation4 → patientInfo (information till listade och potentiella patienter)

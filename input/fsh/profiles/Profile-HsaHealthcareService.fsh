@@ -129,10 +129,14 @@ Description: """
   - `00:00#24:00` → `allDay = true` utan klockslag. Annan sluttid `24:00` → `availableEndTime = 23:59:59`.
   - Kommentar → `extension[comment]`; datumintervall → `extension[period]`.
   Ett tidsvärde med kommentar eller datumintervall blir en egen `availability`-post.
+  Varje post anger sin tidtyp i `extension[availabilityType]` (ADR-016); värden av
+  olika tidtyper delar aldrig post.
 """
 * availability.extension contains
+    HsaAvailabilityTypeExtension named availabilityType 1..1 MS and
     HsaAvailabilityCommentExtension named comment 0..1 MS and
     HsaAvailabilityPeriodExtension named period 0..1 MS
+* availability.extension[availabilityType] ^short = "Tidtyp: öppettider, telefontider, drop-in eller besökstider (ADR-016)"
 * availability.extension[comment] ^short = "Kommentar till öppettiden (max 19 tecken)"
 * availability.extension[period] ^short = "Giltighetsperiod för avvikande öppettid"
 

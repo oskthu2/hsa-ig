@@ -12,7 +12,7 @@
 // ── 1. hsa-id ────────────────────────────────────────────────────────────────
 // Sökning enbart på HSA-id (system urn:oid:1.2.752.29.4.19).
 // Kompletterar standard-identifier (som kräver systemprefix i query-strängen)
-// med en kortare form: GET /Organization?hsa-id=SE2321000016-ABC1
+// med en kortare form: GET /Organization?hsa-id=SE2321000081-ABC1
 
 Instance: SearchParameter-hsa-id
 InstanceOf: SearchParameter

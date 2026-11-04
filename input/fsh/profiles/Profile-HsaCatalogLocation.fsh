@@ -11,7 +11,7 @@ Description: """
   besöksplatser, mottagningar och vårdlokaler.
 
   Fysiska platser måste ha besöksadress (gatuadress + stad) och
-  en referens till ansvarig organisation. Koordinater (SWEREF99) krävs
+  en referens till ansvarig organisation. Koordinater krävs
   för offentlig publicering på 1177 Hitta vård.
 
   **Synlighet:** Anges via `meta.security[destination-indicator]` med
@@ -33,6 +33,7 @@ Description: """
 * obeys hsacat-physical-location-address
 * obeys hsacat-physical-location-city
 * obeys hsacat-public-location-position
+* obeys hsacat-position-sweden
 * obeys hsacat-hsa-id-format
 * obeys hsacat-phone-format
 * obeys hsacat-destination-indicator-format
@@ -101,9 +102,14 @@ Description: """
 
 // ── Position (HSACAT-LOC-003) ─────────────────────────────────────────────────
 * position MS
-* position ^short = "Geografiska koordinater (SWEREF99)"
+* position ^short = "Geografiska koordinater (WGS84, omräknade från SWEREF99 TM)"
 * position ^definition = """
-  Latitud och longitud enligt SWEREF99 TM. Obligatoriskt för platser synliga
+  Latitud och longitud i WGS84 decimalgrader, som FHIR kräver. HSA lagrar
+  koordinaterna som heltal i meter i SWEREF99 TM (hsaSweref99Latitude = nordlig
+  koordinat, 7 siffror; hsaSweref99Longitude = östlig koordinat, 6 siffror).
+  Servern räknar om dem (Gauss–Krüger invers, GRS80, medelmeridian 15°,
+  skalfaktor 0,9996, falsk östlig 500 000) och anger minst 5 decimaler (ADR-015).
+  Obligatoriskt för platser synliga
   för allmänheten (destination indicator 03) för att synas på karta i 1177.
 """
 * position.latitude MS

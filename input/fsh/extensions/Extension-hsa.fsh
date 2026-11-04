@@ -14,6 +14,8 @@ Title: "HSA Finansierande region/kommun"
 Description: """
   Den eller de regioner/kommuner som finansierar vården vid enheten.
   Mappar till LDAP-attributet financingOrganization (OID 1.2.752.129.5.1.1).
+  Koden är den finansierande organisationens organisationsnummer, t.ex.
+  232100-0081 (Informationsspecifikation HSA 11.3.13), inte ett HSA-id.
 """
 * ^url = "https://hsa.inera.se/fhir/StructureDefinition/hsa-financing-organization"
 * ^context[+].type = #element
@@ -73,6 +75,22 @@ Description: """
   * value[x] 1..1
   * value[x] only Period
 * value[x] 0..0
+
+
+Extension: HsaAvailabilityTypeExtension
+Id: hsa-availability-type
+Title: "HSA Tidtyp"
+Description: """
+  Anger vilket HSA-tidsattribut (surgeryHours, telephoneHours, dropInHours,
+  visitingHours) en tillgänglighetspost kommer från. R5 Availability saknar
+  typelement (ADR-016).
+"""
+* ^url = "https://hsa.inera.se/fhir/StructureDefinition/hsa-availability-type"
+* ^context[+].type = #element
+* ^context[=].expression = "Availability"
+* value[x] 1..1
+* value[x] only Coding
+* valueCoding from HsaAvailabilityTypeVS (required)
 
 
 Extension: HsaAvailabilityCommentExtension

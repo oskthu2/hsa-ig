@@ -113,6 +113,7 @@ Description: """
 // ── Tillgänglighet (tre block) ────────────────────────────────────────────────
 // Block 1: telephoneHours 1-5#08:00#17:00 — ordinarie telefontider
 * availability[0]
+  * extension[availabilityType].valueCoding = https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type#telephone-hours "Telefontider"
   * availableTime[0]
     * daysOfWeek[0] = #mon
     * daysOfWeek[1] = #tue
@@ -125,6 +126,7 @@ Description: """
 // Block 2: telephoneHours 1-5#07:30#08:00#Tidig telefontid
 // Egen availability eftersom värdet har en kommentar (ADR-014).
 * availability[1]
+  * extension[availabilityType].valueCoding = https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type#telephone-hours "Telefontider"
   * extension[comment].valueString = "Tidig telefontid"
   * availableTime[0]
     * daysOfWeek[0] = #mon
@@ -139,6 +141,7 @@ Description: """
 // Selektiva veckodagar — modelleras med specifika days-of-week-poster.
 // Drop-in erbjuds ej alla dagar; varje dag med drop-in representeras separat.
 * availability[2]
+  * extension[availabilityType].valueCoding = https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type#drop-in-hours "Drop-in"
   * availableTime[0]
     * daysOfWeek[0] = #mon
     * availableStartTime = "13:00:00"
