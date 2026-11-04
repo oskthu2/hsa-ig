@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="hsa-destination-indicator"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: ValueSet hsa-destination-indicator</b></p><a name="hsa-destination-indicator"> </a><a name="hchsa-destination-indicator"> </a><ul><li>Include alla koder som definieras i <code>urn:oid:1.2.752.29.23.1.11</code><span title="Versionen är inte uttryckligen angiven. Ingen matchande Kodsystem hittades"> version Ej angiven (använd senaste från terminologiserver)</span></li></ul></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/ValueSet/hsa-destination-indicator"/>
+  <version value="0.1.0"/>
+  <name value="HsaDestinationIndicatorVS"/>
+  <title value="HSA Visas för (hsaDestinationIndicator)"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-05-20"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="Koder för visningsscope i HSA (hsaDestinationIndicator).&#xA;Kod 03 = Internet/allmänheten = publik visning på t.ex. 1177 Hitta vård.&#xA;System: OID 1.2.752.29.23.1.11."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <compose>
+    <include>
+      <system value="urn:oid:1.2.752.29.23.1.11"/>
+    </include>
+  </compose>
+</ValueSet>

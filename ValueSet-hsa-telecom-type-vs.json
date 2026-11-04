@@ -1,0 +1,36 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "hsa-telecom-type-vs",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet hsa-telecom-type-vs</b></p><a name=\"hsa-telecom-type-vs\"> </a><a name=\"hchsa-telecom-type-vs\"> </a><ul><li>Include alla koder som definieras i <a href=\"CodeSystem-hsa-telecom-type.html\"><code>https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version &#x1F4E6;0.1.0</span></li></ul></div>"
+  },
+  "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-telecom-type",
+  "version" : "0.1.0",
+  "name" : "HsaTelecomTypeVS",
+  "title" : "HSA Kontaktvägstyp",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2026-05-20",
+  "publisher" : "Inera AB / HSA-IG projekt",
+  "contact" : [{
+    "name" : "Inera AB / HSA-IG projekt",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.inera.se/"
+    }]
+  }],
+  "description" : "Tillåtna typer av kontaktvägar i HSA.",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "SE",
+      "display" : "Sweden"
+    }]
+  }],
+  "compose" : {
+    "include" : [{
+      "system" : "https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"
+    }]
+  }
+}

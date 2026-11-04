@@ -1,0 +1,38 @@
+{
+  "resourceType" : "SearchParameter",
+  "id" : "hsa-provided-by",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: SearchParameter hsa-provided-by</b></p><a name=\"hsa-provided-by\"> </a><a name=\"hchsa-provided-by\"> </a><h2>HsaProvidedBy</h2><p>Parameter <code>hsa-provided-by</code>:<code>reference</code></p><div><p>Filtrera HealthcareService på providedBy-referens (tillhandahållande organisation).</p>\n</div><table class=\"grid\"><tr><td>Resurs</td><td><a href=\"http://hl7.org/fhir/R5/healthcareservice.html\">HealthcareService</a></td></tr><tr><td>Uttryck</td><td><code>HealthcareService.providedBy</code></td></tr><tr><td>Målresurser</td><td><a href=\"http://hl7.org/fhir/R5/organization.html\">Organization</a></td></tr><tr><td>Multipler</td><td><ul><li>multipleAnd: Parametern får endast förekomma en gång</li><li>multipleOr: Parametern kan ha flera värden (separerade med kommatecken) där minst ett måste vara sant</li></ul></td></tr></table></div>"
+  },
+  "url" : "https://hsa.inera.se/fhir/SearchParameter/hsa-provided-by",
+  "version" : "0.1.0",
+  "name" : "HsaProvidedBy",
+  "title" : "HSA Tillhandahållande organisation",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2026-05-21",
+  "publisher" : "Inera AB / HSA-IG projekt",
+  "contact" : [{
+    "name" : "Inera AB / HSA-IG projekt",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.inera.se/"
+    }]
+  }],
+  "description" : "Filtrera HealthcareService på providedBy-referens (tillhandahållande organisation).",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "SE",
+      "display" : "Sweden"
+    }]
+  }],
+  "code" : "hsa-provided-by",
+  "base" : ["HealthcareService"],
+  "type" : "reference",
+  "expression" : "HealthcareService.providedBy",
+  "target" : ["Organization"],
+  "multipleOr" : true,
+  "multipleAnd" : false
+}

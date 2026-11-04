@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>LDAP → FHIR Mappning - HSA Katalog Implementation Guide v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"11"}
+    h3,h4,h5,h6{--heading-prefix:"11"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">HSA Katalog Implementation Guide</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+
+  <img alt="Sweden flag" src="assets/images/swe.svg" height="16" title="Sweden"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R5/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Hem</a>
+  </li>
+  <li>
+    <a href="profiles.html">Profiler</a>
+  </li>
+  <li>
+    <a href="terminology.html">Terminologi</a>
+  </li>
+  <li>
+    <a href="api.html">API</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Vägledning
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="client-rendering.html">Klientrendering</a>
+      </li>
+      <li>
+        <a href="organization-hierarchy.html">Organisationshierarki</a>
+      </li>
+      <li>
+        <a href="address-transition.html">Adressövergång</a>
+      </li>
+      <li>
+        <a href="ldap-mapping.html">LDAP-mappning</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artefakter</a>
+  </li>
+  <li>
+    <a href="downloads.html">Nedladdningar</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>LDAP → FHIR Mappning</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">HSA Katalog Implementation Guide - Lokal utvecklingsbygge (v0.1.0) byggt av FHIR (HL7® FHIR® Standard) Build Tools. Se <a href='https://hsa.inera.se/fhir/history.html'>katalogen över publicerade versioner</a></p><!--EndReleaseHeader-->
+  <h2>LDAP → FHIR Mappning</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div>
+<!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
+</div>
+<h3 id="ldap--fhir-mappning">LDAP → FHIR Mappning</h3>
+
+<p>Denna sida dokumenterar hur HSA-katalogen LDAP-attribut (schema 5.3) mappar till FHIR R5-element i HSA-IG. Sidan riktar sig till producenter som bygger LDAP→FHIR-transformationer och till integratörer som behöver förstå informationsmodellens ursprung.</p>
+
+<p><strong>Källreferenser:</strong> HSA-schema 5.3 (SRC-001/002), Specifikation produktionslika data v1.8 (SRC-026).</p>
+
+<blockquote>
+  <p><strong>Viktig modelleringsprincip:</strong> Flera LDAP-attribut som finns på <code class="language-plaintext highlighter-rouge">Organisation</code>/<code class="language-plaintext highlighter-rouge">Enhet</code>-objektet (t.ex. <code class="language-plaintext highlighter-rouge">businessClassificationCode</code>, <code class="language-plaintext highlighter-rouge">careType</code>, öppettider) modelleras i FHIR på <code class="language-plaintext highlighter-rouge">HealthcareService</code>-resursen. En LDAP-enhet ger alltså upphov till <strong>minst två FHIR-resurser</strong>: en <code class="language-plaintext highlighter-rouge">Organization</code> och en (eller flera) <code class="language-plaintext highlighter-rouge">HealthcareService</code>. Se tabellen <a href="#resursmappning">Resursmappning</a> nedan.</p>
+</blockquote>
+
+<hr />
+
+<h4 id="resursmappning">Resursmappning</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>LDAP-objekttyp</th>
+      <th>FHIR-resurs</th>
+      <th>Profil</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Organisation (<code class="language-plaintext highlighter-rouge">organizationName</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization</code></td>
+      <td>HsaHealthcareProviderOrganization</td>
+    </tr>
+    <tr>
+      <td>Enhet (<code class="language-plaintext highlighter-rouge">organizationalUnitName</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization</code></td>
+      <td>HsaHealthcareUnitOrganization</td>
+    </tr>
+    <tr>
+      <td>Enhet (verksamhets- och tjänsteattribut)</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService</code></td>
+      <td>HsaHealthcareService</td>
+    </tr>
+    <tr>
+      <td>Enhet (besöksadress, koordinater)</td>
+      <td><code class="language-plaintext highlighter-rouge">Location</code></td>
+      <td>HsaCatalogLocation</td>
+    </tr>
+    <tr>
+      <td>Funktion</td>
+      <td>Ej i scope v1</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Person</td>
+      <td>Ej i scope v1 (ADR-007)</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Medarbetaruppdrag</td>
+      <td>Ej i scope v1 (ADR-007)</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h4 id="organisation-och-enhet--organization">Organisation och Enhet → Organization</h4>
+
+<p>Attributen nedan gäller för LDAP-objekttyperna <code class="language-plaintext highlighter-rouge">Organisation</code> och/eller <code class="language-plaintext highlighter-rouge">Enhet</code>.</p>
+
+<h5 id="identitet-och-status">Identitet och status</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>LDAP-attribut</th>
+      <th>Visningsnamn</th>
+      <th>FHIR-element</th>
+      <th>System/Kodverk</th>
+      <th>Notering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaIdentity</code></td>
+      <td>HSA-id</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.identifier[hsa-id].value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.19</code></td>
+      <td>Genereras automatiskt av HSA; aldrig manuellt</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaIdPrefix</code></td>
+      <td>HSA-id-prefix</td>
+      <td>—</td>
+      <td>—</td>
+      <td>Internt HSA-attribut; ej exponerat</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">orgNo</code></td>
+      <td>Organisationsnummer</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.identifier[org-no].value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:2.5.4.97</code></td>
+      <td>Obligatoriskt för vårdgivare (HSACAT-ORG-007)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">unitPrescriptionCode</code></td>
+      <td>Arbetsplatskod (APK)</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.identifier[apk].value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.4.71</code> ⚠️</td>
+      <td>OID preliminär – öppen fråga 8</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaGlnCode</code></td>
+      <td>GLN-kod</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.identifier[gln].value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.3.88</code></td>
+      <td>Global Location Number (GS1)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">startDate</code></td>
+      <td>Giltigt fr.o.m.</td>
+      <td><code class="language-plaintext highlighter-rouge">extension[orgPeriod].valuePeriod.start</code></td>
+      <td>HL7 organization-period</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">endDate</code></td>
+      <td>Giltigt t.o.m.</td>
+      <td><code class="language-plaintext highlighter-rouge">extension[orgPeriod].valuePeriod.end</code></td>
+      <td>HL7 organization-period</td>
+      <td>Obligatoriskt om orgPeriod är satt</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hiddenObject</code> / <code class="language-plaintext highlighter-rouge">hsaArchivedObject</code></td>
+      <td>Dolt/arkiverat</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.active = false</code></td>
+      <td>—</td>
+      <td>Alla inaktiveringsorsaker → active=false</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="namn-och-klassificering">Namn och klassificering</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>LDAP-attribut</th>
+      <th>Visningsnamn</th>
+      <th>FHIR-element</th>
+      <th>System/Kodverk</th>
+      <th>Notering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">o</code> (<code class="language-plaintext highlighter-rouge">organizationName</code>)</td>
+      <td>Organisationsnamn</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.name</code></td>
+      <td>—</td>
+      <td>På Organisation-objekt</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ou</code> (<code class="language-plaintext highlighter-rouge">organizationalUnitName</code>)</td>
+      <td>Enhetsnamn</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.name</code></td>
+      <td>—</td>
+      <td>På Enhet-objekt</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ouShort</code></td>
+      <td>Förkortat namn</td>
+      <td>—</td>
+      <td>—</td>
+      <td>Ej modellerat i v1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaIdentity</code> (objektklass)</td>
+      <td>HSA-objektklass</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[hsa-class].coding.code</code></td>
+      <td><code class="language-plaintext highlighter-rouge">https://hsa.inera.se/fhir/CodeSystem/hsa-object-class</code></td>
+      <td><code class="language-plaintext highlighter-rouge">healthcare-provider</code> / <code class="language-plaintext highlighter-rouge">healthcare-unit</code> / <code class="language-plaintext highlighter-rouge">organizational-unit</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">management</code></td>
+      <td>Ägarform</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[ownership].coding</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.2.1.14</code></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careLevel</code></td>
+      <td>Administrativ vårdnivå</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[care-level].coding</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.5.1.46</code></td>
+      <td>Obligatorisk (1..1) för vårdenheter</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaBusinessType</code></td>
+      <td>Enhetstyp</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[business-type].coding</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.2.1.12</code></td>
+      <td>Sjukhus, vårdcentral, apotek m.fl.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaDestinationIndicator</code></td>
+      <td>Visas för</td>
+      <td><code class="language-plaintext highlighter-rouge">meta.security[destination-indicator].code</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.23.1.11</code></td>
+      <td><code class="language-plaintext highlighter-rouge">03</code> = Internet/allmänheten</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="hierarki">Hierarki</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>LDAP-attribut</th>
+      <th>Visningsnamn</th>
+      <th>FHIR-element</th>
+      <th>Notering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaResponsibleHealthCareProvider</code></td>
+      <td>Ansvarig vårdgivare</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.partOf</code> → HsaHealthcareProviderOrganization</td>
+      <td>Obligatorisk (1..1) för vårdenheter</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaHealthCareUnitMember</code></td>
+      <td>Ingående enheter</td>
+      <td>Invers av <code class="language-plaintext highlighter-rouge">Organization.partOf</code> via <code class="language-plaintext highlighter-rouge">_revinclude</code></td>
+      <td>Ej direkt modellerat som attribut</td>
+    </tr>
+    <tr>
+      <td>DN-hierarki (LDAP-träd)</td>
+      <td>Organisationshierarki</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.partOf</code> (kedja uppåt)</td>
+      <td>Se <a href="organization-hierarchy.html">Organisationshierarki</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="kontaktvägar">Kontaktvägar</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>LDAP-attribut</th>
+      <th>Visningsnamn</th>
+      <th>FHIR-element</th>
+      <th><code class="language-plaintext highlighter-rouge">telecomType</code>-kod</th>
+      <th>Notering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">telephoneNumber</code></td>
+      <td>Direkttelefon</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom</code> (system=<code class="language-plaintext highlighter-rouge">phone</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">direct-phone</code></td>
+      <td>Obligatorisk för publika enheter</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaSwitchboardNumber</code></td>
+      <td>Växeltelefon</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom</code> (system=<code class="language-plaintext highlighter-rouge">phone</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">switchboard</code></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mobile</code></td>
+      <td>Mobiltelefon</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom</code> (system=<code class="language-plaintext highlighter-rouge">phone</code>, use=<code class="language-plaintext highlighter-rouge">mobile</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">mobile</code></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">facsimileTelephoneNumber</code></td>
+      <td>Fax</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom</code> (system=<code class="language-plaintext highlighter-rouge">fax</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">fax</code></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaTextTelephoneNumber</code></td>
+      <td>Texttelefon</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom</code> (system=<code class="language-plaintext highlighter-rouge">other</code>)</td>
+      <td>—</td>
+      <td>Ej specifik typ-kod definierad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVideoPhone</code></td>
+      <td>Bildtelefon</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom</code> (system=<code class="language-plaintext highlighter-rouge">other</code>)</td>
+      <td>—</td>
+      <td>Ej specifik typ-kod definierad</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">mail</code></td>
+      <td>E-postadress</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom</code> (system=<code class="language-plaintext highlighter-rouge">email</code>)</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaDirectoryContact</code></td>
+      <td>Innehållsansvarig e-post</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom</code> (system=<code class="language-plaintext highlighter-rouge">email</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">directory-contact</code></td>
+      <td>Visas ej för slutanvändare</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">labeledURI</code></td>
+      <td>Webbadress</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom</code> (system=<code class="language-plaintext highlighter-rouge">url</code>)</td>
+      <td>—</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwWebpage</code></td>
+      <td>Länk till 1177-kontaktkort</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom</code> (system=<code class="language-plaintext highlighter-rouge">url</code>)</td>
+      <td>—</td>
+      <td>1177-specifikt; djuplänk till enhetens profilsida</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="adress">Adress</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>LDAP-attribut</th>
+      <th>Visningsnamn</th>
+      <th>FHIR-element</th>
+      <th>Notering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaPostalAddress</code></td>
+      <td>Postadress (strukturerad, 5.2+)</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.address</code> (type=<code class="language-plaintext highlighter-rouge">postal</code>), komponenter</td>
+      <td>Normativ form (ADR-010)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">postalAddress</code></td>
+      <td>Postadress (legacy)</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.address.text</code> (type=<code class="language-plaintext highlighter-rouge">postal</code>)</td>
+      <td>Övergångsform t.o.m. sept 2026</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">postalCode</code></td>
+      <td>Postnummer</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.address.postalCode</code></td>
+      <td>Hör till postadress</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l</code> (<code class="language-plaintext highlighter-rouge">localityName</code>)</td>
+      <td>Lokalitet/ort</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.address.city</code></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">c</code> (<code class="language-plaintext highlighter-rouge">countryName</code>)</td>
+      <td>Land</td>
+      <td><code class="language-plaintext highlighter-rouge">contact.address.country</code></td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="1177-specifika-textfält">1177-specifika textfält</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>LDAP-attribut</th>
+      <th>Visningsnamn</th>
+      <th>FHIR-element</th>
+      <th>Notering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwInformation2</code></td>
+      <td>Tillfällig information</td>
+      <td><code class="language-plaintext highlighter-rouge">extension[temporaryNotice]</code>: <code class="language-plaintext highlighter-rouge">text</code> + <code class="language-plaintext highlighter-rouge">period</code></td>
+      <td>Gul informationsruta. Datumprefixet <code class="language-plaintext highlighter-rouge">;ÅÅÅÅMMDD;ÅÅÅÅMMDD;</code> tolkas till <code class="language-plaintext highlighter-rouge">period</code> och tas bort ur texten (ADR-013)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwInformation4</code></td>
+      <td>Information till patient</td>
+      <td><code class="language-plaintext highlighter-rouge">extension[patientInfo].valueString</code></td>
+      <td>Riktad till patient; Markdown</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">financingOrganization</code></td>
+      <td>Finansierande region/kommun</td>
+      <td><code class="language-plaintext highlighter-rouge">extension[financingOrganization].valueCoding</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.5.1.1</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h4 id="enhet--healthcareservice">Enhet → HealthcareService</h4>
+
+<p>LDAP-attribut på Enhet-objekt som handlar om verksamhet, tjänster och öppettider mappas till en separat <code class="language-plaintext highlighter-rouge">HealthcareService</code>-resurs. <code class="language-plaintext highlighter-rouge">HealthcareService.providedBy</code> pekar tillbaka på Organization.</p>
+
+<blockquote>
+  <p>En Enhet ger normalt upphov till <strong>en</strong> HealthcareService-instans per kombinerad verksamhetsprofil. Tidtyperna (öppettider, telefontider, drop-in, besökstider) blir separata <code class="language-plaintext highlighter-rouge">availability</code>-poster i samma instans. Varje post anger sin tidtyp i <code class="language-plaintext highlighter-rouge">extension[availabilityType]</code> (ADR-016).</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>LDAP-attribut</th>
+      <th>Visningsnamn</th>
+      <th>FHIR-element</th>
+      <th>System/Kodverk</th>
+      <th>Notering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">businessClassificationCode</code></td>
+      <td>Verksamhetskod</td>
+      <td><code class="language-plaintext highlighter-rouge">category[verksamhetskod].coding</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.2.1.3</code></td>
+      <td>Bred klassificering; eHM-alignment (ADR-011)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careType</code></td>
+      <td>Vård- och omsorgsform</td>
+      <td><code class="language-plaintext highlighter-rouge">type[care-type].coding</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.129.2.2.1.13</code></td>
+      <td>Öppenvård, sluten vård, hemsjukvård m.fl.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">surgeryHours</code></td>
+      <td>Öppettider</td>
+      <td><code class="language-plaintext highlighter-rouge">availability</code> med <code class="language-plaintext highlighter-rouge">extension[availabilityType]</code> = <code class="language-plaintext highlighter-rouge">surgery-hours</code></td>
+      <td><code class="language-plaintext highlighter-rouge">https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type</code></td>
+      <td>Se tidsformat nedan</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">telephoneHours</code></td>
+      <td>Telefontider</td>
+      <td><code class="language-plaintext highlighter-rouge">availability</code> med <code class="language-plaintext highlighter-rouge">extension[availabilityType]</code> = <code class="language-plaintext highlighter-rouge">telephone-hours</code></td>
+      <td>samma</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dropInHours</code></td>
+      <td>Drop-in-tider</td>
+      <td><code class="language-plaintext highlighter-rouge">availability</code> med <code class="language-plaintext highlighter-rouge">extension[availabilityType]</code> = <code class="language-plaintext highlighter-rouge">drop-in-hours</code></td>
+      <td>samma</td>
+      <td>Besök utan bokning</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwInformation1</code></td>
+      <td>Mer om (Om oss)</td>
+      <td><code class="language-plaintext highlighter-rouge">comment</code></td>
+      <td>—</td>
+      <td>Fritext; Markdown; visas på 1177-sidan</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwInformation2</code></td>
+      <td>Tillfällig information</td>
+      <td><code class="language-plaintext highlighter-rouge">extension[temporaryNotice]</code>: <code class="language-plaintext highlighter-rouge">text</code> + <code class="language-plaintext highlighter-rouge">period</code></td>
+      <td>—</td>
+      <td>Gul informationsruta; se ovan (ADR-013)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwInformation4</code></td>
+      <td>Information till patient</td>
+      <td><code class="language-plaintext highlighter-rouge">extension[patientInfo].valueString</code></td>
+      <td>—</td>
+      <td>Riktad till patient</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaDestinationIndicator</code></td>
+      <td>Visas för</td>
+      <td><code class="language-plaintext highlighter-rouge">meta.security[destination-indicator].code</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.23.1.11</code></td>
+      <td>Delad med Organization/Location</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestTemplateURI</code></td>
+      <td>Adress till remissanvisning</td>
+      <td>—</td>
+      <td>—</td>
+      <td>Ej modellerat i v1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVisitingRules</code></td>
+      <td>Besöksregler</td>
+      <td>—</td>
+      <td>—</td>
+      <td>Ej modellerat i v1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVisitingRuleReferral</code></td>
+      <td>Remisskrav</td>
+      <td>—</td>
+      <td>—</td>
+      <td>Ej modellerat i v1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVisitingRuleAge</code></td>
+      <td>Åldersregler</td>
+      <td>—</td>
+      <td>—</td>
+      <td>Ej modellerat i v1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">visitingHours</code></td>
+      <td>Besökstider för anhöriga</td>
+      <td><code class="language-plaintext highlighter-rouge">availability</code> med <code class="language-plaintext highlighter-rouge">extension[availabilityType]</code> = <code class="language-plaintext highlighter-rouge">visiting-hours</code></td>
+      <td><code class="language-plaintext highlighter-rouge">https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type</code></td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="tidsformat-adr-014">Tidsformat (ADR-014)</h5>
+
+<p>Tidsattributen har formatet <code class="language-plaintext highlighter-rouge">&lt;FD&gt;-&lt;TD&gt;#&lt;FT&gt;#&lt;TT&gt;[#&lt;kommentar&gt;][#&lt;fr.o.m.&gt;#&lt;t.o.m.&gt;]</code>.
+Varje värde mappas så här:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>HSA-del</th>
+      <th>Exempel</th>
+      <th>FHIR</th>
+      <th>Regel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Attributnamn</td>
+      <td><code class="language-plaintext highlighter-rouge">telephoneHours</code></td>
+      <td><code class="language-plaintext highlighter-rouge">availability.extension[availabilityType]</code></td>
+      <td>1..1; kod ur HsaAvailabilityType (ADR-016)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FD-TD</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1-5</code></td>
+      <td><code class="language-plaintext highlighter-rouge">availableTime.daysOfWeek</code></td>
+      <td>1 = <code class="language-plaintext highlighter-rouge">mon</code> … 7 = <code class="language-plaintext highlighter-rouge">sun</code>; alla dagar i intervallet listas</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FT#TT</code></td>
+      <td><code class="language-plaintext highlighter-rouge">08:00#17:00</code></td>
+      <td><code class="language-plaintext highlighter-rouge">availableStartTime</code> / <code class="language-plaintext highlighter-rouge">availableEndTime</code></td>
+      <td>Sekunder läggs till: <code class="language-plaintext highlighter-rouge">08:00:00</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">00:00#24:00</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1-7#00:00#24:00</code></td>
+      <td><code class="language-plaintext highlighter-rouge">allDay = true</code></td>
+      <td>Inga klockslag (<code class="language-plaintext highlighter-rouge">hsacat-availability-allday-no-times</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TT</code> = <code class="language-plaintext highlighter-rouge">24:00</code></td>
+      <td><code class="language-plaintext highlighter-rouge">5-5#21:00#24:00</code></td>
+      <td><code class="language-plaintext highlighter-rouge">availableEndTime = "23:59:59"</code></td>
+      <td>FHIR <code class="language-plaintext highlighter-rouge">time</code> tillåter inte <code class="language-plaintext highlighter-rouge">24:00</code>; klienten visar <code class="language-plaintext highlighter-rouge">24:00</code></td>
+    </tr>
+    <tr>
+      <td>Kommentar</td>
+      <td><code class="language-plaintext highlighter-rouge">Halvdag</code></td>
+      <td><code class="language-plaintext highlighter-rouge">availability.extension[comment]</code></td>
+      <td>Max 19 tecken (<code class="language-plaintext highlighter-rouge">hsacat-availability-comment-length</code>)</td>
+    </tr>
+    <tr>
+      <td>Datumintervall</td>
+      <td><code class="language-plaintext highlighter-rouge">20261223#20261223</code></td>
+      <td><code class="language-plaintext highlighter-rouge">availability.extension[period]</code></td>
+      <td>Datum, båda inklusive; tom t.o.m. = tills vidare</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Ett värde med kommentar eller datumintervall blir en egen <code class="language-plaintext highlighter-rouge">availability</code>-post, så att
+kommentaren och perioden gäller just de tiderna. Värden utan kommentar och period av
+samma tidtyp kan dela post. Sluttiden måste vara senare än starttiden
+(<code class="language-plaintext highlighter-rouge">hsacat-availability-time-order</code>), eftersom HSA inte tillåter att dygnsgränsen passeras.</p>
+
+<hr />
+
+<h4 id="enhet--location">Enhet → Location</h4>
+
+<p>Adress- och positionsattribut för Enhet-objekt mappas till en <code class="language-plaintext highlighter-rouge">Location</code>-resurs. <code class="language-plaintext highlighter-rouge">Location.managingOrganization</code> pekar på Organization.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>LDAP-attribut</th>
+      <th>Visningsnamn</th>
+      <th>FHIR-element</th>
+      <th>Notering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaIdentity</code></td>
+      <td>HSA-id</td>
+      <td><code class="language-plaintext highlighter-rouge">Location.identifier[hsa-id].value</code></td>
+      <td>Samma HSA-id som Organisation/Enhet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVisitingAddress</code></td>
+      <td>Besöksadress (strukturerad, 5.2+)</td>
+      <td><code class="language-plaintext highlighter-rouge">address</code> (type=<code class="language-plaintext highlighter-rouge">physical</code>), komponenter</td>
+      <td>Normativ form (ADR-010)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">streetAddress</code></td>
+      <td>Besöksadress (legacy)</td>
+      <td><code class="language-plaintext highlighter-rouge">address.text</code> (type=<code class="language-plaintext highlighter-rouge">physical</code>)</td>
+      <td>Övergångsform t.o.m. sept 2026</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">l</code> (<code class="language-plaintext highlighter-rouge">localityName</code>)</td>
+      <td>Lokalitet/stad</td>
+      <td><code class="language-plaintext highlighter-rouge">address.city</code></td>
+      <td>Obligatorisk (HSACAT-LOC-004)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">postalCode</code></td>
+      <td>Postnummer</td>
+      <td><strong>0..0</strong></td>
+      <td>Uppsala-regel: aldrig på besöksadress</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaSweref99Latitude</code></td>
+      <td>Nordlig koordinat (SWEREF99 TM, meter)</td>
+      <td><code class="language-plaintext highlighter-rouge">position.latitude</code> (WGS84, omräknad)</td>
+      <td>Obligatorisk för publika platser. Räknas om tillsammans med longitud, se nedan (ADR-015)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaSweref99Longitude</code></td>
+      <td>Östlig koordinat (SWEREF99 TM, meter)</td>
+      <td><code class="language-plaintext highlighter-rouge">position.longitude</code> (WGS84, omräknad)</td>
+      <td>Obligatorisk för publika platser</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">geographicalCoordinates</code></td>
+      <td>Koordinater (RT90, äldre)</td>
+      <td>—</td>
+      <td>Ej mappat; SWEREF99 TM är primärformat</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Koordinatomräkning (ADR-015).</strong> HSA lagrar koordinater som heltal i meter i SWEREF99 TM
+(<code class="language-plaintext highlighter-rouge">hsaSweref99Latitude</code> = nordlig koordinat, 7 siffror; <code class="language-plaintext highlighter-rouge">hsaSweref99Longitude</code> = östlig
+koordinat, 6 siffror). FHIR <code class="language-plaintext highlighter-rouge">Location.position</code> kräver WGS84 i decimalgrader. Servern räknar
+om med Gauss–Krüger invers (GRS80, medelmeridian 15°, skalfaktor 0,9996, falsk östlig
+500 000) och anger minst 5 decimaler. Skillnaden mellan SWEREF99 och WGS84 är under en
+meter. Invarianten <code class="language-plaintext highlighter-rouge">hsacat-position-sweden</code> varnar för värden utanför Sverige, t.ex.
+oomräknade meter eller omkastade koordinater.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Exempel</th>
+      <th>SWEREF99 TM (N / E)</th>
+      <th>WGS84 (lat / long)</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Blekingesjukhuset</td>
+      <td>6227289 / 538541</td>
+      <td>56.189003 / 15.621002</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Ronneby vårdcentral</td>
+      <td>6229465 / 517312</td>
+      <td>56.209798 / 15.279093</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">route</code></td>
+      <td>Yttre vägbeskrivning</td>
+      <td><code class="language-plaintext highlighter-rouge">description</code> (<code class="language-plaintext highlighter-rouge">## Yttre vägbeskrivning</code>)</td>
+      <td>Markdown; se <a href="client-rendering.html">Klientrendering</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">indoorRouteDescription</code></td>
+      <td>Inre vägbeskrivning</td>
+      <td><code class="language-plaintext highlighter-rouge">description</code> (<code class="language-plaintext highlighter-rouge">## Inre vägbeskrivning</code>)</td>
+      <td>Markdown; slås samman med yttre i ett fält</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaDestinationIndicator</code></td>
+      <td>Visas för</td>
+      <td><code class="language-plaintext highlighter-rouge">meta.security[destination-indicator].code</code></td>
+      <td><code class="language-plaintext highlighter-rouge">urn:oid:1.2.752.29.23.1.11</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">municipalityCode</code></td>
+      <td>Kommunkod</td>
+      <td>—</td>
+      <td>Ej modellerat i v1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">countyCode</code></td>
+      <td>Länskod</td>
+      <td>—</td>
+      <td>Ej modellerat i v1</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h4 id="värdeformat-och-validering">Värdeformat och validering</h4>
+
+<p>HSA validerar varje strängattribut mot en vitlista med reguljära uttryck
+(Informationsspecifikation för Katalogtjänst HSA 3.5.1, kap. 11). Data som kommer
+från HSA följer därför alltid dessa format, och IG:n behåller dem oförändrade i FHIR.
+Formatering för visning (t.ex. <code class="language-plaintext highlighter-rouge">0455-73 17 00</code>) görs av klienten.</p>
+
+<p>Specens uttryck är skrivna för Java och matchar hela strängen. I invarianterna nedan
+är de ankrade med <code class="language-plaintext highlighter-rouge">^…$</code> och omskrivna utan lookahead så att de fungerar i alla
+FHIRPath-motorer.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>LDAP-attribut</th>
+      <th>Format i HSA</th>
+      <th>Exempel</th>
+      <th>FHIR-element</th>
+      <th>Invariant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaIdentity</code> (och alla attribut som pekar på ett HSA-id)</td>
+      <td><code class="language-plaintext highlighter-rouge">[a-zA-Z0-9-]{1,31}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SE2321000081-BSJH01</code></td>
+      <td><code class="language-plaintext highlighter-rouge">identifier[hsa-id].value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-hsa-id-format</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">orgNo</code>, <code class="language-plaintext highlighter-rouge">financingOrganization</code></td>
+      <td><code class="language-plaintext highlighter-rouge">\d{6}-\d{4}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">232100-0081</code></td>
+      <td><code class="language-plaintext highlighter-rouge">identifier[org-no].value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-orgno-format</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaGlnCode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">\d{13}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">7350088110002</code></td>
+      <td><code class="language-plaintext highlighter-rouge">identifier[gln].value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-gln-format</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">telephoneNumber</code>, <code class="language-plaintext highlighter-rouge">hsaSwitchboardNumber</code>, <code class="language-plaintext highlighter-rouge">mobile</code>, <code class="language-plaintext highlighter-rouge">facsimileTelephoneNumber</code></td>
+      <td><code class="language-plaintext highlighter-rouge">(?=\+|11|020|0771)(\+|\d)\d{1,31}</code> – endast siffror och inledande <code class="language-plaintext highlighter-rouge">+</code></td>
+      <td><code class="language-plaintext highlighter-rouge">+46455731700</code></td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom.value</code> (system <code class="language-plaintext highlighter-rouge">phone</code>/<code class="language-plaintext highlighter-rouge">fax</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-phone-format</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">postalCode</code> / <code class="language-plaintext highlighter-rouge">postCode</code> i <code class="language-plaintext highlighter-rouge">hsaPostalAddress</code></td>
+      <td><code class="language-plaintext highlighter-rouge">[a-zA-Z0-9]+</code> resp. <code class="language-plaintext highlighter-rouge">[0-9]{5}</code> – inga mellanslag</td>
+      <td><code class="language-plaintext highlighter-rouge">37185</code></td>
+      <td><code class="language-plaintext highlighter-rouge">contact.address.postalCode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-postal-code-format</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwWebPage</code></td>
+      <td><code class="language-plaintext highlighter-rouge">https?://www\.1177\.se/Hitta-vard/Kontakt/\?hsaid=&lt;HSA-id&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000081-BSJH01</code></td>
+      <td><code class="language-plaintext highlighter-rouge">contact.telecom</code> (typ <code class="language-plaintext highlighter-rouge">vpw-webpage</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-vpw-webpage-format</code> (kräver även objektets eget HSA-id)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaDestinationIndicator</code></td>
+      <td><code class="language-plaintext highlighter-rouge">\d{2}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">03</code></td>
+      <td><code class="language-plaintext highlighter-rouge">meta.security[destination-indicator].code</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-destination-indicator-format</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaBusinessType</code></td>
+      <td><code class="language-plaintext highlighter-rouge">\d{2}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">01</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.type[business-type]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-business-type-format</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">businessClassificationCode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">\d{4}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1101</code></td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.category[verksamhetskod]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-service-code-format</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">careType</code></td>
+      <td><code class="language-plaintext highlighter-rouge">\d{2}</code></td>
+      <td><code class="language-plaintext highlighter-rouge">01</code></td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.type[care-type]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-service-code-format</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaSweref99Latitude</code> / <code class="language-plaintext highlighter-rouge">hsaSweref99Longitude</code></td>
+      <td><code class="language-plaintext highlighter-rouge">\d{7}</code> resp. <code class="language-plaintext highlighter-rouge">\d{6}</code> (SWEREF99 TM, meter)</td>
+      <td><code class="language-plaintext highlighter-rouge">6227289</code> / <code class="language-plaintext highlighter-rouge">538541</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Location.position</code> (omräknad till WGS84)</td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-position-sweden</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">startDate</code>, <code class="language-plaintext highlighter-rouge">endDate</code></td>
+      <td><code class="language-plaintext highlighter-rouge">\d{14}Z</code> (UTC)</td>
+      <td><code class="language-plaintext highlighter-rouge">20231231000000Z</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Period.start</code> / <code class="language-plaintext highlighter-rouge">Period.end</code></td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">surgeryHours</code>, <code class="language-plaintext highlighter-rouge">telephoneHours</code>, <code class="language-plaintext highlighter-rouge">dropInHours</code>, <code class="language-plaintext highlighter-rouge">visitingHours</code></td>
+      <td><code class="language-plaintext highlighter-rouge">[1-7]-[1-7]#hh:mm#hh:mm[#kommentar ≤19 tecken][#fromDatum#tomDatum]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1-5#08:00#17:00</code></td>
+      <td><code class="language-plaintext highlighter-rouge">availability</code> (se <a href="#tidsformat-adr-014">Tidsformat</a>)</td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-availability-*</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwInformation2</code></td>
+      <td>valfritt prefix <code class="language-plaintext highlighter-rouge">;ÅÅÅÅMMDD;ÅÅÅÅMMDD;</code> före texten</td>
+      <td><code class="language-plaintext highlighter-rouge">;20201201;20210101;Stängt för underhåll</code></td>
+      <td><code class="language-plaintext highlighter-rouge">extension[temporaryNotice]</code>: <code class="language-plaintext highlighter-rouge">text</code> + <code class="language-plaintext highlighter-rouge">period</code></td>
+      <td><code class="language-plaintext highlighter-rouge">hsacat-temporary-notice-*</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Den fullständiga listan med uttryck finns i
+<code class="language-plaintext highlighter-rouge">docs/sources/informationsspecifikation_hsa_3.5.1_regex.txt</code>.</p>
+
+<hr />
+
+<h4 id="ej-mappade-attribut-v1">Ej mappade attribut (v1)</h4>
+
+<p>Attribut som medvetet utelämnats ur v1 med motivering.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>LDAP-attribut</th>
+      <th>Visningsnamn</th>
+      <th>Skäl till utelämnande</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alla person-attribut (<code class="language-plaintext highlighter-rouge">givenName</code>, <code class="language-plaintext highlighter-rouge">sn</code>, <code class="language-plaintext highlighter-rouge">personalIdentityNumber</code>, m.fl.)</td>
+      <td>Persondata</td>
+      <td>ADR-007: Person/PractitionerRole ingår inte i v1</td>
+    </tr>
+    <tr>
+      <td>Alla medarbetaruppdragsattribut (<code class="language-plaintext highlighter-rouge">hsaCommissionMember</code>, m.fl.)</td>
+      <td>Uppdrag</td>
+      <td>ADR-007: Uppdrag ingår inte i v1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaHealthCareUnitManager</code></td>
+      <td>Verksamhetschef</td>
+      <td>Refererar Person (ADR-007)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">jpegPhoto</code></td>
+      <td>Bild</td>
+      <td>Binärdata; ej i FHIR-katalogscope v1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaJpegLogotype</code></td>
+      <td>Logotyp</td>
+      <td>Binärdata; ej i FHIR-katalogscope v1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaSimpleSearch</code> / <code class="language-plaintext highlighter-rouge">hsaPhoneticSearch</code></td>
+      <td>Sökindex</td>
+      <td>Serverinternt index; genereras av HSA-systemet</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaAdminComment</code></td>
+      <td>Admin-kommentar</td>
+      <td>Internt förvaltningsstöd; ej konsumentrelevant</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">hsaVpwNeighbouringObject</code></td>
+      <td>Relaterad enhet</td>
+      <td>Presentationslogik specifik för 1177 v1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">geographicalCoordinates</code></td>
+      <td>RT90-koordinater</td>
+      <td>SWEREF99 TM (<code class="language-plaintext highlighter-rouge">hsaSweref99*</code>) är primärformat</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">municipalityCode</code> / <code class="language-plaintext highlighter-rouge">countyCode</code></td>
+      <td>Kommunkod / Länskod</td>
+      <td>Administrativa koder; ej profilerade i v1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">schoolForm</code></td>
+      <td>Skolform</td>
+      <td>Utanför vård/omsorg-scope</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">requestTemplateURI</code></td>
+      <td>Remissanvisnings-URL</td>
+      <td>Ej modellerat i v1; kan inkluderas i v2</td>
+    </tr>
+    <tr>
+      <td>Besöksregler (<code class="language-plaintext highlighter-rouge">hsaVisitingRules</code>, <code class="language-plaintext highlighter-rouge">hsaVisitingRuleReferral</code>, <code class="language-plaintext highlighter-rouge">hsaVisitingRuleAge</code>)</td>
+      <td>Besöksregler</td>
+      <td>Ej modellerade i v1</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2026+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.inera.se/">Inera AB / HSA-IG projekt</a>.  Package inera.se.hsa.katalog#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R5/">FHIR 5.0.0</a>. Generated <span title="Wed, Nov 4, 2026 14:57+0000">2026-11-04</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

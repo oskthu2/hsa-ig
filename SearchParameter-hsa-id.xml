@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SearchParameter xmlns="http://hl7.org/fhir">
+  <id value="hsa-id"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: SearchParameter hsa-id</b></p><a name="hsa-id"> </a><a name="hchsa-id"> </a><h2>HsaId</h2><p>Parameter <code>hsa-id</code>:<code>token</code></p><div><p>Sökning på HSA-id-identifieraren (system = urn:oid:1.2.752.29.4.19).</p>
+</div><table class="grid"><tr><td>Resurs</td><td><a href="http://hl7.org/fhir/R5/organization.html">Organization</a>, <a href="http://hl7.org/fhir/R5/location.html">Location</a>, <a href="http://hl7.org/fhir/R5/healthcareservice.html">HealthcareService</a></td></tr><tr><td>Uttryck</td><td><code>identifier.where(system = 'urn:oid:1.2.752.29.4.19').value</code></td></tr><tr><td>Multipler</td><td><ul><li>multipleAnd: Parametern får endast förekomma en gång</li><li>multipleOr: Parametern kan ha flera värden (separerade med kommatecken) där minst ett måste vara sant</li></ul></td></tr></table></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/SearchParameter/hsa-id"/>
+  <version value="0.1.0"/>
+  <name value="HsaId"/>
+  <title value="HSA-id"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-05-21"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="Sökning på HSA-id-identifieraren (system = urn:oid:1.2.752.29.4.19)."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <code value="hsa-id"/>
+  <base value="Organization"/>
+  <base value="Location"/>
+  <base value="HealthcareService"/>
+  <type value="token"/>
+  <expression value="identifier.where(system = 'urn:oid:1.2.752.29.4.19').value"/>
+  <multipleOr value="true"/>
+  <multipleAnd value="false"/>
+</SearchParameter>

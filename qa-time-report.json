@@ -1,0 +1,2042 @@
+{
+  "date" : "Wed, 04 Nov, 2026 14:57:21 +0000",
+  "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
+  "files" : [{
+    "name" : "/fsh-generated/resources/ImplementationGuide-inera.se.hsa.katalog.json",
+    "size" : 30630,
+    "processes" : [{
+      "activity" : "load",
+      "start" : 21,
+      "length" : 9
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 11
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 422
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 2319
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 35,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 50,
+      "length" : 93
+    },
+    {
+      "activity" : "generate2",
+      "start" : 54,
+      "length" : 136
+    },
+    {
+      "activity" : "generateExampleZip",
+      "start" : 67,
+      "length" : 1
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 3
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/CapabilityStatement-hsa-catalog-server.json",
+    "size" : 8220,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 4
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 7
+    },
+    {
+      "activity" : "load-configure",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "loadDepInfo",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 23
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 90
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 30
+    },
+    {
+      "activity" : "generate2",
+      "start" : 54,
+      "length" : 53
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/CapabilityStatement-hsa-client-1177-hitta-vard.json",
+    "size" : 4718,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 3
+    },
+    {
+      "activity" : "scan",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 16
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 13
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 20
+    },
+    {
+      "activity" : "generate2",
+      "start" : 54,
+      "length" : 31
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/CapabilityStatement-hsa-client-ehr-sync.json",
+    "size" : 4309,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 4
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 10
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 10
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 22
+    },
+    {
+      "activity" : "generate2",
+      "start" : 54,
+      "length" : 29
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/CapabilityStatement-hsa-client-hierarchy-traversal.json",
+    "size" : 3141,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 7
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 6
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 14
+    },
+    {
+      "activity" : "generate2",
+      "start" : 54,
+      "length" : 20
+    },
+    {
+      "activity" : "makeDependencies",
+      "start" : 63,
+      "length" : 1
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/CapabilityStatement-hsa-client-npo.json",
+    "size" : 2315,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 3
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 6
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 6
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 12
+    },
+    {
+      "activity" : "generate2",
+      "start" : 54,
+      "length" : 12
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/CapabilityStatement-hsa-regional-catalog-server.json",
+    "size" : 7855,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 3
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 4
+    },
+    {
+      "activity" : "load-configure",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 3
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 10
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 17
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 35,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 25
+    },
+    {
+      "activity" : "generate2",
+      "start" : 54,
+      "length" : 32
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    },
+    {
+      "activity" : "scanExamplesForR5",
+      "start" : 78,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/CodeSystem-hsa-availability-type.json",
+    "size" : 1368,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 4
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 7
+    },
+    {
+      "activity" : "validate",
+      "start" : 29,
+      "length" : 87
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 1
+    },
+    {
+      "activity" : "checkConformanceResources",
+      "start" : 35,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 7
+    },
+    {
+      "activity" : "generate2",
+      "start" : 54,
+      "length" : 68
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/CodeSystem-hsa-object-class.json",
+    "size" : 2448,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 3
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 4
+    },
+    {
+      "activity" : "validate",
+      "start" : 29,
+      "length" : 14
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 8
+    },
+    {
+      "activity" : "generate2",
+      "start" : 54,
+      "length" : 61
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/CodeSystem-hsa-telecom-type.json",
+    "size" : 1542,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 6
+    },
+    {
+      "activity" : "validate",
+      "start" : 29,
+      "length" : 11
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 7
+    },
+    {
+      "activity" : "generate2",
+      "start" : 54,
+      "length" : 58
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/HealthcareService-hs-tjanst-blekingesjukhuset.json",
+    "size" : 4389,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 3
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 171
+    },
+    {
+      "activity" : "validate",
+      "start" : 35,
+      "length" : 14115
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 10
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 17
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/HealthcareService-hs-tjanst-ronneby-vardcentral.json",
+    "size" : 3912,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 4
+    },
+    {
+      "activity" : "validate",
+      "start" : 50,
+      "length" : 42
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 11
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 10
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/Location-location-blekingesjukhuset.json",
+    "size" : 1421,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 3
+    },
+    {
+      "activity" : "validate",
+      "start" : 50,
+      "length" : 75
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 7
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 13
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/Location-location-ronneby-vardcentral.json",
+    "size" : 946,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 2
+    },
+    {
+      "activity" : "validate",
+      "start" : 50,
+      "length" : 6
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 6
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 5
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/NamingSystem-hsa-identity.json",
+    "size" : 929,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 16
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 4
+    },
+    {
+      "activity" : "validate",
+      "start" : 28,
+      "length" : 115
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 6
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 6
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/NamingSystem-organisation-nummer.json",
+    "size" : 862,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 2
+    },
+    {
+      "activity" : "validate",
+      "start" : 29,
+      "length" : 9
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 5
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 6
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/Organization-arkiverad-enhet.json",
+    "size" : 851,
+    "processes" : [{
+      "activity" : "load",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "validate",
+      "start" : 50,
+      "length" : 70
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 5
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 6
+    },
+    {
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/Organization-blekingesjukhuset-vardenhet.json",
+    "size" : 4637,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 67
+    },
+    {
+      "activity" : "validate",
+      "start" : 50,
+      "length" : 240
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 14
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 12
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/Organization-hjartmottagningen-vardenhet.json",
+    "size" : 4528,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 2
+    },
+    {
+      "activity" : "validate",
+      "start" : 50,
+      "length" : 64
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 11
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 10
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/Organization-privat-vardgivare-ab.json",
+    "size" : 2769,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "checkConformanceResources2",
+      "start" : 35,
+      "length" : 1
+    },
+    {
+      "activity" : "validate",
+      "start" : 50,
+      "length" : 30
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 8
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 6
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/Organization-region-blekinge-vardgivare.json",
+    "size" : 2831,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "validate",
+      "start" : 50,
+      "length" : 27
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 10
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 5
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/Organization-ronneby-vardcentral-vardenhet.json",
+    "size" : 4685,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 2
+    },
+    {
+      "activity" : "validate",
+      "start" : 50,
+      "length" : 116
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 11
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 6
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/SearchParameter-hsa-id.json",
+    "size" : 627,
+    "processes" : [{
+      "activity" : "load",
+      "start" : 21,
+      "length" : 12
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 5
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 69
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 5
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 5
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/SearchParameter-hsa-org-class.json",
+    "size" : 718,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 2
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 4
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 5
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 3
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/SearchParameter-hsa-provided-by.json",
+    "size" : 682,
+    "processes" : [{
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 2
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 4
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 5
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 5
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-availability-comment.json",
+    "size" : 2249,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 4
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 21,
+      "length" : 9
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 27,
+      "length" : 540
+    },
+    {
+      "activity" : "validate",
+      "start" : 30,
+      "length" : 152
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 25
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 581
+    },
+    {
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 663
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-availability-period.json",
+    "size" : 1997,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 21,
+      "length" : 6
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 6
+    },
+    {
+      "activity" : "validate",
+      "start" : 30,
+      "length" : 44
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 20
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 97
+    },
+    {
+      "activity" : "generate2",
+      "start" : 60,
+      "length" : 66
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-availability-type.json",
+    "size" : 1860,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 4
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 21,
+      "length" : 7
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 5
+    },
+    {
+      "activity" : "validate",
+      "start" : 30,
+      "length" : 43
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 21
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 139
+    },
+    {
+      "activity" : "generate2",
+      "start" : 60,
+      "length" : 56
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-catalog-location.json",
+    "size" : 10343,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 4
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 6
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 21,
+      "length" : 48
+    },
+    {
+      "activity" : "load-configure",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 45
+    },
+    {
+      "activity" : "validate",
+      "start" : 30,
+      "length" : 335
+    },
+    {
+      "activity" : "validate",
+      "start" : 35,
+      "length" : 1
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 35,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 133
+    },
+    {
+      "activity" : "generate2",
+      "start" : 55,
+      "length" : 434
+    },
+    {
+      "activity" : "generate2",
+      "start" : 60,
+      "length" : 381
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 6
+    },
+    {
+      "activity" : "scanExamplesForR5",
+      "start" : 78,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-catalog-organization.json",
+    "size" : 23567,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 5
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 12
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 21,
+      "length" : 107
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 206
+    },
+    {
+      "activity" : "validate",
+      "start" : 31,
+      "length" : 623
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 35,
+      "length" : 2
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 266
+    },
+    {
+      "activity" : "generate2",
+      "start" : 56,
+      "length" : 755
+    },
+    {
+      "activity" : "generate2",
+      "start" : 60,
+      "length" : 555
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 12
+    },
+    {
+      "activity" : "scanExamplesForR5",
+      "start" : 78,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-financing-organization.json",
+    "size" : 2100,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 3
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 21,
+      "length" : 5
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 6
+    },
+    {
+      "activity" : "validate",
+      "start" : 31,
+      "length" : 99
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 21
+    },
+    {
+      "activity" : "generate2",
+      "start" : 57,
+      "length" : 220
+    },
+    {
+      "activity" : "generate2",
+      "start" : 61,
+      "length" : 32
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    },
+    {
+      "activity" : "scanExamplesForR5",
+      "start" : 78,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-healthcare-provider-organization.json",
+    "size" : 2529,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 3
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 21,
+      "length" : 64
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 33
+    },
+    {
+      "activity" : "validate",
+      "start" : 31,
+      "length" : 583
+    },
+    {
+      "activity" : "checkConformanceResources",
+      "start" : 35,
+      "length" : 1
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 35,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 51,
+      "length" : 254
+    },
+    {
+      "activity" : "generate2",
+      "start" : 57,
+      "length" : 474
+    },
+    {
+      "activity" : "generate2",
+      "start" : 61,
+      "length" : 454
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 8
+    },
+    {
+      "activity" : "scanExamplesForR5",
+      "start" : 78,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-healthcare-service.json",
+    "size" : 15295,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 4
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 7
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 21,
+      "length" : 124
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 25
+    },
+    {
+      "activity" : "validate",
+      "start" : 32,
+      "length" : 404
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 35,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 195
+    },
+    {
+      "activity" : "generate2",
+      "start" : 57,
+      "length" : 299
+    },
+    {
+      "activity" : "generate2",
+      "start" : 61,
+      "length" : 220
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 9
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-healthcare-unit-organization.json",
+    "size" : 2533,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 3
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 22,
+      "length" : 55
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 21
+    },
+    {
+      "activity" : "validate",
+      "start" : 32,
+      "length" : 536
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 35,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 160
+    },
+    {
+      "activity" : "generate2",
+      "start" : 58,
+      "length" : 422
+    },
+    {
+      "activity" : "generate2",
+      "start" : 61,
+      "length" : 362
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 7
+    },
+    {
+      "activity" : "scanProfilesForR5",
+      "start" : 78,
+      "length" : 1
+    },
+    {
+      "activity" : "scanExamplesForR5",
+      "start" : 78,
+      "length" : 2
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-patient-info.json",
+    "size" : 1755,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 22,
+      "length" : 6
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 5
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 21
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 14
+    },
+    {
+      "activity" : "generate2",
+      "start" : 58,
+      "length" : 40
+    },
+    {
+      "activity" : "generate2",
+      "start" : 62,
+      "length" : 27
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-telecom-type.json",
+    "size" : 1897,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 3
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 22,
+      "length" : 4
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 4
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 18
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 13
+    },
+    {
+      "activity" : "generate2",
+      "start" : 58,
+      "length" : 42
+    },
+    {
+      "activity" : "generate2",
+      "start" : 62,
+      "length" : 25
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/StructureDefinition-hsa-temporary-notice.json",
+    "size" : 4557,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 4
+    },
+    {
+      "activity" : "generateSnapshots",
+      "start" : 22,
+      "length" : 9
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 6
+    },
+    {
+      "activity" : "validate",
+      "start" : 33,
+      "length" : 68
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 28
+    },
+    {
+      "activity" : "generate2",
+      "start" : 58,
+      "length" : 79
+    },
+    {
+      "activity" : "generate2",
+      "start" : 62,
+      "length" : 42
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/ValueSet-hsa-availability-type-vs.json",
+    "size" : 648,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 4
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 43
+    },
+    {
+      "activity" : "validate",
+      "start" : 29,
+      "length" : 75
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 4
+    },
+    {
+      "activity" : "generate2",
+      "start" : 58,
+      "length" : 69
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/ValueSet-hsa-business-type.json",
+    "size" : 713,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 2
+    },
+    {
+      "activity" : "validate",
+      "start" : 29,
+      "length" : 916
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 3
+    },
+    {
+      "activity" : "generate2",
+      "start" : 58,
+      "length" : 105
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/ValueSet-hsa-care-type.json",
+    "size" : 757,
+    "processes" : [{
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 2
+    },
+    {
+      "activity" : "validate",
+      "start" : 30,
+      "length" : 72
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 2
+    },
+    {
+      "activity" : "generate2",
+      "start" : 58,
+      "length" : 98
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/ValueSet-hsa-destination-indicator.json",
+    "size" : 752,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 1
+    },
+    {
+      "activity" : "validate",
+      "start" : 30,
+      "length" : 78
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 3
+    },
+    {
+      "activity" : "generate2",
+      "start" : 58,
+      "length" : 99
+    },
+    {
+      "activity" : "generateValidationPack",
+      "start" : 67,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/ValueSet-hsa-organization-type.json",
+    "size" : 1477,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 3
+    },
+    {
+      "activity" : "checkR4R4B",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 2
+    },
+    {
+      "activity" : "validate",
+      "start" : 30,
+      "length" : 14
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 5
+    },
+    {
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 104
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/ValueSet-hsa-ownership-type.json",
+    "size" : 664,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 2
+    },
+    {
+      "activity" : "validate",
+      "start" : 30,
+      "length" : 74
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 2
+    },
+    {
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 93
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/ValueSet-hsa-service-type.json",
+    "size" : 837,
+    "processes" : [{
+      "activity" : "loadResources",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load",
+      "start" : 21,
+      "length" : 2
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 1
+    },
+    {
+      "activity" : "validate",
+      "start" : 30,
+      "length" : 68
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 4
+    },
+    {
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 90
+    }]
+  },
+  {
+    "name" : "fsh-generated/resources/ValueSet-hsa-telecom-type-vs.json",
+    "size" : 606,
+    "processes" : [{
+      "activity" : "load",
+      "start" : 21,
+      "length" : 1
+    },
+    {
+      "activity" : "load-configure",
+      "start" : 27,
+      "length" : 1
+    },
+    {
+      "activity" : "generateNarratives",
+      "start" : 28,
+      "length" : 1
+    },
+    {
+      "activity" : "validate",
+      "start" : 30,
+      "length" : 7
+    },
+    {
+      "activity" : "scanForUsageStats",
+      "start" : 35,
+      "length" : 1
+    },
+    {
+      "activity" : "generate1",
+      "start" : 52,
+      "length" : 3
+    },
+    {
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 24
+    }]
+  },
+  {
+    "name" : "/fsh-generated/includes/menu.xml",
+    "size" : 1795,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/fsh-generated/includes/fsh-link-references.md",
+    "size" : 3013
+  },
+  {
+    "name" : "/input/pagecontent/api.md",
+    "size" : 5592,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 2
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/ldap-mapping.md",
+    "size" : 17453,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 3
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/terminology.md",
+    "size" : 3259,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/ehm-alignment.md",
+    "size" : 1600
+  },
+  {
+    "name" : "/input/pagecontent/address-transition.md",
+    "size" : 3044,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/use-cases.md",
+    "size" : 3856,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/design-principles.md",
+    "size" : 3439
+  },
+  {
+    "name" : "/input/pagecontent/organization-hierarchy.md",
+    "size" : 4255
+  },
+  {
+    "name" : "/input/pagecontent/profiles.md",
+    "size" : 4685,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/downloads.md",
+    "size" : 10133,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 2
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/index.md",
+    "size" : 3889,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/input/pagecontent/client-rendering.md",
+    "size" : 9408,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/template/config",
+    "size" : 0,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 1
+    }]
+  },
+  {
+    "name" : "/template/config/_config.yml",
+    "size" : 140
+  },
+  {
+    "name" : "/temp/pages/_includes/artifacts.xml",
+    "size" : 33734,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 59,
+      "length" : 1
+    }]
+  }]
+}

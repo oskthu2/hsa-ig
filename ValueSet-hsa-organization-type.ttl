@@ -1,0 +1,67 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/ValueSet/hsa-organization-type> a fhir:ValueSet ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "hsa-organization-type"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet hsa-organization-type</b></p><a name=\"hsa-organization-type\"> </a><a name=\"hchsa-organization-type\"> </a><p>Denna värdemängd inkluderar koder baserat på följande regler:</p><ul><li>Inkludera koder från<a href=\"CodeSystem-hsa-object-class.html\"><code>https://hsa.inera.se/fhir/CodeSystem/hsa-object-class</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version &#x1F4E6;0.1.0</span> där concept  är-en <a href=\"CodeSystem-hsa-object-class.html#hsa-object-class-healthcare-provider\">healthcare-provider</a></li><li>Inkludera koder från<a href=\"CodeSystem-hsa-object-class.html\"><code>https://hsa.inera.se/fhir/CodeSystem/hsa-object-class</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version &#x1F4E6;0.1.0</span> där concept  är-en <a href=\"CodeSystem-hsa-object-class.html#hsa-object-class-healthcare-unit\">healthcare-unit</a></li><li>Inkludera koder från<a href=\"CodeSystem-hsa-object-class.html\"><code>https://hsa.inera.se/fhir/CodeSystem/hsa-object-class</code></a><span title=\"Versionen är inte uttryckligen angiven, vilket innebär att den är fast till den version som tillhandahålls i denna specifikation\"> version &#x1F4E6;0.1.0</span> där concept  är-en <a href=\"CodeSystem-hsa-object-class.html#hsa-object-class-organizational-unit\">organizational-unit</a></li><li>Inkludera alla koder som definieras i <code>urn:oid:1.2.752.129.2.2.1.12</code><span title=\"Versionen är inte uttryckligen angiven. Ingen matchande Kodsystem hittades\"> version Ej angiven (använd senaste från terminologiserver)</span></li></ul></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [ fhir:v "https://hsa.inera.se/fhir/ValueSet/hsa-organization-type"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "HsaOrganizationTypeVS"] ; # 
+  fhir:title [ fhir:v "HSA Organisationstyp"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-05-20"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Inera AB / HSA-IG projekt"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Inera AB / HSA-IG projekt" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.inera.se/" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Tillåtna klassificeringar för Organization.type i HSA-profiler.\nKombinerar HSA-objektklasser (vårdgivare/vårdenhet) med enhetstyp-kodverk\n(sjukhus, vårdcentral, apotek)."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "SE" ] ;
+       fhir:display [ fhir:v "Sweden" ]
+     ] )
+  ] ) ; # 
+  fhir:compose [
+     fhir:include ( [
+       fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class"^^xsd:anyURI ] ;
+       fhir:filter ( [
+         fhir:property [ fhir:v "concept" ] ;
+         fhir:op [ fhir:v "is-a" ] ;
+         fhir:value [ fhir:v "healthcare-provider" ]
+       ] )
+     ] [
+       fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class"^^xsd:anyURI ] ;
+       fhir:filter ( [
+         fhir:property [ fhir:v "concept" ] ;
+         fhir:op [ fhir:v "is-a" ] ;
+         fhir:value [ fhir:v "healthcare-unit" ]
+       ] )
+     ] [
+       fhir:system [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class"^^xsd:anyURI ] ;
+       fhir:filter ( [
+         fhir:property [ fhir:v "concept" ] ;
+         fhir:op [ fhir:v "is-a" ] ;
+         fhir:value [ fhir:v "organizational-unit" ]
+       ] )
+     ] [
+       fhir:system [ fhir:v "urn:oid:1.2.752.129.2.2.1.12"^^xsd:anyURI ]
+     ] )
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

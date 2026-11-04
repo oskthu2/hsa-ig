@@ -1,0 +1,61 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type> a fhir:CodeSystem ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "hsa-availability-type"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem hsa-availability-type</b></p><a name=\"hsa-availability-type\"> </a><a name=\"hchsa-availability-type\"> </a><p>Detta case-sensitive kodsystem <code>https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">surgery-hours<a name=\"hsa-availability-type-surgery-hours\"> </a></td><td>Öppettider</td><td>Tider då enheten tar emot besök (surgeryHours).</td></tr><tr><td style=\"white-space:nowrap\">telephone-hours<a name=\"hsa-availability-type-telephone-hours\"> </a></td><td>Telefontider</td><td>Tider då enheten svarar i telefon (telephoneHours).</td></tr><tr><td style=\"white-space:nowrap\">drop-in-hours<a name=\"hsa-availability-type-drop-in-hours\"> </a></td><td>Drop-in</td><td>Tider för besök utan tidsbokning (dropInHours).</td></tr><tr><td style=\"white-space:nowrap\">visiting-hours<a name=\"hsa-availability-type-visiting-hours\"> </a></td><td>Besökstider för anhöriga</td><td>Tider då anhöriga får besöka patienter (visitingHours).</td></tr></table></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "HsaAvailabilityType"] ; # 
+  fhir:title [ fhir:v "HSA Tidtyp"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-11-04"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Inera AB / HSA-IG projekt"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Inera AB / HSA-IG projekt" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.inera.se/" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Anger vilket HSA-tidsattribut en tillgänglighetspost (Availability) kommer\nfrån, så att klienter kan skilja öppettider, telefontider, drop-in och\nbesökstider åt (ADR-016)."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "SE" ] ;
+       fhir:display [ fhir:v "Sweden" ]
+     ] )
+  ] ) ; # 
+  fhir:caseSensitive [ fhir:v true] ; # 
+  fhir:content [ fhir:v "complete"] ; # 
+  fhir:count [ fhir:v "4"^^xsd:nonNegativeInteger] ; # 
+  fhir:concept ( [
+     fhir:code [ fhir:v "surgery-hours" ] ;
+     fhir:display [ fhir:v "Öppettider" ] ;
+     fhir:definition [ fhir:v "Tider då enheten tar emot besök (surgeryHours)." ]
+  ] [
+     fhir:code [ fhir:v "telephone-hours" ] ;
+     fhir:display [ fhir:v "Telefontider" ] ;
+     fhir:definition [ fhir:v "Tider då enheten svarar i telefon (telephoneHours)." ]
+  ] [
+     fhir:code [ fhir:v "drop-in-hours" ] ;
+     fhir:display [ fhir:v "Drop-in" ] ;
+     fhir:definition [ fhir:v "Tider för besök utan tidsbokning (dropInHours)." ]
+  ] [
+     fhir:code [ fhir:v "visiting-hours" ] ;
+     fhir:display [ fhir:v "Besökstider för anhöriga" ] ;
+     fhir:definition [ fhir:v "Tider då anhöriga får besöka patienter (visitingHours)." ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

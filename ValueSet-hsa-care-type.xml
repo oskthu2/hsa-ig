@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="hsa-care-type"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: ValueSet hsa-care-type</b></p><a name="hsa-care-type"> </a><a name="hchsa-care-type"> </a><ul><li>Include alla koder som definieras i <code>urn:oid:1.2.752.129.2.2.1.13</code><span title="Versionen är inte uttryckligen angiven. Ingen matchande Kodsystem hittades"> version Ej angiven (använd senaste från terminologiserver)</span></li></ul></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/ValueSet/hsa-care-type"/>
+  <version value="0.1.0"/>
+  <name value="HsaCareTypeVS"/>
+  <title value="HSA Vård- och omsorgsform (careType)"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-05-20"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="Tillåtna koder för vård- och omsorgsform (careType).&#xA;Obligatorisk för vårdenheter.&#xA;System: OID 1.2.752.129.2.2.1.13.&#xA;Kända värden: 01=Öppen vård, 02=Sluten vård, 03=Hemsjukvård, 04=Socialtjänst."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <compose>
+    <include>
+      <system value="urn:oid:1.2.752.129.2.2.1.13"/>
+    </include>
+  </compose>
+</ValueSet>

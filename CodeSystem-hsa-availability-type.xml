@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CodeSystem xmlns="http://hl7.org/fhir">
+  <id value="hsa-availability-type"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: CodeSystem hsa-availability-type</b></p><a name="hsa-availability-type"> </a><a name="hchsa-availability-type"> </a><p>Detta case-sensitive kodsystem <code>https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type</code> definierar följande koder:</p><table class="codes"><tr><td style="white-space:nowrap"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style="white-space:nowrap">surgery-hours<a name="hsa-availability-type-surgery-hours"> </a></td><td>Öppettider</td><td>Tider då enheten tar emot besök (surgeryHours).</td></tr><tr><td style="white-space:nowrap">telephone-hours<a name="hsa-availability-type-telephone-hours"> </a></td><td>Telefontider</td><td>Tider då enheten svarar i telefon (telephoneHours).</td></tr><tr><td style="white-space:nowrap">drop-in-hours<a name="hsa-availability-type-drop-in-hours"> </a></td><td>Drop-in</td><td>Tider för besök utan tidsbokning (dropInHours).</td></tr><tr><td style="white-space:nowrap">visiting-hours<a name="hsa-availability-type-visiting-hours"> </a></td><td>Besökstider för anhöriga</td><td>Tider då anhöriga får besöka patienter (visitingHours).</td></tr></table></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type"/>
+  <version value="0.1.0"/>
+  <name value="HsaAvailabilityType"/>
+  <title value="HSA Tidtyp"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-11-04"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="Anger vilket HSA-tidsattribut en tillgänglighetspost (Availability) kommer&#xA;från, så att klienter kan skilja öppettider, telefontider, drop-in och&#xA;besökstider åt (ADR-016)."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <caseSensitive value="true"/>
+  <content value="complete"/>
+  <count value="4"/>
+  <concept>
+    <code value="surgery-hours"/>
+    <display value="Öppettider"/>
+    <definition value="Tider då enheten tar emot besök (surgeryHours)."/>
+  </concept>
+  <concept>
+    <code value="telephone-hours"/>
+    <display value="Telefontider"/>
+    <definition value="Tider då enheten svarar i telefon (telephoneHours)."/>
+  </concept>
+  <concept>
+    <code value="drop-in-hours"/>
+    <display value="Drop-in"/>
+    <definition value="Tider för besök utan tidsbokning (dropInHours)."/>
+  </concept>
+  <concept>
+    <code value="visiting-hours"/>
+    <display value="Besökstider för anhöriga"/>
+    <definition value="Tider då anhöriga får besöka patienter (visitingHours)."/>
+  </concept>
+</CodeSystem>

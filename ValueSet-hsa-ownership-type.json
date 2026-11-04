@@ -1,0 +1,36 @@
+{
+  "resourceType" : "ValueSet",
+  "id" : "hsa-ownership-type",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: ValueSet hsa-ownership-type</b></p><a name=\"hsa-ownership-type\"> </a><a name=\"hchsa-ownership-type\"> </a><ul><li>Include alla koder som definieras i <code>urn:oid:1.2.752.129.2.2.1.14</code><span title=\"Versionen är inte uttryckligen angiven. Ingen matchande Kodsystem hittades\"> version Ej angiven (använd senaste från terminologiserver)</span></li></ul></div>"
+  },
+  "url" : "https://hsa.inera.se/fhir/ValueSet/hsa-ownership-type",
+  "version" : "0.1.0",
+  "name" : "HsaOwnershipTypeVS",
+  "title" : "HSA Ägarform",
+  "status" : "active",
+  "experimental" : false,
+  "date" : "2026-05-20",
+  "publisher" : "Inera AB / HSA-IG projekt",
+  "contact" : [{
+    "name" : "Inera AB / HSA-IG projekt",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.inera.se/"
+    }]
+  }],
+  "description" : "Tillåtna koder för ägarform (management/regi) på Organization.\nSystem: HSA ägarform-kodverk (OID 1.2.752.129.2.2.1.14).",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "SE",
+      "display" : "Sweden"
+    }]
+  }],
+  "compose" : {
+    "include" : [{
+      "system" : "urn:oid:1.2.752.129.2.2.1.14"
+    }]
+  }
+}

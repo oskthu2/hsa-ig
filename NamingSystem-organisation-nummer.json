@@ -1,0 +1,40 @@
+{
+  "resourceType" : "NamingSystem",
+  "id" : "organisation-nummer",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: NamingSystem organisation-nummer</b></p><a name=\"organisation-nummer\"> </a><a name=\"hcorganisation-nummer\"> </a><h3>Sammanfattning</h3><table class=\"grid\"><tr><td>Definierande URL</td><td>https://hsa.inera.se/fhir/NamingSystem/organisation-nummer</td></tr><tr><td>Version</td><td>0.1.0</td></tr><tr><td>Namn</td><td>OrganisationsnummerSE</td></tr><tr><td>Titel</td><td>Organisationsnummer (Sverige)</td></tr><tr><td>Status</td><td>active</td></tr><tr><td>Definition</td><td><div><p>Unikt nummer för juridiska personer i Sverige, tilldelat av Skatteverket\neller Bolagsverket. Obligatoriskt för organisationer som representerar\nvårdgivare (hsaHealthCareProvider).</p>\n</div></td></tr><tr><td>Utgivare</td><td>Inera AB / HSA-IG projekt</td></tr></table><h3>Identifierare</h3><table class=\"grid\"><tr><td><b>Typ</b></td><td><b>Värde</b></td><td><b>Föredragen</b></td></tr><tr><td>OID</td><td>2.5.4.97</td><td>true</td></tr><tr><td>URI</td><td>urn:oid:2.5.4.97</td><td/></tr></table></div>"
+  },
+  "url" : "https://hsa.inera.se/fhir/NamingSystem/organisation-nummer",
+  "version" : "0.1.0",
+  "name" : "OrganisationsnummerSE",
+  "title" : "Organisationsnummer (Sverige)",
+  "status" : "active",
+  "kind" : "identifier",
+  "date" : "2026-05-20",
+  "publisher" : "Inera AB / HSA-IG projekt",
+  "contact" : [{
+    "name" : "Inera AB / HSA-IG projekt",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.inera.se/"
+    }]
+  }],
+  "description" : "Unikt nummer för juridiska personer i Sverige, tilldelat av Skatteverket\neller Bolagsverket. Obligatoriskt för organisationer som representerar\nvårdgivare (hsaHealthCareProvider).",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "SE",
+      "display" : "Sweden"
+    }]
+  }],
+  "uniqueId" : [{
+    "type" : "oid",
+    "value" : "2.5.4.97",
+    "preferred" : true
+  },
+  {
+    "type" : "uri",
+    "value" : "urn:oid:2.5.4.97"
+  }]
+}

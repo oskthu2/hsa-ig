@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CapabilityStatement xmlns="http://hl7.org/fhir">
+  <id value="hsa-catalog-server"/>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: CapabilityStatement hsa-catalog-server</b></p><a name="hsa-catalog-server"> </a><a name="hchsa-catalog-server"> </a><h2 id="title">HSA Central Catalog Server</h2><ul><li>Implementationsguidens version: 0.1.0 </li><li>FHIR-version: 5.0.0 </li><li>Format som stöds: <code>json</code>, <code>xml</code></li><li>Publicerad: 2026-05-21 </li><li>Publicerad av: Inera AB / HSA-IG projekt </li></ul><blockquote class="impl-note"><p><strong>Notera till implementörer: FHIR-förmågor</strong></p><p>Vilken FHIR-förmåga som helst kan vara 'tillåten' av systemet om den inte uttryckligen är markerad som 'SHALL NOT'. Några objekt är markerade som MAY i implementationsguiden för att belysa deras potentiella relevans för användningsfallet.</p></blockquote><h2 id="rest">FHIR RESTful-förmågor</h2><div class="panel panel-default"><div class="panel-heading"><h3 id="mode1" class="panel-title">Mode: <code>server</code></h3></div><div class="panel-body"><div><p>Läs- och sök-API för HSA-katalogen.
+Publik synlighet filtreras via _security-parametern (destination indicator 03).
+Skrivoperationer stöds inte på detta gränssnitt.</p>
+</div></div></div><h3 id="resourcesCap1">Förmågor per resurs/profil</h3><h4 id="resourcesSummary1">Sammanfattning</h4><p>Sammanfattningstabellen listar resurserna som ingår i denna konfiguration, och för varje resurs listar den:</p><ul><li>De relevanta profilerna (om några)</li><li>Interaktionerna som stöds av varje resurs (<b><span class="bg-info">R</span></b>ead, <b><span class="bg-info">S</span></b>earch, <b><span class="bg-info">U</span></b>pdate, and <b><span class="bg-info">C</span></b>reate, are always shown, while <b><span class="bg-info">VR</span></b>ead, <b><span class="bg-info">P</span></b>atch, <b><span class="bg-info">D</span></b>elete, <b><span class="bg-info">H</span></b>istory on <b><span class="bg-info">I</span></b>nstance, or <b><span class="bg-info">H</span></b>istory on <b><span class="bg-info">T</span></b>yp är endast närvarande om minst en av resurserna har stöd för dem.</li><li><span>De obligatoriska, rekommenderade och vissa valfria sökparametrarna (om några). </span></li><li>De länkade resurserna aktiverade för <code>_include</code></li><li>De övriga resurserna aktiverade för <code>_revinclude</code></li><li>Operationerna på resursen (om några)</li></ul><div class="table-responsive"><table class="table table-condensed table-hover"><thead><tr><th><b>Resurstyp</b></th><th><b>Profil</b></th><th class="text-center"><b title="GET en resurs (läs-interaktion)">R</b></th><th class="text-center"><b title="GET alla resurser av typen (sök-interaktion)">S</b></th><th class="text-center"><b title="PUT en ny resursversion (uppdatera-interaktion)">U</b></th><th class="text-center"><b title="POST en ny resurs (skapa-interaktion)">C</b></th><th><b title="Obligatoriska och rekommenderade sökparametrar">Sökningar</b></th><th><code><b>_include</b></code></th><th><code><b>_revinclude</b></code></th><th><b>Operationer</b></th></tr></thead><tbody><tr><td><a href="#Organization1-1">Organization</a></td><td><a href="StructureDefinition-hsa-catalog-organization.html">https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization</a><br/><em>Ytterligare stödda profiler:</em><br/>  <a href="StructureDefinition-hsa-healthcare-provider-organization.html">HSA Healthcare Provider Organization</a><br/>  <a href="StructureDefinition-hsa-healthcare-unit-organization.html">HSA Healthcare Unit Organization</a></td><td class="text-center">y</td><td class="text-center">y</td><td class="text-center"/><td class="text-center"/><td>_id, _security, _lastUpdated, identifier, active, name, type, partof, hsa-id, hsa-org-class</td><td><code>Organization:partof</code></td><td><code>Organization:partof</code>, <code>Location:organization</code>, <code>HealthcareService:organization</code></td><td/></tr><tr><td><a href="#Location1-2">Location</a></td><td><a href="StructureDefinition-hsa-catalog-location.html">https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location</a></td><td class="text-center">y</td><td class="text-center">y</td><td class="text-center"/><td class="text-center"/><td>_id, _security, _lastUpdated, identifier, status, organization, near, hsa-id</td><td><code>Location:organization</code></td><td/><td/></tr><tr><td><a href="#HealthcareService1-3">HealthcareService</a></td><td><a href="StructureDefinition-hsa-healthcare-service.html">https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service</a></td><td class="text-center">y</td><td class="text-center">y</td><td class="text-center"/><td class="text-center"/><td>_id, _security, _lastUpdated, active, organization, location, service-category, service-type, hsa-provided-by</td><td><code>HealthcareService:organization</code>, <code>HealthcareService:location</code></td><td/><td/></tr></tbody></table></div><hr/><div class="panel panel-default"><div class="panel-heading"><h4 id="Organization1-1" class="panel-title"><span style="float: right;">Resurskonformans: unspecified </span>Organization</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-6"><span class="lead">Bassystemprofil</span><br/><a href="StructureDefinition-hsa-catalog-organization.html">HSA Catalog Organization</a></div><div class="col-lg-3"><span class="lead">Profilkonformans</span><br/><b>SHALL</b></div><div class="col-lg-3"><span class="lead">Referenspolicy</span><br/><code>resolves</code></div></div><p/><div class="row"><div class="col-6"><span class="lead">Profiler som stöds</span><p><a href="StructureDefinition-hsa-healthcare-provider-organization.html">HSA Healthcare Provider Organization</a><br/><a href="StructureDefinition-hsa-healthcare-unit-organization.html">HSA Healthcare Unit Organization</a></p></div><div class="col-lg-6"><span class="lead">Interaktionssammanfattning</span><br/><ul><li>Stöder <code>read</code>, <code>search-type</code>.</li></ul></div></div><p/><div class="row"><div class="col-12"><span class="lead">Dokumentation</span><blockquote><div><p>Organisationer i HSA-katalogen: vårdgivare, vårdenheter och organisatoriska enheter.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Sökparametrar</span><table class="table table-condensed table-hover"><thead><tr><th>Konformans</th><th>Parameter</th><th>Typ</th><th>Dokumentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td>_id</td><td><code>token</code></td><td><div><p>Sökning på resurens FHIR-id.</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>_security</td><td><code>token</code></td><td><div><p>Filtrering på meta.security. Använd <code>urn:oid:1.2.752.29.23.1.11|03</code> för publika resurser.</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>_lastUpdated</td><td><code>date</code></td><td><div><p>Filtrering på senaste ändringsdatum (för inkrementell synk).</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>identifier</td><td><code>token</code></td><td><div><p>Sökning på valfri identifierare. Prefix: <code>urn:oid:1.2.752.29.4.19|SE...</code> för HSA-id.</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>active</td><td><code>token</code></td><td><div><p>Filtrera på aktiv/inaktiv status.</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>name</td><td><code>string</code></td><td><div><p>Sökning på organisationsnamn (prefix-match).</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>type</td><td><code>token</code></td><td><div><p>Sökning på organisationstyp.</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>partof</td><td><code>reference</code></td><td><div><p>Sökning på överordnad organisation. Stödjer <code>_include:iterate</code> för hierarkisökning.</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td><a href="SearchParameter-hsa-id.html">hsa-id</a></td><td><code>token</code></td><td><div><p>Kortform för sökning på HSA-id (system urn:oid:1.2.752.29.4.19).</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td><a href="SearchParameter-hsa-org-class.html">hsa-org-class</a></td><td><code>token</code></td><td><div><p>Sökning på HSA-objektklass (healthcare-provider, healthcare-unit, organizational-unit).</p>
+</div></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="Location1-2" class="panel-title"><span style="float: right;">Resurskonformans: unspecified </span>Location</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-6"><span class="lead">Bassystemprofil</span><br/><a href="StructureDefinition-hsa-catalog-location.html">HSA Catalog Location</a></div><div class="col-lg-3"><span class="lead">Profilkonformans</span><br/><b>SHALL</b></div><div class="col-lg-3"><span class="lead">Referenspolicy</span><br/></div></div><p/><div class="row"><div class="col-lg-6"><span class="lead">Interaktionssammanfattning</span><br/><ul><li>Stöder <code>read</code>, <code>search-type</code>.</li></ul></div></div><p/><div class="row"><div class="col-12"><span class="lead">Dokumentation</span><blockquote><div><p>Fysiska besöksplatser och mottagningslokaler i HSA-katalogen.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Sökparametrar</span><table class="table table-condensed table-hover"><thead><tr><th>Konformans</th><th>Parameter</th><th>Typ</th><th>Dokumentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td>_id</td><td><code>token</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>_security</td><td><code>token</code></td><td><div><p>Filtrering på destinationIndicator (meta.security).</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>_lastUpdated</td><td><code>date</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>identifier</td><td><code>token</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>status</td><td><code>token</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>organization</td><td><code>reference</code></td><td><div><p>Filtrering på ansvarig organisation (managingOrganization).</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>near</td><td><code>special</code></td><td><div><p>Geo-sökning (position.latitude/longitude). Förutsätter koordinatstöd på servern.</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td><a href="SearchParameter-hsa-id.html">hsa-id</a></td><td><code>token</code></td><td><div/></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h4 id="HealthcareService1-3" class="panel-title"><span style="float: right;">Resurskonformans: unspecified </span>HealthcareService</h4></div><div class="panel-body"><div class="container"><div class="row"><div class="col-lg-6"><span class="lead">Bassystemprofil</span><br/><a href="StructureDefinition-hsa-healthcare-service.html">HSA Healthcare Service</a></div><div class="col-lg-3"><span class="lead">Profilkonformans</span><br/><b>SHALL</b></div><div class="col-lg-3"><span class="lead">Referenspolicy</span><br/></div></div><p/><div class="row"><div class="col-lg-6"><span class="lead">Interaktionssammanfattning</span><br/><ul><li>Stöder <code>read</code>, <code>search-type</code>.</li></ul></div></div><p/><div class="row"><div class="col-12"><span class="lead">Dokumentation</span><blockquote><div><p>Vårdtjänster och tjänsteutbud kopplade till HSA-enheter.</p>
+</div></blockquote></div></div><div class="row"><div class="col-lg-7"><span class="lead">Sökparametrar</span><table class="table table-condensed table-hover"><thead><tr><th>Konformans</th><th>Parameter</th><th>Typ</th><th>Dokumentation</th></tr></thead><tbody><tr><td><b>SHALL</b></td><td>_id</td><td><code>token</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>_security</td><td><code>token</code></td><td><div><p>Filtrering på destinationIndicator (meta.security).</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>_lastUpdated</td><td><code>date</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>active</td><td><code>token</code></td><td><div/></td></tr><tr><td><b>SHALL</b></td><td>organization</td><td><code>reference</code></td><td><div><p>Filtrering på tillhandahållande organisation (providedBy).</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>location</td><td><code>reference</code></td><td><div><p>Filtrering på kopplad plats.</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>service-category</td><td><code>token</code></td><td><div><p>Sökning på verksamhetskod (system urn:oid:1.2.752.129.2.2.1.3).</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td>service-type</td><td><code>token</code></td><td><div><p>Sökning på vård-/omsorgsform (system urn:oid:1.2.752.129.2.2.1.13).</p>
+</div></td></tr><tr><td><b>SHALL</b></td><td><a href="SearchParameter-hsa-provided-by.html">hsa-provided-by</a></td><td><code>reference</code></td><td><div/></td></tr></tbody></table></div><div class="col-lg-5"> </div></div></div></div></div></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/CapabilityStatement/hsa-catalog-server"/>
+  <version value="0.1.0"/>
+  <name value="HsaCatalogServer"/>
+  <title value="HSA Central Catalog Server"/>
+  <status value="draft"/>
+  <experimental value="false"/>
+  <date value="2026-05-21"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="Exempel på serverförmågor för ett centralt HSA-katalog FHIR R5 API med läsaccess."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <kind value="requirements"/>
+  <fhirVersion value="5.0.0"/>
+  <format value="json"/>
+  <format value="xml"/>
+  <rest>
+    <mode value="server"/>
+    <documentation value="Läs- och sök-API för HSA-katalogen.&#xA;Publik synlighet filtreras via _security-parametern (destination indicator 03).&#xA;Skrivoperationer stöds inte på detta gränssnitt."/>
+    <resource>
+      <type value="Organization"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-organization"/>
+      <supportedProfile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-provider-organization"/>
+      <supportedProfile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization"/>
+      <documentation value="Organisationer i HSA-katalogen: vårdgivare, vårdenheter och organisatoriska enheter."/>
+      <interaction>
+        <code value="read"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+      </interaction>
+      <versioning value="no-version"/>
+      <readHistory value="false"/>
+      <updateCreate value="false"/>
+      <conditionalCreate value="false"/>
+      <conditionalUpdate value="false"/>
+      <conditionalDelete value="not-supported"/>
+      <referencePolicy value="resolves"/>
+      <searchInclude value="Organization:partof"/>
+      <searchRevInclude value="Organization:partof"/>
+      <searchRevInclude value="Location:organization"/>
+      <searchRevInclude value="HealthcareService:organization"/>
+      <searchParam>
+        <name value="_id"/>
+        <type value="token"/>
+        <documentation value="Sökning på resurens FHIR-id."/>
+      </searchParam>
+      <searchParam>
+        <name value="_security"/>
+        <type value="token"/>
+        <documentation value="Filtrering på meta.security. Använd `urn:oid:1.2.752.29.23.1.11|03` för publika resurser."/>
+      </searchParam>
+      <searchParam>
+        <name value="_lastUpdated"/>
+        <type value="date"/>
+        <documentation value="Filtrering på senaste ändringsdatum (för inkrementell synk)."/>
+      </searchParam>
+      <searchParam>
+        <name value="identifier"/>
+        <type value="token"/>
+        <documentation value="Sökning på valfri identifierare. Prefix: `urn:oid:1.2.752.29.4.19|SE...` för HSA-id."/>
+      </searchParam>
+      <searchParam>
+        <name value="active"/>
+        <type value="token"/>
+        <documentation value="Filtrera på aktiv/inaktiv status."/>
+      </searchParam>
+      <searchParam>
+        <name value="name"/>
+        <type value="string"/>
+        <documentation value="Sökning på organisationsnamn (prefix-match)."/>
+      </searchParam>
+      <searchParam>
+        <name value="type"/>
+        <type value="token"/>
+        <documentation value="Sökning på organisationstyp."/>
+      </searchParam>
+      <searchParam>
+        <name value="partof"/>
+        <type value="reference"/>
+        <documentation value="Sökning på överordnad organisation. Stödjer `_include:iterate` för hierarkisökning."/>
+      </searchParam>
+      <searchParam>
+        <name value="hsa-id"/>
+        <definition value="https://hsa.inera.se/fhir/SearchParameter/hsa-id"/>
+        <type value="token"/>
+        <documentation value="Kortform för sökning på HSA-id (system urn:oid:1.2.752.29.4.19)."/>
+      </searchParam>
+      <searchParam>
+        <name value="hsa-org-class"/>
+        <definition value="https://hsa.inera.se/fhir/SearchParameter/hsa-org-class"/>
+        <type value="token"/>
+        <documentation value="Sökning på HSA-objektklass (healthcare-provider, healthcare-unit, organizational-unit)."/>
+      </searchParam>
+    </resource>
+    <resource>
+      <type value="Location"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"/>
+      <documentation value="Fysiska besöksplatser och mottagningslokaler i HSA-katalogen."/>
+      <interaction>
+        <code value="read"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+      </interaction>
+      <versioning value="no-version"/>
+      <readHistory value="false"/>
+      <updateCreate value="false"/>
+      <conditionalCreate value="false"/>
+      <conditionalUpdate value="false"/>
+      <conditionalDelete value="not-supported"/>
+      <searchInclude value="Location:organization"/>
+      <searchParam>
+        <name value="_id"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="_security"/>
+        <type value="token"/>
+        <documentation value="Filtrering på destinationIndicator (meta.security)."/>
+      </searchParam>
+      <searchParam>
+        <name value="_lastUpdated"/>
+        <type value="date"/>
+      </searchParam>
+      <searchParam>
+        <name value="identifier"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="status"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="organization"/>
+        <type value="reference"/>
+        <documentation value="Filtrering på ansvarig organisation (managingOrganization)."/>
+      </searchParam>
+      <searchParam>
+        <name value="near"/>
+        <type value="special"/>
+        <documentation value="Geo-sökning (position.latitude/longitude). Förutsätter koordinatstöd på servern."/>
+      </searchParam>
+      <searchParam>
+        <name value="hsa-id"/>
+        <definition value="https://hsa.inera.se/fhir/SearchParameter/hsa-id"/>
+        <type value="token"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <type value="HealthcareService"/>
+      <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-service"/>
+      <documentation value="Vårdtjänster och tjänsteutbud kopplade till HSA-enheter."/>
+      <interaction>
+        <code value="read"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+      </interaction>
+      <versioning value="no-version"/>
+      <readHistory value="false"/>
+      <updateCreate value="false"/>
+      <conditionalCreate value="false"/>
+      <conditionalUpdate value="false"/>
+      <conditionalDelete value="not-supported"/>
+      <searchInclude value="HealthcareService:organization"/>
+      <searchInclude value="HealthcareService:location"/>
+      <searchParam>
+        <name value="_id"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="_security"/>
+        <type value="token"/>
+        <documentation value="Filtrering på destinationIndicator (meta.security)."/>
+      </searchParam>
+      <searchParam>
+        <name value="_lastUpdated"/>
+        <type value="date"/>
+      </searchParam>
+      <searchParam>
+        <name value="active"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="organization"/>
+        <type value="reference"/>
+        <documentation value="Filtrering på tillhandahållande organisation (providedBy)."/>
+      </searchParam>
+      <searchParam>
+        <name value="location"/>
+        <type value="reference"/>
+        <documentation value="Filtrering på kopplad plats."/>
+      </searchParam>
+      <searchParam>
+        <name value="service-category"/>
+        <type value="token"/>
+        <documentation value="Sökning på verksamhetskod (system urn:oid:1.2.752.129.2.2.1.3)."/>
+      </searchParam>
+      <searchParam>
+        <name value="service-type"/>
+        <type value="token"/>
+        <documentation value="Sökning på vård-/omsorgsform (system urn:oid:1.2.752.129.2.2.1.13)."/>
+      </searchParam>
+      <searchParam>
+        <name value="hsa-provided-by"/>
+        <definition value="https://hsa.inera.se/fhir/SearchParameter/hsa-provided-by"/>
+        <type value="reference"/>
+      </searchParam>
+    </resource>
+  </rest>
+</CapabilityStatement>

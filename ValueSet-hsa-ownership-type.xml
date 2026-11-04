@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ValueSet xmlns="http://hl7.org/fhir">
+  <id value="hsa-ownership-type"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: ValueSet hsa-ownership-type</b></p><a name="hsa-ownership-type"> </a><a name="hchsa-ownership-type"> </a><ul><li>Include alla koder som definieras i <code>urn:oid:1.2.752.129.2.2.1.14</code><span title="Versionen är inte uttryckligen angiven. Ingen matchande Kodsystem hittades"> version Ej angiven (använd senaste från terminologiserver)</span></li></ul></div>
+  </text>
+  <url value="https://hsa.inera.se/fhir/ValueSet/hsa-ownership-type"/>
+  <version value="0.1.0"/>
+  <name value="HsaOwnershipTypeVS"/>
+  <title value="HSA Ägarform"/>
+  <status value="active"/>
+  <experimental value="false"/>
+  <date value="2026-05-20"/>
+  <publisher value="Inera AB / HSA-IG projekt"/>
+  <contact>
+    <name value="Inera AB / HSA-IG projekt"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.inera.se/"/>
+    </telecom>
+  </contact>
+  <description value="Tillåtna koder för ägarform (management/regi) på Organization.&#xA;System: HSA ägarform-kodverk (OID 1.2.752.129.2.2.1.14)."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="SE"/>
+      <display value="Sweden"/>
+    </coding>
+  </jurisdiction>
+  <compose>
+    <include>
+      <system value="urn:oid:1.2.752.129.2.2.1.14"/>
+    </include>
+  </compose>
+</ValueSet>

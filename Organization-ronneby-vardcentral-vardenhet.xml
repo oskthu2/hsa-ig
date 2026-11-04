@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Organization xmlns="http://hl7.org/fhir">
+  <id value="ronneby-vardcentral-vardenhet"/>
+  <meta>
+    <profile value="https://hsa.inera.se/fhir/StructureDefinition/hsa-healthcare-unit-organization"/>
+    <security>
+      <system value="urn:oid:1.2.752.29.23.1.11"/>
+      <code value="03"/>
+      <display value="Internet/allmänheten"/>
+    </security>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Genererad berättande text: Organization ronneby-vardcentral-vardenhet</b></p><a name="ronneby-vardcentral-vardenhet"> </a><a name="hcronneby-vardcentral-vardenhet"> </a><div style="display: inline-block; background-color: #fbffeb; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px"/><p style="margin-bottom: 0px">Profil: <a href="StructureDefinition-hsa-healthcare-unit-organization.html">HSA Healthcare Unit Organization</a></p><p style="margin-bottom: 0px">Säkerhetsetikett: </p></div><p style="border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;">Ronneby Vårdcentral (Vårdenhet, Primärvård, Vårdcentral, Privat) (urn:oid:1.2.752.29.4.19#HSA-identitet (HSA-id)#SE5566778899-RNBY1)</p><hr/><table class="grid"><tr><td style="background-color: #f3f5da" title="Posten är aktiv">Aktiv:</td><td colspan="3">true</td></tr><tr><td style="background-color: #f3f5da" title="The kind(s) of organization that this is">Type:</td><td colspan="3"><ul><li><span title="Koder:{https://hsa.inera.se/fhir/CodeSystem/hsa-object-class healthcare-unit}">Vårdenhet</span></li><li><span title="Koder:{urn:oid:1.2.752.129.5.1.46 01}">Primärvård</span></li><li><span title="Koder:{urn:oid:1.2.752.129.2.2.1.12 05}">Vårdcentral</span></li><li><span title="Koder:{urn:oid:1.2.752.129.2.2.1.14 05}">Privat</span></li></ul></td></tr><tr><td style="background-color: #f3f5da" title="The organization of which this organization forms a part">Part Of:</td><td colspan="3"><a href="Organization-privat-vardgivare-ab.html">Blekinge Primärvård AB (Vårdgivare, Privat) (urn:oid:1.2.752.29.4.19#HSA-identitet (HSA-id)#SE5566778899-BPAB1)</a></td></tr><tr><td style="background-color: #f3f5da" title="Annat id (se det ovan)">Annat id:</td><td colspan="3"><code>urn:oid:1.2.752.29.4.71</code>/1082040</td></tr><tr><td style="background-color: #f3f5da" title="Ways to contact the organization">Kontaktuppgift</td><td colspan="3"><ul><li><a href="tel:+46457556688">+46457556688</a></li><li><a href="tel:+46457556600">+46457556600</a></li><li><a href="tel:+46729876543">+46729876543</a></li><li><a href="mailto:ronneby@blekingeprimaervard.se">ronneby@blekingeprimaervard.se</a></li><li><a href="mailto:redaktion.ronneby@blekingeprimaervard.se">redaktion.ronneby@blekingeprimaervard.se</a></li><li><a href="https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE5566778899-RNBY1">https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE5566778899-RNBY1</a></li></ul></td></tr><tr><td style="background-color: #f3f5da" title="Ways to contact the organization">Kontaktuppgift</td><td colspan="3"><ul><li>Järnvägsgatan 14</li></ul></td></tr><tr><td style="background-color: #f3f5da" title="Den eller de regioner/kommuner som finansierar vården vid enheten.
+Mappar till LDAP-attributet financingOrganization (OID 1.2.752.129.5.1.1).
+Koden är den finansierande organisationens organisationsnummer, t.ex.
+232100-0081 (Informationsspecifikation HSA 11.3.13), inte ett HSA-id."><a href="StructureDefinition-hsa-financing-organization.html">HSA Finansierande region/kommun</a></td><td colspan="3">okänd: 232100-0081 (Region Blekinge)</td></tr><tr><td style="background-color: #f3f5da" title="Informationstext riktad till patient som visas på enhetens 1177-sida.
+Mappar till LDAP-attributet hsaVpwInformation4.
+Klienter bör rendera som Markdown."><a href="StructureDefinition-hsa-patient-info.html">HSA Information till patient</a></td><td colspan="3">Du kan lista dig hos oss via 1177.se. Vi tar emot både bokade besök och drop-in.</td></tr></table></div>
+  </text>
+  <extension url="https://hsa.inera.se/fhir/StructureDefinition/hsa-financing-organization">
+    <valueCoding>
+      <system value="urn:oid:1.2.752.129.5.1.1"/>
+      <code value="232100-0081"/>
+      <display value="Region Blekinge"/>
+    </valueCoding>
+  </extension>
+  <extension url="https://hsa.inera.se/fhir/StructureDefinition/hsa-patient-info">
+    <valueString value="Du kan lista dig hos oss via 1177.se. Vi tar emot både bokade besök och drop-in."/>
+  </extension>
+  <identifier>
+    <system value="urn:oid:1.2.752.29.4.19"/>
+    <value value="SE5566778899-RNBY1"/>
+  </identifier>
+  <identifier>
+    <system value="urn:oid:1.2.752.29.4.71"/>
+    <value value="1082040"/>
+  </identifier>
+  <active value="true"/>
+  <type>
+    <coding>
+      <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-object-class"/>
+      <code value="healthcare-unit"/>
+      <display value="Vårdenhet"/>
+    </coding>
+  </type>
+  <type>
+    <coding>
+      <system value="urn:oid:1.2.752.129.5.1.46"/>
+      <code value="01"/>
+      <display value="Primärvård"/>
+    </coding>
+  </type>
+  <type>
+    <coding>
+      <system value="urn:oid:1.2.752.129.2.2.1.12"/>
+      <code value="05"/>
+      <display value="Vårdcentral"/>
+    </coding>
+  </type>
+  <type>
+    <coding>
+      <system value="urn:oid:1.2.752.129.2.2.1.14"/>
+      <code value="05"/>
+      <display value="Privat"/>
+    </coding>
+  </type>
+  <name value="Ronneby Vårdcentral"/>
+  <contact>
+    <telecom>
+      <extension url="https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type">
+        <valueCoding>
+          <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+          <code value="direct-phone"/>
+          <display value="Direkttelefon"/>
+        </valueCoding>
+      </extension>
+      <system value="phone"/>
+      <value value="+46457556688"/>
+      <use value="work"/>
+    </telecom>
+    <telecom>
+      <extension url="https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type">
+        <valueCoding>
+          <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+          <code value="switchboard"/>
+          <display value="Växeltelefon"/>
+        </valueCoding>
+      </extension>
+      <system value="phone"/>
+      <value value="+46457556600"/>
+      <use value="work"/>
+    </telecom>
+    <telecom>
+      <extension url="https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type">
+        <valueCoding>
+          <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+          <code value="mobile"/>
+          <display value="Mobiltelefon"/>
+        </valueCoding>
+      </extension>
+      <system value="phone"/>
+      <value value="+46729876543"/>
+      <use value="mobile"/>
+    </telecom>
+    <telecom>
+      <system value="email"/>
+      <value value="ronneby@blekingeprimaervard.se"/>
+      <use value="work"/>
+    </telecom>
+    <telecom>
+      <extension url="https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type">
+        <valueCoding>
+          <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+          <code value="directory-contact"/>
+          <display value="Innehållsansvarig"/>
+        </valueCoding>
+      </extension>
+      <system value="email"/>
+      <value value="redaktion.ronneby@blekingeprimaervard.se"/>
+      <use value="work"/>
+    </telecom>
+    <telecom>
+      <extension url="https://hsa.inera.se/fhir/StructureDefinition/hsa-telecom-type">
+        <valueCoding>
+          <system value="https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type"/>
+          <code value="vpw-webpage"/>
+          <display value="1177-kontaktkortsadress"/>
+        </valueCoding>
+      </extension>
+      <system value="url"/>
+      <value value="https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE5566778899-RNBY1"/>
+      <use value="work"/>
+    </telecom>
+  </contact>
+  <contact>
+    <address>
+      <type value="postal"/>
+      <text value="Järnvägsgatan 14"/>
+      <city value="Ronneby"/>
+      <postalCode value="37235"/>
+    </address>
+  </contact>
+  <partOf>
+    <reference value="Organization/privat-vardgivare-ab"/>
+  </partOf>
+</Organization>

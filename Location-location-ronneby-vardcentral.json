@@ -1,0 +1,36 @@
+{
+  "resourceType" : "Location",
+  "id" : "location-ronneby-vardcentral",
+  "meta" : {
+    "profile" : ["https://hsa.inera.se/fhir/StructureDefinition/hsa-catalog-location"],
+    "security" : [{
+      "system" : "urn:oid:1.2.752.29.23.1.11",
+      "code" : "03",
+      "display" : "Internet/allmänheten"
+    }]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: Location location-ronneby-vardcentral</b></p><a name=\"location-ronneby-vardcentral\"> </a><a name=\"hclocation-ronneby-vardcentral\"> </a><div style=\"display: inline-block; background-color: #fbffeb; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\"/><p style=\"margin-bottom: 0px\">Profil: <a href=\"StructureDefinition-hsa-catalog-location.html\">HSA Catalog Location</a></p><p style=\"margin-bottom: 0px\">Säkerhetsetikett: </p></div><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Ronneby Vårdcentral (urn:oid:1.2.752.29.4.19#HSA-identitet (HSA-id)#SE5566778899-RNBY1)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"The status of the location\">Status:</td><td>Active</td><td style=\"background-color: #f3f5da\" title=\"Whether this describes a specific location, or a class of locations\">Mode:</td><td>Instance</td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Additional details about the location that could be displayed as further information to identify it\">Description:</td><td colspan=\"3\"><div><p>Centralt läge i Ronneby, 200 m från järnvägsstationen. Parkering bakom fastigheten, ingång från Järnvägsgatan 14.</p>\n</div></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Physical location\">Address:</td><td colspan=\"3\">Järnvägsgatan 14</td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The latitude and longitude of the location (WGS84)\">Position:</td><td colspan=\"3\">56.209798, 15.279093</td></tr><tr><td style=\"background-color: #f3f5da\" title=\"The organization responsible for the provisioning and upkeep of the location\">Managed By:</td><td colspan=\"3\"><a href=\"Organization-ronneby-vardcentral-vardenhet.html\">Ronneby Vårdcentral (Vårdenhet, Primärvård, Vårdcentral, Privat) (urn:oid:1.2.752.29.4.19#HSA-identitet (HSA-id)#SE5566778899-RNBY1)</a></td></tr></table></div>"
+  },
+  "identifier" : [{
+    "system" : "urn:oid:1.2.752.29.4.19",
+    "value" : "SE5566778899-RNBY1"
+  }],
+  "status" : "active",
+  "name" : "Ronneby Vårdcentral",
+  "description" : "Centralt läge i Ronneby, 200 m från järnvägsstationen. Parkering bakom fastigheten, ingång från Järnvägsgatan 14.",
+  "mode" : "instance",
+  "address" : {
+    "type" : "physical",
+    "text" : "Järnvägsgatan 14",
+    "city" : "Ronneby"
+  },
+  "position" : {
+    "longitude" : 15.279093,
+    "latitude" : 56.209798
+  },
+  "managingOrganization" : {
+    "reference" : "Organization/ronneby-vardcentral-vardenhet"
+  }
+}

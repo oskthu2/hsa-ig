@@ -1,0 +1,40 @@
+{
+  "resourceType" : "NamingSystem",
+  "id" : "hsa-identity",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: NamingSystem hsa-identity</b></p><a name=\"hsa-identity\"> </a><a name=\"hchsa-identity\"> </a><h3>Sammanfattning</h3><table class=\"grid\"><tr><td>Definierande URL</td><td>https://hsa.inera.se/fhir/NamingSystem/hsa-identity</td></tr><tr><td>Version</td><td>0.1.0</td></tr><tr><td>Namn</td><td>HsaIdentity</td></tr><tr><td>Titel</td><td>HSA-identitet (HSA-id)</td></tr><tr><td>Status</td><td>active</td></tr><tr><td>Definition</td><td><div><p>Unik identifierare för organisationer, enheter, funktioner, uppdrag och\npersoner i HSA-katalogen. Tilldelas automatiskt av HSA-systemet vid skapande\noch ska aldrig ändras. Används som stabil nyckel i nationella e-tjänster\n(NPÖ, Pascal, 1177 Hitta vård m.fl.).</p>\n</div></td></tr><tr><td>Utgivare</td><td>Inera AB / HSA-IG projekt</td></tr></table><h3>Identifierare</h3><table class=\"grid\"><tr><td><b>Typ</b></td><td><b>Värde</b></td><td><b>Föredragen</b></td></tr><tr><td>OID</td><td>1.2.752.29.4.19</td><td>true</td></tr><tr><td>URI</td><td>urn:oid:1.2.752.29.4.19</td><td/></tr></table></div>"
+  },
+  "url" : "https://hsa.inera.se/fhir/NamingSystem/hsa-identity",
+  "version" : "0.1.0",
+  "name" : "HsaIdentity",
+  "title" : "HSA-identitet (HSA-id)",
+  "status" : "active",
+  "kind" : "identifier",
+  "date" : "2026-05-20",
+  "publisher" : "Inera AB / HSA-IG projekt",
+  "contact" : [{
+    "name" : "Inera AB / HSA-IG projekt",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.inera.se/"
+    }]
+  }],
+  "description" : "Unik identifierare för organisationer, enheter, funktioner, uppdrag och\npersoner i HSA-katalogen. Tilldelas automatiskt av HSA-systemet vid skapande\noch ska aldrig ändras. Används som stabil nyckel i nationella e-tjänster\n(NPÖ, Pascal, 1177 Hitta vård m.fl.).",
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "SE",
+      "display" : "Sweden"
+    }]
+  }],
+  "uniqueId" : [{
+    "type" : "oid",
+    "value" : "1.2.752.29.4.19",
+    "preferred" : true
+  },
+  {
+    "type" : "uri",
+    "value" : "urn:oid:1.2.752.29.4.19"
+  }]
+}

@@ -1,0 +1,77 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://hsa.inera.se/fhir/CodeSystem/hsa-object-class> a fhir:CodeSystem ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "hsa-object-class"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div [ fhir:v "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Genererad berättande text: CodeSystem hsa-object-class</b></p><a name=\"hsa-object-class\"> </a><a name=\"hchsa-object-class\"> </a><p>Detta case-sensitive kodsystem <code>https://hsa.inera.se/fhir/CodeSystem/hsa-object-class</code> definierar följande koder:</p><table class=\"codes\"><tr><td style=\"white-space:nowrap\"><b>Kod</b></td><td><b>Visning</b></td><td><b>Definition</b></td></tr><tr><td style=\"white-space:nowrap\">healthcare-provider<a name=\"hsa-object-class-healthcare-provider\"> </a></td><td>Vårdgivare (hsaHealthCareProvider)</td><td>Organisation som är markerad som vårdgivare enligt HSA (OID 1.2.752.29.6.10). Representerar yttre spärrnivå i PDL.</td></tr><tr><td style=\"white-space:nowrap\">healthcare-unit<a name=\"hsa-object-class-healthcare-unit\"> </a></td><td>Vårdenhet (hsaHealthCareUnit)</td><td>Organisation som är markerad som vårdenhet enligt HSA (OID 1.2.752.29.6.13). Representerar inre spärrnivå i PDL.</td></tr><tr><td style=\"white-space:nowrap\">organizational-unit<a name=\"hsa-object-class-organizational-unit\"> </a></td><td>Organisationsenhet</td><td>Organisatorisk enhet som varken är vårdgivare eller vårdenhet (LDAP organizationalUnit).</td></tr><tr><td style=\"white-space:nowrap\">hidden<a name=\"hsa-object-class-hidden\"> </a></td><td>Dolt objekt (hiddenObject)</td><td>Objektet är dolt och ska inte exponeras i publikt API. Sätts active = false (OID 1.2.752.41.6.107).</td></tr><tr><td style=\"white-space:nowrap\">archived<a name=\"hsa-object-class-archived\"> </a></td><td>Arkiverat objekt (hsaArchivedObject)</td><td>Objektet är arkiverat. Sätts active = false (OID 1.2.752.29.6.20).</td></tr><tr><td style=\"white-space:nowrap\">inaccurate-provider<a name=\"hsa-object-class-inaccurate-provider\"> </a></td><td>Felaktigt utpekad vårdgivare (hsaInaccurateHCP)</td><td>Vårdgivaren är felaktigt utpekad (OID 1.2.752.29.6.26).</td></tr><tr><td style=\"white-space:nowrap\">inaccurate-unit<a name=\"hsa-object-class-inaccurate-unit\"> </a></td><td>Felaktigt utpekad vårdenhet (hsaInaccurateHCU)</td><td>Vårdenheten är felaktigt utpekad (OID 1.2.752.29.6.27).</td></tr><tr><td style=\"white-space:nowrap\">feigned<a name=\"hsa-object-class-feigned\"> </a></td><td>Fingerat objekt (hsaFeignedDataObject)</td><td>Testdata eller fingerat objekt (OID 1.2.752.29.6.25).</td></tr></table></div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [ fhir:v "https://hsa.inera.se/fhir/CodeSystem/hsa-object-class"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "HsaObjectClass"] ; # 
+  fhir:title [ fhir:v "HSA Objektklassificering"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:experimental [ fhir:v false] ; # 
+  fhir:date [ fhir:v "2026-03-16"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "Inera AB / HSA-IG projekt"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Inera AB / HSA-IG projekt" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.inera.se/" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Klassificering av HSA-objekt baserat på LDAP-objektklasser i HSA-schemat.\nAnvänds för att identifiera om en organisation är vårdgivare, vårdenhet\neller annan organisatorisk enhet, samt för statusmarkering."] ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "SE" ] ;
+       fhir:display [ fhir:v "Sweden" ]
+     ] )
+  ] ) ; # 
+  fhir:caseSensitive [ fhir:v true] ; # 
+  fhir:content [ fhir:v "complete"] ; # 
+  fhir:count [ fhir:v "8"^^xsd:nonNegativeInteger] ; # 
+  fhir:concept ( [
+     fhir:code [ fhir:v "healthcare-provider" ] ;
+     fhir:display [ fhir:v "Vårdgivare (hsaHealthCareProvider)" ] ;
+     fhir:definition [ fhir:v "Organisation som är markerad som vårdgivare enligt HSA (OID 1.2.752.29.6.10). Representerar yttre spärrnivå i PDL." ]
+  ] [
+     fhir:code [ fhir:v "healthcare-unit" ] ;
+     fhir:display [ fhir:v "Vårdenhet (hsaHealthCareUnit)" ] ;
+     fhir:definition [ fhir:v "Organisation som är markerad som vårdenhet enligt HSA (OID 1.2.752.29.6.13). Representerar inre spärrnivå i PDL." ]
+  ] [
+     fhir:code [ fhir:v "organizational-unit" ] ;
+     fhir:display [ fhir:v "Organisationsenhet" ] ;
+     fhir:definition [ fhir:v "Organisatorisk enhet som varken är vårdgivare eller vårdenhet (LDAP organizationalUnit)." ]
+  ] [
+     fhir:code [ fhir:v "hidden" ] ;
+     fhir:display [ fhir:v "Dolt objekt (hiddenObject)" ] ;
+     fhir:definition [ fhir:v "Objektet är dolt och ska inte exponeras i publikt API. Sätts active = false (OID 1.2.752.41.6.107)." ]
+  ] [
+     fhir:code [ fhir:v "archived" ] ;
+     fhir:display [ fhir:v "Arkiverat objekt (hsaArchivedObject)" ] ;
+     fhir:definition [ fhir:v "Objektet är arkiverat. Sätts active = false (OID 1.2.752.29.6.20)." ]
+  ] [
+     fhir:code [ fhir:v "inaccurate-provider" ] ;
+     fhir:display [ fhir:v "Felaktigt utpekad vårdgivare (hsaInaccurateHCP)" ] ;
+     fhir:definition [ fhir:v "Vårdgivaren är felaktigt utpekad (OID 1.2.752.29.6.26)." ]
+  ] [
+     fhir:code [ fhir:v "inaccurate-unit" ] ;
+     fhir:display [ fhir:v "Felaktigt utpekad vårdenhet (hsaInaccurateHCU)" ] ;
+     fhir:definition [ fhir:v "Vårdenheten är felaktigt utpekad (OID 1.2.752.29.6.27)." ]
+  ] [
+     fhir:code [ fhir:v "feigned" ] ;
+     fhir:display [ fhir:v "Fingerat objekt (hsaFeignedDataObject)" ] ;
+     fhir:definition [ fhir:v "Testdata eller fingerat objekt (OID 1.2.752.29.6.25)." ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+
