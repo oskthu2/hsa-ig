@@ -1,0 +1,364 @@
+# Reguljära uttryck ur Informationsspecifikation för Katalogtjänst HSA 3.5.1 (kap. 11), Java-syntax
+
+11.3.1 altSecurityIdentities (anpassad certifikatsinformation)
+    X509:<I>[\w ,-=]+<SR>[\dabcdefABCDEF]+(?<! )$
+11.3.2 archivingTimePerson (arkiveringstid för personobjekt)
+    \d{1,2}
+11.3.3 businessClassificationCode (verksamhetskod)
+    \d{4}
+11.3.4 c (countryName) (land)
+    ^(?!Se|sE|se|SE)[a-zA-Z]{2}
+11.3.5 careType (vård- och omsorgsform)
+    \d{2}
+11.3.6 cn, commonName (objektnamn)
+    ^(?! )[\w !&'\-\./:\[\]`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )\z
+11.3.7 countyCode (länskod)
+    \d{2}
+11.3.8 description (beskrivning)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.9 displayOption (alternativ namnvisning)
+    \d{1,2}(#\d{1,2})*
+11.3.10 dropInHours (tid för dropin-besök utan tidsbokning)
+    [1-7]-[1-7](#[0-2][0-9]:[0-5][0-9]){2}(#[0-9a-zA-Z &'()+,-./:;\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]{0,19})?(#(\d{8})?){0,2}(?<![\u0020])$
+11.3.11 endDate (slutdatum)
+    \d{14}Z
+11.3.12 facsimileTelephoneNumber (fax)
+    (?=\+|11|020|0771)(\+|\d)\d{1,31}
+11.3.13 financingOrganization (finansierande region/kommun)
+    \d{6}-\d{4}
+11.3.14 fullName (fullständigt namn)
+    ^(?! )[A-Za-z \./',\-:`´ \u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )$
+11.3.15 geographicalCoordinates (geografiska koordinater RT90)
+    [xX]:\d{7},[yY]:\d{7}
+11.3.16 givenName, gn (tilltalsnamn)
+    ^(?! )[A-Za-z '\-\./`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]{1,64}(?<! )$
+11.3.17 hospIdentityNumber (HOSP-id)
+    \d{6}
+11.3.18 hsaAdminComment (HSA-administratörens kommentar)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.19 hsaAdminCommissionMemberC (administrativa medarbetaruppdragets
+    [a-zA-Z0-9-]{1,31};(\d{14}[Zz])?;(\d{14}[Zz])?
+11.3.20 hsaAdminCommissionMemberP (administrativa medarbetaruppdragets
+    [a-zA-Z0-9-]{1,31};(\d{14}[Zz])?;(\d{14}[Zz])?
+11.3.21 hsaAdminCommissionResponsibleOrganization
+    [a-zA-Z0-9-]{1,31}
+11.3.22 hsaAdminCommissionResponsiblePerson
+    [a-zA-Z0-9-]{1,31}
+11.3.23 hsaAdminCommissionSector (administrativa medarbetaruppdragets
+    [a-zA-Z0-9-]{1,31}(;sub)?
+11.3.24 hsaAdministrativeCareLevel (administrativ vårdnivå)
+    \d{1,2}
+11.3.25 hsaAdminLastLoginTime (senast inloggad i HSA Admin)
+    \d{14}Z
+11.3.26 hsaAltText (alt-text för bild)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\|\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.27 hsaAltTextLogtoype (alt-text för logotyp)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\|\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.28 hsaBusinessType (enhetstyp)
+    \d{2}
+11.3.29 hsaCommissionMember (vårdmedarbetaruppdragets medlemmar)
+    [a-zA-Z0-9-]{1,31};(\d{14}[Zz])?;(\d{14}[Zz])?
+11.3.30 hsaCommissionPurpose (vårdmedarbetaruppdragets ändamål)
+    ^(?! )[a-zA-ZÅÄÖåäö ]+(?<! )$
+11.3.31 hsaCommissionRight (vårdmedarbetaruppdragets rättigheter)
+    [a-zA-ZÅÄÖåäö]+;[a-z]+;[a-zA-Z0-9-]{1,31}
+11.3.32 hsaDestinationIndicator (visas för)
+    \d{2}
+11.3.33 hsaDirectoryContact (Innehållsansvarigs e-postadress)
+    \b[\w'\.\-]+@[a-zA-Z0-9'\.\-]+\.[a-zA-Z]{2,}\b
+11.3.34 hsaDomainAreaCode (kod för behörighetsområdesegenskap)
+    ^(?! )[0-9A-Za-zÅÄÖåäö \.]+;[0-9A-Za-zÅÄÖåäö \.]+(?<! )$
+11.3.35 hsaEmigratedPerson (saknar svensk folkbokföringsadress)
+    (ja|Ja|JA)
+11.3.36 hsaEmployeesImmediateManager (medarbetarens närmaste chef)
+    [a-zA-Z0-9-]{1,31}
+11.3.37 hsaGlnCode (GLN-kod)
+    \d{13}
+11.3.38 hsaGroupPrescriptionCode (gruppförskrivarkod)
+    9\d{6}
+11.3.39 hsaHealthCareUnitManager (verksamhetschef)
+    [a-zA-Z0-9-]{1,31}
+11.3.40 hsaHealthCareUnitMember (vårdenhetens ingående enheter)
+    [a-zA-Z0-9-]{1,31}
+11.3.41 hsaHpt (godkänd HPT för organisationen)
+    ^(?! )[A-Za-z ]+;[a-zA-Z0-9 '\-\./:`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+;(tredjepartsansluten|v [\d.]+)(;Mall [\d.]+)?$
+11.3.42 hsaIdCounter (HSA-id-räknare)
+    \d+
+11.3.43 hsaIdentity (HSA-id)
+    [a-zA-Z0-9-]{1,31}
+11.3.44 hsaIdPrefix (HSA-id-prefix)
+    [a-zA-Z0-9-]{2,31}
+11.3.45 hsaManagerCode (chefskod)
+    [A-Z][\w-]?
+11.3.46 hsaMifareSerialNumber (mifareserienummer)
+    \d{19}@\d{1,10}
+11.3.47 hsaPassportBirthDate (födelsedatum)
+    \d{8}
+11.3.48 hsaPassportNumber (passnummer)
+    [A-Z]{2}[0-9A-Za-z]+
+11.3.49 hsaPassportValidThru (giltighetstid för pass)
+    \d{14}Z
+11.3.50 hsaPostalAddress (strukturerad postadress)
+    ^(?! )[\w !&'\-\./:\[\]`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )\z
+11.3.50 hsaPostalAddress (strukturerad postadress)
+    ^(?! )(?!.*: )(?!.* {2})(?!.* $)[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F\-\.:\/´ ]+\z
+11.3.50 hsaPostalAddress (strukturerad postadress)
+    ^\d{1,5}(-\d{1,4})?\z
+11.3.50 hsaPostalAddress (strukturerad postadress)
+    ^[a-zA-ZÅÄÖåäö]{1,2}\z
+11.3.50 hsaPostalAddress (strukturerad postadress)
+    ^[0-9]{5}\z
+11.3.50 hsaPostalAddress (strukturerad postadress)
+    ^(?! )(?!.*: )(?!.* {2})(?!.* $)[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F\-\.:\/´ ]+\z
+11.3.51 hsaProtectedPerson (skyddade personuppgifter)
+    (ja|Ja|JA)
+11.3.52 hsaProtectedProfessionalTitel (bevis om rätt att använda skyddad
+    [a-zA-Z]{1,3}
+11.3.53 hsaResponsibleHealthCareProvider (vårdgivartillhörighet)
+    [a-zA-Z0-9-]{1,31}
+11.3.54 hsaSchoolType (skolform)
+    \d{2}
+11.3.55 hsaSosNursePrescriptionRight (förskrivningsrätt för
+    (SJ|BM);J
+11.3.56 hsaSosTitleCodeSpeciality (leg. yrkesgrupp och specialitet för läkare
+    [A-Z]{2};(\d{2}|\d{4}|\d{5});[0-9A-Za-zÅÄÖåäö ,-./]+(?<! )$
+11.3.57 hsaSweref99Latitude (geografiska koordinater latitud (SweRef99))
+    \d{7}
+11.3.58 hsaSweref99Longitude (geografiska koordinater longitud (SweRef99))
+    \d{6}
+11.3.59 hsaSwitchboardNumber (växeltelefon)
+    (?=\+|11|020|0771)(\+|\d)\d{1,31}
+11.3.60 hsaSyncId (internt synkroniseringsid)
+    [\w\-\.:;{}]+
+11.3.61 hsaSystemRole (Individuell egenskap för it-tjänster)
+    [\wÅÄÖåäö\.]+;[\wÅÄÖåäö\-\.]+(?<! )$
+11.3.62 hsaTelephoneNumber (tjänstetelefon)
+    (?=\+|11|020|0771)(\+|\d)\d{1,31}
+11.3.63 hsaTextTelephoneNumber (texttelefon)
+    \b[\w'\.\-]+@[a-zA-Z0-9'\.\-]+\.[a-zA-Z]{2,}\b
+11.3.64 hsaTitle (legitimerad yrkesgrupp)
+    ^(?! )[a-zA-ZÅÄÖåäö \-]+(?<! )$
+11.3.65 hsaVideoPhone (bildtelefon)
+    \b[\w'\.\-]+@[a-zA-Z0-9'\.\-]+\.[a-zA-Z]{2,}\b
+11.3.66 hsaVisitingAddress (strukturerad besöksadress)
+    ^(?! )(?!.*: )(?!.* {2})(?!.* $)[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F\-\.:\/´ ]+\z
+11.3.66 hsaVisitingAddress (strukturerad besöksadress)
+    ^\d{1,5}(-\d{1,4})?\z
+11.3.66 hsaVisitingAddress (strukturerad besöksadress)
+    ^[a-zA-ZÅÄÖåäö]{1,2}\z
+11.3.66 hsaVisitingAddress (strukturerad besöksadress)
+    ^(?! )(?!.*: )(?!.* {2})(?!.* $)[a-zA-Z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F\-\.:\/´ ]+\z
+11.3.67 hsaVerifiedIdentityNumber (styrkt samordningsnummer)
+    (ja|Ja|JA)
+11.3.68 hsaVisitingRuleAge (åldersregler för vårdkontakt)
+    ^\d{2}-\d{2}(#(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\|\u00A0\u00C0-\u017F\u2013\u2014]{0,16})?(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.69 hsaVisitingRuleReferral (remisskrav)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.70 hsaVisitingRules (besöksregler för anhöriga)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.71 hsaVpwInformation1 (mer om)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.72 hsaVpwInformation2 (tillfällig information)
+    ^((;(\d{8})?;(\d{8})?;)|^(?!;))(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\|\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.73 hsaVpwInformation4 (information till patient)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.74 hsaVpwNeighbouringObject (relaterad enhet)
+    [a-zA-Z0-9-]{1,31}
+11.3.75 hsaVpwWebPage (länk till kontaktkort på 1177)
+    https?://www\.1177\.se/Hitta-vard/Kontakt/\?hsaid=[a-zA-Z0-9-]{1,31}
+11.3.76 indoorRouteDescription (inre vägbeskrivning)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.77 initials (initial)
+    ^[0-9A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]{1,40}$
+11.3.78 l, localityName (geografisk plats)
+    ^(?! )[a-zA-Z0-9 \-\.\/\,\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )\z
+11.3.79 labeledURI (webbadress)
+    ^http[s]?://[\w!\$%&'()*+,-\./:;=?@#\u00A0\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+$
+11.3.80 mail, rfc822Mailbox (e-postadress)
+    \b[\w'\.\-]+@[a-zA-Z0-9'\.\-]+\.[a-zA-Z]{2,}\b
+11.3.81 management (ägarform)
+    [A-Za-zÅÄÖåäö/]+
+11.3.82 middleName (mellannamn)
+    ^(?! )[A-Za-z /'\-`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )$
+11.3.83 mobile, mobileTelephoneNumber (mobiltelefon)
+    (?=\+|11|020|0771)(\+|\d)\d{1,31}
+11.3.84 municipalityCode (kommunkod)
+    \d{2}
+11.3.85 nickName (smeknamn)
+    ^(?! )[A-Za-z '\-`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]{1,64}(?<! )$
+11.3.86 occupationalCode (utökad yrkeskod)
+    [A-Z]{2,3}
+11.3.87 o, organizationName (organisationsnamn)
+    ^(?! )[\w !&'\-\./:\[\]`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )\z
+11.3.88 orgNo (organisationsnummer)
+    \d{6}-\d{4}
+11.3.89 ou, organizationalUnitName (enhetsnamn)
+    ^(?! )[\w !&'\-\./:\[\]`´\u00C0-\u024F&&[^\xD7\xF7]]+(?<! )$
+11.3.90 ouShort (förkortat namn)
+    ^(?! )[\w !&'\-\./:\[\]`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )$
+11.3.91 paTitleCode (befattningskod)
+    \d{6}
+11.3.92 personalIdentityNumber (person-id)
+    (?=1|2)\d{12}
+11.3.93 personalPrescriptionCode (förskrivarkod)
+    \d{7}
+11.3.94 postalAddress (postadress)
+    ^(?! )([\w &',\-\./:\[\]`´!\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]{1,30}\$){0,5}([\w&',\-\./:\[\]`´!\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]{1,30})(?<! )\z
+11.3.95 postalCode (postnummer)
+    [a-zA-Z0-9]+
+11.3.96 requestTemplateURI (adress till remissanvisning)
+    ^http[s]?://[\w!\$%&'()*+,-\./:;=?@\u00A0\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+$
+11.3.97 route (yttre vägbeskrivning)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.3.98 sn, surName (efternamn)
+    ^(?! )[A-Za-z \./:'\-`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )$
+11.3.99 startDate (startdatum)
+    \d{14}Z
+11.3.100 street, streetAddress (besöksadress)
+    ^(?![\u000A\u000D\u0020])[0-9A-Za-z \$&\(\),\-\./:\u000A\u000D\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<![\u000A\u000D\u0020])\z
+11.3.101 surgeryHours (öppettider)
+    [1-7]-[1-7](#[0-2][0-9]:[0-5][0-9]){2}(#[0-9a-zA-Z &'()+,-./:;\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]{0,19})?(#(\d{8})?){0,2}(?<![\u0020])$
+11.3.102 telephoneHours (telefontid)
+    [1-7]-[1-7](#[0-2][0-9]:[0-5][0-9]){2}(#[0-9a-zA-Z &'()+,-./:;\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]{0,19})?(#(\d{8})?){0,2}(?<![\u0020])$
+11.3.103 telephoneNumber (direkttelefon)
+    (?=\+|11|020|0771)(\+|\d)\d{1,31}
+11.3.104 title (titel)
+    ^(?! )[0-9A-Za-z \&\-\,\./:\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )$
+11.3.105 unitPrescriptionCode (arbetsplatskod)
+    \d+
+11.3.106 userPrincipalName (domäninloggningsnamn)
+    \b[\w'\.\-]+@[a-zA-Z0-9'\.\-]+\.[a-zA-Z]{2,}\b
+11.3.107 visitingHours (besökstider för anhöriga)
+    [1-7]-[1-7](#[0-2][0-9]:[0-5][0-9]){2}(#[0-9a-zA-Z &'()+,-./:;\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]{0,19})?(#(\d{8})?){0,2}(?<![\u0020])$
+11.4.1 cn, commonName (objektnamn)
+    [0-9a-zA-Z\.-]+
+11.4.2 description (beskrivning)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.4.3 endDate (slutdatum)
+    \d{14}Z
+11.4.4 hsaAdminComment (HSA-administratörens kommentar)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.4.5 hsaAdminCommissionMemberC (administrativa medarbetaruppdragets
+    [a-zA-Z0-9-]{1,31};(\d{14}[Zz])?;(\d{14}[Zz])?
+11.4.6 hsaAdminCommissionMemberP (administrativa medarbetaruppdragets
+    [a-zA-Z0-9-]{1,31};(\d{14}[Zz])?;(\d{14}[Zz])?
+11.4.7 hsaAdminCommissionResponsibleOrganization
+    [a-zA-Z0-9-]{1,31}
+11.4.8 hsaAdminCommissionResponsiblePerson
+    [a-zA-Z0-9-]{1,31}
+11.4.9 hsaAdminCommissionSector (administrativa medarbetaruppdragets
+    [a-zA-Z0-9-]{1,31}(;sub)?
+11.4.10 hsaCertificateRecipient (certifikatsmottagare)
+    [a-zA-Z0-9-]{1,31}
+11.4.11 hsaDomainAreaCode (kod för behörighetsområdesegenskap)
+    ^(?! )[0-9A-Za-zÅÄÖåäö \.]+;[0-9A-Za-zÅÄÖåäö \.]+(?<! )$
+11.4.12 hsaIdCounter (HSA-id-räknare)
+    \d+
+11.4.13 hsaIdentity (HSA-id)
+    [a-zA-Z0-9-]{1,31}
+11.4.14 hsaIdPrefix (HSA-id-prefix)
+    [a-zA-Z0-9-]{1,31}
+11.4.15 hsaResponsiblePerson (ansvarig person)
+    [a-zA-Z0-9-]{1,31}
+11.4.16 mail, rfc822Mailbox (e-postadress)
+    \b[\w'\.\-]+@[a-zA-Z0-9'\.\-]+\.[a-zA-Z]{2,}\b
+11.4.17 o, organizationName (organisationsnamn)
+    [\w-]+
+11.4.18 orgNo (organisationsnummer)
+    \d{6}-\d{4}
+11.4.19 ou, organizationalUnitName (enhetsnamn)
+    ^(?! )[\w !&'\-\./:\[\]`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )\z
+11.4.20 startDate (startdatum)
+    \d{14}Z
+11.5.1 cn, commonName (objektnamn)
+    ^(?! )[0-9A-Za-zÅÄÖåäöé ]+(?<! )$
+11.5.2 description (beskrivning)
+    ^(?![\x09\x0A\x0D\x20\xA0])[\w\x09\x0A\x0D\x20-\x2F:;=\?@\[\]`´\ |\xA0\u00C0-\u024F\u2013\u2014]+(?<![\x09\x0A\x0D\x20\xA0])$
+11.5.3 hsaCodeAttribute (refererat HSA-attribut)
+    [0-9A-Za-z#]+
+11.5.4 hsaCodeEntry (kodvärde)
+    ^(?! )[0-9A-Za-z #\(\),\-\./:\u00C0-\u017F&&[^\xD7\xF7]]+(?<! )$
+11.5.5 hsaCodeName (kodverksbeskrivning)
+    ^(?! )[a-zA-ZÅÄÖåäö #]+(?<! )$
+11.5.6 hsaCodeSyntax (kodverkssyntax)
+    ^(?! )[0-9a-zA-ZÅÄÖåäö #./:]+(?<! )$
+11.5.7 hsaMetaFormat (kodverksformat)
+    ^([1-9][0-9]{0,3}|0)(\.([1-9][0-9]{0,3}|0)){5,13}$
+11.5.8 hsaMetaIdentity (kodverksidentitet)
+    ^([1-9][0-9]{0,3}|0)(\.([1-9][0-9]{0,3}|0)){5,13}$
+11.5.9 hsaMetaReference (Källhänvisning)
+    ^(?! )[0-9A-Za-z #\(\),\-\./:\u00C0-\u017F&&[^\xD7\xF7]]+(?<! )$
+11.5.10 hsaMetaVersion (kodverksversion)
+    ^(?! )[\d -.]+(?<! )$
+11.6.1 cn, commonName (objektnamn)
+    \d{12}
+11.6.2 description (beskrivning)
+    HOSP:[\d]{14}
+11.6.3 hospIdentityNumber (HOSP-id)
+    \d{6}
+11.6.4 hsaSosNursePrescriptionRight (förskrivningsrätt för
+    (SJ|BM);J
+11.6.5 hsaSosRestrictionCode (restriktionskod)
+    [A-Z]{2,3};[\d]{3}
+11.6.6 hsaSosTitleCode (kod för legitimerad yrkesgrupp)
+    [A-Z]{2}
+11.6.7 hsaDomainAreaCode (leg. yrkesgrupp och specialitet för läkare och
+    [A-Z]{2,3};\d{2,5};[0-9A-Za-zÅÄÖåäö][0-9A-Za-zÅÄÖåäö ,\-/:]+(?<! )$
+11.6.8 hsaTitle (legitimerad yrkesgrupp)
+    ^(?! )[A-Za-zÅÄÖåäö ,\-/]+(?<! )$
+11.6.9 personalIdentityNumber (person-id)
+    (?=1|2)\d{12}
+11.6.10 personalPrescriptionCode (förskrivarkod)
+    \d{7}
+11.6.11 specialityCode (specialitetskod)
+    \d{2}|\d{4}|\d{5}
+11.6.12 specialityName (specialitet)
+    ^(?! )[0-9A-Za-zÅÄÖåäö ,\-/]+(?<! )$
+11.7.1 cn, commonName (objektnamn)
+    \d{12}
+11.7.2 hsaCertifierIdentity (certifier-id)
+    [a-zA-Z0-9-]+
+11.7.3 hsaOrigin (ursprung)
+    [a-zA-Z0-9-]+
+11.7.4 personalIdentityNumber (person-id)
+    \d{12}
+11.8.1 cn, commonName (objektnamn)
+    ^(?! )[\w !&'\-\./:\[\]`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )$
+11.8.2 description (beskrivning)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.8.3 hsaDomainAreaAllowed (organisationsomfång för
+    [a-zA-Z0-9-]{1,31}(;sub)?
+11.8.4 hsaDomainAreaCode (kod för behörighetsområdesegenskap)
+    ^(?! )[0-9A-Za-zÅÄÖåäö \.]+;[0-9A-Za-zÅÄÖåäö \.]+(?<! )$
+11.8.5 hsaDomainCode (behörighetsområdeskod)
+    ^(?! )[0-9A-Za-zÅÄÖåäö \.]+(?<! )$
+11.8.6 hsaDomainResponsible (behörighetsområdesansvarig)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.8.7 hsaIdentity (HSA-id)
+    [a-zA-Z0-9-]{1,31}
+11.8.1 hsaRestrictedToHsaResponible (begränsad till HSA-ansvariga)
+    (ja|Ja|JA)
+11.9.1 cn, commonName (objektnamn)
+    ^(?! )[\w !&'\-\./:\[\]`´\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u017F]+(?<! )\z
+11.9.2 description (beskrivning)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.9.1 hsaAdminComment (HSA-administratörens kommentar)
+    ^(?![\u0009\u000A\u000D\u0020\u00A0])[\w\u0009\u000A\u000D\u0020-\u002F:;=\?@\[\]`´\ |\u00A0\u00C0-\u017F\u2013\u2014]+(?<![\u0009\u000A\u000D\u0020\u00A0])\z
+11.9.2 hsaAdminCommissionMemberP (administrativa medarbetaruppdragets
+    [a-zA-Z0-9-]{1,31};(\d{14}[Zz])?;(\d{14}[Zz])?
+11.9.3 hsaAdminCommissionSector (administrativa medarbetaruppdragets
+    [a-zA-Z0-9-]{1,31}(;sub)?
+11.9.1 hsaDomainAreaCode (kod för behörighetsområdesegenskap)
+    ^(?! )[0-9A-Za-zÅÄÖåäö \.]+;[0-9A-Za-zÅÄÖåäö \.]+(?<! )$
+11.9.2 hsaIdentity (HSA-id)
+    [a-zA-Z0-9-]{1,31}
+11.10.1 Svenska tecken
+    [ÅÄÖåäö]
+11.10.2 Versaler och gemener med diakritkombinationer
+    [\u00C0-\u024F&&[^\xD7\xF7]]
+11.10.3 Specialtecken
+    ^(?![\x09\x0A\x0D\x20\xA0])[\x09\x0A\x0D\x20-\x2F:;=\?@\[\]_`´\ |\xA0\u00C0-\u024F\u2013\u2014]+(?<![\x09\x0A\x0D\x20\xA0])$
+11.10.4 Telefonnummer
+    (?=\+|11)(\+|\d)\d{1,31}
+11.10.5 HSA-id
+    [a-zA-Z0-9-]{1,31}

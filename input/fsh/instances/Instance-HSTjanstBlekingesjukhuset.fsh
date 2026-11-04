@@ -7,10 +7,10 @@
 //                             1126  ← Kardiologi
 // hsaCareType: 01                   ← Öppen vård (OID 1.2.752.129.2.2.1.13)
 //              02                   ← Sluten vård
-// hsaPublicTelephoneHours:
-//   Måndag-Fredag 08:00-16:30
-// hsaDropinHours:
-//   Måndag-Fredag 08:00-11:00
+// telephoneHours: 1-5#08:00#16:30
+// dropInHours: 1-5#08:00#11:00
+// surgeryHours: 1-7#00:00#24:00#Akutmottagning
+// surgeryHours: 1-7#08:00#12:30#Halvdag#20261223#20261223
 // hsaVpwInformation3: Akutmottagning är öppen dygnet runt alla dagar.
 //   (hsaVpwInformation3 = generell "om oss"-text → HealthcareService.comment)
 //
@@ -34,10 +34,12 @@
 //   OID 1.2.752.129.2.2.1.13
 // comment                           ← hsaVpwInformation3 ("om oss"-text på 1177)
 // location                          ← Reference(LocationBlekingesjukhuset)
-// availability[0] (öppettider)      ← hsaPublicTelephoneHours
-//   Mån-Fre 08:00-16:30 (telefonmottagning)
-// availability[1] (drop-in)         ← hsaDropinHours
-//   Mån-Fre 08:00-11:00
+// availability[0] (telefontid)      ← telephoneHours 1-5#08:00#16:30
+// availability[1] (drop-in)         ← dropInHours 1-5#08:00#11:00
+// availability[2] (öppettid)        ← surgeryHours 1-7#00:00#24:00#Akutmottagning
+//   00:00–24:00 → allDay = true; kommentar → extension[comment] (ADR-014)
+// availability[3] (avvikande)       ← surgeryHours 1-7#08:00#12:30#Halvdag#20261223#20261223
+//   datumintervall → extension[period]
 // meta.security[destination-indicator] ← 03 (publik, som enheten)
 // ═══════════════════════════════════════════════════════════════════════════════
 
@@ -105,8 +107,9 @@ Description: """
 
 // ── Tillgänglighet (availability) ────────────────────────────────────────────
 // R5-modellen: availability.availableTime ersätter R4:s availableTime
-// hsaPublicTelephoneHours: Mån-Fre 08:00-16:30 (telefonmottagning)
+// telephoneHours 1-5#08:00#16:30
 * availability[0]
+  * extension[availabilityType].valueCoding = https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type#telephone-hours "Telefontider"
   * availableTime[0]
     * daysOfWeek[0] = #mon
     * daysOfWeek[1] = #tue
@@ -116,8 +119,9 @@ Description: """
     * availableStartTime = "08:00:00"
     * availableEndTime = "16:30:00"
 
-// hsaDropinHours: Mån-Fre 08:00-11:00 (drop-in)
+// dropInHours 1-5#08:00#11:00
 * availability[1]
+  * extension[availabilityType].valueCoding = https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type#drop-in-hours "Drop-in"
   * availableTime[0]
     * daysOfWeek[0] = #mon
     * daysOfWeek[1] = #tue
@@ -126,3 +130,37 @@ Description: """
     * daysOfWeek[4] = #fri
     * availableStartTime = "08:00:00"
     * availableEndTime = "11:00:00"
+
+// surgeryHours 1-7#00:00#24:00#Akutmottagning
+// FHIR time tillåter inte 24:00; hela dygnet anges med allDay (ADR-014).
+* availability[2]
+  * extension[availabilityType].valueCoding = https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type#surgery-hours "Öppettider"
+  * extension[comment].valueString = "Akutmottagning"
+  * availableTime[0]
+    * daysOfWeek[0] = #mon
+    * daysOfWeek[1] = #tue
+    * daysOfWeek[2] = #wed
+    * daysOfWeek[3] = #thu
+    * daysOfWeek[4] = #fri
+    * daysOfWeek[5] = #sat
+    * daysOfWeek[6] = #sun
+    * allDay = true
+
+// surgeryHours 1-7#08:00#12:30#Halvdag#20261223#20261223
+// Avvikande öppettid en enskild dag: kommentar och period på egen availability.
+* availability[3]
+  * extension[availabilityType].valueCoding = https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type#surgery-hours "Öppettider"
+  * extension[comment].valueString = "Halvdag"
+  * extension[period].valuePeriod
+    * start = "2026-12-23"
+    * end = "2026-12-23"
+  * availableTime[0]
+    * daysOfWeek[0] = #mon
+    * daysOfWeek[1] = #tue
+    * daysOfWeek[2] = #wed
+    * daysOfWeek[3] = #thu
+    * daysOfWeek[4] = #fri
+    * daysOfWeek[5] = #sat
+    * daysOfWeek[6] = #sun
+    * availableStartTime = "08:00:00"
+    * availableEndTime = "12:30:00"

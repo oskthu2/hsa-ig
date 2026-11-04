@@ -5,29 +5,29 @@
 // objectClass: organizationalUnit
 // objectClass: hsaUnit
 // ou: Blekingesjukhuset
-// hsaIdentity: SE2321000016-BSJH01
-// hsaResponsibleHealthCareProvider: SE2321000016-BLKNG
+// hsaIdentity: SE2321000081-BSJH01
+// hsaResponsibleHealthCareProvider: SE2321000081-BLKNG
 // careLevel: 02
 // hsaBusinessType: 01
 // management: 01
 // unitPrescriptionCode: 1301033
 // hsaGlnCode: 7350088110002
 // hsaDestinationIndicator: 03
-// telephoneNumber: 0455-73 17 00
-// hsaSwitchboardNumber: 0455-73 10 00
-// mobile: 070-123 45 67
-// facsimileTelephoneNumber: 0455-73 17 99
+// telephoneNumber: +46455731700
+// hsaSwitchboardNumber: +46455731000
+// mobile: +46701234567
+// facsimileTelephoneNumber: +46455731799
 // mail: blekingesjukhuset@regionblekinge.se
 // hsaDirectoryContact: redaktion.bsj@regionblekinge.se
 // labeledURI: https://www.regionblekinge.se/blekingesjukhuset
-// hsaVpwWebpage: https://www.1177.test/blekinge/hitta-vard/SE2321000016-BSJH01
+// hsaVpwWebpage: https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000081-BSJH01
 // hsaVisitingAddress: Lyckeby 5$$$Karlskrona       (strukturerad 5.2+, $=radbryt)
 // l: Karlskrona
-// hsaSweRef99Latitude: 56.1890
-// hsaSweRef99Longitude: 15.6210
+// hsaSweref99Latitude: 6227289
+// hsaSweref99Longitude: 538541
 // postalAddress: Lyckeby 5
-// postalCode: 371 85
-// orgNo: 2321000016
+// postalCode: 37185
+// orgNo: 232100-0081
 // startDate: 19940101000000Z
 // endDate: (ej satt)
 // hsaArchivedObject: (ej satt)
@@ -93,11 +93,11 @@ Description: """
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
-  * value = "SE2321000016-BSJH01"
+  * value = "SE2321000081-BSJH01"
 
 * identifier[org-no]
   * system = "urn:oid:2.5.4.97"
-  * value = "2321000016"
+  * value = "232100-0081"
 
 // Arbetsplatskod (unitPrescriptionCode) — OID preliminärt, bekräftas i HSACAT-ORG-012
 * identifier[apk]
@@ -147,7 +147,7 @@ Description: """
   // telephoneNumber → direkttelefon
   * telecom[0]
     * system = #phone
-    * value = "0455-73 17 00"
+    * value = "+46455731700"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -157,7 +157,7 @@ Description: """
   // hsaSwitchboardNumber → växel (regionens gemensamma växel)
   * telecom[1]
     * system = #phone
-    * value = "0455-73 10 00"
+    * value = "+46455731000"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -167,7 +167,7 @@ Description: """
   // mobile → mobiltelefon
   * telecom[2]
     * system = #phone
-    * value = "070-123 45 67"
+    * value = "+46701234567"
     * use = #mobile
     * extension[telecomType]
       * valueCoding
@@ -177,7 +177,7 @@ Description: """
   // facsimileTelephoneNumber → fax
   * telecom[3]
     * system = #fax
-    * value = "0455-73 17 99"
+    * value = "+46455731799"
     * use = #work
   // mail → e-post
   * telecom[4]
@@ -202,7 +202,7 @@ Description: """
   // hsaVpwWebpage → 1177-djuplänk (används av 1177-klienten för kontaktkortsnavigering)
   * telecom[7]
     * system = #url
-    * value = "https://www.1177.test/blekinge/hitta-vard/SE2321000016-BSJH01"
+    * value = "https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000081-BSJH01"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -216,5 +216,5 @@ Description: """
   * address
     * type = #postal
     * text = "Lyckeby 5"
-    * postalCode = "371 85"
+    * postalCode = "37185"
     * city = "Karlskrona"

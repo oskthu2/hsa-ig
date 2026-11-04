@@ -6,15 +6,15 @@
 // objectClass: hsaOrganisation
 // o: Blekinge Primärvård AB
 // hsaIdentity: SE5566778899-BPAB1
-// orgNo: 5566778899
+// orgNo: 556677-8899
 // management: 05
-// telephoneNumber: 0457-55 66 77
-// hsaSwitchboardNumber: 0457-55 66 00
+// telephoneNumber: +46457556677
+// hsaSwitchboardNumber: +46457556600
 // mail: info@blekingeprimaervard.se
 // hsaDirectoryContact: redaktion@blekingeprimaervard.se
 // labeledURI: https://www.blekingeprimaervard.test
 // postalAddress: Järnvägsgatan 12
-// postalCode: 372 35
+// postalCode: 37235
 // l: Ronneby
 // c: SE
 // startDate: 20100501000000Z
@@ -27,7 +27,7 @@
 // FHIR → LDAP MAPPNING
 // ───────────────────────────────────────────────────────────────────────────────
 // identifier[hsa-id].value          ← hsaIdentity (system urn:oid:1.2.752.29.4.19)
-// identifier[org-no].value          ← orgNo=5566778899 (system urn:oid:2.5.4.97)
+// identifier[org-no].value          ← orgNo=556677-8899 (system urn:oid:2.5.4.97)
 //                                      Obligatorisk för HsaHealthcareProviderOrganization
 // identifier[gln]                   ← EJ satt: inget hsaGlnCode i källdata.
 //                                      Privata bolag saknar ofta GLN på VG-nivå.
@@ -58,7 +58,7 @@
 // contact[1].address                ← postalAddress + postalCode + l (legacy pre-5.2)
 //   address.type = #postal
 //   address.text                    ← "Järnvägsgatan 12"
-//   address.postalCode              ← "372 35"
+//   address.postalCode              ← "37235"
 //   address.city                    ← "Ronneby"
 // extension[orgPeriod]              ← startDate=20100501 MEN ingen endDate.
 //   UTELÄMNAD: Invariant hsacat-org-period-end kräver Period.end.
@@ -90,7 +90,7 @@ Description: """
 // orgNo obligatorisk för HsaHealthcareProviderOrganization (identifier[org-no] 1..1)
 * identifier[org-no]
   * system = "urn:oid:2.5.4.97"
-  * value = "5566778899"
+  * value = "556677-8899"
 
 // identifier[gln] saknas — privata bolag har ofta inte GLN registrerat på VG-nivå.
 // identifier[apk] saknas — APK tilldelas per vårdenhet, aldrig på VG.
@@ -118,7 +118,7 @@ Description: """
   // telephoneNumber → direkttelefon (bolagets huvudnummer, ej växeln)
   * telecom[0]
     * system = #phone
-    * value = "0457-55 66 77"
+    * value = "+46457556677"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -128,7 +128,7 @@ Description: """
   // hsaSwitchboardNumber → växel (separat nummer, typiskt för bolag)
   * telecom[1]
     * system = #phone
-    * value = "0457-55 66 00"
+    * value = "+46457556600"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -161,5 +161,5 @@ Description: """
   * address
     * type = #postal
     * text = "Järnvägsgatan 12"
-    * postalCode = "372 35"
+    * postalCode = "37235"
     * city = "Ronneby"

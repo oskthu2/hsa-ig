@@ -4,14 +4,14 @@
 // dn: ou=Blekingesjukhuset,o=Region Blekinge,c=SE   (samma post som Organization)
 // objectClass: organizationalUnit
 // objectClass: hsaUnit
-// hsaIdentity: SE2321000016-BSJH01
+// hsaIdentity: SE2321000081-BSJH01
 // hsaVisitingAddress: Lyckeby 5$$$Karlskrona
 //   (strukturerad 5.2+-form; $=radbrytning; tom rad=ingen entré/plan i detta fall)
 // l: Karlskrona
-// hsaSweRef99Latitude: 56.1890
-// hsaSweRef99Longitude: 15.6210
-// hsaPublicTelephoneHours: Måndag-Fredag 08:00-16:30 (öppettider för reception)
-// hsaDropinHours: Måndag-Fredag 08:00-11:00 (akutmottagning)
+// hsaSweref99Latitude: 6227289
+// hsaSweref99Longitude: 538541
+// telephoneHours: 1-5#08:00#16:30 (reception)
+// dropInHours: 1-5#08:00#11:00
 // hsaVpwNavigation: ## Yttre vägbeskrivning\nFrån centrum: Kör mot Lyckeby
 //   längs E22. Ta av mot sjukhuset vid trafikljusen.\n\nBuss 1 och 5 stannar
 //   vid hållplatsen Blekingesjukhuset.\n\n## Inre vägbeskrivning\nHuvudentré
@@ -34,8 +34,8 @@
 //   och ort med $-tecken. Tom del utelämnas.)
 // address.city                      ← hsaVisitingAddress, sista del = "Karlskrona"
 // address.postalCode                ← 0..0 (Uppsala-regel: besöksadress saknar postnummer)
-// position.latitude                 ← hsaSweRef99Latitude = 56.1890
-// position.longitude                ← hsaSweRef99Longitude = 15.6210
+// position.latitude                 ← hsaSweref99Latitude/Longitude omräknade till WGS84 = 56.189003
+// position.longitude                ← hsaSweref99Latitude/Longitude omräknade till WGS84 = 15.621002
 // description                       ← hsaVpwNavigation (Markdown-formaterad vägbeskrivning)
 //   Renderas med ## Yttre vägbeskrivning / ## Inre vägbeskrivning-konvention.
 // managingOrganization              ← Reference(BlekingesjukhusetVardenhet)
@@ -58,7 +58,7 @@ Title: "Blekingesjukhuset (Besöksplats)"
 Description: """
   Exempelinstans för Blekingessjukhusets fysiska besöksplats.
   Demonstrerar: strukturerad besöksadress (HSA 5.2+ hsaVisitingAddress),
-  SWEREF99-koordinater, Markdown-vägbeskrivning med ## Yttre / ## Inre
+  koordinater (SWEREF99 TM omräknat till WGS84), Markdown-vägbeskrivning med ## Yttre / ## Inre
   vägbeskrivning-konvention, meta.security[destination-indicator]=03,
   och relationen till Organization via managingOrganization.
 
@@ -76,7 +76,7 @@ Description: """
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
-  * value = "SE2321000016-BSJH01"
+  * value = "SE2321000081-BSJH01"
 
 * status = #active
 
@@ -95,14 +95,15 @@ Description: """
   * line[0] = "Lyckeby 5"
   * city = "Karlskrona"
   // Obs: postalCode saknas avsiktligt — besöksadress har inga postnummer per
-  // Uppsala-regeln. Postnumret 371 85 hör till postadress på Organization.
+  // Uppsala-regeln. Postnumret 37185 hör till postadress på Organization.
 
-// ── Koordinater (SWEREF99) ────────────────────────────────────────────────────
-// hsaSweRef99Latitude / hsaSweRef99Longitude → position.latitude / longitude
+// ── Koordinater ───────────────────────────────────────────────────────────────
+// hsaSweref99Latitude 6227289 / hsaSweref99Longitude 538541 (SWEREF99 TM, meter)
+// → omräknade till WGS84 decimalgrader i position (ADR-015).
 // Obligatorisk för publika platser (destinationIndicator=03) för kartvisning på 1177.
 * position
-  * latitude = 56.189
-  * longitude = 15.621
+  * latitude = 56.189003
+  * longitude = 15.621002
 
 // ── Vägbeskrivning (Markdown) ─────────────────────────────────────────────────
 // hsaVpwNavigation → description (renderas som Markdown av klienter)

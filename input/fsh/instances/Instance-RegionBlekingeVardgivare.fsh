@@ -5,19 +5,19 @@
 // objectClass: organization
 // objectClass: hsaOrganisation
 // o: Region Blekinge
-// hsaIdentity: SE2321000016-BLKNG
-// orgNo: 2321000016
+// hsaIdentity: SE2321000081-BLKNG
+// orgNo: 232100-0081
 // management: 01
 // hsaGlnCode: 7350088100003
-// telephoneNumber: 0455-73 10 00
-// hsaSwitchboardNumber: 0455-73 10 00
+// telephoneNumber: +46455731000
+// hsaSwitchboardNumber: +46455731000
 // mobile: (ej satt)
 // facsimileTelephoneNumber: (ej satt)
 // mail: region@regionblekinge.se
 // hsaDirectoryContact: redaktion@regionblekinge.se
 // labeledURI: https://www.regionblekinge.se
 // postalAddress: Box 515
-// postalCode: 371 81
+// postalCode: 37181
 // l: Karlskrona
 // c: SE
 // startDate: 20000101000000Z
@@ -51,7 +51,7 @@
 //   address.type = #postal          ← LDAP:postalAddress = postadress (ej besöksadress)
 //   address.text                    ← "Box 515" (övergångsform t.o.m. sept 2026;
 //                                      normativ form hsaPostalAddress saknas ännu)
-//   address.postalCode              ← postalCode = "371 81"
+//   address.postalCode              ← postalCode = "37181"
 //   address.city                    ← l = "Karlskrona"
 // extension[orgPeriod]              ← startDate=20000101 finns MEN endDate saknas.
 //   UTELÄMNAD: Invariant hsacat-org-period-end kräver Period.end. En start utan
@@ -80,11 +80,11 @@ Description: """
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
-  * value = "SE2321000016-BLKNG"
+  * value = "SE2321000081-BLKNG"
 
 * identifier[org-no]
   * system = "urn:oid:2.5.4.97"
-  * value = "2321000016"
+  * value = "232100-0081"
 
 * identifier[gln]
   * system = "urn:oid:1.3.88"
@@ -112,7 +112,7 @@ Description: """
   // telephoneNumber → direkttelefon (och i detta fall identisk med växeln)
   * telecom[0]
     * system = #phone
-    * value = "0455-73 10 00"
+    * value = "+46455731000"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -122,7 +122,7 @@ Description: """
   // hsaSwitchboardNumber → växeltelefon
   * telecom[1]
     * system = #phone
-    * value = "0455-73 10 00"
+    * value = "+46455731000"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -157,5 +157,5 @@ Description: """
   * address
     * type = #postal
     * text = "Box 515"
-    * postalCode = "371 81"
+    * postalCode = "37181"
     * city = "Karlskrona"

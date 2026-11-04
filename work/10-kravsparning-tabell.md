@@ -20,21 +20,21 @@
 | HSACAT-ORG-011 | Källbekräftad | ✅ | SRC-017, SRC-001 | - | - | `Extension HsaFinancingOrganizationExtension` named financingOrganization 0..* MS | — |
 | HSACAT-LOC-001 | Källbekräftad | ✅ | SRC-001, SRC-005 | ADR-003 | - | `Location.address` 1..1 MS; type=physical; invariant hsacat-physical-location-address | — |
 | HSACAT-LOC-002 | Källbekräftad | ✅ | SRC-005 | ADR-003 | - | `Location.managingOrganization` 1..1 MS; only Reference(HsaCatalogOrganization) | — |
-| HSACAT-LOC-003 | Källbekräftad | ✅ | SRC-016, SRC-017, SRC-001 | - | - | `Location.position` MS; lat/long SWEREF99; invariant hsacat-public-location-position | `position.altitude` 0..0 (inga höjddata) |
+| HSACAT-LOC-003 | Källbekräftad | ✅ | SRC-016, SRC-017, SRC-001 | - | - | `Location.position` MS; WGS84 omräknat från SWEREF99 TM (ADR-015); invarianter hsacat-public-location-position, hsacat-position-sweden | `position.altitude` 0..0 (inga höjddata) |
 | HSACAT-LOC-004 | Källbekräftad | ✅ | SRC-016, SRC-001 | - | - | `Location.address.city` 1..1 MS; invariant hsacat-physical-location-city | — |
 | HSACAT-LOC-005 | Källbekräftad | ✅ | SRC-018 | - | - | Postadress: `Organization.contact.address` (type=postal); Besöksadress: `Location.address` (type=physical, postalCode 0..0) | — |
 | HSACAT-LOC-006 | Källbekräftad | ✅ | SRC-018 | - | - | Extension `HsaNavigationExtension` named navigation 0..1 MS på Location; extension[outer] + extension[inner] | — |
 | HSACAT-SVC-001 | Källbekräftad | ✅ | SRC-005 | ADR-003, ADR-006 | - | `HealthcareService.providedBy` 1..1 MS; invariant hsacat-service-provider | — |
 | HSACAT-SVC-002 | Källbekräftad | ✅ | SRC-005 | - | - | Invariant hsacat-digital-service-contact: `contact.telecom.exists() or endpoint.exists()` (uppdaterad för R5) | — |
 | HSACAT-SVC-003 | Källbekräftad | ✅ | SRC-017, SRC-001 | - | RSK-004 | `HealthcareService.type[care-type]` från HsaCareTypeVS; system=`urn:oid:1.2.752.129.2.2.1.13` | Bekräfta exakta kodvärden |
-| HSACAT-SVC-004 | Källbekräftad | ✅ | SRC-018 | - | - | `HealthcareService.availability` MS; `availability.availableTime` MS (R5-struktur) | Separata instanser per tidtyp (öppet/telefon/drop-in) |
+| HSACAT-SVC-004 | Källbekräftad | ✅ | SRC-018 | - | - | `HealthcareService.availability` MS; `availability.availableTime` MS (R5-struktur) | Tidtyp per post via `HsaAvailabilityTypeExtension` (ADR-016) |
 | HSACAT-SVC-005 | Källbekräftad | ✅ | SRC-018 | ADR-012 | - | `organization-period` HL7-standardextension på Organization (http://hl7.org/fhir/StructureDefinition/organization-period); Period.end 1..1; invariant hsacat-org-period-end. HsaTemporaryInfoExtension borttagen (ADR-012). | — |
 | HSACAT-TERM-001 | Källbekräftad – OID känd; harmonisering väntar | ⚠️ | SRC-002, SRC-013 | ADR-009 | RSK-004, RSK-005 | `HealthcareService.type[service-type]` från HsaServiceTypeVS; system=`urn:oid:1.2.752.129.2.2.1.3`; Required binding | Hämta SRC-014 (eHM Excel) för harmoniseringsmatris |
 | HSACAT-ORG-012 | Utkast – OID ej bekräftad | ⚠️ | SRC-020 | - | - | `Organization.identifier[apk]` 0..1 MS; system=`urn:oid:1.2.752.29.4.71` (preliminärt) | Bekräfta APK-OID mot Ineras OID-register (öppen fråga 8) |
 | HSACAT-ORG-013 | Beslutad | ✅ doc | SRC-021, SRC-001 | ADR-010 | RSK-002 | Adressövergång dokumenteras som kommentar i profil och informativ IG-sida; normativ form = strukturerade komponenter | — |
 | HSACAT-ORG-014 | Källbekräftad | ✅ | SRC-026 | - | - | `Organization.identifier[gln]` 0..1 MS; system=`urn:oid:1.3.88`; LDAP: hsaGlnCode | — |
 | HSACAT-ORG-015 | Källbekräftad | ✅ | SRC-026, SRC-001 | - | - | `Organization.type[business-type]` 0..1 MS; system=`urn:oid:1.2.752.129.2.2.1.12`; HsaBusinessTypeVS | Bekräfta kodvärden |
-| HSACAT-ORG-016 | Källbekräftad | ✅ | SRC-026 | - | - | `extension[temporaryNotice]` (HsaTemporaryNoticeExtension, hsaVpwInformation2); `extension[patientInfo]` (HsaPatientInfoExtension, hsaVpwInformation4); 1177-URL i `contact.telecom` (hsaVpwWebpage) | — |
+| HSACAT-ORG-016 | Källbekräftad | ✅ | SRC-026 | - | - | `extension[temporaryNotice]` (HsaTemporaryNoticeExtension, `text` + `period`, hsaVpwInformation2, ADR-013); `extension[patientInfo]` (HsaPatientInfoExtension, hsaVpwInformation4); 1177-URL i `contact.telecom` (hsaVpwWebpage) | — |
 
 ## Implementationsstatus
 

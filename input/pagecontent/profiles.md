@@ -73,7 +73,7 @@ Profil för fysiska platser – besöksplatser, mottagningar och vårdlokaler �
 **Nyckelkrav:**
 
 - `address` (1..1, typ `physical`) – besöksadress med gatuadress och stad; postnummer tillåts ej
-- `position` (0..1) – SWEREF99-koordinater; krävs för offentlig publicering på 1177 Hitta vård
+- `position` (0..1) – WGS84-koordinater omräknade från HSA:s SWEREF99 TM; krävs för offentlig publicering på 1177 Hitta vård
 - `managingOrganization` (1..1) – referens till ansvarig `HsaCatalogOrganization`
 - `meta.security[destination-indicator]` (0..1) – publik synlighet
 - `description` – Markdown-formaterad vägbeskrivning (yttre/inre)
@@ -90,7 +90,7 @@ Profil för vårdtjänster och tjänsteutbud från HSA-katalogen.
 - `category[verksamhetskod]` (1..*) – verksamhetskod (OID `1.2.752.129.2.2.1.3`), i linje med eHMs `hvo-business-category-inera`
 - `type[care-type]` (0..*) – vård-/omsorgsform (OID `1.2.752.129.2.2.1.13`)
 - `active` (1..1) – tjänstens aktiva status
-- `availability` – öppettider per veckodag
+- `availability` – öppettider per veckodag; tidtyp i `extension[availabilityType]`
 - `meta.security[destination-indicator]` (0..1) – publik synlighet
 
 ---
@@ -101,5 +101,6 @@ Profil för vårdtjänster och tjänsteutbud från HSA-katalogen.
 |---|---|---|
 | [HsaFinancingOrganizationExtension](StructureDefinition-hsa-financing-organization-extension.html) | Organization | Finansierande region eller kommun |
 | [HsaTelecomTypeExtension](StructureDefinition-hsa-telecom-type-extension.html) | ContactPoint | Telecom-typ (direkttelefon, växel, e-post m.fl.) |
+| [HsaAvailabilityTypeExtension](StructureDefinition-hsa-availability-type.html) | Availability | Tidtyp: öppettider, telefontider, drop-in, besökstider |
 
 Se [Designprinciper](design-principles.html) för motivering av när standard-FHIR används framför custom extensions.

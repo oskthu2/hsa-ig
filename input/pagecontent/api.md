@@ -100,10 +100,10 @@ GET /HealthcareService?organization=Organization/[id]
 
 ```
 # Via custom SearchParameter (kortform)
-GET /Organization?hsa-id=SE2321000016-ABC1
+GET /Organization?hsa-id=SE2321000081-ABC1
 
 # Via standard identifier-parameter (ekvivalent)
-GET /Organization?identifier=urn:oid:1.2.752.29.4.19|SE2321000016-ABC1
+GET /Organization?identifier=urn:oid:1.2.752.29.4.19|SE2321000081-ABC1
 ```
 
 ### Trädklättring: hämta hela partOf-kedjan uppåt

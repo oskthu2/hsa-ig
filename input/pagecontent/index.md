@@ -66,7 +66,7 @@ Organization (HsaHealthcareUnitOrganization)
 Location (HsaCatalogLocation)
   meta.security[destination-ind.]  // Kod 03 = publik
   address (type=physical)          // Gatuadress + stad (utan postnummer)
-  position                         // SWEREF99-koordinater
+  position                         // WGS84 (omräknat från SWEREF99 TM)
   managingOrganization             // → Organization ovan
 
 HealthcareService (HsaHealthcareService)

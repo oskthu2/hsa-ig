@@ -23,45 +23,39 @@ GET /Organization?_security=urn:oid:1.2.752.29.23.1.11|03
 
 ---
 
-## Tillfällig information: organization-period och varningsindikator
+## Tillfällig information: `extension[temporaryNotice]` och varningsindikator
 
-En organisation eller enhet som är aktiv under en tidsbegränsad period, t.ex. en sommarmottagning eller ett tillfälligt utökat servicerbjudande, kan ha `extension[orgPeriod]` satt (`http://hl7.org/fhir/StructureDefinition/organization-period`).
+Tillfällig information (`hsaVpwInformation2`) bärs av `extension[temporaryNotice]` på Organization och HealthcareService. Extensionen har två delar (ADR-013):
+
+| Del | Innehåll |
+|---|---|
+| `text` | Texten som visas, utan datumprefix |
+| `period` | Visningsperiod tolkad ur prefixet `;ÅÅÅÅMMDD;ÅÅÅÅMMDD;` i HSA. `start` och `end` är datum och inklusive |
+
+Visningsperioden gäller meddelandet. Organisationens egen giltighetstid (`startDate`/`endDate`) ligger i `extension[orgPeriod]` (organization-period) och styr inte informationsrutan.
 
 ### Renderingsregel
 
-Om `Organization.extension[orgPeriod]` är satt OCH `Organization.active = true`:
+Visa `temporaryNotice.text` som en gul informationsruta med varningssymbol (⚠) i anslutning till kontaktkortet när:
 
-1. **Visa en visuell varningsindikator** — t.ex. en gul informationsruta med varningssymbol (⚠) ovanför eller i anslutning till enhetens kontaktkort.
-2. Rutan bör innehålla: periodens slutdatum (`period.end`) och eventuell text om vad den tidsbegränsade statusen innebär.
-3. Text som ska visas i rutan hämtas från det fält klienten valt att mappa till (se nedan).
+1. resursen har `active = true`, och
+2. dagens datum ligger inom `temporaryNotice.period`. Saknas `start` gäller perioden från idag; saknas `end` gäller den tills vidare. Saknas hela perioden visas rutan tills informationen tas bort i HSA.
 
-### Textinnehåll i varningsrutan
+Dölj rutan automatiskt dagen efter `period.end`.
 
-HSA-IG lägger ingen normativ begränsning på vilket fält som bär varningsrutetexten — det är en presentationsfråga för respektive konsument. Rekommenderade alternativ:
+### Exempel
 
-| Fält | Lämplighet |
-|---|---|
-| `Organization.contact` med purpose `TEMP` | Rekommenderat för maskinläsbarhet |
-| `HealthcareService.comment` | Fungerar för tjänstenivå |
-| Fritext utanför FHIR-resursen (CMS/redaktionellt) | Sista utväg; riskerar inkonsistens |
-
-### Exempel på instans (Organization med tillfällig period)
+HSA-värdet `;20260901;20271231;Tillfällig lokal under renovering. Vi finns nu i byggnad B, plan 4.` blir:
 
 ```json
 {
-  "resourceType": "Organization",
-  "active": true,
-  "extension": [{
-    "url": "http://hl7.org/fhir/StructureDefinition/organization-period",
-    "valuePeriod": {
-      "start": "2026-06-01",
-      "end": "2026-08-31"
-    }
-  }]
+  "url": "https://hsa.inera.se/fhir/StructureDefinition/hsa-temporary-notice",
+  "extension": [
+    { "url": "text", "valueString": "Tillfällig lokal under renovering. Vi finns nu i byggnad B, plan 4." },
+    { "url": "period", "valuePeriod": { "start": "2026-09-01", "end": "2027-12-31" } }
+  ]
 }
 ```
-
-Klienten läser `extension.valuePeriod.end` och renderar varningsrutan tills detta datum passerat.
 
 ---
 
@@ -122,19 +116,33 @@ HSA 5.2 introducerade strukturerade adressattribut. Under övergångsperioden ka
 
 **Klientregel:** Klienter för allmänheten (t.ex. 1177) bör visa direkttelefon som primär kontaktväg och växeltelefon som sekundär. E-post av typen `directory-contact` visas normalt inte för slutanvändare.
 
+**Nummerformat:** Telefon- och faxnummer levereras i HSA:s lagringsformat, utan mellanslag och bindestreck och normalt med landsprefix, t.ex. `+46455731700` (invariant `hsacat-phone-format`). Endast nummer som inte kan ringas från utlandet (`020…`, `0771…`, `11…`) saknar `+`. Klienten ansvarar för att formatera numret för visning, t.ex. `0455-73 17 00`, och kan använda det oformaterade värdet direkt i `tel:`-länkar.
+
 ---
 
 ## Öppettider
 
-`HealthcareService.availability.availableTime` bär öppettider per veckodag. HSA-katalogen har tre tidtyper som bör presenteras tydligt och separerade:
+`HealthcareService.availability.availableTime` bär öppettider per veckodag. Varje `availability`-post anger sin tidtyp i `extension[availabilityType]` (system `https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type`, ADR-016). Klienter grupperar posterna på tidtypen och etiketterar dem tydligt:
 
-| Tidtyp | Beskrivning | Visningsetikett |
+| Kod | HSA-attribut | Visningsetikett |
 |---|---|---|
-| Öppethållning | Fysiska besök | Öppettider |
-| Telefontid | Tillgänglighet per telefon | Telefontider |
-| Drop-in | Besök utan bokning | Drop-in |
+| `surgery-hours` | `surgeryHours` | Öppettider |
+| `telephone-hours` | `telephoneHours` | Telefontider |
+| `drop-in-hours` | `dropInHours` | Drop-in |
+| `visiting-hours` | `visitingHours` | Besökstider för anhöriga |
 
-Separata `HealthcareService`-instanser (eller separata `availability`-element) används för att bära olika tidtyper. Klienter bör gruppera och etikettera dessa tydligt i UI.
+Klienter ska inte gissa tidtypen utifrån postens ordning eller klockslag.
+
+### Kommentarer, avvikande tider och dygnet runt
+
+| FHIR | Visning |
+|---|---|
+| `availableTime.allDay = true` | "Dygnet runt" (HSA `00:00–24:00`) |
+| `availableEndTime = "23:59:59"` | Visa som `24:00` |
+| `availability.extension[comment]` | Visa kommentaren bredvid tiderna, t.ex. "08:00–12:30 Halvdag" |
+| `availability.extension[period]` | Visa tiderna bara för datum inom perioden |
+
+HSA registrerar avvikande tider genom att dela upp perioderna så att de inte överlappar: de ordinarie tiderna får ett t.o.m.-datum, den avvikande tiden en egen period och de ordinarie tiderna ett nytt fr.o.m.-datum. Klienten behöver därför bara filtrera på period, inte avgöra vilken post som gäller före en annan.
 
 ---
 
@@ -144,12 +152,12 @@ HSA exponerar flera textfält som enbart riktar sig mot 1177-presentationslagret
 
 | FHIR-element | LDAP-attribut | 1177-visning | Krav |
 |---|---|---|---|
-| `extension[temporaryNotice]` (Organization/HealthcareService) | `hsaVpwInformation2` | Gul informationsruta med ⚠-symbol | MAY; kombineras med `extension[orgPeriod]` |
+| `extension[temporaryNotice]` (Organization/HealthcareService) | `hsaVpwInformation2` | Gul informationsruta med ⚠-symbol | MAY; egen visningsperiod i `period` |
 | `extension[patientInfo]` (Organization/HealthcareService) | `hsaVpwInformation4` | Informationsruta riktad till patient | MAY |
 | `HealthcareService.comment` | `hsaVpwInformation1` | "Mer om oss"-sektion | MAY |
 | `Organization.contact.telecom` (system=#url) | `hsaVpwWebpage` | Länk till 1177-kontaktkort | MAY |
 
-**Renderingsregler för gul ruta:** Visa `extension[temporaryNotice]` som gul informationsruta med varningsikon (⚠) när **båda** villkoren uppfylls: `extension[orgPeriod]` är satt OCH `active = true`. Visa slutdatum från `orgPeriod.valuePeriod.end`. Dölj rutan automatiskt efter slutdatum.
+**Renderingsregler för gul ruta:** Se avsnittet om tillfällig information ovan.
 
 **URL till 1177-kontaktkort** bör visas som klickbar länk och kan användas för djuplänkning från externa system till enhetens 1177-sida.
 
@@ -166,7 +174,7 @@ En resurs som ska synas på 1177 Hitta vård ska uppfylla samtliga punkter nedan
 | 3 | Besöksadress (gatuadress) | `Location.address.line` | SHALL |
 | 4 | Besöksadress (stad) | `Location.address.city` | SHALL |
 | 5 | Direkttelefon | `Organization.contact.telecom[direct-phone]` | SHALL |
-| 6 | Kartkoordinater (SWEREF99) | `Location.position` | SHALL (publik) |
+| 6 | Kartkoordinater (WGS84) | `Location.position` | SHALL (publik) |
 | 7 | Verksamhetskod | `HealthcareService.category[verksamhetskod]` | SHOULD |
 | 8 | Vård-/omsorgsform | `HealthcareService.type[care-type]` | SHOULD |
 | 9 | Öppettider | `HealthcareService.availability` | SHOULD |

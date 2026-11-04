@@ -30,6 +30,7 @@ Denna sida dokumenterar de CodeSystems, ValueSets och namnrymder som HSA-IG anv√
 |---|---|---|
 | HsaObjectClass | `https://hsa.inera.se/fhir/CodeSystem/hsa-object-class` | Klassificering av org-typ (healthcare-provider, healthcare-unit) |
 | HsaTelecomType | `https://hsa.inera.se/fhir/CodeSystem/hsa-telecom-type` | Telecom-typ (direct-phone, switchboard, ‚Ä¶) |
+| HsaAvailabilityType | `https://hsa.inera.se/fhir/CodeSystem/hsa-availability-type` | Tidtyp f√∂r availability (surgery-hours, telephone-hours, drop-in-hours, visiting-hours) |
 
 ---
 
@@ -44,6 +45,7 @@ Denna sida dokumenterar de CodeSystems, ValueSets och namnrymder som HSA-IG anv√
 | HsaServiceTypeVS | required | `HealthcareService.category[verksamhetskod]` |
 | HsaTelecomTypeVS | extensible | `extension[telecomType]` p√• ContactPoint |
 | HsaBusinessTypeVS | required | `Organization.type[business-type]` |
+| HsaAvailabilityTypeVS | required | `HealthcareService.availability.extension[availabilityType]` |
 
 ---
 

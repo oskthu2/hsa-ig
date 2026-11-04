@@ -5,27 +5,27 @@
 // objectClass: organizationalUnit
 // objectClass: hsaUnit
 // ou: Hjärtmottagningen Karlskrona
-// hsaIdentity: SE2321000016-HJRT01
-// hsaResponsibleHealthCareProvider: SE2321000016-BLKNG
+// hsaIdentity: SE2321000081-HJRT01
+// hsaResponsibleHealthCareProvider: SE2321000081-BLKNG
 // careLevel: 02
 // hsaBusinessType: 15
 // management: 01
 // hsaDestinationIndicator: 03
-// telephoneNumber: 0455-73 48 00
-// hsaSwitchboardNumber: 0455-73 10 00
+// telephoneNumber: +46455734800
+// hsaSwitchboardNumber: +46455731000
 // mail: hjartvard@regionblekinge.se
 // hsaDirectoryContact: redaktion.hjart@regionblekinge.se
-// hsaVpwWebpage: https://www.1177.test/blekinge/hitta-vard/SE2321000016-HJRT01
+// hsaVpwWebpage: https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000081-HJRT01
 // hsaVisitingAddress: Lyckeby 5$Ingång B$Plan 4$Karlskrona
 // l: Karlskrona
-// hsaSweRef99Latitude: 56.1892
-// hsaSweRef99Longitude: 15.6215
+// hsaSweref99Latitude: 6227311
+// hsaSweref99Longitude: 538572
 // postalAddress: Lyckeby 5
-// postalCode: 371 85
+// postalCode: 37185
 // startDate: 20060301000000Z
 // endDate: 20280101000000Z
-// hsaVpwInformation2: Tillfällig lokal under renovering. Vi finns nu i byggnad B,
-//                     plan 4 t.o.m. 31 december 2027.
+// hsaVpwInformation2: ;20260901;20271231;Tillfällig lokal under renovering. Vi
+//                     finns nu i byggnad B, plan 4.
 // hsaVpwInformation4: Ta med aktuell medicinlista och remiss till ditt besök.
 //                     Kontakta oss i god tid om du behöver avboka.
 //
@@ -48,7 +48,7 @@
 //   VIKTIGT – DN-träd vs. partOf:
 //   DN-trädet visar att Hjärtmottagningen är organisatoriskt placerad UNDER
 //   ou=Blekingesjukhuset. Men i FHIR pekar partOf ALLTID på den ansvariga
-//   VÅRDGIVAREN (hsaResponsibleHealthCareProvider = SE2321000016-BLKNG),
+//   VÅRDGIVAREN (hsaResponsibleHealthCareProvider = SE2321000081-BLKNG),
 //   INTE på sjukhuset. Profilen kräver:
 //     partOf only Reference(HsaHealthcareProviderOrganization)
 //   Blekingesjukhuset är en HsaHealthcareUnitOrganization, inte en
@@ -101,7 +101,7 @@ Description: """
 
 * identifier[hsa-id]
   * system = "urn:oid:1.2.752.29.4.19"
-  * value = "SE2321000016-HJRT01"
+  * value = "SE2321000081-HJRT01"
 
 // Obs: identifier[org-no] saknas — mottagningen har inte eget organisationsnummer.
 // Profilkravet identifier[org-no] 1..1 gäller HsaHealthcareProviderOrganization,
@@ -138,23 +138,27 @@ Description: """
 
 * name = "Hjärtmottagningen Karlskrona"
 
-// partOf → hsaResponsibleHealthCareProvider (SE2321000016-BLKNG = Region Blekinge VG)
+// partOf → hsaResponsibleHealthCareProvider (SE2321000081-BLKNG = Region Blekinge VG)
 // Inte till Blekingesjukhuset — se mappningskommentarer ovan.
 * partOf = Reference(RegionBlekingeVardgivare)
 
 // ── Tillfällig status och patientinformation ─────────────────────────────────
 // orgPeriod: startDate=20060301, endDate=20280101 → båda är satta → korrekt per
 // invariant hsacat-org-period-end (Period.end 1..1 i orgPeriod-slicen).
-// Klienter bör rendera en visuell varningsindikator (gul ruta) när orgPeriod
-// är satt och active = true, kombinerat med temporaryNotice-texten.
+// orgPeriod är enhetens giltighetstid. Den gula rutan styrs av
+// temporaryNotice.period, inte av orgPeriod (ADR-013).
 * extension[orgPeriod]
   * valuePeriod
     * start = "2006-03-01"
     * end = "2028-01-01"
 
 // hsaVpwInformation2 → temporaryNotice (visas som gul informationsruta på 1177)
+// Prefixet ;20260901;20271231; tolkas till period och tas bort ur texten (ADR-013).
 * extension[temporaryNotice]
-  * valueString = "Tillfällig lokal under renovering. Vi finns nu i byggnad B, plan 4 t.o.m. 31 december 2027."
+  * extension[text].valueString = "Tillfällig lokal under renovering. Vi finns nu i byggnad B, plan 4."
+  * extension[period].valuePeriod
+    * start = "2026-09-01"
+    * end = "2027-12-31"
 
 // hsaVpwInformation4 → patientInfo (patientinformation, renderas som Markdown)
 * extension[patientInfo]
@@ -165,7 +169,7 @@ Description: """
   // telephoneNumber → direkttelefon
   * telecom[0]
     * system = #phone
-    * value = "0455-73 48 00"
+    * value = "+46455734800"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -175,7 +179,7 @@ Description: """
   // hsaSwitchboardNumber → regionens gemensamma växel
   * telecom[1]
     * system = #phone
-    * value = "0455-73 10 00"
+    * value = "+46455731000"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -200,7 +204,7 @@ Description: """
   // hsaVpwWebpage → 1177-djuplänk
   * telecom[4]
     * system = #url
-    * value = "https://www.1177.test/blekinge/hitta-vard/SE2321000016-HJRT01"
+    * value = "https://www.1177.se/Hitta-vard/Kontakt/?hsaid=SE2321000081-HJRT01"
     * use = #work
     * extension[telecomType]
       * valueCoding
@@ -215,5 +219,5 @@ Description: """
   * address
     * type = #postal
     * text = "Lyckeby 5"
-    * postalCode = "371 85"
+    * postalCode = "37185"
     * city = "Karlskrona"
